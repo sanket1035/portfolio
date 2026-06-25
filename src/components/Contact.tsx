@@ -140,7 +140,7 @@ export const Contact: React.FC = () => {
               </div>
               <div>
                 <p className="text-xs font-semibold uppercase text-brand-accent">Location</p>
-                <p className="text-brand-text font-medium">Pune, India</p>
+                <p className="text-brand-text font-medium">{portfolioData.location}</p>
               </div>
             </div>
           </div>

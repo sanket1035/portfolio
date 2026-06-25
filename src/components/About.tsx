@@ -22,7 +22,7 @@ export const About: React.FC = () => {
               My Journey
             </h3>
             <p className="font-sans text-brand-text-muted leading-relaxed">
-              I am an undergraduate student in Artificial Intelligence & Data Science at Pune Institute of Computer Technology (PICT).
+              I am an undergraduate student in Artificial Intelligence & Data Science at K. K. Wagh Institute of Engineering Education & Research (KKWIEER).
               My passion lies at the intersection of building robust full-stack software and deploying practical, intelligent machine learning solutions.
             </p>
             <p className="font-sans text-brand-text-muted leading-relaxed">
