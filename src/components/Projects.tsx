@@ -28,18 +28,18 @@ export const Projects: React.FC = () => {
         </div>
 
         {/* Project Grid */}
-        <div className="grid md:grid-cols-2 gap-8">
+        <div className="grid md:grid-cols-2 gap-8 items-stretch">
           {portfolioData.projects.map((project: Project) => (
             <div
               key={project.id}
-              className="group flex flex-col justify-between rounded-xl bg-brand-card border border-brand-border hover:border-brand-accent/30 shadow-md hover:shadow-brand-accent/5 transition-all duration-300 transform hover:-translate-y-1 overflow-hidden"
+              className="group flex flex-col justify-between rounded-xl bg-brand-card border border-brand-border hover:border-brand-accent/30 shadow-md hover:shadow-brand-accent/5 transition-all duration-300 h-full overflow-hidden"
             >
               {/* Card Header Thumbnail */}
               <div className="relative aspect-video w-full bg-brand-bg overflow-hidden border-b border-brand-border/40">
                 <img
                   src={project.image}
                   alt={`${project.title} Cover Thumbnail`}
-                  className="w-full h-full object-cover grayscale brightness-[0.85] contrast-[1.05] group-hover:scale-105 group-hover:grayscale-0 group-hover:brightness-95 transition-all duration-500"
+                  className="w-full h-full object-cover brightness-95"
                 />
                 {/* Category Overlay tag */}
                 <span className="absolute top-4 left-4 px-2.5 py-0.5 rounded-full text-[9px] font-bold tracking-widest uppercase border border-brand-accent/30 bg-brand-bg/80 text-brand-accent glass">

@@ -32,6 +32,7 @@ export interface PortfolioData {
   bio: string;
   resumeUrl: string;
   lastUpdatedResume: string;
+  location: string;
   socials: {
     github: string;
     linkedin: string;
@@ -68,6 +69,7 @@ export const portfolioData: PortfolioData = {
   bio: "Building practical software, AI-powered solutions, and active open-source contributions. Focused on writing clean, scalable code and training efficient models.",
   resumeUrl: "/Sanket_Chaudhari_Resume.pdf", // Placed in public folder
   lastUpdatedResume: "June 2026",
+  location: "Nashik, Maharashtra, India",
   socials: {
     github: "https://github.com/sanket1035",
     linkedin: "https://linkedin.com/in/sanketchaudhari1035",
@@ -76,11 +78,11 @@ export const portfolioData: PortfolioData = {
   },
   education: [
     {
-      institution: "Pune Institute of Computer Technology (PICT)",
-      degree: "Bachelor of Engineering (B.E.)",
+      institution: "K. K. Wagh Institute of Engineering Education & Research",
+      degree: "B.Tech",
       specialization: "Artificial Intelligence & Data Science",
       duration: "2023 - 2027",
-      gpa: "8.9/10",
+      gpa: "8.66",
     }
   ],
   skills: {
@@ -117,8 +119,8 @@ export const portfolioData: PortfolioData = {
         "Integrate facial recognition verification as an added layer of authentication."
       ],
       githubUrl: "https://github.com/sanket1035/placetrack-ai",
-      liveUrl: "https://placetrack.sanketchaudhari.in",
-      image: "https://images.unsplash.com/photo-1579546929518-9e396f3cc809?auto=format&fit=crop&w=800&q=80",
+      liveUrl: "https://frontend-umber-one-zuhj8ueccq.vercel.app/",
+      image: "/placeholders/placetrack.jpg",
       category: "web"
     },
     {
@@ -143,7 +145,7 @@ export const portfolioData: PortfolioData = {
       architecture: "Client-side rendering. Algorithms are written in JavaScript with async/await delays mapped to Framer Motion layouts for smooth transitions.",
       githubUrl: "https://github.com/sanket1035/Algonix",
       liveUrl: "https://algonix-frontend.onrender.com/",
-      image: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=800&q=80",
+      image: "/placeholders/algonix.jpg",
       category: "web"
     },
     {
@@ -168,14 +170,14 @@ export const portfolioData: PortfolioData = {
       techStack: ["Java", "Android SDK", "SQLite", "XML Layouts", "PDF Document Generator"],
       architecture: "MVVM (Model-View-ViewModel) design pattern using SQLite for persistence and LiveData for updating the UI during state changes.",
       githubUrl: "https://github.com/sanket1035/GSTbillingApp",
-      image: "https://images.unsplash.com/photo-1554415707-6e8cfc93fe23?auto=format&fit=crop&w=800&q=80",
+      image: "/placeholders/gst.jpg",
       category: "mobile"
     },
     {
       id: "carbonomics-ai",
       title: "Carbonomics AI",
-      tagline: "Predictive Carbon Footprint Estimator & Optimization Platform",
-      description: "An AI-powered application that estimates industrial carbon emissions and suggests actionable recommendations to achieve net-zero goals. Features predictive modeling based on energy source and consumption data.",
+      tagline: "Predictive Carbon Footprint Estimator & Optimization Platform (Research)",
+      description: "An AI-powered application model layout that estimates industrial carbon emissions and suggests actionable recommendations to achieve net-zero goals. Features predictive modeling based on energy source and consumption data.",
       problem: "Organizations struggle to calculate scope 1, 2, and 3 emissions accurately and lack predictive forecasts to evaluate the environmental impact of changes in their supply chain.",
       motivation: "With industries shifting towards carbon neutrality, measuring scope-based emissions remains highly complex. Carbonomics AI was designed as a research platform to predict industrial CO2 emissions based on fuel, logistics, and resource data points using ML regression models.",
       challenges: "Handling missing/null values and scaling input parameters across varying industrial contexts while training the regressor for robust out-of-distribution performance.",
@@ -196,7 +198,7 @@ client/ # Dashboard analytics widgets`,
         "Integrate real-time IoT energy meters compatibility."
       ],
       githubUrl: "https://github.com/sanket1035/carbonomics-ai",
-      image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=800&q=80",
+      image: "/placeholders/carbonomics.jpg",
       category: "ai"
     }
   ],

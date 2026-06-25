@@ -39,101 +39,126 @@ export const Hero: React.FC = () => {
           variants={containerVariants}
           initial="hidden"
           animate="visible"
-          className="grid lg:grid-cols-12 gap-12 items-start"
+          className="grid lg:grid-cols-12 gap-12 items-center"
         >
-          {/* Left Column: Typography & Spec Table */}
+          {/* Left Column: Typography & Specification Grid */}
           <div className="lg:col-span-7 space-y-8">
             <div className="space-y-4">
-              {/* Monospace Subheader */}
-              <motion.p
+              {/* Monospace Subtitle */}
+              <motion.div
                 variants={itemVariants}
-                className="font-mono text-[10px] md:text-xs tracking-[0.25em] text-brand-accent uppercase font-bold"
+                className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-brand-accent/20 bg-brand-accent-glow text-xs font-semibold text-brand-accent tracking-wider uppercase"
               >
-                TECHNICAL SPECIFICATION · HUMAN, GENERALLY CAPABLE
-              </motion.p>
+                <span>Software & AI Engineering</span>
+              </motion.div>
 
-              {/* Big Bold Monospace Name */}
+              {/* Unique Heading */}
               <motion.h1
                 variants={itemVariants}
-                className="font-heading font-extrabold text-5xl md:text-7xl tracking-tight text-brand-primary uppercase leading-tight"
+                className="font-heading font-extrabold text-5xl md:text-7xl tracking-tight text-brand-primary uppercase leading-none"
               >
-                SANKET<br />CHAUDHARI
+                SANKET<br />
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-accent via-indigo-400 to-violet-500">
+                  CHAUDHARI
+                </span>
               </motion.h1>
+
+              {/* Bio */}
+              <motion.p
+                variants={itemVariants}
+                className="text-sm md:text-base text-brand-text-muted max-w-xl leading-relaxed font-sans"
+              >
+                {portfolioData.bio}
+              </motion.p>
             </div>
 
-            {/* Spec Table */}
+            {/* Specifications Table */}
             <motion.div variants={itemVariants} className="border-t border-brand-border/60">
               <table className="w-full text-left font-sans text-xs md:text-sm text-brand-text border-collapse">
                 <tbody>
-                  {/* Row 1 */}
+                  {/* Row 1: Education */}
                   <tr className="border-b border-brand-border/40">
-                    <td className="py-4 font-mono text-[10px] tracking-wider text-brand-text-muted uppercase w-28 md:w-36">
-                      CLASS
+                    <td className="py-3 font-mono text-[10px] tracking-wider text-brand-text-muted uppercase w-28 md:w-36">
+                      Education
                     </td>
-                    <td className="py-4 text-brand-primary font-medium">
-                      Software Developer — practical systems, end to end
+                    <td className="py-3 text-brand-primary font-medium">
+                      {portfolioData.education[0].degree} in Artificial Intelligence & Data Science
+                      <br />
+                      <span className="text-xs text-brand-text-muted">
+                        {portfolioData.education[0].institution}
+                      </span>
                     </td>
                   </tr>
 
-                  {/* Row 2 */}
+                  {/* Row 2: CGPA */}
                   <tr className="border-b border-brand-border/40">
-                    <td className="py-4 font-mono text-[10px] tracking-wider text-brand-text-muted uppercase">
-                      TRAINING
+                    <td className="py-3 font-mono text-[10px] tracking-wider text-brand-text-muted uppercase">
+                      CGPA
                     </td>
-                    <td className="py-4 text-brand-primary font-medium">
-                      B.E. AI & Data Science, PICT · GPA {portfolioData.education[0].gpa} · May 2027
+                    <td className="py-3 text-brand-primary font-medium font-mono">
+                      {portfolioData.education[0].gpa} / 10
                     </td>
                   </tr>
 
-                  {/* Row 3 */}
+                  {/* Row 3: Projects */}
                   <tr className="border-b border-brand-border/40">
-                    <td className="py-4 font-mono text-[10px] tracking-wider text-brand-text-muted uppercase">
-                      MODALITIES
+                    <td className="py-3 font-mono text-[10px] tracking-wider text-brand-text-muted uppercase">
+                      Featured Projects
                     </td>
-                    <td className="py-4 text-brand-primary font-medium">
-                      Full Stack · ML / Data Science · Open Source · Mobile Dev
+                    <td className="py-3 text-brand-primary font-medium">
+                      PlaceTrack AI · Algonix · GST Billing App · Carbonomics AI
                     </td>
                   </tr>
 
-                  {/* Row 4 */}
+                  {/* Row 4: Open Source */}
                   <tr className="border-b border-brand-border/40">
-                    <td className="py-4 font-mono text-[10px] tracking-wider text-brand-text-muted uppercase">
-                      DEPLOYED AT
+                    <td className="py-3 font-mono text-[10px] tracking-wider text-brand-text-muted uppercase">
+                      Open Source
                     </td>
-                    <td className="py-4 text-brand-primary font-medium font-mono text-xs text-indigo-400">
-                      PlaceTrack AI · Algonix · GST Billing App
+                    <td className="py-3 text-brand-primary font-medium">
+                      Connect Global '26 · ELUSOC Summer of Code '26
                     </td>
                   </tr>
 
-                  {/* Row 5 */}
+                  {/* Row 5: Languages */}
                   <tr className="border-b border-brand-border/40">
-                    <td className="py-4 font-mono text-[10px] tracking-wider text-brand-text-muted uppercase">
-                      LOCATION
+                    <td className="py-3 font-mono text-[10px] tracking-wider text-brand-text-muted uppercase">
+                      Languages
                     </td>
-                    <td className="py-4 text-brand-primary font-medium">
-                      Pune, India
+                    <td className="py-3 text-brand-primary font-medium font-mono text-xs text-indigo-400">
+                      {portfolioData.skills.languages.slice(0, 5).join(' · ')}
                     </td>
                   </tr>
 
-                  {/* Row 6 */}
+                  {/* Row 6: Location */}
                   <tr className="border-b border-brand-border/40">
-                    <td className="py-4 font-mono text-[10px] tracking-wider text-brand-text-muted uppercase">
-                      STATUS
+                    <td className="py-3 font-mono text-[10px] tracking-wider text-brand-text-muted uppercase">
+                      Location
                     </td>
-                    <td className="py-4 text-brand-primary font-medium flex items-center gap-2">
+                    <td className="py-3 text-brand-primary font-medium">
+                      {portfolioData.location}
+                    </td>
+                  </tr>
+
+                  {/* Row 7: Status */}
+                  <tr className="border-b border-brand-border/40">
+                    <td className="py-3 font-mono text-[10px] tracking-wider text-brand-text-muted uppercase">
+                      Status
+                    </td>
+                    <td className="py-3 text-brand-primary font-medium flex items-center gap-2">
                       <span className="relative flex h-2 w-2">
                         <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
                         <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
                       </span>
-                      Open to Software Development & AI internships
+                      Open to Software Development & AI opportunities (Graduating {portfolioData.education[0].duration.split(' - ')[1]})
                     </td>
                   </tr>
                 </tbody>
               </table>
             </motion.div>
 
-            {/* CTAs & Socials */}
-            <motion.div variants={itemVariants} className="flex flex-col sm:flex-row items-center gap-4 pt-4">
+            {/* CTAs */}
+            <motion.div variants={itemVariants} className="flex flex-col sm:flex-row items-center gap-4 pt-2">
               <button
                 onClick={handleScrollToProjects}
                 className="w-full sm:w-auto px-6 py-3 rounded-lg bg-brand-primary text-brand-bg font-bold text-xs hover:opacity-90 transition-all flex items-center justify-center gap-2 cursor-pointer shadow-md"
@@ -154,7 +179,7 @@ export const Hero: React.FC = () => {
                 Preview Resume
               </a>
 
-              {/* Quick Socials */}
+              {/* Social links */}
               <div className="flex items-center gap-4 pl-0 sm:pl-4 border-l border-none sm:border-brand-border h-6 text-brand-text-muted">
                 <a
                   href={portfolioData.socials.github}
@@ -185,25 +210,20 @@ export const Hero: React.FC = () => {
             </motion.div>
           </div>
 
-          {/* Right Column: Profile Picture Card & Caption */}
+          {/* Right Column: Original Abstract Portfolio Picture */}
           <div className="lg:col-span-5 flex flex-col items-center">
             <motion.div
               variants={itemVariants}
               className="p-3 rounded-2xl bg-brand-card border border-brand-border shadow-2xl max-w-sm w-full"
             >
-              {/* Profile Image container */}
-              <div className="aspect-[4/5] rounded-xl overflow-hidden bg-brand-bg relative group border border-brand-border/40">
+              {/* Natural Color Portrait (No Grayscale, No hover effects filters) */}
+              <div className="aspect-[4/5] rounded-xl overflow-hidden bg-brand-bg border border-brand-border/40">
                 <img
-                  src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=500&h=600&q=80"
-                  alt="Sanket Chaudhari Portrait"
-                  className="w-full h-full object-cover grayscale contrast-[1.05] brightness-90 group-hover:scale-[1.02] group-hover:grayscale-0 transition-all duration-700"
+                  src="/placeholders/hero.jpg"
+                  alt="Sanket Chaudhari Profile Banner"
+                  className="w-full h-full object-cover brightness-95"
                 />
               </div>
-
-              {/* Monospace Figure Caption */}
-              <p className="mt-3 text-center font-mono text-[9px] md:text-[10px] tracking-[0.2em] text-brand-text-muted uppercase">
-                FIG. 1 — THE SYSTEM IN QUESTION
-              </p>
             </motion.div>
           </div>
         </motion.div>
