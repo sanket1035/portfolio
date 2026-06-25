@@ -1,5 +1,5 @@
 import React from 'react';
-import { GitPullRequest, Award, Globe, ExternalLink, Calendar } from 'lucide-react';
+import { GitPullRequest, Award, Globe, ExternalLink } from 'lucide-react';
 import { portfolioData } from '../data/portfolioData';
 
 export const OpenSource: React.FC = () => {
@@ -39,7 +39,7 @@ export const OpenSource: React.FC = () => {
           <div className="p-6 rounded-xl bg-brand-card border border-brand-border shadow-lg md:col-span-2 space-y-5">
             <h3 className="font-heading font-bold text-base md:text-lg text-brand-primary flex items-center gap-2 uppercase tracking-wide">
               <Award className="text-brand-accent" size={18} />
-              Scholarships & Contributor Banners
+              Open Source Programs & Contributions
             </h3>
             <div className="space-y-4">
               {portfolioData.openSource.programs.map((program, idx) => (
@@ -68,65 +68,8 @@ export const OpenSource: React.FC = () => {
           </div>
         </div>
 
-        {/* Contributions Timeline & Pull Request Links */}
-        <div className="grid md:grid-cols-5 gap-8 items-start">
-          {/* PR links Column (2 columns) */}
-          <div className="md:col-span-2 p-5 rounded-xl bg-brand-card border border-brand-border/60 shadow-lg space-y-4">
-            <h4 className="font-heading font-bold text-xs md:text-sm text-brand-primary uppercase tracking-wide flex items-center gap-1.5">
-              <GitPullRequest size={14} className="text-brand-accent" />
-              Verified PR Submissions
-            </h4>
-            <div className="space-y-2.5">
-              {portfolioData.openSource.prLinks.map((link, idx) => {
-                const parts = link.split('/');
-                const repoLabel = parts.slice(3, 5).join('/'); // get org/repo
-                const prNum = parts.pop();
-                return (
-                  <a
-                    key={idx}
-                    href={link}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="p-3 rounded-lg bg-brand-bg border border-brand-border hover:border-brand-accent/40 flex items-center justify-between text-xs text-brand-text-muted hover:text-brand-accent transition-all group cursor-pointer"
-                  >
-                    <span className="font-mono text-[11px] font-medium leading-none">
-                      {repoLabel || 'Repository'} #{prNum}
-                    </span>
-                    <ExternalLink size={12} className="group-hover:translate-x-0.5 transition-transform" />
-                  </a>
-                );
-              })}
-            </div>
-          </div>
-
-          {/* Activity Logs Column (3 columns) */}
-          <div className="md:col-span-3 p-5 rounded-xl bg-brand-card border border-brand-border/60 shadow-lg space-y-5">
-            <h4 className="font-heading font-bold text-xs md:text-sm text-brand-primary uppercase tracking-wide flex items-center gap-1.5">
-              <Calendar size={14} className="text-brand-accent" />
-              OSS Timeline
-            </h4>
-            <div className="relative border-l border-brand-border/80 pl-4 ml-2 space-y-5">
-              {portfolioData.openSource.contributionsTimeline.map((item, idx) => {
-                const [date, ...descParts] = item.split(':');
-                const desc = descParts.join(':');
-                return (
-                  <div key={idx} className="relative text-xs">
-                    <span className="absolute -left-[21px] top-1 w-2.5 h-2.5 rounded-full border border-brand-accent bg-brand-bg"></span>
-                    <span className="font-mono text-brand-accent font-semibold block sm:inline mr-2 uppercase tracking-wider">
-                      {date}
-                    </span>
-                    <span className="text-brand-text-muted leading-relaxed">
-                      {desc}
-                    </span>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-        </div>
-
         {/* Action Button */}
-        <div className="pt-8 flex justify-center">
+        <div className="pt-4 flex justify-center">
           <a
             href={portfolioData.socials.github}
             target="_blank"
