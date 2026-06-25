@@ -14,17 +14,17 @@ export const Projects: React.FC = () => {
   };
 
   return (
-    <section id="projects" className="py-24 px-6 border-t border-brand-border/40 bg-brand-card/10">
+    <section id="projects" className="py-16 px-6 border-t border-brand-border/40 bg-brand-card/10">
       <div className="max-w-6xl mx-auto">
         {/* Title */}
-        <div className="text-center mb-16">
-          <h2 className="font-heading font-bold text-3xl md:text-5xl text-brand-primary tracking-tight">
-            Featured Projects
-          </h2>
-          <div className="h-1 w-12 bg-brand-accent mx-auto mt-4 rounded-full"></div>
-          <p className="text-brand-text-muted mt-4 text-sm max-w-lg mx-auto">
-            A selection of software systems, AI-powered applications, and offline utilities.
+        <div className="text-center mb-12">
+          <p className="font-mono text-[10px] tracking-widest text-brand-accent uppercase font-bold">
+            SHOWCASE
           </p>
+          <h2 className="font-heading font-bold text-3xl md:text-4xl text-brand-primary tracking-tight mt-2 uppercase">
+            Featured Systems
+          </h2>
+          <div className="h-0.5 w-10 bg-brand-accent mx-auto mt-3 rounded-full"></div>
         </div>
 
         {/* Project Grid */}
@@ -32,74 +32,86 @@ export const Projects: React.FC = () => {
           {portfolioData.projects.map((project: Project) => (
             <div
               key={project.id}
-              className="group flex flex-col justify-between p-6 rounded-2xl bg-brand-card border border-brand-border hover:border-brand-accent/40 shadow-lg hover:shadow-brand-accent/5 transition-all duration-300 transform hover:-translate-y-1"
+              className="group flex flex-col justify-between rounded-xl bg-brand-card border border-brand-border hover:border-brand-accent/30 shadow-md hover:shadow-brand-accent/5 transition-all duration-300 transform hover:-translate-y-1 overflow-hidden"
             >
-              <div>
-                {/* Category Badge & Tech Stacks */}
-                <div className="flex flex-wrap items-center justify-between gap-2 mb-4">
-                  <span className="px-2.5 py-0.5 rounded-full text-[10px] font-bold tracking-wider uppercase border border-brand-accent/30 bg-brand-accent-glow text-brand-accent">
-                    {project.category}
-                  </span>
-                </div>
-
-                {/* Heading */}
-                <h3 className="font-heading font-bold text-xl md:text-2xl text-brand-primary group-hover:text-brand-accent transition-colors mb-2">
-                  {project.title}
-                </h3>
-
-                {/* Tagline */}
-                <p className="font-sans text-xs md:text-sm font-semibold text-brand-text mb-3 leading-snug">
-                  {project.tagline}
-                </p>
-
-                {/* Description */}
-                <p className="font-sans text-sm text-brand-text-muted mb-6 leading-relaxed">
-                  {project.description}
-                </p>
-
-                {/* Tech Badges */}
-                <div className="flex flex-wrap gap-2 mb-6">
-                  {project.techStack.map((tech) => (
-                    <span
-                      key={tech}
-                      className="px-2.5 py-1 rounded-lg text-xs font-mono font-medium bg-brand-bg border border-brand-border text-brand-text-muted"
-                    >
-                      {tech}
-                    </span>
-                  ))}
-                </div>
+              {/* Card Header Thumbnail */}
+              <div className="relative aspect-video w-full bg-brand-bg overflow-hidden border-b border-brand-border/40">
+                <img
+                  src={project.image}
+                  alt={`${project.title} Cover Thumbnail`}
+                  className="w-full h-full object-cover grayscale brightness-[0.85] contrast-[1.05] group-hover:scale-105 group-hover:grayscale-0 group-hover:brightness-95 transition-all duration-500"
+                />
+                {/* Category Overlay tag */}
+                <span className="absolute top-4 left-4 px-2.5 py-0.5 rounded-full text-[9px] font-bold tracking-widest uppercase border border-brand-accent/30 bg-brand-bg/80 text-brand-accent glass">
+                  {project.category}
+                </span>
               </div>
 
-              {/* Action Buttons */}
-              <div className="flex items-center gap-3 pt-4 border-t border-brand-border/60">
-                {project.liveUrl && (
-                  <a
-                    href={project.liveUrl}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="flex-1 px-4 py-2.5 rounded-lg bg-brand-primary text-brand-bg font-semibold text-xs transition-opacity hover:opacity-90 flex items-center justify-center gap-1.5 cursor-pointer"
-                  >
-                    <ExternalLink size={14} />
-                    Live Demo
-                  </a>
-                )}
-                <a
-                  href={project.githubUrl}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="px-4 py-2.5 rounded-lg border border-brand-border bg-brand-bg hover:bg-brand-card hover:border-brand-accent/50 text-brand-text font-semibold text-xs flex items-center justify-center gap-1.5 flex-1 cursor-pointer"
-                >
-                  <Github size={14} />
-                  GitHub
-                </a>
-                <button
-                  onClick={() => handleCaseStudyClick(project.id)}
-                  className="px-3.5 py-2.5 rounded-lg border border-brand-border bg-brand-bg hover:bg-brand-card hover:border-brand-accent/50 text-brand-accent hover:text-brand-text font-semibold text-xs flex items-center justify-center gap-1.5 cursor-pointer"
-                  aria-label={`View ${project.title} Case Study`}
-                >
-                  <BookOpen size={14} />
-                  Case Study
-                </button>
+              {/* Card Content */}
+              <div className="p-6 flex-1 flex flex-col justify-between">
+                <div>
+                  {/* Title */}
+                  <h3 className="font-heading font-bold text-xl text-brand-primary group-hover:text-brand-accent transition-colors">
+                    {project.title}
+                  </h3>
+
+                  {/* Tagline */}
+                  <p className="font-sans text-xs font-semibold text-brand-text/80 mt-1.5 leading-snug">
+                    {project.tagline}
+                  </p>
+
+                  {/* Description */}
+                  <p className="font-sans text-xs md:text-sm text-brand-text-muted mt-3 leading-relaxed">
+                    {project.description}
+                  </p>
+                </div>
+
+                <div>
+                  {/* Tech stack badges */}
+                  <div className="flex flex-wrap gap-1.5 mt-5">
+                    {project.techStack.map((tech) => (
+                      <span
+                        key={tech}
+                        className="px-2 py-0.5 rounded-md text-[10px] font-mono bg-brand-bg border border-brand-border text-brand-text-muted"
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+
+                  {/* Buttons Row */}
+                  <div className="flex items-center gap-3 pt-4 border-t border-brand-border/40 mt-5">
+                    <button
+                      onClick={() => handleCaseStudyClick(project.id)}
+                      className="flex-1 px-3 py-2.5 rounded-lg border border-brand-border bg-brand-bg hover:bg-brand-card hover:border-brand-accent/50 text-brand-accent hover:text-brand-text font-bold text-[11px] tracking-wide flex items-center justify-center gap-1.5 cursor-pointer transition-all"
+                    >
+                      <BookOpen size={13} />
+                      Case Study
+                    </button>
+
+                    <a
+                      href={project.githubUrl}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="flex-1 px-3 py-2.5 rounded-lg border border-brand-border bg-brand-bg hover:bg-brand-card hover:border-brand-accent/50 text-brand-text font-bold text-[11px] tracking-wide flex items-center justify-center gap-1.5 cursor-pointer transition-all"
+                    >
+                      <Github size={13} />
+                      Source
+                    </a>
+
+                    {project.liveUrl && (
+                      <a
+                        href={project.liveUrl}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="px-3.5 py-2.5 rounded-lg bg-brand-primary text-brand-bg font-bold text-[11px] tracking-wide flex items-center justify-center gap-1.5 cursor-pointer hover:opacity-90 transition-opacity"
+                      >
+                        <ExternalLink size={13} />
+                        Live
+                      </a>
+                    )}
+                  </div>
+                </div>
               </div>
             </div>
           ))}

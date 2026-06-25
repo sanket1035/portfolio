@@ -105,10 +105,10 @@ export const Contact: React.FC = () => {
   };
 
   return (
-    <section id="contact" className="py-24 px-6 border-t border-brand-border/40 bg-brand-card/10">
+    <section id="contact" className="py-16 px-6 border-t border-brand-border/40 bg-brand-card/10">
       <div className="max-w-4xl mx-auto">
         {/* Title */}
-        <div className="text-center mb-16">
+        <div className="text-center mb-12">
           <h2 className="font-heading font-bold text-3xl md:text-5xl text-brand-primary tracking-tight">
             Get In Touch
           </h2>

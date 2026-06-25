@@ -1,71 +1,131 @@
 import React from 'react';
-import { portfolioData } from '../data/portfolioData';
+import { 
+  Code2, Braces, Database, Terminal, Cpu, 
+  Layers, Settings, Globe, Smartphone, GitBranch 
+} from 'lucide-react';
+
+interface SkillItem {
+  name: string;
+  category: string;
+  icon: React.ReactNode;
+  colorClass: string; // custom color class for hover border/shadow
+  accentColor: string; // inline style text/icon color
+}
 
 export const Skills: React.FC = () => {
-  // Flatten skills into two balanced arrays for dual marquee tracks
-  const track1 = [
-    ...portfolioData.skills.languages,
-    ...portfolioData.skills.frameworks,
+  const skillList: SkillItem[] = [
+    { 
+      name: "TypeScript", 
+      category: "Language", 
+      icon: <Braces size={22} />, 
+      colorClass: "glow-ts",
+      accentColor: "#3178c6"
+    },
+    { 
+      name: "React", 
+      category: "Frontend", 
+      icon: <Layers size={22} />, 
+      colorClass: "glow-react",
+      accentColor: "#61dafb"
+    },
+    { 
+      name: "Node.js", 
+      category: "Backend", 
+      icon: <Terminal size={22} />, 
+      colorClass: "glow-node",
+      accentColor: "#398239"
+    },
+    { 
+      name: "Python", 
+      category: "Language", 
+      icon: <Code2 size={22} />, 
+      colorClass: "glow-python",
+      accentColor: "#fcd34d"
+    },
+    { 
+      name: "FastAPI", 
+      category: "Framework", 
+      icon: <Cpu size={22} />, 
+      colorClass: "glow-ai",
+      accentColor: "#05998b"
+    },
+    { 
+      name: "Docker", 
+      category: "DevOps", 
+      icon: <Settings size={22} />, 
+      colorClass: "glow-docker",
+      accentColor: "#1d1a99"
+    },
+    { 
+      name: "PostgreSQL", 
+      category: "Database", 
+      icon: <Database size={22} />, 
+      colorClass: "glow-db",
+      accentColor: "#ef4444"
+    },
+    { 
+      name: "Git", 
+      category: "Version Control", 
+      icon: <GitBranch size={22} />, 
+      colorClass: "glow-git",
+      accentColor: "#f05032"
+    },
+    { 
+      name: "Jetpack Compose", 
+      category: "Mobile", 
+      icon: <Smartphone size={22} />, 
+      colorClass: "glow-mobile",
+      accentColor: "#3ddc84"
+    },
+    { 
+      name: "PyTorch", 
+      category: "Machine Learning", 
+      icon: <Globe size={22} />, 
+      colorClass: "glow-ai",
+      accentColor: "#ee4c2c"
+    }
   ];
-
-  const track2 = [
-    ...portfolioData.skills.aiMl,
-    ...portfolioData.skills.databases,
-    ...portfolioData.skills.tools,
-  ];
-
-  // Helper to render duplicate lists for seamless infinite looping
-  const renderMarqueeTrack = (items: string[], directionClass: string) => {
-    return (
-      <div className="relative w-full overflow-hidden py-4 flex select-none">
-        <div className={`flex gap-6 whitespace-nowrap min-w-full shrink-0 ${directionClass}`}>
-          {items.map((item, index) => (
-            <div
-              key={`t1-${index}`}
-              className="px-6 py-3 rounded-xl border border-brand-border bg-brand-card hover:border-brand-accent/50 text-brand-text font-medium text-sm transition-all shadow-md flex items-center justify-center shrink-0 cursor-default"
-            >
-              {item}
-            </div>
-          ))}
-        </div>
-        {/* Duplicate the array to create seamless loop effect */}
-        <div className={`flex gap-6 whitespace-nowrap min-w-full shrink-0 ${directionClass}`} aria-hidden="true">
-          {items.map((item, index) => (
-            <div
-              key={`t2-${index}`}
-              className="px-6 py-3 rounded-xl border border-brand-border bg-brand-card hover:border-brand-accent/50 text-brand-text font-medium text-sm transition-all shadow-md flex items-center justify-center shrink-0 cursor-default"
-            >
-              {item}
-            </div>
-          ))}
-        </div>
-      </div>
-    );
-  };
 
   return (
-    <section id="skills" className="py-24 px-6 border-t border-brand-border/40 overflow-hidden bg-brand-bg">
+    <section id="skills" className="py-16 px-6 border-t border-brand-border/40 bg-brand-bg">
       <div className="max-w-5xl mx-auto">
         {/* Title */}
-        <div className="text-center mb-16">
-          <h2 className="font-heading font-bold text-3xl md:text-5xl text-brand-primary tracking-tight">
-            Skills & Technologies
-          </h2>
-          <div className="h-1 w-12 bg-brand-accent mx-auto mt-4 rounded-full"></div>
-          <p className="text-brand-text-muted mt-4 text-sm max-w-md mx-auto">
-            Hover over any item to pause the slider and inspect the technology.
+        <div className="text-center mb-12">
+          <p className="font-mono text-[10px] tracking-widest text-brand-accent uppercase font-bold">
+            ABILITIES & STACK
           </p>
+          <h2 className="font-heading font-bold text-3xl md:text-4xl text-brand-primary tracking-tight mt-2 uppercase">
+            Technical Modalities
+          </h2>
+          <div className="h-0.5 w-10 bg-brand-accent mx-auto mt-3 rounded-full"></div>
         </div>
 
-        {/* Marquees */}
-        <div className="space-y-6">
-          {/* Left Scrolling Track */}
-          {renderMarqueeTrack(track1, 'animate-marquee')}
+        {/* Skills Grid */}
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4">
+          {skillList.map((skill) => (
+            <div
+              key={skill.name}
+              className={`group p-5 rounded-xl bg-brand-card border border-brand-border/80 transition-all duration-300 transform hover:-translate-y-1 cursor-default ${skill.colorClass}`}
+            >
+              {/* Icon Container */}
+              <div 
+                className="p-2.5 rounded-lg bg-brand-bg border border-brand-border/40 inline-block mb-3.5 group-hover:scale-105 transition-transform"
+                style={{ color: skill.accentColor }}
+              >
+                {skill.icon}
+              </div>
 
-          {/* Right Scrolling Track (reverse marquee using inline style scale-x-[-1] or CSS style) */}
-          <div className="[direction:rtl]">
-            {renderMarqueeTrack(track2, 'animate-marquee')}
-          </div>
+              {/* Title & Category */}
+              <div>
+                <h3 className="font-heading font-bold text-sm text-brand-primary tracking-tight group-hover:text-brand-primary transition-colors">
+                  {skill.name}
+                </h3>
+                <p className="text-[10px] font-mono text-brand-text-muted mt-1 uppercase tracking-wider">
+                  {skill.category}
+                </p>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     </section>

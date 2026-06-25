@@ -20,9 +20,9 @@
 :root {
   /* Default: Dark Theme */
   --brand-primary: #f3f4f6;
-  --brand-bg: #0a0b10;
-  --brand-card: #12131a;
-  --brand-border: #1f2230;
+  --brand-bg: #0b0c10;
+  --brand-card: #12131c;
+  --brand-border: #1a1c24;
   --brand-text: #f3f4f6;
   --brand-text-muted: #9ca3af;
   --brand-accent: #c084fc; /* soft premium purple */
@@ -122,3 +122,42 @@ body {
     transform: translateY(0);
   }
 }
+
+/* Technology Hover Glow Shadows */
+.glow-ts:hover {
+  box-shadow: 0 0 20px rgba(49, 120, 198, 0.15);
+  border-color: rgba(49, 120, 198, 0.4) !important;
+}
+.glow-react:hover {
+  box-shadow: 0 0 20px rgba(56, 189, 248, 0.15);
+  border-color: rgba(56, 189, 248, 0.4) !important;
+}
+.glow-node:hover {
+  box-shadow: 0 0 20px rgba(34, 197, 94, 0.15);
+  border-color: rgba(34, 197, 94, 0.4) !important;
+}
+.glow-python:hover {
+  box-shadow: 0 0 20px rgba(254, 240, 138, 0.15);
+  border-color: rgba(254, 240, 138, 0.4) !important;
+}
+.glow-docker:hover {
+  box-shadow: 0 0 20px rgba(29, 161, 242, 0.15);
+  border-color: rgba(29, 161, 242, 0.4) !important;
+}
+.glow-db:hover {
+  box-shadow: 0 0 20px rgba(239, 68, 68, 0.15);
+  border-color: rgba(239, 68, 68, 0.4) !important;
+}
+.glow-ai:hover {
+  box-shadow: 0 0 20px rgba(168, 85, 247, 0.15);
+  border-color: rgba(168, 85, 247, 0.4) !important;
+}
+.glow-git:hover {
+  box-shadow: 0 0 20px rgba(240, 80, 50, 0.15);
+  border-color: rgba(240, 80, 50, 0.4) !important;
+}
+.glow-mobile:hover {
+  box-shadow: 0 0 20px rgba(164, 198, 57, 0.15);
+  border-color: rgba(164, 198, 57, 0.4) !important;
+}
+
