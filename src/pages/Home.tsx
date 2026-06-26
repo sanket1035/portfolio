@@ -3,6 +3,7 @@ import Hero from '../components/Hero';
 import About from '../components/About';
 import Skills from '../components/Skills';
 import Projects from '../components/Projects';
+import Achievements from '../components/Achievements';
 import OpenSource from '../components/OpenSource';
 import GitHubGrid from '../components/GitHubGrid';
 import ResumeView from '../components/ResumeView';
@@ -16,6 +17,7 @@ export const Home: React.FC = () => {
       <About />
       <Skills />
       <Projects />
+      <Achievements />
       <OpenSource />
       <GitHubGrid />
       <ResumeView />

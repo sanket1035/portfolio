@@ -177,3 +177,10 @@ body {
   border-color: rgba(164, 198, 57, 0.4) !important;
 }
 
+/* Recruiter Mode overrides to disable animations and transitions for print-ready view */
+.recruiter-mode,
+.recruiter-mode * {
+  animation: none !important;
+  transition: none !important;
+}
+

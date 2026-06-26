@@ -1,10 +1,23 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+import React, { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { FileText, ArrowRight, Mail } from 'lucide-react';
-import { GithubIcon as Github, LinkedinIcon as Linkedin } from './BrandIcons';
+import { GithubIcon as Github, LinkedinIcon as Linkedin, YoutubeIcon as Youtube, LeetcodeIcon as Leetcode, DevtoIcon as Devto, MediumIcon as Medium } from './BrandIcons';
 import { portfolioData } from '../data/portfolioData';
 
 export const Hero: React.FC = () => {
+  const [statusIndex, setStatusIndex] = useState(0);
+  const statuses = [
+    { text: "Building Carbonomics AI", emoji: "🟢" },
+    { text: "Final Year B.Tech Student", emoji: "📚" },
+    { text: "Open to Opportunities", emoji: "💻" }
+  ];
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setStatusIndex((prev) => (prev + 1) % statuses.length);
+    }, 3000);
+    return () => clearInterval(interval);
+  }, []);
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -145,12 +158,22 @@ export const Hero: React.FC = () => {
                     <td className="py-3 font-mono text-[10px] tracking-wider text-brand-text-muted uppercase">
                       Status
                     </td>
-                    <td className="py-3 text-brand-primary font-medium flex items-center gap-2">
-                      <span className="relative flex h-2 w-2">
-                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                        <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
-                      </span>
-                      Open to Software Development & AI opportunities (Graduating {portfolioData.education[0].duration.split(' - ')[1]})
+                    <td className="py-3 text-brand-primary font-medium h-12">
+                      <div className="flex items-center gap-2 overflow-hidden h-full">
+                        <AnimatePresence mode="wait">
+                          <motion.span
+                            key={statusIndex}
+                            initial={{ y: 15, opacity: 0 }}
+                            animate={{ y: 0, opacity: 1 }}
+                            exit={{ y: -15, opacity: 0 }}
+                            transition={{ duration: 0.3 }}
+                            className="flex items-center gap-2"
+                          >
+                            <span>{statuses[statusIndex].emoji}</span>
+                            <span>{statuses[statusIndex].text}</span>
+                          </motion.span>
+                        </AnimatePresence>
+                      </div>
                     </td>
                   </tr>
                 </tbody>
@@ -180,7 +203,7 @@ export const Hero: React.FC = () => {
               </a>
 
               {/* Social links */}
-              <div className="flex items-center gap-4 pl-0 sm:pl-4 border-l border-none sm:border-brand-border h-6 text-brand-text-muted">
+              <div className="flex flex-wrap items-center gap-3 pl-0 sm:pl-4 border-l border-none sm:border-brand-border text-brand-text-muted">
                 <a
                   href={portfolioData.socials.github}
                   target="_blank"
@@ -199,6 +222,50 @@ export const Hero: React.FC = () => {
                 >
                   <Linkedin size={18} />
                 </a>
+                {portfolioData.socials.leetcode && (
+                  <a
+                    href={portfolioData.socials.leetcode}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="hover:text-brand-accent transition-colors"
+                    aria-label="LeetCode Profile"
+                  >
+                    <Leetcode size={18} />
+                  </a>
+                )}
+                {portfolioData.socials.youtube && (
+                  <a
+                    href={portfolioData.socials.youtube}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="hover:text-brand-accent transition-colors"
+                    aria-label="YouTube Channel"
+                  >
+                    <Youtube size={18} />
+                  </a>
+                )}
+                {portfolioData.socials.devto && (
+                  <a
+                    href={portfolioData.socials.devto}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="hover:text-brand-accent transition-colors"
+                    aria-label="Dev.to Blog"
+                  >
+                    <Devto size={18} />
+                  </a>
+                )}
+                {portfolioData.socials.medium && (
+                  <a
+                    href={portfolioData.socials.medium}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="hover:text-brand-accent transition-colors"
+                    aria-label="Medium Blog"
+                  >
+                    <Medium size={18} />
+                  </a>
+                )}
                 <a
                   href={`mailto:${portfolioData.socials.email}`}
                   className="hover:text-brand-accent transition-colors"

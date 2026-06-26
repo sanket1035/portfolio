@@ -25,6 +25,33 @@ export interface Contribution {
   description: string;
 }
 
+export interface Achievement {
+  title: string;
+  issuer: string;
+  date: string;
+  description: string;
+  image: string;
+  detailsUrl?: string;
+}
+
+export interface Activity {
+  role: string;
+  organization: string;
+  duration: string;
+  description: string;
+  image: string;
+}
+
+export interface Certificate {
+  title: string;
+  issuer: string;
+  date: string;
+  credentialId: string;
+  skills: string[];
+  verifyUrl: string;
+  image: string;
+}
+
 export interface PortfolioData {
   name: string;
   title: string;
@@ -38,6 +65,10 @@ export interface PortfolioData {
     linkedin: string;
     twitter: string;
     email: string;
+    youtube?: string;
+    leetcode?: string;
+    devto?: string;
+    medium?: string;
   };
   education: {
     institution: string;
@@ -60,6 +91,9 @@ export interface PortfolioData {
     prLinks: string[];
     contributionsTimeline: string[];
   };
+  achievements: Achievement[];
+  activities: Activity[];
+  certificates: Certificate[];
 }
 
 export const portfolioData: PortfolioData = {
@@ -75,6 +109,10 @@ export const portfolioData: PortfolioData = {
     linkedin: "https://linkedin.com/in/sanketchaudhari1035",
     twitter: "https://twitter.com/sanket_codes",
     email: "sanketchaudhari1035@gmail.com",
+    youtube: "https://youtube.com/@sanketchaudhari1035",
+    leetcode: "https://leetcode.com/u/sanket1035",
+    devto: "https://dev.to/sanket1035",
+    medium: "https://medium.com/@sanketchaudhari1035",
   },
   education: [
     {
@@ -228,5 +266,98 @@ client/ # Dashboard analytics widgets`,
       "April 2026: Contributed performance enhancements to a popular markdown parser.",
       "May 2026: Integrated internationalization (i18n) modules in developer docs."
     ]
-  }
+  },
+  achievements: [
+    {
+      title: "StudyBuddy KKW",
+      issuer: "K. K. Wagh Institute",
+      date: "Academic Year 2024 - Present",
+      description: "Academic platform serving 1500+ active users & 400+ students annually. Facilitates resource sharing and exam preparations.",
+      image: "/placeholders/studybuddy.jpg"
+    },
+    {
+      title: "Gold Medalist",
+      issuer: "5th Open National Football Championship U-19",
+      date: "2023",
+      description: "Represented Maharashtra State Team and achieved first place in the tournament, demonstrating leadership, teamwork, and athletic excellence.",
+      image: "/placeholders/football.jpg"
+    }
+  ],
+  activities: [
+    {
+      role: "Core Committee Member",
+      organization: "CSI KKWIEER Students' Chapter",
+      duration: "2025 - 2026",
+      description: "Organize major technical events, coding contests, and technology workshops for engineering students.",
+      image: "/placeholders/csi.jpg"
+    },
+    {
+      role: "Logistics & EPM Team Member",
+      organization: "Innov-ERA National Hackathon",
+      duration: "March 2025",
+      description: "Managed on-ground operations, developer assistance, and participant support for a 24-hour national hackathon.",
+      image: "/placeholders/innov_era.jpg"
+    },
+    {
+      role: "Creative Team Member",
+      organization: "Phoenix Club, Department of AI & DS",
+      duration: "2024 - Present",
+      description: "Design UI layouts, promotional graphics, and coordinate social media content for club events.",
+      image: "/placeholders/phoenix.jpg"
+    },
+    {
+      role: "Organizing Committee Member (Season 14)",
+      organization: "Swapnapurti Foundation NGO",
+      duration: "Jan 2024",
+      description: "Coordinated volunteer efforts, planned welfare activities, and drove social impact events.",
+      image: "/placeholders/swapnapurti.jpg"
+    }
+  ],
+  certificates: [
+    {
+      title: "Data Analytics Job Simulation",
+      issuer: "Deloitte",
+      date: "Jul 2025",
+      credentialId: "YNYjQodt3Rd8CjMWJ",
+      skills: ["Data Analysis", "Data Visualization", "Dashboard Design", "Python"],
+      verifyUrl: "https://www.theforage.com/simulations/deloitte",
+      image: "/placeholders/deloitte.jpg"
+    },
+    {
+      title: "Python One Roadmap",
+      issuer: "Python Institute / Community",
+      date: "Jun 2025",
+      credentialId: "CERT-37E358BB",
+      skills: ["Python Programming", "Automation", "Algorithms"],
+      verifyUrl: "#",
+      image: "/placeholders/python.jpg"
+    },
+    {
+      title: "SQL for Developers",
+      issuer: "Udemy",
+      date: "Apr 2025",
+      credentialId: "UC-21ecd423-fcd5-429b-a3ef-d2ba50f4c747",
+      skills: ["SQL", "Database Design", "Query Optimization", "PostgreSQL"],
+      verifyUrl: "https://ude.my/UC-21ecd423-fcd5-429b-a3ef-d2ba50f4c747",
+      image: "/placeholders/sql.jpg"
+    },
+    {
+      title: "Cyber Security Professional",
+      issuer: "The Tech Unique Academy",
+      date: "Jan 2025",
+      credentialId: "EP-12003467",
+      skills: ["Network Security", "Penetration Testing", "Risk Assessment"],
+      verifyUrl: "#",
+      image: "/placeholders/cybersecurity.jpg"
+    },
+    {
+      title: "Introduction to Generative AI Studio",
+      issuer: "Simplilearn",
+      date: "Jun 2025",
+      credentialId: "8504350",
+      skills: ["Generative AI", "Large Language Models", "Prompt Engineering"],
+      verifyUrl: "#",
+      image: "/placeholders/genai.jpg"
+    }
+  ]
 };

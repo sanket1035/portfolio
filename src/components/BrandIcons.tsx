@@ -58,3 +58,79 @@ export const TwitterIcon: React.FC<IconProps> = ({ size = 20, className }) => (
     <path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z" />
   </svg>
 );
+
+export const YoutubeIcon: React.FC<IconProps> = ({ size = 20, className }) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width={size}
+    height={size}
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    className={className}
+  >
+    <path d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17z" />
+    <polygon points="10 15 15 12 10 9" fill="currentColor" />
+  </svg>
+);
+
+export const LeetcodeIcon: React.FC<IconProps> = ({ size = 20, className }) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width={size}
+    height={size}
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    className={className}
+  >
+    <path d="M12 2L2 7l10 5 10-5-10-5z" />
+    <path d="M2 17l10 5 10-5" />
+    <path d="M2 12l10 5 10-5" />
+  </svg>
+);
+
+export const DevtoIcon: React.FC<IconProps> = ({ size = 20, className }) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width={size}
+    height={size}
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    className={className}
+  >
+    <rect x="3" y="3" width="18" height="18" rx="2" />
+    <path d="M7 8h2v8H7zM15 8h2v8h-2z" />
+    <path d="M7 12h2M15 12h2" />
+    <path d="M11 8l2 8" />
+  </svg>
+);
+
+export const MediumIcon: React.FC<IconProps> = ({ size = 20, className }) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width={size}
+    height={size}
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    className={className}
+  >
+    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+    <path d="M12 6v12" />
+    <path d="M17 10l-5 4-5-4" />
+  </svg>
+);

@@ -28,7 +28,7 @@ export const Navbar: React.FC = () => {
   useEffect(() => {
     if (location.pathname !== '/') return;
 
-    const sections = ['#about', '#opensource', '#projects', '#skills', '#github', '#contact'];
+    const sections = ['#about', '#opensource', '#projects', '#achievements', '#skills', '#github', '#contact'];
     const observers = sections.map((hash) => {
       const element = document.querySelector(hash);
       if (!element) return null;
@@ -58,9 +58,10 @@ export const Navbar: React.FC = () => {
     { num: '01', label: 'OVERVIEW', hash: '#about' },
     { num: '02', label: 'OPEN SOURCE', hash: '#opensource' },
     { num: '03', label: 'PROJECTS', hash: '#projects' },
-    { num: '04', label: 'SKILLS', hash: '#skills' },
-    { num: '05', label: 'GITHUB', hash: '#github' },
-    { num: '06', label: 'CONTACT', hash: '#contact', border: true },
+    { num: '04', label: 'MILESTONES', hash: '#achievements' },
+    { num: '05', label: 'SKILLS', hash: '#skills' },
+    { num: '06', label: 'GITHUB', hash: '#github' },
+    { num: '07', label: 'CONTACT', hash: '#contact', border: true },
   ];
 
   const handleNavClick = (hash: string) => {
@@ -143,10 +144,27 @@ export const Navbar: React.FC = () => {
           >
             {theme === 'dark' ? 'LIGHT' : 'DARK'}
           </button>
+
+          {/* Terminal Toggle Button */}
+          <button
+            onClick={() => window.dispatchEvent(new CustomEvent('toggle-terminal'))}
+            className="border border-brand-border px-3.5 py-1.5 hover:border-brand-accent text-brand-text hover:text-brand-accent font-mono text-[11px] tracking-widest cursor-pointer transition-all flex items-center gap-1.5"
+            aria-label="Toggle Terminal Mode"
+            title="Open Interactive Terminal"
+          >
+            <span>&gt;_</span>
+          </button>
         </div>
 
         {/* Mobile Menu Actions */}
         <div className="flex items-center space-x-4 lg:hidden">
+          <button
+            onClick={() => window.dispatchEvent(new CustomEvent('toggle-terminal'))}
+            className="border border-brand-border px-2.5 py-1 text-brand-text font-mono text-[10px] tracking-widest cursor-pointer"
+            title="Open Interactive Terminal"
+          >
+            &gt;_
+          </button>
           <button
             onClick={toggleTheme}
             className="border border-brand-border px-3 py-1 text-brand-text font-mono text-[10px] tracking-widest uppercase cursor-pointer"
