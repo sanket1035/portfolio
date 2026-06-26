@@ -14,44 +14,42 @@ export const Navbar: React.FC = () => {
 
   useEffect(() => {
     const handleScroll = () => {
+      // 1. Header background scrolled transition
       if (window.scrollY > 20) {
         setScrolled(true);
       } else {
         setScrolled(false);
       }
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
 
-  // Intersection Observer to track active section scrollspy
-  useEffect(() => {
-    if (location.pathname !== '/') return;
-
-    const sections = ['#about', '#projects', '#skills', '#achievements', '#opensource', '#contact'];
-    const observers = sections.map((hash) => {
-      const element = document.querySelector(hash);
-      if (!element) return null;
-
-      const observer = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              setActiveSection(hash);
+      // 2. Scrollspy active section tracker (only on home page)
+      if (location.pathname === '/') {
+        const sections = ['#about', '#projects', '#skills', '#achievements', '#opensource', '#contact'];
+        const scrollPosition = window.scrollY + window.innerHeight / 3;
+        
+        let active = '#about';
+        for (let i = sections.length - 1; i >= 0; i--) {
+          const el = document.querySelector(sections[i]) as HTMLElement;
+          if (el) {
+            if (scrollPosition >= el.offsetTop) {
+              active = sections[i];
+              break;
             }
-          });
-        },
-        { rootMargin: '-25% 0px -25% 0px' } // adjusted triggering margins
-      );
-      observer.observe(element);
-      return { observer, element };
-    });
-
-    return () => {
-      observers.forEach((obs) => {
-        if (obs) obs.observer.unobserve(obs.element);
-      });
+          }
+        }
+        
+        // Fallback to top section if at the very top of page
+        if (window.scrollY < 100) {
+          active = '#about';
+        }
+        setActiveSection(active);
+      }
     };
+
+    window.addEventListener('scroll', handleScroll);
+    // Initial call to set active section on mount
+    handleScroll();
+    
+    return () => window.removeEventListener('scroll', handleScroll);
   }, [location.pathname]);
 
   const navLinks = [
@@ -59,7 +57,7 @@ export const Navbar: React.FC = () => {
     { num: '02', label: 'PROJECTS', hash: '#projects' },
     { num: '03', label: 'SKILLS', hash: '#skills' },
     { num: '04', label: 'MILESTONES', hash: '#achievements' },
-    { num: '05', label: 'OPEN SOURCE', hash: '#opensource' },
+    { num: '05', label: 'DEV ACTIVITY', hash: '#opensource' },
     { num: '06', label: 'CONTACT', hash: '#contact', border: true },
   ];
 

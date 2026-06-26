@@ -1,26 +1,15 @@
 import React, { useEffect, useState } from 'react';
-import { GitPullRequest, Award, Globe, ExternalLink, BookOpen, Users, Calendar, Eye, Star, GitFork } from 'lucide-react';
+import { Award, Globe, ExternalLink, BookOpen, Cpu, Laptop, ListChecks, CheckCircle2, GitBranch, Terminal } from 'lucide-react';
 import { portfolioData } from '../data/portfolioData';
 
 interface GitHubStats {
   public_repos: number;
   followers: number;
   following: number;
-  avatar_url: string;
-}
-
-interface Repository {
-  name: string;
-  description: string;
-  html_url: string;
-  stargazers_count: number;
-  forks_count: number;
-  language: string;
 }
 
 export const OpenSource: React.FC = () => {
   const [stats, setStats] = useState<GitHubStats | null>(null);
-  const [repos, setRepos] = useState<Repository[]>([]);
   const [loading, setLoading] = useState(true);
 
   const username = portfolioData.socials.github.split('/').pop() || 'sanket1035';
@@ -35,62 +24,10 @@ export const OpenSource: React.FC = () => {
             public_repos: profileData.public_repos,
             followers: profileData.followers,
             following: profileData.following,
-            avatar_url: profileData.avatar_url,
           });
         }
-
-        const reposRes = await fetch(`https://api.github.com/users/${username}/repos?sort=updated&per_page=6`);
-        if (reposRes.ok) {
-          const reposData = await reposRes.json();
-          setRepos(
-            reposData.map((repo: any) => ({
-              name: repo.name,
-              description: repo.description || 'No description provided.',
-              html_url: repo.html_url,
-              stargazers_count: repo.stargazers_count,
-              forks_count: repo.forks_count,
-              language: repo.language || 'Code',
-            }))
-          );
-        } else {
-          throw new Error('Failed to load repos');
-        }
       } catch (error) {
-        console.warn('GitHub API rate limited. Loading static fallback repositories.');
-        setRepos([
-          {
-            name: "placetrack-ai",
-            description: "Smart Attendance & Location Tracking System featuring Geofencing.",
-            html_url: "https://github.com/sanket1035/placetrack-ai",
-            stargazers_count: 3,
-            forks_count: 1,
-            language: "TypeScript"
-          },
-          {
-            name: "Algonix",
-            description: "Interactive Algorithm Visualizer & CS Learning Sandbox.",
-            html_url: "https://github.com/sanket1035/Algonix",
-            stargazers_count: 5,
-            forks_count: 0,
-            language: "React"
-          },
-          {
-            name: "GSTbillingApp",
-            description: "Offline-first Mobile POS invoice generator app.",
-            html_url: "https://github.com/sanket1035/GSTbillingApp",
-            stargazers_count: 2,
-            forks_count: 0,
-            language: "Java"
-          },
-          {
-            name: "carbonomics-ai",
-            description: "Machine learning carbon footprint optimization engine.",
-            html_url: "https://github.com/sanket1035/carbonomics-ai",
-            stargazers_count: 1,
-            forks_count: 0,
-            language: "Python"
-          }
-        ]);
+        console.warn('GitHub API rate limited. Using local fallback metrics.');
       } finally {
         setLoading(false);
       }
@@ -99,169 +36,353 @@ export const OpenSource: React.FC = () => {
     fetchGitHubData();
   }, [username]);
 
-  const generateContributionWeeks = () => {
-    const levels = ['bg-brand-border', 'bg-emerald-950', 'bg-emerald-900', 'bg-emerald-700', 'bg-emerald-500'];
-    const grid = [];
-    for (let day = 0; day < 7; day++) {
-      const row = [];
-      for (let week = 0; week < 24; week++) {
-        const rand = Math.sin(day * 19 + week * 31);
-        let levelIdx = 0;
-        if (rand > 0.65) levelIdx = 4;
-        else if (rand > 0.3) levelIdx = 3;
-        else if (rand > -0.1) levelIdx = 2;
-        else if (rand > -0.55) levelIdx = 1;
-        row.push(levels[levelIdx]);
-      }
-      grid.push(row);
-    }
-    return grid;
-  };
+  // Static Languages Used data
+  const languages = [
+    { name: 'TypeScript', percent: 100, color: 'bg-blue-500' },
+    { name: 'Python', percent: 80, color: 'bg-yellow-500' },
+    { name: 'Java', percent: 70, color: 'bg-red-500' },
+    { name: 'Kotlin', percent: 50, color: 'bg-purple-500' },
+    { name: 'SQL', percent: 40, color: 'bg-pink-500' }
+  ];
 
-  const contributionGrid = generateContributionWeeks();
-  const daysOfWeek = ['Mon', '', 'Wed', '', 'Fri', '', 'Sun'];
+  // Static Coding Activity focus data
+  const focusAreas = [
+    { name: 'Web Development', percent: 100, color: 'bg-brand-accent' },
+    { name: 'AI Projects & ML', percent: 80, color: 'bg-brand-accent' },
+    { name: 'Mobile Apps (Android)', percent: 60, color: 'bg-brand-accent' },
+    { name: 'Open Source Modules', percent: 40, color: 'bg-brand-accent' }
+  ];
+
+  // Local environment tools
+  const envTools = ['VS Code', 'Windows 11', 'Git', 'Docker', 'Postman', 'Android Studio', 'Figma', 'Power BI'];
+
+  // Open source goals list
+  const ossGoals = [
+    { text: 'First 50 GitHub Contributions', done: true },
+    { text: '100+ Commit Milestones', done: true },
+    { text: '10+ Public Repositories', done: true },
+    { text: 'First Major OSS Contribution', done: false },
+    { text: 'Participate in Hacktoberfest', done: false },
+    { text: 'Contribute to GSSoC / Social programs', done: false }
+  ];
 
   return (
-    <section id="opensource" className="py-20 px-6 border-t border-brand-border/40 bg-brand-bg relative overflow-hidden">
+    <section id="opensource" className="py-24 px-6 border-t border-brand-border/40 bg-brand-bg relative overflow-hidden">
       <div className="absolute top-1/2 left-1/3 w-[500px] h-[500px] bg-brand-accent-glow/5 blur-[150px] pointer-events-none rounded-full"></div>
       
       <div className="max-w-6xl w-full mx-auto relative z-10">
+        
         {/* Section Header */}
         <div className="text-center mb-16">
           <p className="font-mono text-[10px] tracking-widest text-brand-accent uppercase font-bold flex items-center justify-center gap-1.5">
-            <GitPullRequest size={12} />
-            Development & Community
+            <Terminal size={12} />
+            DEVELOPER PROFILE
           </p>
           <h2 className="font-heading font-extrabold text-3xl md:text-5xl text-brand-primary tracking-tight mt-3 uppercase">
-            Open Source & GitHub
+            GitHub & Development
           </h2>
           <div className="h-1 w-16 bg-brand-accent mx-auto mt-4 rounded-full shadow-lg shadow-brand-accent/50"></div>
         </div>
 
-        {/* Dashboard Grid */}
-        <div className="grid lg:grid-cols-12 gap-8 items-start">
-          {/* Left Column: Stats, Heatmap, and Programs (7 columns) */}
-          <div className="lg:col-span-7 space-y-6">
+        {/* Unified Dashboard Grid */}
+        <div className="grid lg:grid-cols-12 gap-8 items-stretch">
+          
+          {/* LEFT PANEL: Live Metrics, Languages & Focus (Col Span 5) */}
+          <div className="lg:col-span-5 space-y-6 flex flex-col justify-between">
             
-            {/* Quick Stats Grid */}
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-              <div className="p-4 rounded-xl bg-brand-card border border-brand-border shadow-sm hover:border-brand-accent/25 transition-all">
-                <p className="text-[10px] text-brand-text-muted font-mono uppercase tracking-wider">Repos</p>
-                <h3 className="font-heading font-bold text-base text-brand-primary mt-1 flex items-center gap-1.5">
-                  <BookOpen size={14} className="text-brand-accent" />
+            {/* Quick Metrics */}
+            <div className="grid grid-cols-2 gap-4">
+              <div className="p-5 rounded-xl bg-brand-card border border-brand-border shadow-sm flex flex-col justify-center">
+                <p className="text-[10px] text-brand-text-muted font-mono uppercase tracking-wider">Repositories</p>
+                <h3 className="font-heading font-extrabold text-2xl text-brand-primary mt-1.5 flex items-center gap-2">
+                  <BookOpen size={16} className="text-brand-accent" />
                   {loading ? '...' : stats?.public_repos ?? '14'}
                 </h3>
               </div>
 
-              <div className="p-4 rounded-xl bg-brand-card border border-brand-border shadow-sm hover:border-brand-accent/25 transition-all">
-                <p className="text-[10px] text-brand-text-muted font-mono uppercase tracking-wider">Followers</p>
-                <h3 className="font-heading font-bold text-base text-brand-primary mt-1 flex items-center gap-1.5">
-                  <Users size={14} className="text-brand-accent" />
-                  {loading ? '...' : stats?.followers ?? '16'}
-                </h3>
-              </div>
-
-              <div className="p-4 rounded-xl bg-brand-card border border-brand-border shadow-sm hover:border-brand-accent/25 transition-all">
-                <p className="text-[10px] text-brand-text-muted font-mono uppercase tracking-wider">PRs Merged</p>
-                <h3 className="font-heading font-bold text-base text-brand-primary mt-1 flex items-center gap-1.5">
-                  <GitPullRequest size={14} className="text-brand-accent" />
-                  {portfolioData.openSource.mergedPRsCount}
-                </h3>
-              </div>
-
-              <div className="p-4 rounded-xl bg-brand-card border border-brand-border shadow-sm hover:border-brand-accent/25 transition-all">
+              <div className="p-5 rounded-xl bg-brand-card border border-brand-border shadow-sm flex flex-col justify-center">
                 <p className="text-[10px] text-brand-text-muted font-mono uppercase tracking-wider">Profile Status</p>
-                <h3 className="font-heading font-bold text-xs text-brand-primary mt-1 flex items-center gap-1">
-                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
-                  Active
+                <h3 className="font-heading font-extrabold text-sm text-brand-primary mt-2 flex items-center gap-2">
+                  <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                  Active / Open
                 </h3>
               </div>
             </div>
 
-            {/* Contributions Heatmap */}
-            <div className="p-5 rounded-xl bg-brand-card border border-brand-border shadow-md">
-              <div className="flex justify-between items-center mb-4">
-                <h4 className="font-heading font-semibold text-xs md:text-sm text-brand-primary uppercase tracking-wide flex items-center gap-1.5">
-                  <Calendar size={14} className="text-brand-accent" />
-                  Contributions Matrix
-                </h4>
-                <span className="text-[10px] font-mono text-brand-text-muted">@{username}</span>
-              </div>
-
-              <div className="overflow-x-auto pb-1">
-                <div className="min-w-[420px] flex items-start gap-2 select-none">
-                  {/* Day labels */}
-                  <div className="grid grid-rows-7 gap-[2px] text-[8px] text-brand-text-muted font-mono pr-1 pt-1 h-[82px] justify-between">
-                    {daysOfWeek.map((day, idx) => (
-                      <span key={idx} className="h-[10px] flex items-center">
-                        {day}
-                      </span>
-                    ))}
+            {/* Languages Stack */}
+            <div className="p-6 rounded-xl bg-brand-card border border-brand-border shadow-md space-y-5">
+              <h4 className="font-heading font-bold text-xs md:text-sm text-brand-primary uppercase tracking-wide flex items-center gap-1.5 border-b border-brand-border/40 pb-2">
+                <Cpu size={14} className="text-brand-accent" />
+                Languages Used
+              </h4>
+              <div className="space-y-3">
+                {languages.map((lang) => (
+                  <div key={lang.name} className="space-y-1.5">
+                    <div className="flex justify-between text-[11px] font-mono">
+                      <span className="text-brand-primary">{lang.name}</span>
+                      <span className="text-brand-text-muted">{lang.percent}%</span>
+                    </div>
+                    <div className="h-1.5 w-full bg-brand-border rounded-full overflow-hidden">
+                      <div className={`h-full ${lang.color} rounded-full`} style={{ width: `${lang.percent}%` }}></div>
+                    </div>
                   </div>
-
-                  {/* Calendar cells */}
-                  <div className="flex-1 grid grid-flow-col grid-rows-7 gap-[2px] h-[82px]">
-                    {contributionGrid.map((row, rowIdx) =>
-                      row.map((colorClass, colIdx) => (
-                        <div
-                          key={`${rowIdx}-${colIdx}`}
-                          className={`w-[10px] h-[10px] rounded-[1px] ${colorClass}`}
-                        ></div>
-                      ))
-                    )}
-                  </div>
-                </div>
-              </div>
-
-              <div className="flex justify-between items-center text-[10px] text-brand-text-muted pt-3 border-t border-brand-border/40 mt-3 font-mono">
-                <span>Contributions</span>
-                <div className="flex items-center gap-1">
-                  <span>Less</span>
-                  <div className="w-[8px] h-[8px] rounded-sm bg-brand-border"></div>
-                  <div className="w-[8px] h-[8px] rounded-sm bg-emerald-950"></div>
-                  <div className="w-[8px] h-[8px] rounded-sm bg-emerald-900"></div>
-                  <div className="w-[8px] h-[8px] rounded-sm bg-emerald-700"></div>
-                  <div className="w-[8px] h-[8px] rounded-sm bg-emerald-500"></div>
-                  <span>More</span>
-                </div>
+                ))}
               </div>
             </div>
 
-            {/* Programs Card */}
+            {/* Coding Focus Areas */}
+            <div className="p-6 rounded-xl bg-brand-card border border-brand-border shadow-md space-y-5">
+              <h4 className="font-heading font-bold text-xs md:text-sm text-brand-primary uppercase tracking-wide flex items-center gap-1.5 border-b border-brand-border/40 pb-2">
+                <Globe size={14} className="text-brand-accent" />
+                Development Focus
+              </h4>
+              <div className="space-y-3">
+                {focusAreas.map((area) => (
+                  <div key={area.name} className="space-y-1.5">
+                    <div className="flex justify-between text-[11px] font-mono">
+                      <span className="text-brand-primary">{area.name}</span>
+                      <span className="text-brand-text-muted">{area.percent}%</span>
+                    </div>
+                    <div className="h-1.5 w-full bg-brand-border rounded-full overflow-hidden">
+                      <div className={`h-full ${area.color} rounded-full`} style={{ width: `${area.percent}%` }}></div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+          </div>
+
+          {/* MIDDLE PANEL: Featured Engineering Repos & Roadmap (Col Span 7) */}
+          <div className="lg:col-span-7 space-y-6">
+            
+            {/* Featured Projects & Repos */}
+            <div className="p-6 rounded-xl bg-brand-card border border-brand-border shadow-md space-y-4">
+              <h4 className="font-heading font-bold text-xs md:text-sm text-brand-primary uppercase tracking-wide flex items-center gap-1.5 border-b border-brand-border/40 pb-2">
+                <Laptop size={14} className="text-brand-accent" />
+                Featured Engineering Repositories
+              </h4>
+              <div className="grid sm:grid-cols-2 gap-4">
+                
+                {/* Repo 1: PlaceTrack AI */}
+                <div className="p-4 rounded-lg bg-brand-bg/50 border border-brand-border/60 space-y-2">
+                  <div className="flex items-center justify-between">
+                    <h5 className="font-heading font-bold text-xs md:text-sm text-brand-primary">PlaceTrack AI</h5>
+                    <span className="text-[8px] font-mono font-semibold bg-brand-border text-brand-text-muted px-2 py-0.5 rounded">
+                      In Development
+                    </span>
+                  </div>
+                  <p className="text-[11px] text-brand-text-muted leading-relaxed">
+                    AI-powered location verification & geofenced check-in system for small teams.
+                  </p>
+                  <p className="text-[9px] font-mono text-brand-accent">TypeScript • React • Node.js</p>
+                </div>
+
+                {/* Repo 2: Carbonomics AI */}
+                <div className="p-4 rounded-lg bg-brand-bg/50 border border-brand-border/60 space-y-2">
+                  <div className="flex items-center justify-between">
+                    <h5 className="font-heading font-bold text-xs md:text-sm text-brand-primary">Carbonomics AI</h5>
+                    <span className="text-[8px] font-mono font-semibold bg-brand-border text-brand-text-muted px-2 py-0.5 rounded">
+                      Research Phase
+                    </span>
+                  </div>
+                  <p className="text-[11px] text-brand-text-muted leading-relaxed">
+                    Carbon emission estimates and optimization recommendation engine.
+                  </p>
+                  <p className="text-[9px] font-mono text-brand-accent">Python • FastAPI • PyTorch</p>
+                </div>
+
+                {/* Repo 3: Algonix */}
+                <div className="p-4 rounded-lg bg-brand-bg/50 border border-brand-border/60 space-y-2">
+                  <div className="flex items-center justify-between">
+                    <h5 className="font-heading font-bold text-xs md:text-sm text-brand-primary">Algonix</h5>
+                    <span className="text-[8px] font-mono font-semibold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 px-2 py-0.5 rounded">
+                      Live
+                    </span>
+                  </div>
+                  <p className="text-[11px] text-brand-text-muted leading-relaxed">
+                    Interactive sorting algorithm visualizer and sandbox built for DSA students.
+                  </p>
+                  <p className="text-[9px] font-mono text-brand-accent">TypeScript • React • Framer Motion</p>
+                </div>
+
+                {/* Repo 4: GST Billing App */}
+                <div className="p-4 rounded-lg bg-brand-bg/50 border border-brand-border/60 space-y-2">
+                  <div className="flex items-center justify-between">
+                    <h5 className="font-heading font-bold text-xs md:text-sm text-brand-primary">GST Billing App</h5>
+                    <span className="text-[8px] font-mono font-semibold bg-indigo-500/10 text-indigo-400 border border-indigo-500/20 px-2 py-0.5 rounded">
+                      Completed
+                    </span>
+                  </div>
+                  <p className="text-[11px] text-brand-text-muted leading-relaxed">
+                    Offline-first invoice POS application for small and medium retail merchants.
+                  </p>
+                  <p className="text-[9px] font-mono text-brand-accent">Java • Android SDK • SQLite</p>
+                </div>
+
+              </div>
+            </div>
+
+            {/* Currently Building & Currently Learning */}
+            <div className="grid sm:grid-cols-2 gap-6">
+              
+              <div className="p-5 rounded-xl bg-brand-card border border-brand-border shadow-md space-y-4">
+                <h5 className="font-heading font-bold text-xs text-brand-primary uppercase tracking-wider flex items-center gap-1.5">
+                  <span className="w-1.5 h-1.5 rounded-full bg-brand-accent"></span>
+                  Currently Building
+                </h5>
+                <ul className="space-y-2.5 font-sans text-xs text-brand-text-muted">
+                  <li className="flex items-center gap-2">
+                    <span className="text-brand-accent font-mono">•</span> Carbonomics AI Models
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <span className="text-brand-accent font-mono">•</span> PlaceTrack Mobile Core
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <span className="text-brand-accent font-mono">•</span> Developer Portfolio v3
+                  </li>
+                </ul>
+              </div>
+
+              <div className="p-5 rounded-xl bg-brand-card border border-brand-border shadow-md space-y-4">
+                <h5 className="font-heading font-bold text-xs text-brand-primary uppercase tracking-wider flex items-center gap-1.5">
+                  <span className="w-1.5 h-1.5 rounded-full bg-indigo-500"></span>
+                  Currently Learning
+                </h5>
+                <ul className="space-y-2.5 font-sans text-xs text-brand-text-muted">
+                  <li className="flex items-center gap-2">
+                    <span className="text-indigo-400 font-mono">•</span> System Design & Load Balancing
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <span className="text-indigo-400 font-mono">•</span> Docker & Kubernetes Orchestration
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <span className="text-indigo-400 font-mono">•</span> AI Agents & LangChain Orchestration
+                  </li>
+                </ul>
+              </div>
+
+            </div>
+
+            {/* Development Environment Tools */}
             <div className="p-5 rounded-xl bg-brand-card border border-brand-border shadow-md space-y-4">
-              <h3 className="font-heading font-bold text-xs md:text-sm text-brand-primary flex items-center gap-2 uppercase tracking-wide">
-                <Award className="text-brand-accent" size={16} />
-                Open Source Programs & Fellowships
-              </h3>
-              <div className="space-y-3.5">
-                {portfolioData.openSource.programs.map((program, idx) => (
-                  <div
-                    key={idx}
-                    className="p-4 rounded-xl bg-brand-bg/50 border border-brand-border/60 flex items-start gap-4 hover:border-brand-accent/30 hover:bg-brand-card/30 transition-all duration-300"
+              <h5 className="font-heading font-bold text-xs text-brand-primary uppercase tracking-wider flex items-center gap-1.5">
+                <ListChecks size={14} className="text-brand-accent" />
+                Development Environment
+              </h5>
+              <div className="flex flex-wrap gap-2">
+                {envTools.map((tool) => (
+                  <span
+                    key={tool}
+                    className="text-[10px] font-mono bg-brand-bg px-2.5 py-1 rounded-md border border-brand-border text-brand-primary"
                   >
-                    {program.image ? (
+                    {tool}
+                  </span>
+                ))}
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+        {/* BOTTOM PANEL: Open Source Programs, Principles & Git Workflow */}
+        <div className="grid md:grid-cols-2 gap-8 mt-8">
+          
+          {/* Programs Card with Larger Clickable Badge Images */}
+          <div className="p-6 rounded-xl bg-brand-card border border-brand-border shadow-md space-y-5">
+            <h3 className="font-heading font-bold text-xs md:text-sm text-brand-primary flex items-center gap-2 uppercase tracking-wide border-b border-brand-border/40 pb-2">
+              <Award className="text-brand-accent" size={16} />
+              Open Source Programs
+            </h3>
+            <div className="space-y-4">
+              {portfolioData.openSource.programs.map((program, idx) => (
+                <div
+                  key={idx}
+                  className="p-4 rounded-xl bg-brand-bg/50 border border-brand-border/60 flex items-start gap-4 hover:border-brand-accent/30 hover:bg-brand-card/30 transition-all duration-300"
+                >
+                  {program.image ? (
+                    <a
+                      href={program.image}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="block shrink-0 mt-0.5 cursor-pointer hover:opacity-80 transition-opacity"
+                      title="Click to view full credential"
+                    >
                       <img
                         src={program.image}
                         alt={program.programName}
-                        className="w-12 h-12 rounded-lg object-cover border border-brand-border/60 shrink-0 mt-0.5"
+                        className="w-20 h-20 md:w-24 md:h-24 rounded-lg object-cover border border-brand-border/60 shadow"
                       />
-                    ) : (
-                      <div className="p-2.5 rounded-lg bg-brand-border/50 text-brand-accent shrink-0 mt-0.5">
-                        <Globe size={18} />
-                      </div>
-                    )}
-                    <div className="space-y-1">
-                      <h4 className="font-heading font-bold text-xs md:text-sm text-brand-primary flex items-center gap-2">
-                        {program.programName}
-                        <span className="text-[9px] font-mono font-medium bg-brand-border px-2 py-0.5 rounded text-brand-text-muted">
-                          {program.year}
-                        </span>
-                      </h4>
-                      <p className="text-[10px] font-mono font-semibold text-brand-accent uppercase tracking-wider">{program.role}</p>
-                      <p className="text-xs text-brand-text-muted leading-relaxed">
-                        {program.description}
-                      </p>
+                    </a>
+                  ) : (
+                    <div className="p-3.5 rounded-lg bg-brand-border/50 text-brand-accent shrink-0 mt-0.5">
+                      <Globe size={24} />
                     </div>
+                  )}
+                  <div className="space-y-1">
+                    <h4 className="font-heading font-bold text-xs md:text-sm text-brand-primary flex items-center gap-2">
+                      {program.programName}
+                      <span className="text-[9px] font-mono font-medium bg-brand-border px-2 py-0.5 rounded text-brand-text-muted">
+                        {program.year}
+                      </span>
+                    </h4>
+                    <p className="text-[10px] font-mono font-semibold text-brand-accent uppercase tracking-wider">{program.role}</p>
+                    <p className="text-[11px] text-brand-text-muted leading-relaxed">
+                      {program.description}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Development Principles & OSS Goals */}
+          <div className="space-y-6">
+            
+            {/* Git Workflow & Dev Principles */}
+            <div className="p-6 rounded-xl bg-brand-card border border-brand-border shadow-md space-y-4">
+              <h4 className="font-heading font-bold text-xs md:text-sm text-brand-primary uppercase tracking-wide flex items-center gap-1.5 border-b border-brand-border/40 pb-2">
+                <GitBranch size={14} className="text-brand-accent" />
+                Git Workflow & Architecture
+              </h4>
+              <div className="grid sm:grid-cols-2 gap-4 text-xs font-mono">
+                <div>
+                  <span className="text-brand-text-muted block text-[10px] uppercase tracking-wider">Branch Strategy</span>
+                  <span className="text-brand-primary">main & feature/*</span>
+                </div>
+                <div>
+                  <span className="text-brand-text-muted block text-[10px] uppercase tracking-wider">Version Control</span>
+                  <span className="text-brand-primary">Git + GitHub</span>
+                </div>
+              </div>
+              <div className="pt-2">
+                <span className="text-brand-text-muted block text-[10px] uppercase tracking-wider font-mono mb-2">Engineering Principles</span>
+                <div className="flex flex-wrap gap-1.5">
+                  {['Clean Architecture', 'Type Safety', 'REST APIs', 'Responsive UI', 'Component Design', 'Git Workflow', 'Automated Testing'].map((p) => (
+                    <span key={p} className="text-[9px] font-mono bg-brand-bg/50 px-2 py-0.5 rounded border border-brand-border text-brand-text-muted">
+                      ✔ {p}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            {/* OSS Goals (Roadmap) */}
+            <div className="p-6 rounded-xl bg-brand-card border border-brand-border shadow-md space-y-4">
+              <h4 className="font-heading font-bold text-xs md:text-sm text-brand-primary uppercase tracking-wide flex items-center gap-1.5 border-b border-brand-border/40 pb-2">
+                <CheckCircle2 size={14} className="text-brand-accent" />
+                OSS Roadmap & Goals (2026)
+              </h4>
+              <div className="grid sm:grid-cols-2 gap-2 text-[11px] font-sans text-brand-text-muted">
+                {ossGoals.map((goal, idx) => (
+                  <div key={idx} className="flex items-center gap-2">
+                    <span className={`w-3.5 h-3.5 rounded border flex items-center justify-center shrink-0 font-mono text-[9px] ${
+                      goal.done ? 'bg-brand-accent/20 border-brand-accent text-brand-accent' : 'border-brand-border text-brand-text-muted'
+                    }`}>
+                      {goal.done ? '✓' : ' '}
+                    </span>
+                    <span>{goal.text}</span>
                   </div>
                 ))}
               </div>
@@ -269,76 +390,10 @@ export const OpenSource: React.FC = () => {
 
           </div>
 
-          {/* Right Column: Top Repositories & Logs Timeline (5 columns) */}
-          <div className="lg:col-span-5 space-y-6">
-            
-            {/* Repos Header & Cards */}
-            <div className="space-y-4">
-              <h4 className="font-heading font-bold text-xs md:text-sm text-brand-primary uppercase tracking-wider flex items-center gap-1.5">
-                <Eye size={14} className="text-brand-accent" />
-                Active Repositories
-              </h4>
-
-              <div className="grid gap-3.5">
-                {repos.slice(0, 4).map((repo) => (
-                  <a
-                    key={repo.name}
-                    href={repo.html_url}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="p-4 rounded-xl bg-brand-card border border-brand-border hover:border-brand-accent/40 shadow-sm transition-all flex flex-col justify-between group"
-                  >
-                    <div>
-                      <h5 className="font-heading font-semibold text-xs md:text-sm text-brand-primary group-hover:text-brand-accent transition-colors flex items-center gap-1.5">
-                        <span className="text-brand-text-muted/70 font-mono text-xs font-medium">&gt;_</span>
-                        {repo.name}
-                      </h5>
-                      <p className="text-[11px] text-brand-text-muted mt-1 leading-relaxed">
-                        {repo.description}
-                      </p>
-                    </div>
-
-                    <div className="flex items-center gap-4 mt-3 text-[10px] text-brand-text-muted font-mono">
-                      <span className="flex items-center gap-1">
-                        <Star size={10} className="text-brand-accent" /> {repo.stargazers_count}
-                      </span>
-                      <span className="flex items-center gap-1">
-                        <GitFork size={10} className="text-brand-accent" /> {repo.forks_count}
-                      </span>
-                      <span className="ml-auto font-medium text-brand-accent">
-                        {repo.language}
-                      </span>
-                    </div>
-                  </a>
-                ))}
-              </div>
-            </div>
-
-            {/* Commit Log */}
-            <div className="p-5 rounded-xl bg-brand-card border border-brand-border shadow-md">
-              <h4 className="font-heading font-semibold text-xs md:text-sm text-brand-primary uppercase tracking-wide mb-4 flex items-center gap-1.5">
-                <GitPullRequest size={14} className="text-brand-accent" />
-                Recent Timeline Logs
-              </h4>
-              <div className="space-y-4 relative border-l border-brand-border/80 pl-4 ml-2">
-                {portfolioData.openSource.contributionsTimeline.map((item, idx) => {
-                  const [datePart, descPart] = item.split(': ');
-                  return (
-                    <div key={idx} className="relative text-xs">
-                      <span className="absolute -left-[21px] top-1 w-2.5 h-2.5 rounded-full border border-brand-accent bg-brand-bg"></span>
-                      <span className="font-mono text-brand-text-muted mr-2 block sm:inline">{datePart}</span>
-                      <span className="text-brand-primary font-medium">{descPart}</span>
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
-
-          </div>
         </div>
 
-        {/* Action button */}
-        <div className="pt-8 flex justify-center">
+        {/* Action Button */}
+        <div className="pt-12 flex justify-center">
           <a
             href={portfolioData.socials.github}
             target="_blank"

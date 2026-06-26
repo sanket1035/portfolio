@@ -358,7 +358,7 @@ client/ # Dashboard analytics widgets`,
       date: "Jul 2025",
       credentialId: "YNYjQodt3Rd8CjMWJ",
       skills: ["Data Analysis", "Data Visualization", "Dashboard Design", "Python"],
-      verifyUrl: "https://www.theforage.com/simulations/deloitte",
+      verifyUrl: "https://www.theforage.com/completion-certificates/9PBTqmSxAf6zZTseP/io9DzWKe3PTsiS6GG_9PBTqmSxAf6zZTseP_YNyiQodt3Rd8cJmWJ_1751653947494_completion_certificate.pdf",
       certificateUrl: "https://www.theforage.com/completion-certificates/9PBTqmSxAf6zZTseP/io9DzWKe3PTsiS6GG_9PBTqmSxAf6zZTseP_YNyiQodt3Rd8cJmWJ_1751653947494_completion_certificate.pdf",
       image: "/placeholders/deloitte.jpg",
       summary: "Completed a simulated data analytics project for Deloitte. Handled data cleaning, visualization design, and drafted dashboard layouts to present key business insights."
