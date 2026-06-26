@@ -13,7 +13,7 @@ const TerminalOverlay = React.lazy(() => import('./components/TerminalOverlay'))
 const MatrixOverlay = React.lazy(() => import('./components/MatrixOverlay'));
 const FloatingChatbot = React.lazy(() => import('./components/FloatingChatbot'));
 const CommandPalette = React.lazy(() => import('./components/CommandPalette'));
-const SnakeGamePage = React.lazy(() => import('./pages/SnakeGamePage'));
+const Game2048Page = React.lazy(() => import('./pages/Game2048Page'));
 
 function App() {
   const [isTerminalOpen, setIsTerminalOpen] = useState(false);
@@ -61,7 +61,7 @@ function App() {
       if (isTyping) return;
 
       // 2. Recruiter Mode (R or r key)
-      if (e.key === 'r' || e.key === 'R') {
+      if ((e.key === 'r' || e.key === 'R') && !e.ctrlKey && !e.metaKey) {
         setIsRecruiterMode(prev => !prev);
       }
 
@@ -142,13 +142,13 @@ function App() {
                 </Suspense>
               } />
               <Route path="/privacy" element={<Privacy />} />
-              <Route path="/snake" element={
+              <Route path="/2048" element={
                 <Suspense fallback={
                   <div className="min-h-screen bg-brand-bg flex items-center justify-center text-xs font-mono text-brand-text-muted">
-                    Loading Snake Game...
+                    Loading 2048 Game...
                   </div>
                 }>
-                  <SnakeGamePage />
+                  <Game2048Page />
                 </Suspense>
               } />
               <Route path="*" element={<NotFound />} />

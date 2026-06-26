@@ -138,12 +138,12 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({ isOpen, onClose 
       }
     },
     {
-      name: "Play Anti-gravity Snake",
-      description: "Launch the anti-gravity arcade game challenge",
+      name: "Play 2048 Arcade",
+      description: "Launch the 2048 grid merging game challenge",
       category: "System",
       icon: Gamepad2,
       action: () => {
-        navigate('/snake');
+        navigate('/2048');
         onClose();
       }
     }

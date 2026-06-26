@@ -91,18 +91,20 @@ export const Achievements: React.FC = () => {
                   >
                     <div>
                       {/* Cover Image */}
-                      <button
-                        type="button"
-                        onClick={() => window.dispatchEvent(new CustomEvent('open-lightbox', { detail: { src: item.image } }))}
-                        className="relative aspect-video w-full bg-brand-bg overflow-hidden border-b border-brand-border/40 block cursor-pointer text-left focus:outline-none"
-                        title="View Details"
-                      >
-                        <img
-                          src={item.image}
-                          alt={`${item.title} Cover`}
-                          className="w-full h-full object-cover brightness-95 group-hover:scale-[1.02] transition-transform duration-500"
-                        />
-                      </button>
+                      {item.image && (
+                        <button
+                          type="button"
+                          onClick={() => window.dispatchEvent(new CustomEvent('open-lightbox', { detail: { src: item.image } }))}
+                          className="relative aspect-video w-full bg-brand-bg overflow-hidden border-b border-brand-border/40 block cursor-pointer text-left focus:outline-none"
+                          title="View Details"
+                        >
+                          <img
+                            src={item.image}
+                            alt={`${item.title} Cover`}
+                            className="w-full h-full object-cover brightness-95 group-hover:scale-[1.02] transition-transform duration-500"
+                          />
+                        </button>
+                      )}
                       
                       <div className="p-6">
                         {/* Gradient Accent Overlay on Hover */}

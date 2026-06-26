@@ -135,10 +135,10 @@ export const Navbar: React.FC = () => {
 
           {/* Game Route Link */}
           <Link
-            to="/snake"
+            to="/2048"
             className="border border-brand-border h-9 w-9 flex items-center justify-center hover:border-brand-accent text-brand-text hover:text-brand-accent cursor-pointer transition-all rounded-lg bg-brand-bg/50"
-            aria-label="Play Anti-gravity Snake Game"
-            title="Play Anti-gravity Snake Game"
+            aria-label="Play 2048 Arcade Game"
+            title="Play 2048 Arcade Game"
           >
             <Gamepad2 size={16} className="text-brand-accent" />
           </Link>
@@ -170,9 +170,9 @@ export const Navbar: React.FC = () => {
         {/* Mobile Menu Actions */}
         <div className="flex items-center space-x-3 lg:hidden">
           <Link
-            to="/snake"
+            to="/2048"
             className="border border-brand-border h-8 w-8 flex items-center justify-center text-brand-text cursor-pointer rounded-lg bg-brand-bg/50"
-            title="Play Anti-gravity Snake Game"
+            title="Play 2048 Arcade Game"
           >
             <Gamepad2 size={14} className="text-brand-accent" />
           </Link>

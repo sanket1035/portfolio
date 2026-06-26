@@ -31,7 +31,7 @@ export interface Achievement {
   issuer: string;
   date: string;
   description: string;
-  image: string;
+  image?: string;
   detailsUrl?: string;
 }
 
@@ -278,16 +278,14 @@ client/ # Dashboard analytics widgets`,
     {
       title: "StudyBuddy KKW",
       issuer: "K. K. Wagh Institute",
-      date: "Academic Year 2024 - Present",
-      description: "Academic platform serving 1500+ active users & 400+ students annually. Facilitates resource sharing and exam preparations.",
-      image: "/placeholders/studybuddy.jpg"
+      date: "Academic Year 2021 – Present",
+      description: "Built in first year with zero backend experience using AI tools. Now serves 1,500+ students with notes, PYQs, and exam resources across 10+ subjects. 400+ active users annually — completely self-maintained with zero downtime."
     },
     {
-      title: "Gold Medalist",
+      title: "🥇 Gold Medalist — National Football Championship",
       issuer: "5th Open National Football Championship U-19",
       date: "2023",
-      description: "Represented Maharashtra State Team and achieved first place in the tournament, demonstrating leadership, teamwork, and athletic excellence.",
-      image: "/placeholders/football.jpg"
+      description: "Selected to represent Maharashtra State Team out of hundreds of players. Secured 1st place nationally, competing against teams across India. Demonstrates discipline, leadership under pressure, and elite team coordination — skills that translate directly to engineering teams."
     }
   ],
   activities: [
