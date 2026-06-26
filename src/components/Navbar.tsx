@@ -56,8 +56,8 @@ export const Navbar: React.FC = () => {
 
   const navLinks = [
     { num: '01', label: 'OVERVIEW', hash: '#about' },
-    { num: '02', label: 'OPEN SOURCE', hash: '#opensource' },
-    { num: '03', label: 'PROJECTS', hash: '#projects' },
+    { num: '02', label: 'PROJECTS', hash: '#projects' },
+    { num: '03', label: 'OPEN SOURCE', hash: '#opensource' },
     { num: '04', label: 'MILESTONES', hash: '#achievements' },
     { num: '05', label: 'SKILLS', hash: '#skills' },
     { num: '06', label: 'GITHUB', hash: '#github' },

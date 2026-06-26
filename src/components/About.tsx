@@ -31,6 +31,35 @@ export const About: React.FC = () => {
             <p className="font-sans text-brand-text-muted leading-relaxed">
               In addition to my coursework and projects, I'm an active open-source contributor. I believe in giving back to the community and collaborating on codebases that make developer lives easier.
             </p>
+
+            {/* Interactive Terminal Launcher Mock Card */}
+            <div className="mt-8 p-5 rounded-2xl bg-zinc-950 border border-zinc-900 shadow-xl font-mono text-xs text-green-400 space-y-3 relative overflow-hidden">
+              <div className="flex items-center justify-between text-zinc-500 border-b border-zinc-900 pb-2 select-none">
+                <span className="text-[10px] uppercase font-bold tracking-wide flex items-center gap-1.5">
+                  <span className="w-2.5 h-2.5 rounded-full bg-red-500"></span>
+                  <span className="w-2.5 h-2.5 rounded-full bg-yellow-500"></span>
+                  <span className="w-2.5 h-2.5 rounded-full bg-green-500"></span>
+                  &nbsp;Sanket's Bash Terminal
+                </span>
+                <span className="text-[9px] text-zinc-600">v1.0.0</span>
+              </div>
+              <div className="space-y-1 text-zinc-300">
+                <p className="text-green-500 font-bold">&gt; Welcome to the interactive portfolio CLI shell!</p>
+                <p className="text-zinc-500">You can trigger this terminal session at any time from the navbar icon or by pressing the ESC button.</p>
+              </div>
+              <div className="pt-2 flex flex-col sm:flex-row items-center justify-between gap-4">
+                <div className="flex items-center gap-1.5 text-zinc-500 text-[10px]">
+                  <span>visitor@sanket:~$</span>
+                  <span className="bg-green-500 w-1.5 h-3.5 animate-pulse"></span>
+                </div>
+                <button
+                  onClick={() => window.dispatchEvent(new CustomEvent('toggle-terminal'))}
+                  className="w-full sm:w-auto px-4 py-2 rounded-lg bg-green-500 hover:bg-green-400 text-black font-bold text-[11px] uppercase tracking-wide cursor-pointer transition-all flex items-center justify-center gap-1.5 shadow-[0_0_15px_rgba(34,197,94,0.2)]"
+                >
+                  <span>Launch Terminal CLI</span>
+                </button>
+              </div>
+            </div>
           </div>
 
           {/* Education & Info Column */}

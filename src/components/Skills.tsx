@@ -91,6 +91,14 @@ export const Skills: React.FC = () => {
         </svg>
       );
     }
+    if (skill.slug === 'canva') {
+      return (
+        <svg className="w-4.5 h-4.5 shrink-0" fill="#00C4CC" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <title>Canva</title>
+          <path d="M12.4 20.3c-.9 0-1.8-.1-2.5-.4-1-.3-1.8-.9-2.5-1.7-.7-.8-1.2-1.8-1.6-2.9-.4-1.2-.5-2.5-.5-3.9 0-1.5.2-2.8.6-4 .4-1.1.9-2.1 1.6-2.9.7-.8 1.5-1.4 2.5-1.8.9-.3 1.8-.5 2.8-.5.8 0 1.6.1 2.3.3.7.2 1.3.5 1.9.9l-.7 1.3c-.5-.3-1-.5-1.5-.7-.5-.1-1.1-.2-1.7-.2-.8 0-1.5.1-2.2.4-.7.3-1.3.7-1.8 1.3-.5.6-.9 1.4-1.2 2.3-.3 1-.4 2-.4 3.1 0 1.2.1 2.2.4 3.1.3 1 .7 1.7 1.2 2.3.5.6 1.1 1.1 1.8 1.4.7.3 1.4.4 2.2.4.6 0 1.2-.1 1.7-.2.5-.1 1.1-.3 1.6-.7l.7 1.3c-.6.4-1.2.7-1.9.9-.7.2-1.5.3-2.3.3z" />
+        </svg>
+      );
+    }
     if (skill.slug === 'matplotlib') {
       return (
         <svg className="w-4.5 h-4.5 shrink-0" fill="none" stroke="#11557C" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">

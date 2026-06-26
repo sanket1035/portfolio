@@ -1,13 +1,15 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import Hero from '../components/Hero';
 import About from '../components/About';
 import Skills from '../components/Skills';
 import Projects from '../components/Projects';
-import Achievements from '../components/Achievements';
-import OpenSource from '../components/OpenSource';
-import GitHubGrid from '../components/GitHubGrid';
-import ResumeView from '../components/ResumeView';
-import Contact from '../components/Contact';
+
+// Lazy loading heavy components for bundle optimization
+const Achievements = React.lazy(() => import('../components/Achievements'));
+const OpenSource = React.lazy(() => import('../components/OpenSource'));
+const GitHubGrid = React.lazy(() => import('../components/GitHubGrid'));
+const ResumeView = React.lazy(() => import('../components/ResumeView'));
+const Contact = React.lazy(() => import('../components/Contact'));
 
 export const Home: React.FC = () => {
   return (
@@ -15,13 +17,29 @@ export const Home: React.FC = () => {
       {/* Sections with anchors for navigation */}
       <Hero />
       <About />
-      <Skills />
       <Projects />
-      <Achievements />
-      <OpenSource />
-      <GitHubGrid />
-      <ResumeView />
-      <Contact />
+      
+      <Suspense fallback={<div className="py-12 text-center text-xs font-mono text-brand-text-muted">Loading Open Source Insights...</div>}>
+        <OpenSource />
+      </Suspense>
+      
+      <Suspense fallback={<div className="py-12 text-center text-xs font-mono text-brand-text-muted">Loading Milestones...</div>}>
+        <Achievements />
+      </Suspense>
+      
+      <Skills />
+      
+      <Suspense fallback={<div className="py-12 text-center text-xs font-mono text-brand-text-muted">Loading GitHub Stats...</div>}>
+        <GitHubGrid />
+      </Suspense>
+      
+      <Suspense fallback={<div className="py-12 text-center text-xs font-mono text-brand-text-muted">Loading Resume Credentials...</div>}>
+        <ResumeView />
+      </Suspense>
+      
+      <Suspense fallback={<div className="py-12 text-center text-xs font-mono text-brand-text-muted">Loading Contact Form...</div>}>
+        <Contact />
+      </Suspense>
     </div>
   );
 };
