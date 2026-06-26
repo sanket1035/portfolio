@@ -139,7 +139,7 @@ export const Hero: React.FC = () => {
                 style={{
                   fontStretch: '125%',
                   fontWeight: 850,
-                  fontSize: 'clamp(2.4rem, 8.5vw, 5.8rem)'
+                  fontSize: 'clamp(2rem, 7.5vw, 4.8rem)'
                 }}
               >
                 <span className="block overflow-hidden pb-1 -mb-1 whitespace-nowrap">

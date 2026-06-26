@@ -1,6 +1,13 @@
 <div align="center">
 
-<img src="public/placeholders/hero.jpg" alt="sanketchaudhari.in" width="100%" style="border-radius: 12px;" />
+<p align="center">
+  <img
+    src="public/placeholders/hero.jpg"
+    alt="Portfolio Preview"
+    width="450"
+    style="border-radius: 12px;"
+  />
+</p>
 
 # sanketchaudhari.in
 
