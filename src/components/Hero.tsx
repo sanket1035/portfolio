@@ -135,10 +135,14 @@ export const Hero: React.FC = () => {
               {/* Unique Heading */}
               <motion.h1
                 variants={itemVariants}
-                className="font-mihir font-black text-5xl md:text-8xl tracking-tight text-brand-primary uppercase leading-[0.9] select-none"
-                style={{ fontStretch: '125%', fontWeight: 850 }}
+                className="font-mihir font-black tracking-tight text-brand-primary uppercase leading-[0.9] select-none"
+                style={{
+                  fontStretch: '125%',
+                  fontWeight: 850,
+                  fontSize: 'clamp(2.4rem, 8.5vw, 5.8rem)'
+                }}
               >
-                <span className="block overflow-hidden pb-1 -mb-1">
+                <span className="block overflow-hidden pb-1 -mb-1 whitespace-nowrap">
                   {"SANKET".split('').map((char, i) => (
                     <span
                       key={i}
@@ -152,7 +156,7 @@ export const Hero: React.FC = () => {
                     </span>
                   ))}
                 </span>
-                <span className="block overflow-hidden pb-1 -mb-1 text-transparent bg-clip-text bg-gradient-to-r from-brand-accent via-indigo-400 to-violet-500">
+                <span className="block overflow-hidden pb-1 -mb-1 text-transparent bg-clip-text bg-gradient-to-r from-brand-accent via-indigo-400 to-violet-500 whitespace-nowrap">
                   {"CHAUDHARI".split('').map((char, i) => (
                     <span
                       key={i}
