@@ -134,3 +134,23 @@ export const MediumIcon: React.FC<IconProps> = ({ size = 20, className }) => (
     <path d="M17 10l-5 4-5-4" />
   </svg>
 );
+
+export const RedditIcon: React.FC<IconProps> = ({ size = 20, className }) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width={size}
+    height={size}
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    className={className}
+  >
+    <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z" />
+    <circle cx="9.5" cy="11.5" r="1.5" fill="currentColor" stroke="none" />
+    <circle cx="14.5" cy="11.5" r="1.5" fill="currentColor" stroke="none" />
+    <path d="M9.5 15.5c1 1 4 1 5 0" />
+  </svg>
+);

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FileText, ArrowRight, Mail } from 'lucide-react';
-import { GithubIcon as Github, LinkedinIcon as Linkedin, YoutubeIcon as Youtube, LeetcodeIcon as Leetcode, DevtoIcon as Devto, MediumIcon as Medium } from './BrandIcons';
+import { GithubIcon as Github, LinkedinIcon as Linkedin, YoutubeIcon as Youtube, LeetcodeIcon as Leetcode, DevtoIcon as Devto, MediumIcon as Medium, RedditIcon as Reddit } from './BrandIcons';
 import { portfolioData } from '../data/portfolioData';
 
 export const Hero: React.FC = () => {
@@ -264,6 +264,17 @@ export const Hero: React.FC = () => {
                     aria-label="Medium Blog"
                   >
                     <Medium size={18} />
+                  </a>
+                )}
+                {portfolioData.socials.reddit && (
+                  <a
+                    href={portfolioData.socials.reddit}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="hover:text-brand-accent transition-colors"
+                    aria-label="Reddit Profile"
+                  >
+                    <Reddit size={18} />
                   </a>
                 )}
                 <a

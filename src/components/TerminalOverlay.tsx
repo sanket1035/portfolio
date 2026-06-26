@@ -61,6 +61,7 @@ export const TerminalOverlay: React.FC<TerminalOverlayProps> = ({ isOpen, onClos
             <p>  <span className="text-brand-accent">projects</span> - Showcase featured systems built</p>
             <p>  <span className="text-brand-accent">resume</span>   - Open resume in a new tab</p>
             <p>  <span className="text-brand-accent">github</span>   - Visit GitHub profile</p>
+            <p>  <span className="text-brand-accent">reddit</span>   - Visit Reddit profile</p>
             <p>  <span className="text-brand-accent">clear</span>    - Clear the terminal console screen</p>
             <p>  <span className="text-brand-accent">exit</span>     - Close the terminal overlay</p>
           </div>
@@ -98,6 +99,14 @@ export const TerminalOverlay: React.FC<TerminalOverlayProps> = ({ isOpen, onClos
       case 'github':
         window.open(portfolioData.socials.github, '_blank');
         response = 'Redirecting to GitHub...';
+        break;
+      case 'reddit':
+        if (portfolioData.socials.reddit) {
+          window.open(portfolioData.socials.reddit, '_blank');
+          response = 'Redirecting to Reddit...';
+        } else {
+          response = 'Reddit profile not configured.';
+        }
         break;
       case 'clear':
         setLogs([]);

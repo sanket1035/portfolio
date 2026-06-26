@@ -72,6 +72,7 @@ export interface PortfolioData {
     leetcode?: string;
     devto?: string;
     medium?: string;
+    reddit?: string;
   };
   education: {
     institution: string;
@@ -116,6 +117,7 @@ export const portfolioData: PortfolioData = {
     leetcode: "https://leetcode.com/u/Sanket103/",
     devto: "https://dev.to/sanket1035",
     medium: "https://medium.com/@sanketchaudhari1035",
+    reddit: "https://www.reddit.com/user/sanketchaudhari/",
   },
   education: [
     {

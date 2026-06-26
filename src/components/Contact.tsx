@@ -1,6 +1,6 @@
 import React from 'react';
 import { Mail, MapPin, ExternalLink } from 'lucide-react';
-import { GithubIcon as Github, LinkedinIcon as Linkedin, TwitterIcon as Twitter, YoutubeIcon as Youtube, LeetcodeIcon as Leetcode, DevtoIcon as Devto, MediumIcon as Medium } from './BrandIcons';
+import { GithubIcon as Github, LinkedinIcon as Linkedin, TwitterIcon as Twitter, YoutubeIcon as Youtube, LeetcodeIcon as Leetcode, DevtoIcon as Devto, MediumIcon as Medium, RedditIcon as Reddit } from './BrandIcons';
 import { portfolioData } from '../data/portfolioData';
 
 export const Contact: React.FC = () => {
@@ -226,6 +226,33 @@ export const Contact: React.FC = () => {
                 className="mt-4 px-4 py-2 rounded-lg border border-brand-border bg-brand-bg hover:bg-brand-card text-brand-text hover:text-brand-accent font-bold text-[11px] flex items-center justify-center gap-1.5 transition-all cursor-pointer"
               >
                 Read Stories
+                <ExternalLink size={11} />
+              </a>
+            </div>
+          )}
+
+          {/* Reddit Card */}
+          {portfolioData.socials.reddit && (
+            <div className="p-6 rounded-2xl bg-brand-card/85 border border-brand-border hover:border-brand-accent/40 shadow-lg transition-all duration-300 group flex flex-col justify-between h-48">
+              <div className="flex justify-between items-start">
+                <div className="p-3 rounded-xl bg-orange-500/10 text-orange-500 border border-orange-500/20 group-hover:scale-105 transition-transform duration-300">
+                  <Reddit size={20} />
+                </div>
+                <span className="text-[10px] font-mono text-brand-text-muted uppercase tracking-wider">Social</span>
+              </div>
+              <div>
+                <p className="text-xs font-mono font-semibold uppercase text-brand-text-muted mt-4">Reddit</p>
+                <h4 className="font-heading font-bold text-base text-brand-primary mt-1 truncate">
+                  @sanketchaudhari
+                </h4>
+              </div>
+              <a
+                href={portfolioData.socials.reddit}
+                target="_blank"
+                rel="noreferrer"
+                className="mt-4 px-4 py-2 rounded-lg border border-brand-border bg-brand-bg hover:bg-brand-card text-brand-text hover:text-brand-accent font-bold text-[11px] flex items-center justify-center gap-1.5 transition-all cursor-pointer"
+              >
+                View Reddit Profile
                 <ExternalLink size={11} />
               </a>
             </div>
