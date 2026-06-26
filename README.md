@@ -1,24 +1,16 @@
 <div align="center">
 
-<p align="center">
-  <img
-    src="public/placeholders/hero.jpg"
-    alt="Portfolio Preview"
-    width="450"
-    style="border-radius: 12px;"
-  />
-</p>
-
 # sanketchaudhari.in
 
-**Personal portfolio of Sanket Chaudhari — Software Developer & AI Engineer**
+**Personal Portfolio of Sanket Chaudhari — Software Developer & AI Engineer**
 
 [![Live Site](https://img.shields.io/badge/Live-sanketchaudhari.in-0A0A0A?style=for-the-badge&logo=vercel&logoColor=white)](https://sanketchaudhari.in)
-[![React](https://img.shields.io/badge/React_19-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)](https://react.dev)
+[![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)](https://react.dev)
 [![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org)
-[![Tailwind CSS](https://img.shields.io/badge/Tailwind_v4-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white)](https://tailwindcss.com)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS_v4-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white)](https://tailwindcss.com)
 [![Vite](https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white)](https://vite.dev)
 [![Framer Motion](https://img.shields.io/badge/Framer_Motion-EF0E7B?style=for-the-badge&logo=framer&logoColor=white)](https://www.framer.com/motion)
+[![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
 </div>
 
@@ -26,154 +18,196 @@
 
 ## Overview
 
-A premium single-page application built for placement season — combining clean recruiter-focused design with developer-grade interactive features. Built with React 19 + TypeScript + Vite, deployed on Vercel.
+This repository contains the source code for my personal portfolio website, built to showcase my projects, technical skills, certifications, open-source contributions, and professional experience. The portfolio combines a clean recruiter-focused interface with modern UI, smooth animations, and interactive components while maintaining excellent performance and responsiveness.
 
-**Domain:** [sanketchaudhari.in](https://sanketchaudhari.in) — registered `.in` domain, fully custom.
+**Live Website:** https://sanketchaudhari.in
 
 ---
 
-## Interactive Features
+## Features
 
-### Terminal Overlay — `>_`
-Click the terminal icon in the navbar to open a full-screen developer shell.
+### Terminal Overlay (`>_`)
 
-```
+A built-in developer terminal accessible directly from the navigation bar.
+
+```text
 $ help
-Available commands: about, projects, resume, github, clear, exit
+Available commands:
+about
+projects
+resume
+github
+clear
+exit
 
 $ projects
-▸ Algonix       — Gamified inter-college coding platform
-▸ Carbonomics   — AI-driven carbon intelligence system
-▸ PlaceTrack    — Placement tracking platform
-▸ GSTbillingApp — Android billing application
-
-$ resume
-Opening resume...
+▸ Algonix
+▸ Carbonomics AI
+▸ PlaceTrack
+▸ GSTbillingApp
 ```
 
-### Command Palette — `Ctrl + K`
-VS Code-style spotlight search. Navigate the entire site keyboard-only — sections, external links, and system actions grouped and fuzzy-searchable.
+---
 
-### Recruiter Mode — `R`
-Press `R` to instantly switch to a print-friendly, animation-free, high-contrast layout. All transitions, canvas effects, and marquee animations are halted via a single `.recruiter-mode` class override.
+### Floating Chat Assistant
 
-```css
-.recruiter-mode * {
-  animation: none !important;
-  transition: none !important;
-}
-```
+An offline chatbot that provides quick answers about my projects, technical skills, resume, and contact information without requiring external APIs.
 
-### Floating Chatbot Assistant
-Bottom-right conversational widget with pre-scripted queries:
-- *What projects did you build?*
-- *What is your tech stack?*
-- *Are you open to opportunities?*
-- *Download resume*
-
-Fully offline — no API keys, no network calls. Instant response with typing animation.
-
-### Konami Code Easter Egg
-Type `↑ ↑ ↓ ↓ ← → ← → B A` — Matrix digital rain canvas overlay activates with `[DEVELOPER MODE UNLOCKED]` in the console. Press `Esc` to exit.
-
-### 2048 Arcade Game — `/2048`
-Fully playable in-browser merge puzzle. Supports keyboard arrows (desktop) and touch swipe (mobile). Local high score via `localStorage`. Responsive across desktop, tablet, and mobile with dynamic tile sizing.
+---
 
 ### Infinite Skills Marquee
-Hardware-accelerated CSS keyframe marquee — pauses on hover. No JS re-renders. Edge fade gradients via Tailwind's `bg-gradient-to-r`.
+
+A continuously scrolling skills section built using CSS animations with pause-on-hover support for smooth rendering.
+
+---
+
+### Responsive Design
+
+Designed to work seamlessly across desktop, tablet, and mobile devices with an optimized user experience.
+
+---
+
+### Performance Optimizations
+
+- Lazy loading for heavy components
+- Code splitting with Vite
+- Optimized asset loading
+- Smooth animations using Framer Motion
 
 ---
 
 ## Tech Stack
 
 | Layer | Technology |
-|---|---|
-| Frontend | React 19 + TypeScript |
-| Build | Vite (code splitting + lazy loading) |
-| Styling | Tailwind CSS v4 + CSS Variables |
+|--------|------------|
+| Frontend | React + TypeScript |
+| Styling | Tailwind CSS v4 |
+| Build Tool | Vite |
 | Animations | Framer Motion |
-| Routing | React Router DOM v7 |
-| Icons | Lucide React + custom SVGs |
+| Routing | React Router DOM |
+| Icons | Lucide React |
 | Deployment | Vercel |
-
-Initial bundle: **< 420 kB**. Heavy features (game, overlays, open source dashboard) are lazy-loaded via `React.lazy` + `Suspense`.
 
 ---
 
 ## Project Structure
 
-```
-sanketchaudhari.in/
+```text
+portfolio/
 ├── public/
-│   ├── placeholders/          # Static images, certificates, banners
+│   ├── placeholders/
 │   └── Sanket_Chaudhari_Resume.pdf
+│
 ├── src/
 │   ├── components/
 │   │   ├── TerminalOverlay.tsx
 │   │   ├── FloatingChatbot.tsx
-│   │   ├── CommandPalette.tsx
-│   │   ├── Game2048.jsx
-│   │   └── Skills.tsx
-│   ├── App.tsx                # Global key listeners (R, Konami, Ctrl+K)
-│   └── index.css              # Recruiter mode overrides + marquee keyframes
-└── portfolioData.ts           # All content: projects, socials, certs
+│   │   ├── Skills.tsx
+│   │   └── ...
+│   ├── App.tsx
+│   ├── portfolioData.ts
+│   └── index.css
+│
+├── package.json
+├── vite.config.ts
+└── README.md
 ```
 
 ---
 
 ## Running Locally
 
+Clone the repository.
+
 ```bash
-git clone https://github.com/sanket1035/sanketchaudhari.in
-cd sanketchaudhari.in
+git clone https://github.com/sanket1035/portfolio.git
+```
+
+Navigate to the project directory.
+
+```bash
+cd portfolio
+```
+
+Install dependencies.
+
+```bash
 npm install
+```
+
+Start the development server.
+
+```bash
 npm run dev
 ```
 
-Open [http://localhost:5173](http://localhost:5173)
+Open:
+
+```
+http://localhost:5173
+```
 
 ---
 
 ## Featured Projects
 
 ### Algonix
-Gamified inter-college competitive coding platform with XP-based leveling, real-time leaderboards, and secure container-native code execution.
 
-`React 18` `TypeScript` `Node.js` `Express` `MongoDB` `Docker`
+A gamified inter-college competitive coding platform featuring XP-based progression, real-time leaderboards, certificate generation, and secure container-based code execution.
+
+**Tech Stack:** React, TypeScript, Node.js, Express, MongoDB, Docker
+
+---
 
 ### Carbonomics AI *(In Development)*
-AI-driven carbon intelligence and decision-support system. Final year B.Tech major project.
 
-`Python` `Machine Learning` `Streamlit` `Data Analysis`
+An AI-powered carbon intelligence platform for carbon emission prediction, sustainability analytics, and decision support.
+
+**Tech Stack:** Python, Machine Learning, Streamlit, Data Analysis
+
+---
 
 ### PlaceTrack
-Placement tracking and management platform for college students.
 
-### StudyBuddy
-Academic resource platform built in first year — organically scaled to **1,500+ users** and **400+ active students per year** at KKWIEER.
+A placement management platform designed to help students track opportunities, applications, and interview progress.
+
+---
+
+### GST Billing App
+
+An Android billing application for invoice generation, GST calculations, PDF export, and customer management.
+
+**Tech Stack:** Kotlin, Jetpack Compose, Room Database, Firebase
 
 ---
 
 ## Open Source Contributions
 
-- [`dcondrey/zotero-validate`](https://github.com/dcondrey/zotero-validate) — Docs PR merged ✅
-- [`delmalih/saas-genai-starter`](https://github.com/delmalih/saas-genai-starter) — Together AI provider addition (in review)
+- **dcondrey/zotero-validate** — Documentation contribution merged.
+- **delmalih/saas-genai-starter** — Together AI provider integration (under review).
 
 ---
 
 ## About
 
-**Sanket Milind Chaudhari**
-Final Year B.Tech — Artificial Intelligence & Data Science
-K.K. Wagh Institute of Engineering Education & Research, Nashik
-CGPA: 8.52 | Core Committee — CSI KKWIEER
-
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=flat-square&logo=linkedin&logoColor=white)](https://linkedin.com/in/sanketchaudhari1035)
-[![GitHub](https://img.shields.io/badge/GitHub-181717?style=flat-square&logo=github&logoColor=white)](https://github.com/sanket1035)
-[![Portfolio](https://img.shields.io/badge/Portfolio-sanketchaudhari.in-000?style=flat-square)](https://sanketchaudhari.in)
+This portfolio serves as the central hub for my software development journey, showcasing real-world projects, technical skills, certifications, and open-source contributions. It reflects my interests in Artificial Intelligence, Full-Stack Development, Android Development, and modern web technologies while providing a clean and engaging experience for recruiters and developers.
 
 ---
 
-<div align="center">
-<sub>Built with React 19 + TypeScript + Tailwind CSS v4 — Deployed on Vercel</sub>
-</div>
+## Author
+
+**Sanket Chaudhari**
+
+- Portfolio: https://sanketchaudhari.in
+- GitHub: https://github.com/sanket1035
+- LinkedIn: https://www.linkedin.com/in/sanketchaudhari1035/
+
+---
+
+## License
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+
+Copyright © 2026 [Sanket Chaudhari](https://github.com/sanket1035)
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more information.
