@@ -23,6 +23,7 @@ export interface Contribution {
   role: string;
   year: string;
   description: string;
+  image?: string;
 }
 
 export interface Achievement {
@@ -49,7 +50,9 @@ export interface Certificate {
   credentialId: string;
   skills: string[];
   verifyUrl: string;
+  certificateUrl?: string;
   image: string;
+  summary?: string;
 }
 
 export interface PortfolioData {
@@ -246,13 +249,15 @@ client/ # Dashboard analytics widgets`,
         programName: "Open Source Connect Global 2026",
         role: "Active Contributor",
         year: "2026",
-        description: "Contributed to developer tools repositories, improving CLI efficiency and fixing TypeScript type definitions in foundational UI libraries."
+        description: "Contributed to developer tools repositories, improving CLI efficiency and fixing TypeScript type definitions in foundational UI libraries.",
+        image: "/placeholders/nexfellow.png"
       },
       {
         programName: "ELUSOC Summer of Code 2026",
         role: "Open Source Scholar",
         year: "2026",
-        description: "Developed and optimized key modules in an open-source data visualization toolkit, adding accessibility support (aria-attributes) and enhancing rendering performance."
+        description: "Developed and optimized key modules in an open-source data visualization toolkit, adding accessibility support (aria-attributes) and enhancing rendering performance.",
+        image: "/placeholders/elusoc.png"
       }
     ],
     mergedPRsCount: 14,
@@ -315,22 +320,48 @@ client/ # Dashboard analytics widgets`,
   ],
   certificates: [
     {
+      title: "Prepare Data for Analysis with Power BI",
+      issuer: "Microsoft Learn",
+      date: "Jun 2026",
+      credentialId: "9AR3JWRU",
+      skills: ["Power BI", "Power Query", "Data Cleaning", "Data Transformation", "Data Modeling", "Business Intelligence"],
+      verifyUrl: "https://learn.microsoft.com/api/achievements/share/en-us/SanketChaudhari-7395/9AR3JWRU?sharingId=5DC47173756A7E46",
+      certificateUrl: "https://learn.microsoft.com/api/achievements/share/en-us/SanketChaudhari-7395/9AR3JWRU?sharingId=5DC47173756A7E46",
+      image: "/placeholders/powerbi_cert.jpg",
+      summary: "Learned how to prepare, clean, and transform raw datasets for business intelligence using Microsoft Power BI. Gained practical experience with data profiling, Power Query, data modeling fundamentals, and creating analysis-ready datasets for reporting and visualization."
+    },
+    {
+      title: "Introduction to Generative AI Studio",
+      issuer: "Google Cloud × Simplilearn",
+      date: "Jun 2025",
+      credentialId: "8504350",
+      skills: ["Generative AI", "Large Language Models", "Prompt Engineering", "Google Cloud AI", "AI Applications"],
+      verifyUrl: "https://simpli.app.link/WUnLO9Euh4b",
+      certificateUrl: "https://simpli.app.link/WUnLO9Euh4b",
+      image: "/placeholders/simplilearn_genai.png",
+      summary: "Completed an introductory course on Google's Generative AI ecosystem, covering the fundamentals of large language models, prompt engineering, and Generative AI Studio. Learned how generative AI can be applied to real-world software development and business workflows."
+    },
+    {
+      title: "AI for Beginners",
+      issuer: "HP LIFE Foundation",
+      date: "Jul 2025",
+      credentialId: "2c8cc9d5-a767-4988-8ca7-9359fa990278",
+      skills: ["Artificial Intelligence", "AI Fundamentals", "Data Literacy", "Business Applications of AI", "AI Ethics"],
+      verifyUrl: "https://www.life-global.org/certificate/2c8cc9d5-a767-4988-8ca7-9359fa990278",
+      certificateUrl: "https://www.life-global.org/certificate/2c8cc9d5-a767-4988-8ca7-9359fa990278",
+      image: "/placeholders/hplife_ai.jpg",
+      summary: "Developed a strong foundation in Artificial Intelligence by learning core AI concepts, the importance of data, business use cases, and ethical considerations. Explored how AI is transforming industries and solving practical problems."
+    },
+    {
       title: "Data Analytics Job Simulation",
       issuer: "Deloitte",
       date: "Jul 2025",
       credentialId: "YNYjQodt3Rd8CjMWJ",
       skills: ["Data Analysis", "Data Visualization", "Dashboard Design", "Python"],
       verifyUrl: "https://www.theforage.com/simulations/deloitte",
-      image: "/placeholders/deloitte.jpg"
-    },
-    {
-      title: "Python One Roadmap",
-      issuer: "Python Institute / Community",
-      date: "Jun 2025",
-      credentialId: "CERT-37E358BB",
-      skills: ["Python Programming", "Automation", "Algorithms"],
-      verifyUrl: "#",
-      image: "/placeholders/python.jpg"
+      certificateUrl: "https://www.theforage.com/completion-certificates/9PBTqmSxAf6zZTseP/io9DzWKe3PTsiS6GG_9PBTqmSxAf6zZTseP_YNyiQodt3Rd8cJmWJ_1751653947494_completion_certificate.pdf",
+      image: "/placeholders/deloitte.jpg",
+      summary: "Completed a simulated data analytics project for Deloitte. Handled data cleaning, visualization design, and drafted dashboard layouts to present key business insights."
     },
     {
       title: "SQL for Developers",
@@ -338,8 +369,21 @@ client/ # Dashboard analytics widgets`,
       date: "Apr 2025",
       credentialId: "UC-21ecd423-fcd5-429b-a3ef-d2ba50f4c747",
       skills: ["SQL", "Database Design", "Query Optimization", "PostgreSQL"],
-      verifyUrl: "https://ude.my/UC-21ecd423-fcd5-429b-a3ef-d2ba50f4c747",
-      image: "/placeholders/sql.jpg"
+      verifyUrl: "https://www.udemy.com/certificate/UC-21ecd423-fcd5-429b-a3ef-d2ba50f4c747/",
+      certificateUrl: "https://www.udemy.com/certificate/UC-21ecd423-fcd5-429b-a3ef-d2ba50f4c747/",
+      image: "/placeholders/sql.jpg",
+      summary: "Gained deep knowledge of relational databases, schema design, index tuning, complex queries, and transaction management using PostgreSQL."
+    },
+    {
+      title: "Python One Roadmap",
+      issuer: "Python Institute / Community",
+      date: "Jun 2025",
+      credentialId: "CERT-37E358BB",
+      skills: ["Python Programming", "Automation", "Algorithms"],
+      verifyUrl: "https://www.oneroadmap.io/skills/python/certificate/CERT-37E358BB",
+      certificateUrl: "https://www.oneroadmap.io/skills/python/certificate/CERT-37E358BB",
+      image: "/placeholders/python.jpg",
+      summary: "Mastered core Python language constructs, algorithms, and script automation techniques. Developed reusable helper utilities and solved software problems."
     },
     {
       title: "Cyber Security Professional",
@@ -347,17 +391,10 @@ client/ # Dashboard analytics widgets`,
       date: "Jan 2025",
       credentialId: "EP-12003467",
       skills: ["Network Security", "Penetration Testing", "Risk Assessment"],
-      verifyUrl: "#",
-      image: "/placeholders/cybersecurity.jpg"
-    },
-    {
-      title: "Introduction to Generative AI Studio",
-      issuer: "Simplilearn",
-      date: "Jun 2025",
-      credentialId: "8504350",
-      skills: ["Generative AI", "Large Language Models", "Prompt Engineering"],
-      verifyUrl: "#",
-      image: "/placeholders/genai.jpg"
+      verifyUrl: "https://thetechunique.com/student_certificate/ep-12003467/",
+      certificateUrl: "https://thetechunique.com/student_certificate/ep-12003467/",
+      image: "/placeholders/cybersecurity.jpg",
+      summary: "Covered network protocols, security audits, threat assessment models, vulnerability scanning tools, and defense implementation strategies."
     }
   ]
 };

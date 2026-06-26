@@ -227,6 +227,13 @@ export const Achievements: React.FC = () => {
                           {item.issuer}
                         </p>
 
+                        {/* Certificate Summary */}
+                        {item.summary && (
+                          <p className="text-xs text-brand-text-muted mt-2 leading-relaxed font-sans">
+                            {item.summary}
+                          </p>
+                        )}
+
                         <div className="mt-3">
                           <span className="text-[9px] font-mono font-semibold uppercase tracking-wider text-brand-text-muted">Credential ID:</span>
                           <p className="text-[10px] font-mono text-brand-primary bg-brand-bg px-2 py-1 rounded border border-brand-border mt-1 break-all select-all">
@@ -248,19 +255,30 @@ export const Achievements: React.FC = () => {
                       </div>
                     </div>
 
-                    <div className="p-5 pt-0 w-full">
+                    <div className="p-5 pt-0 w-full flex gap-2">
+                      {item.certificateUrl && item.certificateUrl !== '#' && (
+                        <a
+                          href={item.certificateUrl}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="flex-1 px-2.5 py-2 rounded-lg border border-brand-border bg-brand-bg hover:bg-brand-card hover:border-brand-accent/50 text-brand-text hover:text-brand-accent font-bold text-[10px] flex items-center justify-center gap-1 transition-all cursor-pointer text-center"
+                        >
+                          See Certificate
+                          <ExternalLink size={10} />
+                        </a>
+                      )}
                       {item.verifyUrl !== '#' ? (
                         <a
                           href={item.verifyUrl}
                           target="_blank"
                           rel="noreferrer"
-                          className="w-full px-3 py-2 rounded-lg border border-brand-border bg-brand-bg hover:bg-brand-card hover:border-brand-accent/50 text-brand-text hover:text-brand-accent font-bold text-[10px] flex items-center justify-center gap-1 transition-all cursor-pointer"
+                          className="flex-1 px-2.5 py-2 rounded-lg border border-brand-accent/30 bg-brand-accent/5 hover:bg-brand-accent/10 hover:border-brand-accent text-brand-accent font-bold text-[10px] flex items-center justify-center gap-1 transition-all cursor-pointer text-center"
                         >
-                          Verify Credential
-                          <ExternalLink size={10} />
+                          Verify Online
+                          <ShieldCheck size={10} />
                         </a>
                       ) : (
-                        <div className="w-full py-2 text-center text-[10px] font-semibold font-mono text-brand-text-muted bg-brand-bg/50 rounded-lg border border-brand-border/60 border-dashed">
+                        <div className="flex-1 py-2 text-center text-[10px] font-semibold font-mono text-brand-text-muted bg-brand-bg/50 rounded-lg border border-brand-border/60 border-dashed">
                           Directly Verified
                         </div>
                       )}

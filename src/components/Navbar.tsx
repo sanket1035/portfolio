@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, Sun, Moon } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useTheme } from '../context/ThemeContext';
 
@@ -28,7 +28,7 @@ export const Navbar: React.FC = () => {
   useEffect(() => {
     if (location.pathname !== '/') return;
 
-    const sections = ['#about', '#opensource', '#projects', '#achievements', '#skills', '#github', '#contact'];
+    const sections = ['#about', '#projects', '#skills', '#achievements', '#opensource', '#contact'];
     const observers = sections.map((hash) => {
       const element = document.querySelector(hash);
       if (!element) return null;
@@ -41,7 +41,7 @@ export const Navbar: React.FC = () => {
             }
           });
         },
-        { rootMargin: '-40% 0px -40% 0px' } // triggers when section is in the middle of viewport
+        { rootMargin: '-25% 0px -25% 0px' } // adjusted triggering margins
       );
       observer.observe(element);
       return { observer, element };
@@ -57,11 +57,10 @@ export const Navbar: React.FC = () => {
   const navLinks = [
     { num: '01', label: 'OVERVIEW', hash: '#about' },
     { num: '02', label: 'PROJECTS', hash: '#projects' },
-    { num: '03', label: 'OPEN SOURCE', hash: '#opensource' },
+    { num: '03', label: 'SKILLS', hash: '#skills' },
     { num: '04', label: 'MILESTONES', hash: '#achievements' },
-    { num: '05', label: 'SKILLS', hash: '#skills' },
-    { num: '06', label: 'GITHUB', hash: '#github' },
-    { num: '07', label: 'CONTACT', hash: '#contact', border: true },
+    { num: '05', label: 'OPEN SOURCE', hash: '#opensource' },
+    { num: '06', label: 'CONTACT', hash: '#contact', border: true },
   ];
 
   const handleNavClick = (hash: string) => {
@@ -136,19 +135,23 @@ export const Navbar: React.FC = () => {
             })}
           </div>
 
-          {/* Monospace Theme Toggle Button */}
+          {/* Premium Theme Toggle Button matching custom layout */}
           <button
             onClick={toggleTheme}
-            className="border border-brand-border px-4 py-1.5 hover:border-brand-accent text-brand-text hover:text-brand-accent font-mono text-[11px] tracking-widest cursor-pointer transition-all uppercase"
+            className="border border-brand-border h-9 w-9 flex items-center justify-center hover:border-brand-accent text-brand-text hover:text-brand-accent cursor-pointer transition-all rounded-lg bg-brand-bg/50"
             aria-label="Toggle Theme Mode"
           >
-            {theme === 'dark' ? 'LIGHT' : 'DARK'}
+            {theme === 'dark' ? (
+              <Sun size={15} className="text-brand-accent" />
+            ) : (
+              <Moon size={15} className="text-brand-primary" />
+            )}
           </button>
 
           {/* Terminal Toggle Button */}
           <button
             onClick={() => window.dispatchEvent(new CustomEvent('toggle-terminal'))}
-            className="border border-brand-border px-3.5 py-1.5 hover:border-brand-accent text-brand-text hover:text-brand-accent font-mono text-[11px] tracking-widest cursor-pointer transition-all flex items-center gap-1.5"
+            className="border border-brand-border h-9 px-3 hover:border-brand-accent text-brand-text hover:text-brand-accent font-mono text-[11px] tracking-widest cursor-pointer transition-all flex items-center justify-center rounded-lg bg-brand-bg/50"
             aria-label="Toggle Terminal Mode"
             title="Open Interactive Terminal"
           >
@@ -157,23 +160,28 @@ export const Navbar: React.FC = () => {
         </div>
 
         {/* Mobile Menu Actions */}
-        <div className="flex items-center space-x-4 lg:hidden">
+        <div className="flex items-center space-x-3 lg:hidden">
           <button
             onClick={() => window.dispatchEvent(new CustomEvent('toggle-terminal'))}
-            className="border border-brand-border px-2.5 py-1 text-brand-text font-mono text-[10px] tracking-widest cursor-pointer"
+            className="border border-brand-border h-8 px-2.5 flex items-center justify-center text-brand-text font-mono text-[10px] tracking-widest cursor-pointer rounded-lg bg-brand-bg/50"
             title="Open Interactive Terminal"
           >
             &gt;_
           </button>
           <button
             onClick={toggleTheme}
-            className="border border-brand-border px-3 py-1 text-brand-text font-mono text-[10px] tracking-widest uppercase cursor-pointer"
+            className="border border-brand-border h-8 w-8 flex items-center justify-center text-brand-text cursor-pointer rounded-lg bg-brand-bg/50"
+            aria-label="Toggle Theme Mode"
           >
-            {theme === 'dark' ? 'LIGHT' : 'DARK'}
+            {theme === 'dark' ? (
+              <Sun size={14} className="text-brand-accent" />
+            ) : (
+              <Moon size={14} className="text-brand-primary" />
+            )}
           </button>
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="p-1.5 text-brand-text hover:text-brand-accent transition-colors"
+            className="p-1.5 text-brand-text hover:text-brand-accent transition-colors cursor-pointer"
             aria-label="Toggle Navigation Drawer"
           >
             {isOpen ? <X size={20} /> : <Menu size={20} />}
