@@ -56,9 +56,9 @@ export const OpenSource: React.FC = () => {
   // Local environment tools
   const envTools = ['VS Code', 'Windows 11', 'Git', 'Docker', 'Postman', 'Android Studio', 'Figma', 'Power BI'];
 
-  // Open source goals list
+  // Open source goals list (First 50 GitHub Contributions is unmarked)
   const ossGoals = [
-    { text: 'First 50 GitHub Contributions', done: true },
+    { text: 'First 50 GitHub Contributions', done: false },
     { text: '100+ Commit Milestones', done: true },
     { text: '10+ Public Repositories', done: true },
     { text: 'First Major OSS Contribution', done: false },
@@ -164,24 +164,40 @@ export const OpenSource: React.FC = () => {
               </h4>
               <div className="grid sm:grid-cols-2 gap-4">
                 
-                {/* Repo 1: PlaceTrack AI */}
-                <div className="p-4 rounded-lg bg-brand-bg/50 border border-brand-border/60 space-y-2">
+                {/* Repo 1: PlaceTrack AI (Clickable to repo, status: Completed) */}
+                <a
+                  href="https://github.com/sanket1035/placetrack-ai"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="p-4 rounded-lg bg-brand-bg/50 border border-brand-border/60 space-y-2 hover:border-brand-accent/40 hover:bg-brand-card/25 transition-all duration-300 block group cursor-pointer"
+                >
                   <div className="flex items-center justify-between">
-                    <h5 className="font-heading font-bold text-xs md:text-sm text-brand-primary">PlaceTrack AI</h5>
-                    <span className="text-[8px] font-mono font-semibold bg-brand-border text-brand-text-muted px-2 py-0.5 rounded">
-                      In Development
+                    <h5 className="font-heading font-bold text-xs md:text-sm text-brand-primary group-hover:text-brand-accent transition-colors flex items-center gap-1">
+                      PlaceTrack AI
+                      <ExternalLink size={10} className="opacity-0 group-hover:opacity-100 transition-opacity text-brand-accent" />
+                    </h5>
+                    <span className="text-[8px] font-mono font-semibold bg-indigo-500/10 text-indigo-400 border border-indigo-500/20 px-2 py-0.5 rounded">
+                      Completed
                     </span>
                   </div>
                   <p className="text-[11px] text-brand-text-muted leading-relaxed">
                     AI-powered location verification & geofenced check-in system for small teams.
                   </p>
                   <p className="text-[9px] font-mono text-brand-accent">TypeScript • React • Node.js</p>
-                </div>
+                </a>
 
                 {/* Repo 2: Carbonomics AI */}
-                <div className="p-4 rounded-lg bg-brand-bg/50 border border-brand-border/60 space-y-2">
+                <a
+                  href="https://github.com/sanket1035/carbonomics-ai"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="p-4 rounded-lg bg-brand-bg/50 border border-brand-border/60 space-y-2 hover:border-brand-accent/40 hover:bg-brand-card/25 transition-all duration-300 block group cursor-pointer"
+                >
                   <div className="flex items-center justify-between">
-                    <h5 className="font-heading font-bold text-xs md:text-sm text-brand-primary">Carbonomics AI</h5>
+                    <h5 className="font-heading font-bold text-xs md:text-sm text-brand-primary group-hover:text-brand-accent transition-colors flex items-center gap-1">
+                      Carbonomics AI
+                      <ExternalLink size={10} className="opacity-0 group-hover:opacity-100 transition-opacity text-brand-accent" />
+                    </h5>
                     <span className="text-[8px] font-mono font-semibold bg-brand-border text-brand-text-muted px-2 py-0.5 rounded">
                       Research Phase
                     </span>
@@ -190,12 +206,20 @@ export const OpenSource: React.FC = () => {
                     Carbon emission estimates and optimization recommendation engine.
                   </p>
                   <p className="text-[9px] font-mono text-brand-accent">Python • FastAPI • PyTorch</p>
-                </div>
+                </a>
 
                 {/* Repo 3: Algonix */}
-                <div className="p-4 rounded-lg bg-brand-bg/50 border border-brand-border/60 space-y-2">
+                <a
+                  href="https://github.com/sanket1035/Algonix"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="p-4 rounded-lg bg-brand-bg/50 border border-brand-border/60 space-y-2 hover:border-brand-accent/40 hover:bg-brand-card/25 transition-all duration-300 block group cursor-pointer"
+                >
                   <div className="flex items-center justify-between">
-                    <h5 className="font-heading font-bold text-xs md:text-sm text-brand-primary">Algonix</h5>
+                    <h5 className="font-heading font-bold text-xs md:text-sm text-brand-primary group-hover:text-brand-accent transition-colors flex items-center gap-1">
+                      Algonix
+                      <ExternalLink size={10} className="opacity-0 group-hover:opacity-100 transition-opacity text-brand-accent" />
+                    </h5>
                     <span className="text-[8px] font-mono font-semibold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 px-2 py-0.5 rounded">
                       Live
                     </span>
@@ -204,12 +228,20 @@ export const OpenSource: React.FC = () => {
                     Interactive sorting algorithm visualizer and sandbox built for DSA students.
                   </p>
                   <p className="text-[9px] font-mono text-brand-accent">TypeScript • React • Framer Motion</p>
-                </div>
+                </a>
 
                 {/* Repo 4: GST Billing App */}
-                <div className="p-4 rounded-lg bg-brand-bg/50 border border-brand-border/60 space-y-2">
+                <a
+                  href="https://github.com/sanket1035/GSTbillingApp"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="p-4 rounded-lg bg-brand-bg/50 border border-brand-border/60 space-y-2 hover:border-brand-accent/40 hover:bg-brand-card/25 transition-all duration-300 block group cursor-pointer"
+                >
                   <div className="flex items-center justify-between">
-                    <h5 className="font-heading font-bold text-xs md:text-sm text-brand-primary">GST Billing App</h5>
+                    <h5 className="font-heading font-bold text-xs md:text-sm text-brand-primary group-hover:text-brand-accent transition-colors flex items-center gap-1">
+                      GST Billing App
+                      <ExternalLink size={10} className="opacity-0 group-hover:opacity-100 transition-opacity text-brand-accent" />
+                    </h5>
                     <span className="text-[8px] font-mono font-semibold bg-indigo-500/10 text-indigo-400 border border-indigo-500/20 px-2 py-0.5 rounded">
                       Completed
                     </span>
@@ -218,7 +250,7 @@ export const OpenSource: React.FC = () => {
                     Offline-first invoice POS application for small and medium retail merchants.
                   </p>
                   <p className="text-[9px] font-mono text-brand-accent">Java • Android SDK • SQLite</p>
-                </div>
+                </a>
 
               </div>
             </div>
@@ -286,110 +318,106 @@ export const OpenSource: React.FC = () => {
 
         </div>
 
-        {/* BOTTOM PANEL: Open Source Programs, Principles & Git Workflow */}
+        {/* BOTTOM PANEL: Side-by-Side Git Workflow & OSS Goals, and Open Source below them */}
+        
+        {/* ROW 1: Git Workflow (Left) & OSS Goals (Right) */}
         <div className="grid md:grid-cols-2 gap-8 mt-8">
           
-          {/* Programs Card with Larger Clickable Badge Images */}
-          <div className="p-6 rounded-xl bg-brand-card border border-brand-border shadow-md space-y-5">
-            <h3 className="font-heading font-bold text-xs md:text-sm text-brand-primary flex items-center gap-2 uppercase tracking-wide border-b border-brand-border/40 pb-2">
-              <Award className="text-brand-accent" size={16} />
-              Open Source Programs
-            </h3>
-            <div className="space-y-4">
-              {portfolioData.openSource.programs.map((program, idx) => (
-                <div
-                  key={idx}
-                  className="p-4 rounded-xl bg-brand-bg/50 border border-brand-border/60 flex items-start gap-4 hover:border-brand-accent/30 hover:bg-brand-card/30 transition-all duration-300"
-                >
-                  {program.image ? (
-                    <a
-                      href={program.image}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="block shrink-0 mt-0.5 cursor-pointer hover:opacity-80 transition-opacity"
-                      title="Click to view full credential"
-                    >
-                      <img
-                        src={program.image}
-                        alt={program.programName}
-                        className="w-20 h-20 md:w-24 md:h-24 rounded-lg object-cover border border-brand-border/60 shadow"
-                      />
-                    </a>
-                  ) : (
-                    <div className="p-3.5 rounded-lg bg-brand-border/50 text-brand-accent shrink-0 mt-0.5">
-                      <Globe size={24} />
-                    </div>
-                  )}
-                  <div className="space-y-1">
-                    <h4 className="font-heading font-bold text-xs md:text-sm text-brand-primary flex items-center gap-2">
-                      {program.programName}
-                      <span className="text-[9px] font-mono font-medium bg-brand-border px-2 py-0.5 rounded text-brand-text-muted">
-                        {program.year}
-                      </span>
-                    </h4>
-                    <p className="text-[10px] font-mono font-semibold text-brand-accent uppercase tracking-wider">{program.role}</p>
-                    <p className="text-[11px] text-brand-text-muted leading-relaxed">
-                      {program.description}
-                    </p>
-                  </div>
+          {/* Git Workflow & Architecture */}
+          <div className="p-6 rounded-xl bg-brand-card border border-brand-border shadow-md space-y-4">
+            <h4 className="font-heading font-bold text-xs md:text-sm text-brand-primary uppercase tracking-wide flex items-center gap-1.5 border-b border-brand-border/40 pb-2">
+              <GitBranch size={14} className="text-brand-accent" />
+              Git Workflow & Architecture
+            </h4>
+            <div className="grid grid-cols-2 gap-4 text-xs font-mono">
+              <div>
+                <span className="text-brand-text-muted block text-[10px] uppercase tracking-wider">Branch Strategy</span>
+                <span className="text-brand-primary">main & feature/*</span>
+              </div>
+              <div>
+                <span className="text-brand-text-muted block text-[10px] uppercase tracking-wider">Version Control</span>
+                <span className="text-brand-primary">Git + GitHub</span>
+              </div>
+            </div>
+            <div className="pt-2">
+              <span className="text-brand-text-muted block text-[10px] uppercase tracking-wider font-mono mb-2">Engineering Principles</span>
+              <div className="flex flex-wrap gap-1.5">
+                {['Clean Architecture', 'Type Safety', 'REST APIs', 'Responsive UI', 'Component Design', 'Git Workflow', 'Automated Testing'].map((p) => (
+                  <span key={p} className="text-[9px] font-mono bg-brand-bg/50 px-2 py-0.5 rounded border border-brand-border text-brand-text-muted">
+                    ✔ {p}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {/* OSS Goals (Roadmap) */}
+          <div className="p-6 rounded-xl bg-brand-card border border-brand-border shadow-md space-y-4">
+            <h4 className="font-heading font-bold text-xs md:text-sm text-brand-primary uppercase tracking-wide flex items-center gap-1.5 border-b border-brand-border/40 pb-2">
+              <CheckCircle2 size={14} className="text-brand-accent" />
+              OSS Roadmap & Goals (2026)
+            </h4>
+            <div className="grid sm:grid-cols-2 gap-2.5 text-[11px] font-sans text-brand-text-muted">
+              {ossGoals.map((goal, idx) => (
+                <div key={idx} className="flex items-center gap-2">
+                  <span className={`w-3.5 h-3.5 rounded border flex items-center justify-center shrink-0 font-mono text-[9px] ${
+                    goal.done ? 'bg-brand-accent/20 border-brand-accent text-brand-accent' : 'border-brand-border text-brand-text-muted'
+                  }`}>
+                    {goal.done ? '✓' : ' '}
+                  </span>
+                  <span>{goal.text}</span>
                 </div>
               ))}
             </div>
           </div>
 
-          {/* Development Principles & OSS Goals */}
-          <div className="space-y-6">
-            
-            {/* Git Workflow & Dev Principles */}
-            <div className="p-6 rounded-xl bg-brand-card border border-brand-border shadow-md space-y-4">
-              <h4 className="font-heading font-bold text-xs md:text-sm text-brand-primary uppercase tracking-wide flex items-center gap-1.5 border-b border-brand-border/40 pb-2">
-                <GitBranch size={14} className="text-brand-accent" />
-                Git Workflow & Architecture
-              </h4>
-              <div className="grid sm:grid-cols-2 gap-4 text-xs font-mono">
-                <div>
-                  <span className="text-brand-text-muted block text-[10px] uppercase tracking-wider">Branch Strategy</span>
-                  <span className="text-brand-primary">main & feature/*</span>
-                </div>
-                <div>
-                  <span className="text-brand-text-muted block text-[10px] uppercase tracking-wider">Version Control</span>
-                  <span className="text-brand-primary">Git + GitHub</span>
-                </div>
-              </div>
-              <div className="pt-2">
-                <span className="text-brand-text-muted block text-[10px] uppercase tracking-wider font-mono mb-2">Engineering Principles</span>
-                <div className="flex flex-wrap gap-1.5">
-                  {['Clean Architecture', 'Type Safety', 'REST APIs', 'Responsive UI', 'Component Design', 'Git Workflow', 'Automated Testing'].map((p) => (
-                    <span key={p} className="text-[9px] font-mono bg-brand-bg/50 px-2 py-0.5 rounded border border-brand-border text-brand-text-muted">
-                      ✔ {p}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            </div>
+        </div>
 
-            {/* OSS Goals (Roadmap) */}
-            <div className="p-6 rounded-xl bg-brand-card border border-brand-border shadow-md space-y-4">
-              <h4 className="font-heading font-bold text-xs md:text-sm text-brand-primary uppercase tracking-wide flex items-center gap-1.5 border-b border-brand-border/40 pb-2">
-                <CheckCircle2 size={14} className="text-brand-accent" />
-                OSS Roadmap & Goals (2026)
-              </h4>
-              <div className="grid sm:grid-cols-2 gap-2 text-[11px] font-sans text-brand-text-muted">
-                {ossGoals.map((goal, idx) => (
-                  <div key={idx} className="flex items-center gap-2">
-                    <span className={`w-3.5 h-3.5 rounded border flex items-center justify-center shrink-0 font-mono text-[9px] ${
-                      goal.done ? 'bg-brand-accent/20 border-brand-accent text-brand-accent' : 'border-brand-border text-brand-text-muted'
-                    }`}>
-                      {goal.done ? '✓' : ' '}
-                    </span>
-                    <span>{goal.text}</span>
+        {/* ROW 2: Open Source Programs placed below (cards rendered side-by-side) */}
+        <div className="mt-8 p-6 rounded-xl bg-brand-card border border-brand-border shadow-md space-y-5">
+          <h3 className="font-heading font-bold text-xs md:text-sm text-brand-primary flex items-center gap-2 uppercase tracking-wide border-b border-brand-border/40 pb-2">
+            <Award className="text-brand-accent" size={16} />
+            Open Source Programs
+          </h3>
+          <div className="grid md:grid-cols-2 gap-6">
+            {portfolioData.openSource.programs.map((program, idx) => (
+              <div
+                key={idx}
+                className="p-4 rounded-xl bg-brand-bg/50 border border-brand-border/60 flex items-start gap-4 hover:border-brand-accent/30 hover:bg-brand-card/30 transition-all duration-300"
+              >
+                {program.image ? (
+                  <button
+                    type="button"
+                    onClick={() => window.dispatchEvent(new CustomEvent('open-lightbox', { detail: { src: program.image } }))}
+                    className="block shrink-0 mt-0.5 cursor-pointer hover:opacity-80 transition-opacity focus:outline-none"
+                    title="Click to view full credential"
+                  >
+                    <img
+                      src={program.image}
+                      alt={program.programName}
+                      className="w-20 h-20 md:w-24 md:h-24 rounded-lg object-cover border border-brand-border/60 shadow"
+                    />
+                  </button>
+                ) : (
+                  <div className="p-3.5 rounded-lg bg-brand-border/50 text-brand-accent shrink-0 mt-0.5">
+                    <Globe size={24} />
                   </div>
-                ))}
+                )}
+                <div className="space-y-1">
+                  <h4 className="font-heading font-bold text-xs md:text-sm text-brand-primary flex items-center gap-2 flex-wrap">
+                    {program.programName}
+                    <span className="text-[9px] font-mono font-medium bg-brand-border px-2 py-0.5 rounded text-brand-text-muted">
+                      {program.year}
+                    </span>
+                  </h4>
+                  <p className="text-[10px] font-mono font-semibold text-brand-accent uppercase tracking-wider">{program.role}</p>
+                  <p className="text-[11px] text-brand-text-muted leading-relaxed">
+                    {program.description}
+                  </p>
+                </div>
               </div>
-            </div>
-
+            ))}
           </div>
-
         </div>
 
         {/* Action Button */}

@@ -19,6 +19,7 @@ function App() {
   const [isMatrixOpen, setIsMatrixOpen] = useState(false);
   const [isCommandPaletteOpen, setIsCommandPaletteOpen] = useState(false);
   const [isRecruiterMode, setIsRecruiterMode] = useState(false);
+  const [lightboxSrc, setLightboxSrc] = useState<string | null>(null);
 
   // Toggle recruiter mode CSS class on root document element
   useEffect(() => {
@@ -88,13 +89,21 @@ function App() {
     const toggleMatrixHandler = () => {
       setIsMatrixOpen(prev => !prev);
     };
+    const openLightboxHandler = (e: Event) => {
+      const customEvent = e as CustomEvent;
+      if (customEvent.detail && customEvent.detail.src) {
+        setLightboxSrc(customEvent.detail.src);
+      }
+    };
 
     window.addEventListener('toggle-terminal', toggleTerminalHandler);
     window.addEventListener('toggle-matrix', toggleMatrixHandler);
+    window.addEventListener('open-lightbox', openLightboxHandler);
 
     return () => {
       window.removeEventListener('toggle-terminal', toggleTerminalHandler);
       window.removeEventListener('toggle-matrix', toggleMatrixHandler);
+      window.removeEventListener('open-lightbox', openLightboxHandler);
     };
   }, []);
 
@@ -162,6 +171,40 @@ function App() {
               onClose={() => setIsCommandPaletteOpen(false)}
             />
           </Suspense>
+
+          {/* Global Lightbox Modal inside the page */}
+          {lightboxSrc && (
+            <div
+              className="fixed inset-0 z-[100] flex items-center justify-center bg-black/90 backdrop-blur-sm cursor-pointer select-none"
+              onClick={() => setLightboxSrc(null)}
+            >
+              {/* Close X Button in the top right corner of the screen */}
+              <button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setLightboxSrc(null);
+                }}
+                className="absolute top-6 right-6 text-white/70 hover:text-white transition-colors cursor-pointer bg-zinc-900/60 p-2.5 rounded-full border border-white/10"
+                aria-label="Close Preview"
+              >
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+
+              {/* Centered Image Frame */}
+              <div
+                className="relative max-w-[90%] max-h-[85%] bg-[#0f0f15] border border-brand-border/80 rounded-2xl overflow-hidden shadow-2xl p-1"
+                onClick={() => setLightboxSrc(null)} // Click anywhere closes the modal
+              >
+                <img
+                  src={lightboxSrc}
+                  alt="Expanded Credential Preview"
+                  className="max-w-full max-h-[80vh] object-contain block rounded-xl"
+                />
+              </div>
+            </div>
+          )}
         </div>
       </Router>
     </ThemeProvider>

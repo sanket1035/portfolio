@@ -91,11 +91,10 @@ export const Achievements: React.FC = () => {
                   >
                     <div>
                       {/* Cover Image */}
-                      <a
-                        href={item.detailsUrl || item.image}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="relative aspect-video w-full bg-brand-bg overflow-hidden border-b border-brand-border/40 block cursor-pointer"
+                      <button
+                        type="button"
+                        onClick={() => window.dispatchEvent(new CustomEvent('open-lightbox', { detail: { src: item.image } }))}
+                        className="relative aspect-video w-full bg-brand-bg overflow-hidden border-b border-brand-border/40 block cursor-pointer text-left focus:outline-none"
                         title="View Details"
                       >
                         <img
@@ -103,7 +102,7 @@ export const Achievements: React.FC = () => {
                           alt={`${item.title} Cover`}
                           className="w-full h-full object-cover brightness-95 group-hover:scale-[1.02] transition-transform duration-500"
                         />
-                      </a>
+                      </button>
                       
                       <div className="p-6">
                         {/* Gradient Accent Overlay on Hover */}
@@ -152,11 +151,10 @@ export const Achievements: React.FC = () => {
                   >
                     <div>
                       {/* Cover Image */}
-                      <a
-                        href={item.image}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="relative aspect-video w-full bg-brand-bg overflow-hidden border-b border-brand-border/40 block cursor-pointer"
+                      <button
+                        type="button"
+                        onClick={() => window.dispatchEvent(new CustomEvent('open-lightbox', { detail: { src: item.image } }))}
+                        className="relative aspect-video w-full bg-brand-bg overflow-hidden border-b border-brand-border/40 block cursor-pointer text-left focus:outline-none"
                         title="View Full Image"
                       >
                         <img
@@ -164,7 +162,7 @@ export const Achievements: React.FC = () => {
                           alt={`${item.role} Cover`}
                           className="w-full h-full object-cover brightness-95 group-hover:scale-[1.02] transition-transform duration-500"
                         />
-                      </a>
+                      </button>
 
                       <div className="p-6">
                         <div className="absolute top-0 left-0 w-full h-[3px] bg-gradient-to-r from-brand-accent to-indigo-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
@@ -212,11 +210,10 @@ export const Achievements: React.FC = () => {
                   >
                     <div>
                       {/* Cover Image */}
-                      <a
-                        href={item.certificateUrl || item.verifyUrl}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="relative aspect-video w-full bg-brand-bg overflow-hidden border-b border-brand-border/40 block cursor-pointer"
+                      <button
+                        type="button"
+                        onClick={() => window.dispatchEvent(new CustomEvent('open-lightbox', { detail: { src: item.image } }))}
+                        className="relative aspect-video w-full bg-brand-bg overflow-hidden border-b border-brand-border/40 block cursor-pointer text-left focus:outline-none"
                         title="View Certificate"
                       >
                         <img
@@ -224,7 +221,7 @@ export const Achievements: React.FC = () => {
                           alt={`${item.title} Cover`}
                           className="w-full h-full object-cover brightness-95 group-hover:scale-[1.02] transition-transform duration-500"
                         />
-                      </a>
+                      </button>
 
                       <div className="p-5">
                         <div className="absolute top-0 left-0 w-full h-[3px] bg-gradient-to-r from-brand-accent to-indigo-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
