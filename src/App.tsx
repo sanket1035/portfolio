@@ -13,6 +13,7 @@ const TerminalOverlay = React.lazy(() => import('./components/TerminalOverlay'))
 const MatrixOverlay = React.lazy(() => import('./components/MatrixOverlay'));
 const FloatingChatbot = React.lazy(() => import('./components/FloatingChatbot'));
 const CommandPalette = React.lazy(() => import('./components/CommandPalette'));
+const SnakeGamePage = React.lazy(() => import('./pages/SnakeGamePage'));
 
 function App() {
   const [isTerminalOpen, setIsTerminalOpen] = useState(false);
@@ -141,6 +142,15 @@ function App() {
                 </Suspense>
               } />
               <Route path="/privacy" element={<Privacy />} />
+              <Route path="/snake" element={
+                <Suspense fallback={
+                  <div className="min-h-screen bg-brand-bg flex items-center justify-center text-xs font-mono text-brand-text-muted">
+                    Loading Snake Game...
+                  </div>
+                }>
+                  <SnakeGamePage />
+                </Suspense>
+              } />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </main>

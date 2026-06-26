@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
-import { Menu, X, Sun, Moon } from 'lucide-react';
+import { Menu, X, Sun, Moon, Gamepad2 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useTheme } from '../context/ThemeContext';
 
@@ -133,6 +133,16 @@ export const Navbar: React.FC = () => {
             })}
           </div>
 
+          {/* Game Route Link */}
+          <Link
+            to="/snake"
+            className="border border-brand-border h-9 w-9 flex items-center justify-center hover:border-brand-accent text-brand-text hover:text-brand-accent cursor-pointer transition-all rounded-lg bg-brand-bg/50"
+            aria-label="Play Anti-gravity Snake Game"
+            title="Play Anti-gravity Snake Game"
+          >
+            <Gamepad2 size={16} className="text-brand-accent" />
+          </Link>
+
           {/* Premium Theme Toggle Button matching custom layout */}
           <button
             onClick={toggleTheme}
@@ -159,6 +169,13 @@ export const Navbar: React.FC = () => {
 
         {/* Mobile Menu Actions */}
         <div className="flex items-center space-x-3 lg:hidden">
+          <Link
+            to="/snake"
+            className="border border-brand-border h-8 w-8 flex items-center justify-center text-brand-text cursor-pointer rounded-lg bg-brand-bg/50"
+            title="Play Anti-gravity Snake Game"
+          >
+            <Gamepad2 size={14} className="text-brand-accent" />
+          </Link>
           <button
             onClick={() => window.dispatchEvent(new CustomEvent('toggle-terminal'))}
             className="border border-brand-border h-8 px-2.5 flex items-center justify-center text-brand-text font-mono text-[10px] tracking-widest cursor-pointer rounded-lg bg-brand-bg/50"

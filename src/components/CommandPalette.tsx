@@ -1,8 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Search, Compass, BookOpen, GitBranch, Trophy, Cpu, Mail, FileText, Terminal, ShieldAlert, X } from 'lucide-react';
+import { Search, Compass, BookOpen, GitBranch, Trophy, Cpu, Mail, FileText, Terminal, ShieldAlert, X, Gamepad2 } from 'lucide-react';
 import { GithubIcon as Github } from './BrandIcons';
 import { portfolioData } from '../data/portfolioData';
+import { useNavigate } from 'react-router-dom';
 
 interface CommandPaletteProps {
   isOpen: boolean;
@@ -18,6 +19,7 @@ interface CommandItem {
 }
 
 export const CommandPalette: React.FC<CommandPaletteProps> = ({ isOpen, onClose }) => {
+  const navigate = useNavigate();
   const [search, setSearch] = useState('');
   const [selectedIndex, setSelectedIndex] = useState(0);
   const inputRef = useRef<HTMLInputElement>(null);
@@ -132,6 +134,16 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({ isOpen, onClose 
         // Manually trigger matrix override
         const event = new CustomEvent('toggle-matrix');
         window.dispatchEvent(event);
+        onClose();
+      }
+    },
+    {
+      name: "Play Anti-gravity Snake",
+      description: "Launch the anti-gravity arcade game challenge",
+      category: "System",
+      icon: Gamepad2,
+      action: () => {
+        navigate('/snake');
         onClose();
       }
     }
