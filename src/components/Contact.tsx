@@ -1,9 +1,18 @@
-import React from 'react';
+import React, { useState, useRef } from 'react';
 import { Mail, MapPin, ExternalLink } from 'lucide-react';
 import { GithubIcon as Github, LinkedinIcon as Linkedin, TwitterIcon as Twitter, YoutubeIcon as Youtube, LeetcodeIcon as Leetcode, DevtoIcon as Devto, MediumIcon as Medium, RedditIcon as Reddit } from './BrandIcons';
 import { portfolioData } from '../data/portfolioData';
 
 export const Contact: React.FC = () => {
+  const [isHovered, setIsHovered] = useState(false);
+  const tooltipRef = useRef<HTMLSpanElement>(null);
+
+  const handlePointerMove = (e: React.PointerEvent<HTMLAnchorElement>) => {
+    if (tooltipRef.current) {
+      tooltipRef.current.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`;
+    }
+  };
+
   return (
     <section id="contact" className="py-20 px-6 border-t border-brand-border/40 bg-brand-card/10 relative overflow-hidden">
       {/* Decorative background glow */}
@@ -11,7 +20,7 @@ export const Contact: React.FC = () => {
 
       <div className="max-w-4xl mx-auto relative z-10">
         {/* Title */}
-        <div className="text-center mb-16">
+        <div className="text-center mb-10">
           <p className="font-mono text-[10px] tracking-widest text-brand-accent uppercase font-bold">
             LET'S CONNECT
           </p>
@@ -19,10 +28,63 @@ export const Contact: React.FC = () => {
             Get In Touch
           </h2>
           <div className="h-1 w-12 bg-brand-accent mx-auto mt-4 rounded-full shadow-lg shadow-purple-500/50"></div>
-          <p className="text-brand-text-muted mt-4 text-sm md:text-base max-w-lg mx-auto leading-relaxed">
-            I am always open to discussing new projects, collaboration opportunities, or software & AI engineering roles. Feel free to reach out directly through any of these platforms!
-          </p>
         </div>
+
+        {/* Big "Let's build something real" Banner */}
+        <div className="mb-16 text-center">
+          <a
+            href="mailto:sanketchaudhari1035@gmail.com"
+            className="group block text-decoration-none cursor-none py-6 select-none"
+            onPointerMove={handlePointerMove}
+            onPointerEnter={() => setIsHovered(true)}
+            onPointerLeave={() => setIsHovered(false)}
+          >
+            <span
+              className="block font-mihir font-black text-[2.2rem] sm:text-6xl md:text-[5.5rem] leading-[0.95] tracking-tight uppercase text-transparent transition-colors duration-300"
+              style={{
+                WebkitTextStroke: '1.5px var(--brand-primary)',
+                color: isHovered ? 'var(--brand-primary)' : 'transparent',
+                fontStretch: '122%',
+                fontWeight: 850
+              }}
+            >
+              Let's build
+            </span>
+            <span
+              className="block font-mihir font-black text-[2.2rem] sm:text-6xl md:text-[5.5rem] leading-[0.95] tracking-tight uppercase text-transparent transition-colors duration-300"
+              style={{
+                WebkitTextStroke: '1.5px var(--brand-primary)',
+                color: isHovered ? 'var(--brand-primary)' : 'transparent',
+                fontStretch: '122%',
+                fontWeight: 850
+              }}
+            >
+              something real{' '}
+              <span
+                className="inline-block transition-transform duration-300 group-hover:translate-x-4"
+                style={{ WebkitTextStroke: '0px', color: 'var(--brand-accent)' }}
+              >
+                →
+              </span>
+            </span>
+          </a>
+        </div>
+
+        {/* Floating Tooltip Pill */}
+        <span
+          ref={tooltipRef}
+          className="fixed top-0 left-0 z-50 pointer-events-none"
+          style={{ transform: 'translate(0px, 0px)' }}
+        >
+          <span
+            className={`inline-block px-3 py-1.5 rounded-full bg-brand-accent text-brand-bg text-[10px] font-mono font-bold tracking-wider uppercase shadow-xl transition-all duration-200 ${
+              isHovered ? 'opacity-100 scale-100' : 'opacity-0 scale-75'
+            }`}
+            style={{ transform: 'translate(16px, -36px)' }}
+          >
+            Email Me →
+          </span>
+        </span>
 
         {/* Contact Info Cards Grid */}
         <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6">

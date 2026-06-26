@@ -4,6 +4,26 @@ import { FileText, ArrowRight, Mail } from 'lucide-react';
 import { GithubIcon as Github, LinkedinIcon as Linkedin, YoutubeIcon as Youtube, LeetcodeIcon as Leetcode, DevtoIcon as Devto, MediumIcon as Medium, RedditIcon as Reddit } from './BrandIcons';
 import { portfolioData } from '../data/portfolioData';
 
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1,
+      delayChildren: 0.1,
+    },
+  },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 15 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] as [number, number, number, number] },
+  },
+};
+
 export const Hero: React.FC = () => {
   const [statusIndex, setStatusIndex] = useState(0);
   const statuses = [
@@ -12,31 +32,78 @@ export const Hero: React.FC = () => {
     { text: "Open to Opportunities", emoji: "💻" }
   ];
 
+  const heroRef = React.useRef<HTMLDivElement>(null);
+
   useEffect(() => {
     const interval = setInterval(() => {
       setStatusIndex((prev) => (prev + 1) % statuses.length);
     }, 3000);
     return () => clearInterval(interval);
   }, []);
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-        delayChildren: 0.1,
-      },
-    },
-  };
 
-  const itemVariants = {
-    hidden: { opacity: 0, y: 15 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] as [number, number, number, number] },
-    },
-  };
+  useEffect(() => {
+    const hero = heroRef.current;
+    if (!hero) return;
+
+    const finePointer = window.matchMedia('(pointer: fine)').matches;
+    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (prefersReduced || !finePointer) return;
+
+    const chars = hero.querySelectorAll('.kinetic-char');
+    if (!chars.length) return;
+
+    let raf: number | null = null;
+    let mx = 0;
+    let my = 0;
+    const RADIUS = 220;
+
+    const update = () => {
+      raf = null;
+      chars.forEach((node) => {
+        const ch = node as HTMLElement;
+        const r = ch.getBoundingClientRect();
+        const charCenterX = r.left + r.width / 2;
+        const charCenterY = r.top + r.height / 2;
+        const d = Math.hypot(mx - charCenterX, my - charCenterY);
+        const t = Math.max(0, 1 - d / RADIUS);
+
+        if (t > 0.01) {
+          const wght = (850 - 330 * t).toFixed(0);
+          const wdth = (125 - 45 * t).toFixed(1);
+          ch.style.fontVariationSettings = `'wght' ${wght}, 'wdth' ${wdth}`;
+        } else {
+          ch.style.fontVariationSettings = '';
+        }
+      });
+    };
+
+    const handlePointerMove = (e: PointerEvent) => {
+      mx = e.clientX;
+      my = e.clientY;
+      if (raf === null) {
+        raf = requestAnimationFrame(update);
+      }
+    };
+
+    const handlePointerLeave = () => {
+      if (raf !== null) {
+        cancelAnimationFrame(raf);
+        raf = null;
+      }
+      chars.forEach((node) => {
+        (node as HTMLElement).style.fontVariationSettings = '';
+      });
+    };
+
+    hero.addEventListener('pointermove', handlePointerMove);
+    hero.addEventListener('pointerleave', handlePointerLeave);
+
+    return () => {
+      hero.removeEventListener('pointermove', handlePointerMove);
+      hero.removeEventListener('pointerleave', handlePointerLeave);
+      if (raf !== null) cancelAnimationFrame(raf);
+    };
+  }, []);
 
   const handleScrollToProjects = () => {
     const el = document.querySelector('#projects');
@@ -46,7 +113,7 @@ export const Hero: React.FC = () => {
   };
 
   return (
-    <section className="min-h-screen flex items-center justify-center pt-28 pb-12 px-6 bg-brand-bg">
+    <section ref={heroRef} className="min-h-screen flex items-center justify-center pt-28 pb-12 px-6 bg-brand-bg">
       <div className="max-w-6xl w-full mx-auto">
         <motion.div
           variants={containerVariants}
@@ -68,11 +135,36 @@ export const Hero: React.FC = () => {
               {/* Unique Heading */}
               <motion.h1
                 variants={itemVariants}
-                className="font-heading font-extrabold text-5xl md:text-7xl tracking-tight text-brand-primary uppercase leading-none"
+                className="font-mihir font-black text-5xl md:text-8xl tracking-tight text-brand-primary uppercase leading-[0.9] select-none"
+                style={{ fontStretch: '125%', fontWeight: 850 }}
               >
-                SANKET<br />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-accent via-indigo-400 to-violet-500">
-                  CHAUDHARI
+                <span className="block overflow-hidden pb-1 -mb-1">
+                  {"SANKET".split('').map((char, i) => (
+                    <span
+                      key={i}
+                      className="kinetic-char inline-block"
+                      style={{
+                        fontVariationSettings: "'wght' 850, 'wdth' 125",
+                        willChange: 'font-variation-settings'
+                      }}
+                    >
+                      {char}
+                    </span>
+                  ))}
+                </span>
+                <span className="block overflow-hidden pb-1 -mb-1 text-transparent bg-clip-text bg-gradient-to-r from-brand-accent via-indigo-400 to-violet-500">
+                  {"CHAUDHARI".split('').map((char, i) => (
+                    <span
+                      key={i}
+                      className="kinetic-char inline-block"
+                      style={{
+                        fontVariationSettings: "'wght' 850, 'wdth' 125",
+                        willChange: 'font-variation-settings'
+                      }}
+                    >
+                      {char}
+                    </span>
+                  ))}
                 </span>
               </motion.h1>
 

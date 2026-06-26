@@ -282,10 +282,10 @@ client/ # Dashboard analytics widgets`,
       description: "Built in first year with zero backend experience using AI tools. Now serves 1,500+ students with notes, PYQs, and exam resources across 10+ subjects. 400+ active users annually — completely self-maintained with zero downtime."
     },
     {
-      title: "🥇 Gold Medalist — National Football Championship",
+      title: "Gold Medalist — National Football Championship",
       issuer: "5th Open National Football Championship U-19",
       date: "2023",
-      description: "Selected to represent Maharashtra State Team out of hundreds of players. Secured 1st place nationally, competing against teams across India. Demonstrates discipline, leadership under pressure, and elite team coordination — skills that translate directly to engineering teams."
+      description: "Represented Maharashtra in the 5th Open National Football Championship (U-19), where our team secured 1st place. The tournament strengthened my ability to work as part of a team, stay focused under pressure, and perform consistently in competitive environments."
     }
   ],
   activities: [
