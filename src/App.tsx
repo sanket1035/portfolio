@@ -6,6 +6,8 @@ import Footer from './components/Footer';
 import Home from './pages/Home';
 import Privacy from './pages/Privacy';
 import NotFound from './pages/NotFound';
+import { Analytics } from '@vercel/analytics/react';
+import { SpeedInsights } from '@vercel/speed-insights/react';
 
 // Performance optimization: dynamic bundle imports
 const CaseStudy = React.lazy(() => import('./pages/CaseStudy'));
@@ -215,6 +217,8 @@ function App() {
               </div>
             </div>
           )}
+          <Analytics />
+          <SpeedInsights />
         </div>
       </Router>
     </ThemeProvider>
