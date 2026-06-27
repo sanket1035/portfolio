@@ -19,76 +19,27 @@ export const ResumeView: React.FC = () => {
         </div>
 
         <div className="grid md:grid-cols-5 gap-10 items-stretch">
-          {/* Highlights & Download Actions */}
-          <div className="md:col-span-2 flex flex-col justify-between space-y-8">
-            <div className="space-y-6">
-              <h3 className="font-heading font-bold text-xl text-brand-primary">
-                Resume Overview
-              </h3>
-              <p className="font-sans text-sm md:text-base text-brand-text-muted leading-relaxed">
-                Recruiters and hiring managers can download a single-page PDF containing a complete log of academic scores, internship credentials, and full technology descriptions.
-              </p>
-
-              <div className="space-y-4">
-                <div className="flex gap-3">
-                  <div className="p-2 rounded-lg bg-brand-border text-brand-accent shrink-0 h-9 w-9 flex items-center justify-center font-bold text-sm">
-                    1
-                  </div>
-                  <div>
-                    <h4 className="font-heading font-semibold text-sm text-brand-text">PICT Credentials</h4>
-                    <p className="text-xs text-brand-text-muted leading-snug">
-                      Academic details, AI & Data Science coursework, and grades (8.9/10 GPA).
-                    </p>
-                  </div>
-                </div>
-
-                <div className="flex gap-3">
-                  <div className="p-2 rounded-lg bg-brand-border text-brand-accent shrink-0 h-9 w-9 flex items-center justify-center font-bold text-sm">
-                    2
-                  </div>
-                  <div>
-                    <h4 className="font-heading font-semibold text-sm text-brand-text">Core Projects</h4>
-                    <p className="text-xs text-brand-text-muted leading-snug">
-                      Developer outlines for PlaceTrack AI, Algonix, and Carbonomics AI.
-                    </p>
-                  </div>
-                </div>
-
-                <div className="flex gap-3">
-                  <div className="p-2 rounded-lg bg-brand-border text-brand-accent shrink-0 h-9 w-9 flex items-center justify-center font-bold text-sm">
-                    3
-                  </div>
-                  <div>
-                    <h4 className="font-heading font-semibold text-sm text-brand-text">Open Source Timeline</h4>
-                    <p className="text-xs text-brand-text-muted leading-snug">
-                      Program roles and documentation contributions.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-
+          {/* Download Actions */}
+          <div className="md:col-span-2 flex flex-col justify-center space-y-4">
             {/* CTA Download button */}
-            <div className="space-y-4">
-              <a
-                href={portfolioData.resumeUrl}
-                download
-                className="w-full px-6 py-4 rounded-xl bg-brand-primary text-brand-bg font-bold text-sm transition-all hover:opacity-90 flex items-center justify-center gap-2 cursor-pointer shadow-lg shadow-brand-primary/10"
-              >
-                <Download size={16} />
-                Download PDF Resume
-              </a>
+            <a
+              href={portfolioData.resumeUrl}
+              download
+              className="w-full px-6 py-4 rounded-xl bg-brand-primary text-brand-bg font-bold text-sm transition-all hover:opacity-90 flex items-center justify-center gap-2 cursor-pointer shadow-lg shadow-brand-primary/10"
+            >
+              <Download size={16} />
+              Download PDF Resume
+            </a>
 
-              <a
-                href={portfolioData.resumeUrl}
-                target="_blank"
-                rel="noreferrer"
-                className="w-full px-6 py-3.5 rounded-xl border border-brand-border bg-brand-card/50 hover:bg-brand-card hover:border-brand-accent/50 text-brand-text font-semibold text-sm transition-all flex items-center justify-center gap-2 cursor-pointer"
-              >
-                <ExternalLink size={14} className="text-brand-accent" />
-                Open PDF in New Tab
-              </a>
-            </div>
+            <a
+              href={portfolioData.resumeUrl}
+              target="_blank"
+              rel="noreferrer"
+              className="w-full px-6 py-3.5 rounded-xl border border-brand-border bg-brand-card/50 hover:bg-brand-card hover:border-brand-accent/50 text-brand-text font-semibold text-sm transition-all flex items-center justify-center gap-2 cursor-pointer"
+            >
+              <ExternalLink size={14} className="text-brand-accent" />
+              Open PDF in New Tab
+            </a>
           </div>
 
           {/* PDF Preview Window */}

@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import React, { useEffect, useRef } from 'react';
+import { motion, useInView, animate } from 'framer-motion';
 import { FileText, ArrowRight, Mail } from 'lucide-react';
 import { GithubIcon as Github, LinkedinIcon as Linkedin, YoutubeIcon as Youtube, LeetcodeIcon as Leetcode, DevtoIcon as Devto, MediumIcon as Medium, RedditIcon as Reddit } from './BrandIcons';
 import { portfolioData } from '../data/portfolioData';
@@ -24,22 +24,31 @@ const itemVariants = {
   },
 };
 
-export const Hero: React.FC = () => {
-  const [statusIndex, setStatusIndex] = useState(0);
-  const statuses = [
-    { text: "Building Carbonomics AI", emoji: "🟢" },
-    { text: "Final Year B.Tech Student", emoji: "📚" },
-    { text: "Open to Opportunities", emoji: "💻" }
-  ];
-
-  const heroRef = React.useRef<HTMLDivElement>(null);
+const CountUpNumber: React.FC<{ value: number; decimals?: number; suffix?: string; prefix?: string }> = ({ value, decimals = 0, suffix = '', prefix = '' }) => {
+  const nodeRef = useRef<HTMLSpanElement>(null);
+  const isInView = useInView(nodeRef, { once: true, margin: "-50px" });
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setStatusIndex((prev) => (prev + 1) % statuses.length);
-    }, 3000);
-    return () => clearInterval(interval);
-  }, []);
+    if (isInView) {
+      const node = nodeRef.current;
+      if (!node) return;
+      const controls = animate(0, value, {
+        duration: 1.5,
+        ease: "easeOut",
+        onUpdate(latest) {
+          node.textContent = prefix + latest.toFixed(decimals) + suffix;
+        }
+      });
+      return () => controls.stop();
+    }
+  }, [isInView, value, decimals, prefix, suffix]);
+
+  return <span ref={nodeRef}>{prefix}{(0).toFixed(decimals)}{suffix}</span>;
+};
+
+
+export const Hero: React.FC = () => {
+  const heroRef = React.useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const hero = heroRef.current;
@@ -179,6 +188,17 @@ export const Hero: React.FC = () => {
               >
                 {portfolioData.bio}
               </motion.p>
+
+              {/* Status Badge */}
+              <motion.div variants={itemVariants} className="pt-2">
+                <div className="flex items-center gap-2 px-3 py-1.5 rounded-full border border-green-500/30 bg-green-500/10 w-fit select-none">
+                  <span className="relative flex h-2 w-2">
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                    <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+                  </span>
+                  <span className="text-green-400 text-xs font-medium">Open to Opportunities · 2027</span>
+                </div>
+              </motion.div>
             </div>
 
             {/* Specifications Table */}
@@ -187,7 +207,7 @@ export const Hero: React.FC = () => {
                 <tbody>
                   {/* Row 1: Education */}
                   <tr className="border-b border-brand-border/40">
-                    <td className="py-3 font-mono text-[10px] tracking-wider text-brand-text-muted uppercase w-28 md:w-36">
+                    <td className="py-3 font-mono text-[10px] tracking-wider text-gray-600 dark:text-gray-400 uppercase w-28 md:w-36">
                       Education
                     </td>
                     <td className="py-3 text-brand-primary font-medium">
@@ -201,7 +221,7 @@ export const Hero: React.FC = () => {
 
                   {/* Row 2: CGPA */}
                   <tr className="border-b border-brand-border/40">
-                    <td className="py-3 font-mono text-[10px] tracking-wider text-brand-text-muted uppercase">
+                    <td className="py-3 font-mono text-[10px] tracking-wider text-gray-600 dark:text-gray-400 uppercase">
                       CGPA
                     </td>
                     <td className="py-3 text-brand-primary font-medium font-mono">
@@ -211,17 +231,24 @@ export const Hero: React.FC = () => {
 
                   {/* Row 3: Projects */}
                   <tr className="border-b border-brand-border/40">
-                    <td className="py-3 font-mono text-[10px] tracking-wider text-brand-text-muted uppercase">
+                    <td className="py-3 font-mono text-[10px] tracking-wider text-gray-600 dark:text-gray-400 uppercase">
                       Featured Projects
                     </td>
                     <td className="py-3 text-brand-primary font-medium">
-                      PlaceTrack AI · Algonix · GST Billing App · Carbonomics AI
+                      <div className="flex flex-wrap gap-2 mt-1">
+                        {['PlaceTrack AI', 'Algonix', 'GST Billing App', 'Carbonomics AI'].map(p => (
+                          <a href="#projects" key={p}
+                            className="px-2.5 py-0.5 rounded-md text-xs font-medium bg-purple-500/10 text-purple-400 border border-purple-500/20 hover:bg-purple-500/20 hover:border-purple-500/40 transition-all cursor-pointer">
+                            {p}
+                          </a>
+                        ))}
+                      </div>
                     </td>
                   </tr>
 
                   {/* Row 4: Open Source */}
                   <tr className="border-b border-brand-border/40">
-                    <td className="py-3 font-mono text-[10px] tracking-wider text-brand-text-muted uppercase">
+                    <td className="py-3 font-mono text-[10px] tracking-wider text-gray-600 dark:text-gray-400 uppercase">
                       Open Source
                     </td>
                     <td className="py-3 text-brand-primary font-medium">
@@ -231,7 +258,7 @@ export const Hero: React.FC = () => {
 
                   {/* Row 5: Languages */}
                   <tr className="border-b border-brand-border/40">
-                    <td className="py-3 font-mono text-[10px] tracking-wider text-brand-text-muted uppercase">
+                    <td className="py-3 font-mono text-[10px] tracking-wider text-gray-600 dark:text-gray-400 uppercase">
                       Languages
                     </td>
                     <td className="py-3 text-brand-primary font-medium font-mono text-xs text-indigo-400">
@@ -241,46 +268,68 @@ export const Hero: React.FC = () => {
 
                   {/* Row 6: Location */}
                   <tr className="border-b border-brand-border/40">
-                    <td className="py-3 font-mono text-[10px] tracking-wider text-brand-text-muted uppercase">
+                    <td className="py-3 font-mono text-[10px] tracking-wider text-gray-600 dark:text-gray-400 uppercase">
                       Location
                     </td>
                     <td className="py-3 text-brand-primary font-medium">
                       {portfolioData.location}
                     </td>
                   </tr>
-
-                  {/* Row 7: Status */}
-                  <tr className="border-b border-brand-border/40">
-                    <td className="py-3 font-mono text-[10px] tracking-wider text-brand-text-muted uppercase">
-                      Status
-                    </td>
-                    <td className="py-3 text-brand-primary font-medium h-12">
-                      <div className="flex items-center gap-2 overflow-hidden h-full">
-                        <AnimatePresence mode="wait">
-                          <motion.span
-                            key={statusIndex}
-                            initial={{ y: 15, opacity: 0 }}
-                            animate={{ y: 0, opacity: 1 }}
-                            exit={{ y: -15, opacity: 0 }}
-                            transition={{ duration: 0.3 }}
-                            className="flex items-center gap-2"
-                          >
-                            <span>{statuses[statusIndex].emoji}</span>
-                            <span>{statuses[statusIndex].text}</span>
-                          </motion.span>
-                        </AnimatePresence>
-                      </div>
-                    </td>
-                  </tr>
                 </tbody>
               </table>
+            </motion.div>
+
+            {/* Stats Strip */}
+            <motion.div
+              variants={itemVariants}
+              className="grid grid-cols-2 md:grid-cols-4 gap-4 py-5 border-y border-brand-border/40 my-6"
+            >
+              {/* Projects Shipped */}
+              <div className="border-r border-brand-border/40 pr-2">
+                <div className="text-2xl md:text-3xl font-bold text-brand-primary">
+                  <CountUpNumber value={4} suffix="+" />
+                </div>
+                <div className="text-[11px] md:text-xs text-brand-text-muted mt-1 uppercase font-mono tracking-wider">
+                  Projects Shipped
+                </div>
+              </div>
+
+              {/* GitHub Commits */}
+              <div className="border-r-0 md:border-r border-brand-border/40 pr-2 md:pl-4">
+                <div className="text-2xl md:text-3xl font-bold text-brand-primary">
+                  <CountUpNumber value={500} suffix="+" />
+                </div>
+                <div className="text-[11px] md:text-xs text-brand-text-muted mt-1 uppercase font-mono tracking-wider">
+                  GitHub Commits
+                </div>
+              </div>
+
+              {/* OSS Contributions */}
+              <div className="border-r border-brand-border/40 pr-2 md:pl-4">
+                <div className="text-2xl md:text-3xl font-bold text-brand-primary">
+                  <CountUpNumber value={2} suffix=" Merged PRs" />
+                </div>
+                <div className="text-[11px] md:text-xs text-brand-text-muted mt-1 uppercase font-mono tracking-wider">
+                  OSS Contributions
+                </div>
+              </div>
+
+              {/* CGPA */}
+              <div className="pr-2 md:pl-4">
+                <div className="text-2xl md:text-3xl font-bold text-brand-primary">
+                  <CountUpNumber value={8.66} decimals={2} suffix=" / 10" />
+                </div>
+                <div className="text-[11px] md:text-xs text-brand-text-muted mt-1 uppercase font-mono tracking-wider">
+                  CGPA
+                </div>
+              </div>
             </motion.div>
 
             {/* CTAs */}
             <motion.div variants={itemVariants} className="flex flex-col sm:flex-row items-center gap-4 pt-2">
               <button
                 onClick={handleScrollToProjects}
-                className="w-full sm:w-auto px-6 py-3 rounded-lg bg-brand-primary text-brand-bg font-bold text-xs hover:opacity-90 transition-all flex items-center justify-center gap-2 cursor-pointer shadow-md"
+                className="w-full sm:w-auto px-6 py-3 rounded-lg bg-brand-primary text-brand-bg font-bold text-xs hover:opacity-90 transition-all flex items-center justify-center gap-2 cursor-pointer shadow-md dark:bg-purple-600 dark:hover:bg-purple-500 dark:text-white dark:border-transparent"
               >
                 View My Work
                 <ArrowRight size={14} />
@@ -300,104 +349,157 @@ export const Hero: React.FC = () => {
 
               {/* Social links */}
               <div className="flex flex-wrap items-center gap-3 pl-0 sm:pl-4 border-l border-none sm:border-brand-border text-brand-text-muted">
-                <a
-                  href={portfolioData.socials.github}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="hover:text-brand-accent transition-colors"
-                  aria-label="GitHub Profile"
-                >
-                  <Github size={18} />
-                </a>
-                <a
-                  href={portfolioData.socials.linkedin}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="hover:text-brand-accent transition-colors"
-                  aria-label="LinkedIn Profile"
-                >
-                  <Linkedin size={18} />
-                </a>
+                {/* GitHub */}
+                <div className="relative group">
+                  <a
+                    href={portfolioData.socials.github}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="hover:text-brand-accent transition-colors block"
+                    aria-label="GitHub Profile"
+                  >
+                    <Github size={18} />
+                  </a>
+                  <span className="absolute -top-8 left-1/2 -translate-x-1/2 bg-gray-900 text-white text-[10px] px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none shadow-md z-30">
+                    GitHub
+                  </span>
+                </div>
+
+                {/* LinkedIn */}
+                <div className="relative group">
+                  <a
+                    href={portfolioData.socials.linkedin}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="hover:text-brand-accent transition-colors block"
+                    aria-label="LinkedIn Profile"
+                  >
+                    <Linkedin size={18} />
+                  </a>
+                  <span className="absolute -top-8 left-1/2 -translate-x-1/2 bg-gray-900 text-white text-[10px] px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none shadow-md z-30">
+                    LinkedIn
+                  </span>
+                </div>
+
+                {/* LeetCode */}
                 {portfolioData.socials.leetcode && (
-                  <a
-                    href={portfolioData.socials.leetcode}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="hover:text-brand-accent transition-colors"
-                    aria-label="LeetCode Profile"
-                  >
-                    <Leetcode size={18} />
-                  </a>
+                  <div className="relative group">
+                    <a
+                      href={portfolioData.socials.leetcode}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="hover:text-brand-accent transition-colors block"
+                      aria-label="LeetCode Profile"
+                    >
+                      <Leetcode size={18} />
+                    </a>
+                    <span className="absolute -top-8 left-1/2 -translate-x-1/2 bg-gray-900 text-white text-[10px] px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none shadow-md z-30">
+                      LeetCode
+                    </span>
+                  </div>
                 )}
+
+                {/* YouTube */}
                 {portfolioData.socials.youtube && (
-                  <a
-                    href={portfolioData.socials.youtube}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="hover:text-brand-accent transition-colors"
-                    aria-label="YouTube Channel"
-                  >
-                    <Youtube size={18} />
-                  </a>
+                  <div className="relative group">
+                    <a
+                      href={portfolioData.socials.youtube}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="hover:text-brand-accent transition-colors block"
+                      aria-label="YouTube Channel"
+                    >
+                      <Youtube size={18} />
+                    </a>
+                    <span className="absolute -top-8 left-1/2 -translate-x-1/2 bg-gray-900 text-white text-[10px] px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none shadow-md z-30">
+                      YouTube
+                    </span>
+                  </div>
                 )}
+
+                {/* Dev.to */}
                 {portfolioData.socials.devto && (
-                  <a
-                    href={portfolioData.socials.devto}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="hover:text-brand-accent transition-colors"
-                    aria-label="Dev.to Blog"
-                  >
-                    <Devto size={18} />
-                  </a>
+                  <div className="relative group">
+                    <a
+                      href={portfolioData.socials.devto}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="hover:text-brand-accent transition-colors block"
+                      aria-label="Dev.to Blog"
+                    >
+                      <Devto size={18} />
+                    </a>
+                    <span className="absolute -top-8 left-1/2 -translate-x-1/2 bg-gray-900 text-white text-[10px] px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none shadow-md z-30">
+                      Dev.to
+                    </span>
+                  </div>
                 )}
+
+                {/* Medium */}
                 {portfolioData.socials.medium && (
-                  <a
-                    href={portfolioData.socials.medium}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="hover:text-brand-accent transition-colors"
-                    aria-label="Medium Blog"
-                  >
-                    <Medium size={18} />
-                  </a>
+                  <div className="relative group">
+                    <a
+                      href={portfolioData.socials.medium}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="hover:text-brand-accent transition-colors block"
+                      aria-label="Medium Blog"
+                    >
+                      <Medium size={18} />
+                    </a>
+                    <span className="absolute -top-8 left-1/2 -translate-x-1/2 bg-gray-900 text-white text-[10px] px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none shadow-md z-30">
+                      Medium
+                    </span>
+                  </div>
                 )}
+
+                {/* Reddit */}
                 {portfolioData.socials.reddit && (
-                  <a
-                    href={portfolioData.socials.reddit}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="hover:text-brand-accent transition-colors"
-                    aria-label="Reddit Profile"
-                  >
-                    <Reddit size={18} />
-                  </a>
+                  <div className="relative group">
+                    <a
+                      href={portfolioData.socials.reddit}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="hover:text-brand-accent transition-colors block"
+                      aria-label="Reddit Profile"
+                    >
+                      <Reddit size={18} />
+                    </a>
+                    <span className="absolute -top-8 left-1/2 -translate-x-1/2 bg-gray-900 text-white text-[10px] px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none shadow-md z-30">
+                      Reddit
+                    </span>
+                  </div>
                 )}
-                <a
-                  href={`mailto:${portfolioData.socials.email}`}
-                  className="hover:text-brand-accent transition-colors"
-                  aria-label="Send Email"
-                >
-                  <Mail size={18} />
-                </a>
+
+                {/* Email */}
+                <div className="relative group">
+                  <a
+                    href={`mailto:${portfolioData.socials.email}`}
+                    className="hover:text-brand-accent transition-colors block"
+                    aria-label="Send Email"
+                  >
+                    <Mail size={18} />
+                  </a>
+                  <span className="absolute -top-8 left-1/2 -translate-x-1/2 bg-gray-900 text-white text-[10px] px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none shadow-md z-30">
+                    Email
+                  </span>
+                </div>
               </div>
             </motion.div>
           </div>
 
-          {/* Right Column: Original Abstract Portfolio Picture */}
+          {/* Right Column: Profile Picture */}
           <div className="lg:col-span-5 flex flex-col items-center">
             <motion.div
               variants={itemVariants}
-              className="p-3 rounded-2xl bg-brand-card border border-brand-border shadow-2xl max-w-sm w-full"
+              className="relative max-w-sm w-full aspect-[4/5]"
             >
-              {/* Natural Color Portrait (No Grayscale, No hover effects filters) */}
-              <div className="aspect-[4/5] rounded-xl overflow-hidden bg-brand-bg border border-brand-border/40">
-                <img
-                  src="/placeholders/hero.jpg"
-                  alt="Sanket Chaudhari Profile Banner"
-                  className="w-full h-full object-cover brightness-95"
-                />
-              </div>
+              <img
+                src="/placeholders/hero.png"
+                alt="Sanket Chaudhari Profile"
+                className="w-full h-full object-contain"
+              />
+              <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-[#f8fafc] dark:from-[#0b0c10] to-transparent pointer-events-none" />
             </motion.div>
           </div>
         </motion.div>

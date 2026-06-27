@@ -117,7 +117,7 @@ export const Navbar: React.FC = () => {
                       : 'text-brand-text-muted hover:text-brand-text'
                   }`}
                 >
-                  <span className="text-[9px] text-brand-accent/50 mr-1.5">{link.num}</span>
+                  <span className="text-[10px] opacity-40 mr-1.5">{link.num}</span>
                   {link.label}
 
                   {/* Sliding Underline Animation */}
@@ -229,7 +229,7 @@ export const Navbar: React.FC = () => {
                         : 'text-brand-text-muted hover:text-brand-text'
                     }`}
                   >
-                    <span className="text-[10px] text-brand-accent/50 mr-2">{link.num}</span>
+                    <span className="text-[10px] opacity-40 mr-2">{link.num}</span>
                     {link.label}
                   </button>
                 );
