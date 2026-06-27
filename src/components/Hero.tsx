@@ -282,44 +282,44 @@ export const Hero: React.FC = () => {
             {/* Stats Strip */}
             <motion.div
               variants={itemVariants}
-              className="grid grid-cols-2 md:grid-cols-4 gap-4 py-5 border-y border-brand-border/40 my-6"
+              className="grid grid-cols-2 md:grid-cols-4 gap-2 md:gap-4 py-5 border-y border-brand-border/40 my-6 w-full"
             >
               {/* Projects Shipped */}
-              <div className="border-r border-brand-border/40 pr-2">
-                <div className="text-2xl md:text-3xl font-bold text-brand-primary">
+              <div className="border-r border-brand-border/40 pr-2 whitespace-nowrap">
+                <div className="text-xl md:text-2xl font-bold text-brand-primary whitespace-nowrap">
                   <CountUpNumber value={4} suffix="+" />
                 </div>
-                <div className="text-[11px] md:text-xs text-brand-text-muted mt-1 uppercase font-mono tracking-wider">
+                <div className="text-[10px] tracking-wider text-brand-text-muted mt-1 uppercase font-mono whitespace-nowrap">
                   Projects Shipped
                 </div>
               </div>
 
               {/* GitHub Commits */}
-              <div className="border-r-0 md:border-r border-brand-border/40 pr-2 md:pl-4">
-                <div className="text-2xl md:text-3xl font-bold text-brand-primary">
+              <div className="border-r-0 md:border-r border-brand-border/40 pr-2 md:pl-4 whitespace-nowrap">
+                <div className="text-xl md:text-2xl font-bold text-brand-primary whitespace-nowrap">
                   <CountUpNumber value={500} suffix="+" />
                 </div>
-                <div className="text-[11px] md:text-xs text-brand-text-muted mt-1 uppercase font-mono tracking-wider">
+                <div className="text-[10px] tracking-wider text-brand-text-muted mt-1 uppercase font-mono whitespace-nowrap">
                   GitHub Commits
                 </div>
               </div>
 
               {/* OSS Contributions */}
-              <div className="border-r border-brand-border/40 pr-2 md:pl-4">
-                <div className="text-2xl md:text-3xl font-bold text-brand-primary">
+              <div className="border-r border-brand-border/40 pr-2 md:pl-4 whitespace-nowrap">
+                <div className="text-xl md:text-2xl font-bold text-brand-primary whitespace-nowrap">
                   <CountUpNumber value={2} suffix=" Merged PRs" />
                 </div>
-                <div className="text-[11px] md:text-xs text-brand-text-muted mt-1 uppercase font-mono tracking-wider">
+                <div className="text-[10px] tracking-wider text-brand-text-muted mt-1 uppercase font-mono whitespace-nowrap">
                   OSS Contributions
                 </div>
               </div>
 
               {/* CGPA */}
-              <div className="pr-2 md:pl-4">
-                <div className="text-2xl md:text-3xl font-bold text-brand-primary">
+              <div className="pr-2 md:pl-4 whitespace-nowrap">
+                <div className="text-xl md:text-2xl font-bold text-brand-primary whitespace-nowrap">
                   <CountUpNumber value={8.66} decimals={2} suffix=" / 10" />
                 </div>
-                <div className="text-[11px] md:text-xs text-brand-text-muted mt-1 uppercase font-mono tracking-wider">
+                <div className="text-[10px] tracking-wider text-brand-text-muted mt-1 uppercase font-mono whitespace-nowrap">
                   CGPA
                 </div>
               </div>
@@ -489,17 +489,29 @@ export const Hero: React.FC = () => {
           </div>
 
           {/* Right Column: Profile Picture */}
-          <div className="lg:col-span-5 flex flex-col items-center">
+          <div className="lg:col-span-5 flex items-end justify-center mt-8 lg:mt-0">
             <motion.div
               variants={itemVariants}
-              className="relative max-w-sm w-full aspect-[4/5]"
+              className="relative w-full flex items-end justify-center h-[400px] md:h-[560px] overflow-visible"
             >
+              {/* Dot texture */}
+              <div
+                className="absolute w-80 h-80 top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none"
+                style={{
+                  backgroundImage: 'radial-gradient(circle, rgba(124,58,237,0.15) 1px, transparent 1px)',
+                  backgroundSize: '20px 20px'
+                }}
+              />
+              {/* Glow blob */}
+              <div className="absolute w-72 h-72 top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full bg-purple-400/20 dark:bg-purple-600/35 blur-[60px] dark:blur-[80px] pointer-events-none" />
+              {/* Ring border */}
+              <div className="absolute w-80 h-80 top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 border border-purple-400/15 dark:border-purple-500/20 rounded-full pointer-events-none" />
+              {/* Photo */}
               <img
                 src="/placeholders/hero.png"
                 alt="Sanket Chaudhari Profile"
-                className="w-full h-full object-contain"
+                className="relative z-10 max-h-full w-auto object-contain"
               />
-              <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-[#f8fafc] dark:from-[#0b0c10] to-transparent pointer-events-none" />
             </motion.div>
           </div>
         </motion.div>
