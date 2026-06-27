@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { m, AnimatePresence } from 'framer-motion';
 import { Search, Compass, BookOpen, GitBranch, Trophy, Cpu, Mail, FileText, Terminal, ShieldAlert, X, Gamepad2 } from 'lucide-react';
 import { GithubIcon as Github } from './BrandIcons';
 import { portfolioData } from '../data/portfolioData';
@@ -197,13 +197,13 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({ isOpen, onClose 
   return (
     <AnimatePresence>
       {isOpen && (
-        <motion.div
+        <m.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           className="fixed inset-0 z-50 bg-black/75 backdrop-blur-sm flex items-start justify-center pt-[10vh] px-4"
         >
-          <motion.div
+          <m.div
             ref={containerRef}
             initial={{ y: -20, scale: 0.98, opacity: 0 }}
             animate={{ y: 0, scale: 1, opacity: 1 }}
@@ -284,8 +284,8 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({ isOpen, onClose 
               </div>
               <span>ESC Close</span>
             </div>
-          </motion.div>
-        </motion.div>
+          </m.div>
+        </m.div>
       )}
     </AnimatePresence>
   );

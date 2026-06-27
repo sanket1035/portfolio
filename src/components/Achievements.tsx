@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { m, AnimatePresence } from 'framer-motion';
 import { Award, Users, FileCheck, ExternalLink, Calendar, ShieldCheck, Trophy, Sparkles } from 'lucide-react';
 import { portfolioData } from '../data/portfolioData';
 
@@ -75,7 +75,7 @@ export const Achievements: React.FC = () => {
         <div className="min-h-[350px]">
           <AnimatePresence mode="wait">
             {activeTab === 'achievements' && (
-              <motion.div
+              <m.div
                 key="achievements"
                 variants={containerVariants}
                 initial="hidden"
@@ -84,7 +84,7 @@ export const Achievements: React.FC = () => {
                 className="grid md:grid-cols-2 gap-8"
               >
                 {portfolioData.achievements.map((item, idx) => (
-                  <motion.div
+                  <m.div
                     key={idx}
                     variants={itemVariants}
                     className="group flex flex-col justify-between rounded-2xl bg-brand-card border border-brand-border hover:border-brand-accent/30 shadow-md hover:shadow-brand-accent/5 transition-all duration-300 relative overflow-hidden"
@@ -131,13 +131,13 @@ export const Achievements: React.FC = () => {
                         </p>
                       </div>
                     </div>
-                  </motion.div>
+                  </m.div>
                 ))}
-              </motion.div>
+              </m.div>
             )}
 
             {activeTab === 'activities' && (
-              <motion.div
+              <m.div
                 key="activities"
                 variants={containerVariants}
                 initial="hidden"
@@ -146,7 +146,7 @@ export const Achievements: React.FC = () => {
                 className="grid md:grid-cols-2 gap-8"
               >
                 {portfolioData.activities.map((item, idx) => (
-                  <motion.div
+                  <m.div
                     key={idx}
                     variants={itemVariants}
                     className="group flex flex-col justify-between rounded-2xl bg-brand-card border border-brand-border hover:border-brand-accent/30 shadow-md hover:shadow-brand-accent/5 transition-all duration-300 relative overflow-hidden"
@@ -190,13 +190,13 @@ export const Achievements: React.FC = () => {
                         </p>
                       </div>
                     </div>
-                  </motion.div>
+                  </m.div>
                 ))}
-              </motion.div>
+              </m.div>
             )}
 
             {activeTab === 'certificates' && (
-              <motion.div
+              <m.div
                 key="certificates"
                 variants={containerVariants}
                 initial="hidden"
@@ -205,7 +205,7 @@ export const Achievements: React.FC = () => {
                 className="grid md:grid-cols-2 lg:grid-cols-3 gap-6"
               >
                 {portfolioData.certificates.map((item, idx) => (
-                  <motion.div
+                  <m.div
                     key={idx}
                     variants={itemVariants}
                     className="group flex flex-col justify-between rounded-2xl bg-brand-card border border-brand-border hover:border-brand-accent/30 shadow-md hover:shadow-brand-accent/5 transition-all duration-300 relative overflow-hidden"
@@ -300,9 +300,9 @@ export const Achievements: React.FC = () => {
                         </div>
                       )}
                     </div>
-                  </motion.div>
+                  </m.div>
                 ))}
-              </motion.div>
+              </m.div>
             )}
           </AnimatePresence>
         </div>

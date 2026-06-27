@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { Menu, X, Sun, Moon, Gamepad2 } from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { m, AnimatePresence } from 'framer-motion';
 import { useTheme } from '../context/ThemeContext';
 
 export const Navbar: React.FC = () => {
@@ -122,7 +122,7 @@ export const Navbar: React.FC = () => {
 
                   {/* Sliding Underline Animation */}
                   {isActive && !link.border && (
-                    <motion.div
+                    <m.div
                       layoutId="activeNavUnderline"
                       className="absolute bottom-0 left-0 right-0 h-[2px] bg-brand-accent"
                       transition={{ type: 'spring', stiffness: 350, damping: 30 }}
@@ -207,7 +207,7 @@ export const Navbar: React.FC = () => {
       {/* Mobile Drawer */}
       <AnimatePresence>
         {isOpen && (
-          <motion.div
+          <m.div
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
@@ -235,7 +235,7 @@ export const Navbar: React.FC = () => {
                 );
               })}
             </div>
-          </motion.div>
+          </m.div>
         )}
       </AnimatePresence>
     </nav>

@@ -1,5 +1,6 @@
 import React, { useState, useEffect, Suspense } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { LazyMotion, domAnimation } from 'framer-motion';
 import { ThemeProvider } from './context/ThemeContext';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
@@ -111,6 +112,7 @@ function App() {
   }, []);
 
   return (
+    <LazyMotion features={domAnimation} strict>
     <ThemeProvider>
       <Router>
         <div className="min-h-screen flex flex-col bg-brand-bg text-brand-text transition-colors duration-300">
@@ -222,6 +224,7 @@ function App() {
         </div>
       </Router>
     </ThemeProvider>
+    </LazyMotion>
   );
 }
 

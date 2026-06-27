@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { m, AnimatePresence } from 'framer-motion';
 import { ShieldAlert, X } from 'lucide-react';
 
 interface MatrixOverlayProps {
@@ -81,7 +81,7 @@ export const MatrixOverlay: React.FC<MatrixOverlayProps> = ({ isOpen, onClose })
   return (
     <AnimatePresence>
       {isOpen && (
-        <motion.div
+        <m.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
@@ -91,7 +91,7 @@ export const MatrixOverlay: React.FC<MatrixOverlayProps> = ({ isOpen, onClose })
           <canvas ref={canvasRef} className="absolute inset-0 block w-full h-full" />
 
           {/* Retro Developer HUD Card */}
-          <motion.div
+          <m.div
             initial={{ scale: 0.9, y: 10, opacity: 0 }}
             animate={{ scale: 1, y: 0, opacity: 1 }}
             exit={{ scale: 0.9, y: 10, opacity: 0 }}
@@ -130,8 +130,8 @@ export const MatrixOverlay: React.FC<MatrixOverlayProps> = ({ isOpen, onClose })
               <X size={14} />
               Exit Simulation
             </button>
-          </motion.div>
-        </motion.div>
+          </m.div>
+        </m.div>
       )}
     </AnimatePresence>
   );

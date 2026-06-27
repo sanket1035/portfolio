@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { m, AnimatePresence } from 'framer-motion';
 import { Terminal, X } from 'lucide-react';
 import { portfolioData } from '../data/portfolioData';
 
@@ -155,14 +155,14 @@ export const TerminalOverlay: React.FC<TerminalOverlayProps> = ({ isOpen, onClos
   return (
     <AnimatePresence>
       {isOpen && (
-        <motion.div
+        <m.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           className="fixed inset-0 z-50 bg-black/90 backdrop-blur-md flex items-center justify-center p-4 sm:p-6 font-mono text-xs md:text-sm text-green-400"
           onClick={onClose}
         >
-          <motion.div
+          <m.div
             initial={{ scale: 0.95, y: 20 }}
             animate={{ scale: 1, y: 0 }}
             exit={{ scale: 0.95, y: 20 }}
@@ -232,8 +232,8 @@ export const TerminalOverlay: React.FC<TerminalOverlayProps> = ({ isOpen, onClos
                 />
               </div>
             </form>
-          </motion.div>
-        </motion.div>
+          </m.div>
+        </m.div>
       )}
     </AnimatePresence>
   );

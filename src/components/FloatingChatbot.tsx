@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { m, AnimatePresence } from 'framer-motion';
 import { MessageSquare, X, User, Bot, FileText, Sparkles } from 'lucide-react';
 import { portfolioData } from '../data/portfolioData';
 
@@ -113,7 +113,7 @@ export const FloatingChatbot: React.FC = () => {
     <div className="fixed bottom-6 right-6 z-50 font-sans">
       <AnimatePresence>
         {isOpen && (
-          <motion.div
+          <m.div
             initial={{ opacity: 0, y: 50, scale: 0.95 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 30, scale: 0.95 }}
@@ -208,12 +208,12 @@ export const FloatingChatbot: React.FC = () => {
                 ))}
               </div>
             </div>
-          </motion.div>
+          </m.div>
         )}
       </AnimatePresence>
 
       {/* Floating Toggle Button */}
-      <motion.button
+      <m.button
         onClick={() => setIsOpen(!isOpen)}
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
@@ -222,13 +222,13 @@ export const FloatingChatbot: React.FC = () => {
       >
         <AnimatePresence mode="wait">
           {isOpen ? (
-            <motion.div key="close" initial={{ rotate: -45 }} animate={{ rotate: 0 }} exit={{ rotate: 45 }}>
+            <m.div key="close" initial={{ rotate: -45 }} animate={{ rotate: 0 }} exit={{ rotate: 45 }}>
               <X size={24} />
-            </motion.div>
+            </m.div>
           ) : (
-            <motion.div key="chat" initial={{ scale: 0.8 }} animate={{ scale: 1 }} exit={{ scale: 0.8 }}>
+            <m.div key="chat" initial={{ scale: 0.8 }} animate={{ scale: 1 }} exit={{ scale: 0.8 }}>
               <MessageSquare size={24} />
-            </motion.div>
+            </m.div>
           )}
         </AnimatePresence>
         
@@ -238,7 +238,7 @@ export const FloatingChatbot: React.FC = () => {
             <Sparkles size={10} />
           </span>
         )}
-      </motion.button>
+      </m.button>
     </div>
   );
 };

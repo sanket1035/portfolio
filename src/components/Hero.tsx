@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react';
-import { motion, useInView, animate } from 'framer-motion';
+import { m, useInView, animate } from 'framer-motion';
 import { FileText, ArrowRight, Mail } from 'lucide-react';
 import { GithubIcon as Github, LinkedinIcon as Linkedin, YoutubeIcon as Youtube, LeetcodeIcon as Leetcode, DevtoIcon as Devto, MediumIcon as Medium, RedditIcon as Reddit } from './BrandIcons';
 import { portfolioData } from '../data/portfolioData';
@@ -124,7 +124,7 @@ export const Hero: React.FC = () => {
   return (
     <section ref={heroRef} className="min-h-screen flex items-center justify-center pt-28 pb-12 px-6 bg-brand-bg">
       <div className="max-w-6xl w-full mx-auto">
-        <motion.div
+        <m.div
           variants={containerVariants}
           initial="hidden"
           animate="visible"
@@ -134,15 +134,15 @@ export const Hero: React.FC = () => {
           <div className="lg:col-span-7 space-y-8">
             <div className="space-y-4">
               {/* Monospace Subtitle */}
-              <motion.div
+              <m.div
                 variants={itemVariants}
                 className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-brand-accent/20 bg-brand-accent-glow text-xs font-semibold text-brand-accent tracking-wider uppercase"
               >
                 <span>Software & AI Engineering</span>
-              </motion.div>
+              </m.div>
 
               {/* Unique Heading */}
-              <motion.h1
+              <m.h1
                 variants={itemVariants}
                 className="font-mihir font-black tracking-tight text-brand-primary uppercase leading-[0.9] select-none"
                 style={{
@@ -179,18 +179,18 @@ export const Hero: React.FC = () => {
                     </span>
                   ))}
                 </span>
-              </motion.h1>
+              </m.h1>
 
               {/* Bio */}
-              <motion.p
+              <m.p
                 variants={itemVariants}
                 className="text-sm md:text-base text-brand-text-muted max-w-xl leading-relaxed font-sans"
               >
                 {portfolioData.bio}
-              </motion.p>
+              </m.p>
 
               {/* Status Badge */}
-              <motion.div variants={itemVariants} className="pt-2">
+              <m.div variants={itemVariants} className="pt-2">
                 <div className="flex items-center gap-2 px-3 py-1.5 rounded-full border border-green-500/30 bg-green-500/10 w-fit select-none">
                   <span className="relative flex h-2 w-2">
                     <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
@@ -198,11 +198,11 @@ export const Hero: React.FC = () => {
                   </span>
                   <span className="text-green-400 text-xs font-medium">Open to Opportunities · 2027</span>
                 </div>
-              </motion.div>
+              </m.div>
             </div>
 
             {/* Specifications Table */}
-            <motion.div variants={itemVariants} className="border-t border-brand-border/60">
+            <m.div variants={itemVariants} className="border-t border-brand-border/60">
               <table className="w-full text-left font-sans text-xs md:text-sm text-brand-text border-collapse">
                 <tbody>
                   {/* Row 1: Education */}
@@ -277,10 +277,10 @@ export const Hero: React.FC = () => {
                   </tr>
                 </tbody>
               </table>
-            </motion.div>
+            </m.div>
 
             {/* Stats Strip */}
-            <motion.div
+            <m.div
               variants={itemVariants}
               className="flex flex-row items-center justify-between gap-3 md:gap-6 py-5 border-y border-brand-border/40 my-6 w-full"
             >
@@ -329,10 +329,10 @@ export const Hero: React.FC = () => {
                   CGPA / 10
                 </div>
               </div>
-            </motion.div>
+            </m.div>
 
             {/* CTAs */}
-            <motion.div variants={itemVariants} className="flex flex-col sm:flex-row items-center gap-4 pt-2">
+            <m.div variants={itemVariants} className="flex flex-col sm:flex-row items-center gap-4 pt-2">
               <button
                 onClick={handleScrollToProjects}
                 className="w-full sm:w-auto px-6 py-3 rounded-lg bg-brand-primary text-brand-bg font-bold text-xs hover:opacity-90 transition-all flex items-center justify-center gap-2 cursor-pointer shadow-md dark:bg-purple-600 dark:hover:bg-purple-500 dark:text-white dark:border-transparent"
@@ -491,12 +491,12 @@ export const Hero: React.FC = () => {
                   </span>
                 </div>
               </div>
-            </motion.div>
+            </m.div>
           </div>
 
           {/* Right Column: Profile Picture */}
           <div className="lg:col-span-5 flex items-end justify-center mt-8 lg:mt-0">
-            <motion.div
+            <m.div
               variants={itemVariants}
               className="relative w-full flex items-end justify-center h-[400px] md:h-[560px] overflow-visible"
             >
@@ -518,9 +518,9 @@ export const Hero: React.FC = () => {
                 alt="Sanket Chaudhari Profile"
                 className="relative z-10 max-h-full w-auto object-contain"
               />
-            </motion.div>
+            </m.div>
           </div>
-        </motion.div>
+        </m.div>
       </div>
     </section>
   );
