@@ -282,45 +282,51 @@ export const Hero: React.FC = () => {
             {/* Stats Strip */}
             <motion.div
               variants={itemVariants}
-              className="grid grid-cols-2 md:grid-cols-4 gap-2 md:gap-4 py-5 border-y border-brand-border/40 my-6 w-full"
+              className="flex flex-row items-center justify-between gap-3 md:gap-6 py-5 border-y border-brand-border/40 my-6 w-full"
             >
               {/* Projects Shipped */}
-              <div className="border-r border-brand-border/40 pr-2 whitespace-nowrap">
-                <div className="text-xl md:text-2xl font-bold text-brand-primary whitespace-nowrap">
+              <div className="flex-1 flex flex-col gap-1">
+                <div className="text-2xl md:text-3xl font-bold text-purple-500 dark:text-purple-400 font-mono leading-none">
                   <CountUpNumber value={4} suffix="+" />
                 </div>
-                <div className="text-[10px] tracking-wider text-brand-text-muted mt-1 uppercase font-mono whitespace-nowrap">
-                  Projects Shipped
+                <div className="text-[10px] tracking-widest text-brand-text-muted mt-1 uppercase font-mono leading-tight">
+                  PROJECTS<br />SHIPPED
                 </div>
               </div>
+
+              <div className="w-px h-8 bg-white/10 dark:bg-white/10 shrink-0" />
 
               {/* GitHub Commits */}
-              <div className="border-r-0 md:border-r border-brand-border/40 pr-2 md:pl-4 whitespace-nowrap">
-                <div className="text-xl md:text-2xl font-bold text-brand-primary whitespace-nowrap">
+              <div className="flex-1 flex flex-col gap-1">
+                <div className="text-2xl md:text-3xl font-bold text-purple-500 dark:text-purple-400 font-mono leading-none">
                   <CountUpNumber value={500} suffix="+" />
                 </div>
-                <div className="text-[10px] tracking-wider text-brand-text-muted mt-1 uppercase font-mono whitespace-nowrap">
-                  GitHub Commits
+                <div className="text-[10px] tracking-widest text-brand-text-muted mt-1 uppercase font-mono leading-tight">
+                  GITHUB<br />COMMITS
                 </div>
               </div>
+
+              <div className="w-px h-8 bg-white/10 dark:bg-white/10 shrink-0" />
 
               {/* OSS Contributions */}
-              <div className="border-r border-brand-border/40 pr-2 md:pl-4 whitespace-nowrap">
-                <div className="text-xl md:text-2xl font-bold text-brand-primary whitespace-nowrap">
-                  <CountUpNumber value={2} suffix=" Merged PRs" />
+              <div className="flex-1 flex flex-col gap-1">
+                <div className="text-2xl md:text-3xl font-bold text-purple-500 dark:text-purple-400 font-mono leading-none">
+                  <CountUpNumber value={2} />
                 </div>
-                <div className="text-[10px] tracking-wider text-brand-text-muted mt-1 uppercase font-mono whitespace-nowrap">
-                  OSS Contributions
+                <div className="text-[10px] tracking-widest text-brand-text-muted mt-1 uppercase font-mono leading-tight">
+                  OSS<br />CONTRIBUTIONS
                 </div>
               </div>
 
+              <div className="w-px h-8 bg-white/10 dark:bg-white/10 shrink-0" />
+
               {/* CGPA */}
-              <div className="pr-2 md:pl-4 whitespace-nowrap">
-                <div className="text-xl md:text-2xl font-bold text-brand-primary whitespace-nowrap">
-                  <CountUpNumber value={8.66} decimals={2} suffix=" / 10" />
+              <div className="flex-1 flex flex-col gap-1">
+                <div className="text-2xl md:text-3xl font-bold text-purple-500 dark:text-purple-400 font-mono leading-none">
+                  <CountUpNumber value={8.66} decimals={2} />
                 </div>
-                <div className="text-[10px] tracking-wider text-brand-text-muted mt-1 uppercase font-mono whitespace-nowrap">
-                  CGPA
+                <div className="text-[10px] tracking-widest text-brand-text-muted mt-1 uppercase font-mono leading-tight">
+                  CGPA / 10
                 </div>
               </div>
             </motion.div>
