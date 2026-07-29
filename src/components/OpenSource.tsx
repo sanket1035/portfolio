@@ -379,7 +379,7 @@ export const OpenSource: React.FC = () => {
             <Award className="text-brand-accent" size={16} />
             Open Source Programs
           </h3>
-          <div className="grid md:grid-cols-2 gap-6">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {portfolioData.openSource.programs.map((program, idx) => (
               <div
                 key={idx}

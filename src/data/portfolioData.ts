@@ -260,6 +260,13 @@ client/ # Dashboard analytics widgets`,
         year: "2026",
         description: "Developed and optimized key modules in an open-source data visualization toolkit, adding accessibility support (aria-attributes) and enhancing rendering performance.",
         image: "/placeholders/elusoc.png"
+      },
+      {
+        programName: "ECSOC 2026 (Elite Coders Summer of Code)",
+        role: "Contributor (Beginner Tier)",
+        year: "2026",
+        description: "Contributed code and feature enhancements during Elite Coders Summer of Code 2026, working on real-world projects and open-source software development.",
+        image: "/placeholders/essoc.png"
       }
     ],
     mergedPRsCount: 14,
