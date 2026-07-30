@@ -167,6 +167,84 @@ export const portfolioData: PortfolioData = {
       category: "web"
     },
     {
+      id: "pramana-ai",
+      title: "Pramana AI",
+      tagline: "Multi-Agent AI Platform for Research & Claim Verification",
+      description: "A multi-agent AI research platform where autonomous specialized agents research topics, verify claims, and reduce LLM hallucinations. Generates citation-backed reports with confidence scoring and PDF export.",
+      problem: "Standard LLMs frequently hallucinate facts and lack traceable citations, rendering generated content risky for academic and research workflows.",
+      motivation: "Pramana AI was built to create an agentic pipeline where independent AI agents cross-check facts against search indices and generate verified, citation-backed reports.",
+      challenges: "Orchestrating agent workflows and streaming consensus results without bottlenecking response latency.",
+      learnings: "Gained expertise in multi-agent orchestration, LLM hallucination mitigation strategies, and automated PDF report generation.",
+      folderStructure: `src/
+├── agents/       # Research, Fact-checker, & Citation agents
+├── components/   # Live research visualizer & report renderer
+└── api/          # Gemini API handlers & verification routes`,
+      features: [
+        "Multi-agent autonomous research system engineered to eliminate LLM hallucinations.",
+        "Claim verification pipeline generating confidence scores and inline citations.",
+        "Citation-backed comprehensive report generator with direct PDF export capability.",
+        "Real-time agent reasoning steps display during deep research execution."
+      ],
+      techStack: ["Next.js", "TypeScript", "Tailwind CSS", "Firebase", "Gemini API"],
+      architecture: "Next.js frontend communicating with agentic API routines. Agents autonomously query web sources, aggregate evidence, score claims, and synthesize citation-backed markdown documents.",
+      githubUrl: "https://github.com/sanket1035/pramana-ai",
+      liveUrl: "https://frontend-umber-one-zuhj8ueccq.vercel.app/",
+      image: "/placeholders/pramana.jpg",
+      category: "ai"
+    },
+    {
+      id: "carbonomics-ai",
+      title: "Carbonomics AI",
+      tagline: "Predictive Carbon Footprint Estimator & Optimization Platform (Research)",
+      description: "An AI-powered application model layout that estimates industrial carbon emissions and suggests actionable recommendations to achieve net-zero goals. Features predictive modeling based on energy source and consumption data.",
+      problem: "Organizations struggle to calculate scope 1, 2, and 3 emissions accurately and lack predictive forecasts to evaluate the environmental impact of changes in their supply chain.",
+      motivation: "With industries shifting towards carbon neutrality, measuring scope-based emissions remains highly complex. Carbonomics AI was designed as a research platform to predict industrial CO2 emissions based on fuel, logistics, and resource data points using ML regression models.",
+      challenges: "Handling missing/null values and scaling input parameters across varying industrial contexts while training the regressor for robust out-of-distribution performance.",
+      learnings: "Deepened my skills in model validation, tuning hyperparameters, and deploying Python web inference routes via FastAPI.",
+      folderStructure: `model/  # PyTorch/Scikit-learn model files & data preprocessors
+server/ # FastAPI inference route handlers
+client/ # Dashboard analytics widgets`,
+      features: [
+        "Machine Learning model estimating CO2 output based on energy, logistics, and resource data.",
+        "Optimization engine proposing green energy alternatives and cost-benefit analysis.",
+        "API integration with public climate registries for local emission factors.",
+        "Published research summary outlining the ML methodology and data pipeline."
+      ],
+      techStack: ["Python", "FastAPI", "React", "Tailwind CSS", "Scikit-Learn", "Pandas"],
+      architecture: "FastAPI server wraps a trained Random Forest regressor. The React client queries the API to run real-time inference and render charts via Chart.js/Recharts.",
+      futureImprovements: [
+        "Add automated bill scanning (OCR) to parse electricity and logistics invoices.",
+        "Integrate real-time IoT energy meters compatibility."
+      ],
+      githubUrl: "https://github.com/sanket1035/carbonomics-ai",
+      image: "/placeholders/carbonomics.jpg",
+      category: "ai"
+    },
+    {
+      id: "atlas-ai",
+      title: "Atlas AI",
+      tagline: "AI Concept-Dependency Graphs & Personalized Skill Trees",
+      description: "An AI platform built with an international engineering team that transforms subjects into interactive concept-dependency graphs and personalized learning paths using Gemma LLM and NetworkX.",
+      problem: "Learners struggle to determine optimal study sequences when diving into complex technical domains with multiple interdependent prerequisites.",
+      motivation: "Atlas AI visualizes learning as an RPG-style skill tree, using graph theory and LLM intelligence to structure personalized learning paths dynamically.",
+      challenges: "Building responsive dynamic graph rendering with React Flow while calculating prerequisite dependencies in NetworkX backend service.",
+      learnings: "Mastered graph-based data structures, React Flow node customization, NetworkX algorithms, and Docker containerized API services.",
+      folderStructure: `frontend/  # React Flow graph interface & skill-tree components
+backend/   # FastAPI server with NetworkX graph processing
+models/    # Gemma LLM prompt templates & graph generators`,
+      features: [
+        "Interactive AI concept dependency graphs rendered via React Flow.",
+        "Personalized learning path generation driven by Gemma LLM reasoning.",
+        "AI-powered skill-tree interface supporting step-by-step topic progression.",
+        "Docker containerized pipeline with FastAPI backend and NetworkX graph processing."
+      ],
+      techStack: ["Next.js", "TypeScript", "Python", "FastAPI", "React Flow", "Gemma LLM", "NetworkX", "Docker"],
+      architecture: "React Flow client displaying node hierarchies, connected to FastAPI backend service using NetworkX for topological sorting and Gemma LLM for generating topic nodes.",
+      githubUrl: "https://github.com/sanket1035/atlas-ai",
+      image: "/placeholders/atlas.jpg",
+      category: "ai"
+    },
+    {
       id: "algonix",
       title: "Algonix",
       tagline: "Interactive Algorithm Visualizer & Learning Sandbox",
@@ -215,84 +293,6 @@ export const portfolioData: PortfolioData = {
       githubUrl: "https://github.com/sanket1035/GSTbillingApp",
       image: "/placeholders/gst.jpg",
       category: "mobile"
-    },
-    {
-      id: "carbonomics-ai",
-      title: "Carbonomics AI",
-      tagline: "Predictive Carbon Footprint Estimator & Optimization Platform (Research)",
-      description: "An AI-powered application model layout that estimates industrial carbon emissions and suggests actionable recommendations to achieve net-zero goals. Features predictive modeling based on energy source and consumption data.",
-      problem: "Organizations struggle to calculate scope 1, 2, and 3 emissions accurately and lack predictive forecasts to evaluate the environmental impact of changes in their supply chain.",
-      motivation: "With industries shifting towards carbon neutrality, measuring scope-based emissions remains highly complex. Carbonomics AI was designed as a research platform to predict industrial CO2 emissions based on fuel, logistics, and resource data points using ML regression models.",
-      challenges: "Handling missing/null values and scaling input parameters across varying industrial contexts while training the regressor for robust out-of-distribution performance.",
-      learnings: "Deepened my skills in model validation, tuning hyperparameters, and deploying Python web inference routes via FastAPI.",
-      folderStructure: `model/  # PyTorch/Scikit-learn model files & data preprocessors
-server/ # FastAPI inference route handlers
-client/ # Dashboard analytics widgets`,
-      features: [
-        "Machine Learning model estimating CO2 output based on energy, logistics, and resource data.",
-        "Optimization engine proposing green energy alternatives and cost-benefit analysis.",
-        "API integration with public climate registries for local emission factors.",
-        "Published research summary outlining the ML methodology and data pipeline."
-      ],
-      techStack: ["Python", "FastAPI", "React", "Tailwind CSS", "Scikit-Learn", "Pandas"],
-      architecture: "FastAPI server wraps a trained Random Forest regressor. The React client queries the API to run real-time inference and render charts via Chart.js/Recharts.",
-      futureImprovements: [
-        "Add automated bill scanning (OCR) to parse electricity and logistics invoices.",
-        "Integrate real-time IoT energy meters compatibility."
-      ],
-      githubUrl: "https://github.com/sanket1035/carbonomics-ai",
-      image: "/placeholders/carbonomics.jpg",
-      category: "ai"
-    },
-    {
-      id: "pramana-ai",
-      title: "Pramana AI",
-      tagline: "Multi-Agent AI Platform for Research & Claim Verification",
-      description: "A multi-agent AI research platform where autonomous specialized agents research topics, verify claims, and reduce LLM hallucinations. Generates citation-backed reports with confidence scoring and PDF export.",
-      problem: "Standard LLMs frequently hallucinate facts and lack traceable citations, rendering generated content risky for academic and research workflows.",
-      motivation: "Pramana AI was built to create an agentic pipeline where independent AI agents cross-check facts against search indices and generate verified, citation-backed reports.",
-      challenges: "Orchestrating agent workflows and streaming consensus results without bottlenecking response latency.",
-      learnings: "Gained expertise in multi-agent orchestration, LLM hallucination mitigation strategies, and automated PDF report generation.",
-      folderStructure: `src/
-├── agents/       # Research, Fact-checker, & Citation agents
-├── components/   # Live research visualizer & report renderer
-└── api/          # Gemini API handlers & verification routes`,
-      features: [
-        "Multi-agent autonomous research system engineered to eliminate LLM hallucinations.",
-        "Claim verification pipeline generating confidence scores and inline citations.",
-        "Citation-backed comprehensive report generator with direct PDF export capability.",
-        "Real-time agent reasoning steps display during deep research execution."
-      ],
-      techStack: ["Next.js", "TypeScript", "Tailwind CSS", "Firebase", "Gemini API"],
-      architecture: "Next.js frontend communicating with agentic API routines. Agents autonomously query web sources, aggregate evidence, score claims, and synthesize citation-backed markdown documents.",
-      githubUrl: "https://github.com/sanket1035/pramana-ai",
-      liveUrl: "https://frontend-umber-one-zuhj8ueccq.vercel.app/",
-      image: "/placeholders/pramana.jpg",
-      category: "ai"
-    },
-    {
-      id: "atlas-ai",
-      title: "Atlas AI",
-      tagline: "AI Concept-Dependency Graphs & Personalized Skill Trees",
-      description: "An AI platform built with an international engineering team that transforms subjects into interactive concept-dependency graphs and personalized learning paths using Gemma LLM and NetworkX.",
-      problem: "Learners struggle to determine optimal study sequences when diving into complex technical domains with multiple interdependent prerequisites.",
-      motivation: "Atlas AI visualizes learning as an RPG-style skill tree, using graph theory and LLM intelligence to structure personalized learning paths dynamically.",
-      challenges: "Building responsive dynamic graph rendering with React Flow while calculating prerequisite dependencies in NetworkX backend service.",
-      learnings: "Mastered graph-based data structures, React Flow node customization, NetworkX algorithms, and Docker containerized API services.",
-      folderStructure: `frontend/  # React Flow graph interface & skill-tree components
-backend/   # FastAPI server with NetworkX graph processing
-models/    # Gemma LLM prompt templates & graph generators`,
-      features: [
-        "Interactive AI concept dependency graphs rendered via React Flow.",
-        "Personalized learning path generation driven by Gemma LLM reasoning.",
-        "AI-powered skill-tree interface supporting step-by-step topic progression.",
-        "Docker containerized pipeline with FastAPI backend and NetworkX graph processing."
-      ],
-      techStack: ["Next.js", "TypeScript", "Python", "FastAPI", "React Flow", "Gemma LLM", "NetworkX", "Docker"],
-      architecture: "React Flow client displaying node hierarchies, connected to FastAPI backend service using NetworkX for topological sorting and Gemma LLM for generating topic nodes.",
-      githubUrl: "https://github.com/sanket1035/atlas-ai",
-      image: "/placeholders/atlas.jpg",
-      category: "ai"
     },
     {
       id: "predictive-maintenance-ml",

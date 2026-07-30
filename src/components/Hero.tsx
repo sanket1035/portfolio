@@ -236,10 +236,10 @@ export const Hero: React.FC = () => {
                     </td>
                     <td className="py-3 text-brand-primary font-medium">
                       <div className="flex flex-wrap gap-2 mt-1">
-                        {['PlaceTrack AI', 'Algonix', 'GST Billing App', 'Carbonomics AI'].map(p => (
-                          <a href="#projects" key={p}
+                        {portfolioData.projects.slice(0, 4).map(p => p.title).map(title => (
+                          <a href="#projects" key={title}
                             className="px-2.5 py-0.5 rounded-md text-xs font-medium bg-purple-500/10 text-purple-400 border border-purple-500/20 hover:bg-purple-500/20 hover:border-purple-500/40 transition-all cursor-pointer">
-                            {p}
+                            {title}
                           </a>
                         ))}
                       </div>
