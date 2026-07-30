@@ -1,17 +1,20 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { ExternalLink, BookOpen } from 'lucide-react';
+import { ExternalLink, BookOpen, ChevronDown } from 'lucide-react';
 import { GithubIcon as Github } from './BrandIcons';
 import { portfolioData } from '../data/portfolioData';
 import type { Project } from '../data/portfolioData';
 
 export const Projects: React.FC = () => {
   const navigate = useNavigate();
+  const [showAll, setShowAll] = useState(false);
 
   const handleCaseStudyClick = (id: string) => {
     navigate(`/projects/${id}`);
     window.scrollTo({ top: 0, behavior: 'instant' });
   };
+
+  const displayedProjects = showAll ? portfolioData.projects : portfolioData.projects.slice(0, 4);
 
   return (
     <section id="projects" className="py-16 px-6 border-t border-brand-border/40 bg-brand-card/10">
@@ -29,7 +32,7 @@ export const Projects: React.FC = () => {
 
         {/* Project Grid */}
         <div className="grid md:grid-cols-2 gap-8 items-stretch">
-          {portfolioData.projects.map((project: Project) => (
+          {displayedProjects.map((project: Project) => (
             <div
               key={project.id}
               className="group flex flex-col justify-between rounded-xl bg-brand-card border border-brand-border hover:border-brand-accent/30 shadow-md hover:shadow-brand-accent/5 transition-all duration-300 h-full overflow-hidden"
@@ -116,8 +119,27 @@ export const Projects: React.FC = () => {
             </div>
           ))}
         </div>
+
+        {/* View More Works Button */}
+        {portfolioData.projects.length > 4 && (
+          <div className="mt-12 text-center">
+            <button
+              onClick={() => {
+                setShowAll((prev) => !prev);
+                if (showAll) {
+                  document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' });
+                }
+              }}
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-xl border border-brand-accent/40 bg-brand-card hover:bg-brand-accent/10 text-brand-accent font-mono text-xs font-bold tracking-wider uppercase transition-all duration-300 shadow-lg cursor-pointer group"
+            >
+              <span>{showAll ? 'Show Less Projects' : `View More Works (${portfolioData.projects.length - 4} More)`}</span>
+              <ChevronDown size={14} className={`transition-transform duration-300 ${showAll ? 'rotate-180' : 'group-hover:translate-y-0.5'}`} />
+            </button>
+          </div>
+        )}
       </div>
     </section>
   );
 };
 export default Projects;
+
