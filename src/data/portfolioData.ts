@@ -189,7 +189,7 @@ export const portfolioData: PortfolioData = {
       architecture: "Next.js frontend communicating with agentic API routines. Agents autonomously query web sources, aggregate evidence, score claims, and synthesize citation-backed markdown documents.",
       githubUrl: "https://github.com/sanket1035/pramana-ai",
       liveUrl: "https://frontend-umber-one-zuhj8ueccq.vercel.app/",
-      image: "/placeholders/pramana.jpg",
+      image: "/placeholders/pramana.png",
       category: "ai"
     },
     {
@@ -241,7 +241,7 @@ models/    # Gemma LLM prompt templates & graph generators`,
       techStack: ["Next.js", "TypeScript", "Python", "FastAPI", "React Flow", "Gemma LLM", "NetworkX", "Docker"],
       architecture: "React Flow client displaying node hierarchies, connected to FastAPI backend service using NetworkX for topological sorting and Gemma LLM for generating topic nodes.",
       githubUrl: "https://github.com/sanket1035/atlas-ai",
-      image: "/placeholders/atlas.jpg",
+      image: "/placeholders/atlas.png",
       category: "ai"
     },
     {
@@ -315,7 +315,7 @@ notebooks/  # Exploratory data analysis & threshold tuning`,
       techStack: ["Python", "Scikit-Learn", "Pandas", "NumPy", "Matplotlib"],
       architecture: "Signal processing pipeline converting raw sensor time-series into frequency domain features, fed into optimized Scikit-Learn classifiers for fault probability prediction.",
       githubUrl: "https://github.com/sanket1035/predictive-maintenance-ml",
-      image: "/placeholders/predictive_maintenance.jpg",
+      image: "/placeholders/predictive_maintenance.png",
       category: "ai"
     },
     {
@@ -340,7 +340,7 @@ notebooks/  # Exploratory data analysis & threshold tuning`,
       techStack: ["React", "TypeScript", "Python", "FastAPI", "Tailwind CSS"],
       architecture: "React SPA connected to FastAPI backend utilizing tailored LLM models for resume analysis, skill extraction, and career roadmap generation.",
       githubUrl: "https://github.com/sanket1035/sherise-ai",
-      image: "/placeholders/sherise.jpg",
+      image: "/placeholders/sherise.png",
       category: "ai"
     }
   ],
