@@ -349,18 +349,18 @@ notebooks/  # Exploratory data analysis & threshold tuning`,
   openSource: {
     programs: [
       {
-        programName: "Open Source Connect Global 2026",
-        role: "Active Contributor",
-        year: "2026",
-        description: "Contributed to developer tools repositories, improving CLI efficiency and fixing TypeScript type definitions in foundational UI libraries.",
-        image: "/placeholders/nexfellow.png"
-      },
-      {
         programName: "ELUSOC Summer of Code 2026",
         role: "Open Source Scholar",
         year: "2026",
         description: "Developed and optimized key modules in an open-source data visualization toolkit, adding accessibility support (aria-attributes) and enhancing rendering performance.",
         image: "/placeholders/elusoc.png"
+      },
+      {
+        programName: "Open Source Connect Global 2026",
+        role: "Active Contributor",
+        year: "2026",
+        description: "Contributed to developer tools repositories, improving CLI efficiency and fixing TypeScript type definitions in foundational UI libraries.",
+        image: "/placeholders/nexfellow.png"
       },
       {
         programName: "ECSOC 2026 (Elite Coders Summer of Code)",
