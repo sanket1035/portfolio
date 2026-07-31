@@ -20,28 +20,28 @@
 }
 
 :root {
-  /* Default: Dark Theme */
-  --brand-primary: #FCFBF9;
-  --brand-bg: #0b0c10;
-  --brand-card: #12131c;
-  --brand-border: #1a1c24;
-  --brand-text: #FCFBF9;
-  --brand-text-muted: #A39E93;
-  --brand-accent: #c084fc; /* soft premium purple */
-  --brand-accent-glow: rgba(192, 132, 252, 0.15);
+  /* Default: Dark Theme — Sleek Matte Obsidian */
+  --brand-primary: #F4F4F5;
+  --brand-bg: #09090b;
+  --brand-card: #121215;
+  --brand-border: #232329;
+  --brand-text: #F4F4F5;
+  --brand-text-muted: #909099;
+  --brand-accent: #d4a0b0; /* warm matte rose accent */
+  --brand-accent-glow: rgba(212, 160, 176, 0.08);
   color-scheme: dark;
 }
 
 :root.light {
-  /* Light Theme — getvik.com warm espresso palette */
-  --brand-primary: #2B281F;
-  --brand-bg: #ffffff;
-  --brand-card: #FCFCFA;
+  /* Light Theme — Warm Minimal Matte Off-White */
+  --brand-primary: #18181B;
+  --brand-bg: #FAF9F6;
+  --brand-card: #FFFFFF;
   --brand-border: #E7E3DB;
-  --brand-text: #2B281F;
-  --brand-text-muted: #8E887D;
-  --brand-accent: #a86579; /* getvik warm rose accent */
-  --brand-accent-glow: rgba(212, 160, 176, 0.25);
+  --brand-text: #18181B;
+  --brand-text-muted: #71717A;
+  --brand-accent: #a86579; /* warm matte rose accent */
+  --brand-accent-glow: rgba(168, 101, 121, 0.08);
   color-scheme: light;
 }
 

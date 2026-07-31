@@ -178,9 +178,7 @@ export const Hero: React.FC = () => {
                     style={{
                       fontSize: 'clamp(2.6rem, 7.5vw, 5.2rem)',
                       opacity: heroHovered ? 1 : 0,
-                      background: 'linear-gradient(135deg, var(--brand-accent) 0%, #c084fc 50%, var(--brand-primary) 100%)',
-                      WebkitBackgroundClip: 'text',
-                      WebkitTextFillColor: 'transparent',
+                      color: 'var(--brand-primary)',
                       clipPath: `circle(140px at ${heroMousePos.x}px ${heroMousePos.y}px)`,
                     }}
                   >

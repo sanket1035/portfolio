@@ -123,21 +123,18 @@ export const Skills: React.FC = () => {
   };
 
   return (
-    <section id="skills" className="w-full relative py-20 md:py-28 overflow-hidden bg-[#0a0a0f] border-t border-brand-border/40">
-      {/* Premium glowing background streak/diagonal blur matching the purple theme */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] md:w-[1000px] h-[300px] md:h-[400px] bg-gradient-to-tr from-purple-800/15 via-violet-600/10 to-transparent blur-[140px] -rotate-12 pointer-events-none"></div>
-      
-      {/* Edge fade overlay gradients */}
-      <div className="absolute inset-y-0 left-0 w-16 sm:w-28 md:w-44 bg-gradient-to-r from-[#0a0a0f] to-transparent pointer-events-none z-10"></div>
-      <div className="absolute inset-y-0 right-0 w-16 sm:w-28 md:w-44 bg-gradient-to-l from-[#0a0a0f] to-transparent pointer-events-none z-10"></div>
+    <section id="skills" className="w-full relative py-20 md:py-28 overflow-hidden bg-brand-bg border-t border-brand-border/40">
+      {/* Edge fade overlay gradients matching theme background */}
+      <div className="absolute inset-y-0 left-0 w-16 sm:w-28 md:w-44 bg-gradient-to-r from-brand-bg to-transparent pointer-events-none z-10"></div>
+      <div className="absolute inset-y-0 right-0 w-16 sm:w-28 md:w-44 bg-gradient-to-l from-brand-bg to-transparent pointer-events-none z-10"></div>
 
       <div className="w-full relative z-10">
         {/* Title Section */}
         <div className="max-w-7xl mx-auto px-6 lg:px-8 text-center mb-16">
-          <h2 className="font-heading font-extrabold text-3xl md:text-5xl text-white tracking-wide uppercase">
+          <h2 className="font-heading font-extrabold text-3xl md:text-5xl text-brand-primary tracking-wide uppercase">
             My Skills
           </h2>
-          <div className="h-1 w-16 bg-purple-500 mx-auto mt-4 rounded-full shadow-lg shadow-purple-500/50"></div>
+          <div className="h-1 w-16 bg-brand-accent mx-auto mt-4 rounded-full"></div>
         </div>
 
         {/* Marquee Rows - Full Bleed Edge to Edge */}
@@ -148,10 +145,10 @@ export const Skills: React.FC = () => {
               {prepareTrack(track1).map((skill, idx) => (
                 <div 
                   key={`t1-${idx}`} 
-                  className="flex items-center gap-2.5 px-4 py-2.5 rounded-xl bg-zinc-900/50 border border-zinc-800/60 hover:border-purple-500/40 hover:bg-zinc-900/80 transition-all duration-300 shadow-sm cursor-default"
+                  className="flex items-center gap-2.5 px-4 py-2.5 rounded-xl bg-brand-card border border-brand-border hover:border-brand-accent/50 transition-all duration-300 shadow-sm cursor-default"
                 >
                   {renderSkillIcon(skill)}
-                  <span className="text-xs md:text-sm font-semibold text-zinc-300">{skill.name}</span>
+                  <span className="text-xs md:text-sm font-semibold text-brand-text">{skill.name}</span>
                 </div>
               ))}
             </div>
@@ -163,10 +160,10 @@ export const Skills: React.FC = () => {
               {prepareTrack(track2).map((skill, idx) => (
                 <div 
                   key={`t2-${idx}`} 
-                  className="flex items-center gap-2.5 px-4 py-2.5 rounded-xl bg-zinc-900/50 border border-zinc-800/60 hover:border-purple-500/40 hover:bg-zinc-900/80 transition-all duration-300 shadow-sm cursor-default"
+                  className="flex items-center gap-2.5 px-4 py-2.5 rounded-xl bg-brand-card border border-brand-border hover:border-brand-accent/50 transition-all duration-300 shadow-sm cursor-default"
                 >
                   {renderSkillIcon(skill)}
-                  <span className="text-xs md:text-sm font-semibold text-zinc-300">{skill.name}</span>
+                  <span className="text-xs md:text-sm font-semibold text-brand-text">{skill.name}</span>
                 </div>
               ))}
             </div>
@@ -178,10 +175,10 @@ export const Skills: React.FC = () => {
               {prepareTrack(track3).map((skill, idx) => (
                 <div 
                   key={`t3-${idx}`} 
-                  className="flex items-center gap-2.5 px-4 py-2.5 rounded-xl bg-zinc-900/50 border border-zinc-800/60 hover:border-purple-500/40 hover:bg-zinc-900/80 transition-all duration-300 shadow-sm cursor-default"
+                  className="flex items-center gap-2.5 px-4 py-2.5 rounded-xl bg-brand-card border border-brand-border hover:border-brand-accent/50 transition-all duration-300 shadow-sm cursor-default"
                 >
                   {renderSkillIcon(skill)}
-                  <span className="text-xs md:text-sm font-semibold text-zinc-300">{skill.name}</span>
+                  <span className="text-xs md:text-sm font-semibold text-brand-text">{skill.name}</span>
                 </div>
               ))}
             </div>
@@ -193,10 +190,10 @@ export const Skills: React.FC = () => {
               {prepareTrack(track4).map((skill, idx) => (
                 <div 
                   key={`t4-${idx}`} 
-                  className="flex items-center gap-2.5 px-4 py-2.5 rounded-xl bg-zinc-900/50 border border-zinc-800/60 hover:border-purple-500/40 hover:bg-zinc-900/80 transition-all duration-300 shadow-sm cursor-default"
+                  className="flex items-center gap-2.5 px-4 py-2.5 rounded-xl bg-brand-card border border-brand-border hover:border-brand-accent/50 transition-all duration-300 shadow-sm cursor-default"
                 >
                   {renderSkillIcon(skill)}
-                  <span className="text-xs md:text-sm font-semibold text-zinc-300">{skill.name}</span>
+                  <span className="text-xs md:text-sm font-semibold text-brand-text">{skill.name}</span>
                 </div>
               ))}
             </div>

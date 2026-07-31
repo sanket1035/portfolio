@@ -68,8 +68,6 @@ export const OpenSource: React.FC = () => {
 
   return (
     <section id="opensource" className="w-full py-24 px-6 lg:px-8 border-t border-brand-border/40 bg-brand-bg relative overflow-hidden">
-      <div className="absolute top-1/2 left-1/3 w-[500px] h-[500px] bg-brand-accent-glow/5 blur-[150px] pointer-events-none rounded-full"></div>
-      
       <div className="max-w-7xl w-full mx-auto relative z-10">
         
         {/* Section Header */}
@@ -81,7 +79,7 @@ export const OpenSource: React.FC = () => {
           <h2 className="font-heading font-extrabold text-3xl md:text-5xl text-brand-primary tracking-tight mt-3 uppercase">
             GitHub & Development
           </h2>
-          <div className="h-1 w-16 bg-brand-accent mx-auto mt-4 rounded-full shadow-lg shadow-brand-accent/50"></div>
+          <div className="h-1 w-16 bg-brand-accent mx-auto mt-4 rounded-full"></div>
         </div>
 
         {/* Unified Dashboard Grid */}

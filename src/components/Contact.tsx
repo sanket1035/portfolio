@@ -21,10 +21,7 @@ export const Contact: React.FC = () => {
   };
 
   return (
-    <section id="contact" className="w-full py-20 px-6 lg:px-8 border-t border-brand-border/40 bg-brand-card/10 relative overflow-hidden">
-      {/* Decorative background glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-gradient-to-br from-purple-800/10 via-transparent to-transparent blur-[120px] pointer-events-none"></div>
-
+    <section id="contact" className="w-full py-20 px-6 lg:px-8 border-t border-brand-border/40 bg-brand-bg relative overflow-hidden">
       <div className="max-w-6xl mx-auto relative z-10">
         {/* Title */}
         <div className="text-center mb-10">
@@ -34,7 +31,7 @@ export const Contact: React.FC = () => {
           <h2 className="font-heading font-extrabold text-3xl md:text-5xl text-brand-primary tracking-tight mt-2">
             Get In Touch
           </h2>
-          <div className="h-1 w-12 bg-brand-accent mx-auto mt-4 rounded-full shadow-lg shadow-purple-500/50"></div>
+          <div className="h-1 w-16 bg-brand-accent mx-auto mt-4 rounded-full"></div>
         </div>
 
         {/* Big "Let's build something real" Interactive Banner */}
@@ -62,12 +59,10 @@ export const Contact: React.FC = () => {
 
             {/* Interactive Mouse Tracking Spotlight Reveal Layer */}
             <div 
-              className="font-bricolage font-black text-[2.2rem] sm:text-6xl md:text-[5.5rem] leading-[0.95] tracking-tight uppercase absolute inset-0 pointer-events-none transition-opacity duration-200 py-8 px-4 flex flex-col items-center justify-center"
+              className="font-bricolage font-black text-[2.2rem] sm:text-6xl md:text-[5.5rem] leading-[0.95] tracking-tight uppercase absolute inset-0 pointer-events-none transition-opacity duration-200 py-8 px-4 flex flex-col items-center justify-center text-brand-primary"
               style={{
                 opacity: isHovered ? 1 : 0,
-                background: 'linear-gradient(135deg, var(--brand-accent) 0%, #c084fc 50%, var(--brand-primary) 100%)',
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
+                color: 'var(--brand-primary)',
                 clipPath: `circle(150px at ${contactMousePos.x}px ${contactMousePos.y}px)`,
               }}
             >
