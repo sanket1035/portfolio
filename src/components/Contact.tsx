@@ -14,11 +14,11 @@ export const Contact: React.FC = () => {
   };
 
   return (
-    <section id="contact" className="py-20 px-6 border-t border-brand-border/40 bg-brand-card/10 relative overflow-hidden">
+    <section id="contact" className="w-full py-20 px-6 lg:px-8 border-t border-brand-border/40 bg-brand-card/10 relative overflow-hidden">
       {/* Decorative background glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-gradient-to-br from-purple-800/10 via-transparent to-transparent blur-[120px] pointer-events-none"></div>
 
-      <div className="max-w-4xl mx-auto relative z-10">
+      <div className="max-w-6xl mx-auto relative z-10">
         {/* Title */}
         <div className="text-center mb-10">
           <p className="font-mono text-[10px] tracking-widest text-brand-accent uppercase font-bold">

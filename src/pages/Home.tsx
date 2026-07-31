@@ -15,7 +15,7 @@ const Contact = React.lazy(() => import('../components/Contact'));
 
 export const Home: React.FC = () => {
   return (
-    <div className="flex-1 w-full max-w-6xl mx-auto">
+    <div className="flex-1 w-full overflow-x-hidden">
       {/* Sections with anchors for navigation */}
       <Hero />
 

@@ -123,25 +123,25 @@ export const Skills: React.FC = () => {
   };
 
   return (
-    <section id="skills" className="relative py-20 overflow-hidden bg-[#0a0a0f] border-t border-brand-border/40">
+    <section id="skills" className="w-full relative py-20 md:py-28 overflow-hidden bg-[#0a0a0f] border-t border-brand-border/40">
       {/* Premium glowing background streak/diagonal blur matching the purple theme */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[300px] bg-gradient-to-tr from-purple-800/15 via-violet-600/10 to-transparent blur-[120px] -rotate-12 pointer-events-none"></div>
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] md:w-[1000px] h-[300px] md:h-[400px] bg-gradient-to-tr from-purple-800/15 via-violet-600/10 to-transparent blur-[140px] -rotate-12 pointer-events-none"></div>
       
-      {/* Fade overlay gradients to blur out the edges of the marquee scrolling */}
-      <div className="absolute inset-y-0 left-0 w-24 md:w-36 bg-gradient-to-r from-[#0a0a0f] to-transparent pointer-events-none z-10"></div>
-      <div className="absolute inset-y-0 right-0 w-24 md:w-36 bg-gradient-to-l from-[#0a0a0f] to-transparent pointer-events-none z-10"></div>
+      {/* Edge fade overlay gradients */}
+      <div className="absolute inset-y-0 left-0 w-16 sm:w-28 md:w-44 bg-gradient-to-r from-[#0a0a0f] to-transparent pointer-events-none z-10"></div>
+      <div className="absolute inset-y-0 right-0 w-16 sm:w-28 md:w-44 bg-gradient-to-l from-[#0a0a0f] to-transparent pointer-events-none z-10"></div>
 
-      <div className="max-w-7xl mx-auto px-6 relative z-10">
+      <div className="w-full relative z-10">
         {/* Title Section */}
-        <div className="text-center mb-16">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8 text-center mb-16">
           <h2 className="font-heading font-extrabold text-3xl md:text-5xl text-white tracking-wide uppercase">
             My Skills
           </h2>
           <div className="h-1 w-16 bg-purple-500 mx-auto mt-4 rounded-full shadow-lg shadow-purple-500/50"></div>
         </div>
 
-        {/* Marquee Rows */}
-        <div className="space-y-6 md:space-y-8">
+        {/* Marquee Rows - Full Bleed Edge to Edge */}
+        <div className="space-y-6 md:space-y-8 w-full">
           {/* Row 1 - Left */}
           <div className="flex overflow-hidden select-none gap-4 py-1">
             <div className="animate-marquee flex gap-4 shrink-0">

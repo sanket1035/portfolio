@@ -17,8 +17,8 @@ export const Projects: React.FC = () => {
   const displayedProjects = showAll ? portfolioData.projects : portfolioData.projects.slice(0, 4);
 
   return (
-    <section id="projects" className="py-16 px-6 border-t border-brand-border/40 bg-brand-card/10">
-      <div className="max-w-6xl mx-auto">
+    <section id="projects" className="w-full py-20 px-6 lg:px-8 border-t border-brand-border/40 bg-brand-card/10">
+      <div className="max-w-7xl mx-auto">
         {/* Title */}
         <div className="text-center mb-12">
           <p className="font-mono text-[10px] tracking-widest text-brand-accent uppercase font-bold">

@@ -4,8 +4,8 @@ import { portfolioData } from '../data/portfolioData';
 
 export const ResumeView: React.FC = () => {
   return (
-    <section id="resume" className="py-16 px-6 border-t border-brand-border/40 bg-brand-bg">
-      <div className="max-w-5xl mx-auto">
+    <section id="resume" className="w-full py-20 px-6 lg:px-8 border-t border-brand-border/40 bg-brand-bg">
+      <div className="max-w-7xl mx-auto">
         {/* Title */}
         <div className="text-center mb-12">
           <h2 className="font-heading font-bold text-3xl md:text-5xl text-brand-primary tracking-tight">

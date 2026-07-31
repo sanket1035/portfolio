@@ -4,8 +4,8 @@ import { portfolioData } from '../data/portfolioData';
 
 export const About: React.FC = () => {
   return (
-    <section id="about" className="py-16 px-6 border-t border-brand-border/40 bg-brand-card/20">
-      <div className="max-w-5xl mx-auto">
+    <section id="about" className="w-full py-20 px-6 lg:px-8 border-t border-brand-border/40 bg-brand-card/20">
+      <div className="max-w-7xl mx-auto">
         {/* Title */}
         <div className="text-center mb-12">
           <h2 className="font-heading font-bold text-3xl md:text-5xl text-brand-primary tracking-tight">

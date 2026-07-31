@@ -67,10 +67,10 @@ export const OpenSource: React.FC = () => {
   ];
 
   return (
-    <section id="opensource" className="py-24 px-6 border-t border-brand-border/40 bg-brand-bg relative overflow-hidden">
+    <section id="opensource" className="w-full py-24 px-6 lg:px-8 border-t border-brand-border/40 bg-brand-bg relative overflow-hidden">
       <div className="absolute top-1/2 left-1/3 w-[500px] h-[500px] bg-brand-accent-glow/5 blur-[150px] pointer-events-none rounded-full"></div>
       
-      <div className="max-w-6xl w-full mx-auto relative z-10">
+      <div className="max-w-7xl w-full mx-auto relative z-10">
         
         {/* Section Header */}
         <div className="text-center mb-16">

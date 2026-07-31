@@ -122,8 +122,8 @@ export const Hero: React.FC = () => {
   };
 
   return (
-    <section ref={heroRef} className="min-h-screen flex items-center justify-center pt-28 pb-12 px-6 bg-brand-bg">
-      <div className="max-w-6xl w-full mx-auto">
+    <section ref={heroRef} className="w-full min-h-screen flex items-center justify-center pt-28 pb-16 px-6 lg:px-8 bg-brand-bg">
+      <div className="max-w-7xl w-full mx-auto">
         <m.div
           variants={containerVariants}
           initial="hidden"

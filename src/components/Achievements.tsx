@@ -30,11 +30,11 @@ export const Achievements: React.FC = () => {
   };
 
   return (
-    <section id="achievements" className="py-20 px-6 border-t border-brand-border/40 bg-brand-bg/50 relative overflow-hidden">
+    <section id="achievements" className="w-full py-20 px-6 lg:px-8 border-t border-brand-border/40 bg-brand-bg/50 relative overflow-hidden">
       {/* Decorative Glow */}
       <div className="absolute top-0 right-1/4 w-96 h-96 bg-brand-accent-glow blur-[100px] pointer-events-none rounded-full"></div>
       
-      <div className="max-w-6xl w-full mx-auto relative z-10">
+      <div className="max-w-7xl w-full mx-auto relative z-10">
         {/* Section Header */}
         <div className="text-center mb-12">
           <p className="font-mono text-[10px] tracking-widest text-brand-accent uppercase font-bold flex items-center justify-center gap-1.5">
