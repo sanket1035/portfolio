@@ -56,14 +56,14 @@ export const OpenSource: React.FC = () => {
   // Local environment tools
   const envTools = ['VS Code', 'Windows 11', 'Git', 'Docker', 'Postman', 'Android Studio', 'Figma', 'Power BI'];
 
-  // Open source goals list (First 50 GitHub Contributions is unmarked)
+  // Open source goals list
   const ossGoals = [
-    { text: 'First 50 GitHub Contributions', done: false },
-    { text: '100+ Commit Milestones', done: true },
+    { text: '100+ GitHub Contributions', done: true },
+    { text: '250+ Commit Milestones', done: true },
     { text: '10+ Public Repositories', done: true },
-    { text: 'First Major OSS Contribution', done: false },
+    { text: 'First Major OSS Contribution', done: true },
     { text: 'Participate in Hacktoberfest', done: false },
-    { text: 'Contribute to GSSoC / Social programs', done: false }
+    { text: 'Contribute to GSSoC / Social programs', done: true }
   ];
 
   return (

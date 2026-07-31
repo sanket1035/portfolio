@@ -7,14 +7,7 @@ export const Contact: React.FC = () => {
   const [isHovered, setIsHovered] = useState(false);
   const tooltipRef = useRef<HTMLSpanElement>(null);
 
-  const [contactMousePos, setContactMousePos] = useState({ x: -500, y: -500 });
-
   const handlePointerMove = (e: React.PointerEvent<HTMLAnchorElement>) => {
-    const rect = e.currentTarget.getBoundingClientRect();
-    setContactMousePos({
-      x: e.clientX - rect.left,
-      y: e.clientY - rect.top,
-    });
     if (tooltipRef.current) {
       tooltipRef.current.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`;
     }
@@ -43,33 +36,20 @@ export const Contact: React.FC = () => {
             onPointerEnter={() => setIsHovered(true)}
             onPointerLeave={() => setIsHovered(false)}
           >
-            {/* Base Outlined Stenciled Layer (Screenshot 1) */}
+            {/* Base Outlined Stenciled Banner */}
             <div 
-              className="font-bricolage font-black text-[2.2rem] sm:text-6xl md:text-[5.5rem] leading-[0.95] tracking-tight uppercase text-transparent transition-transform duration-300 group-hover:scale-[1.01]"
-              style={{ WebkitTextStroke: '2px var(--brand-primary)' }}
-            >
-              <div>LET'S BUILD</div>
-              <div className="flex items-center justify-center gap-3">
-                <span>SOMETHING REAL</span>
-                <span className="inline-block transition-transform duration-300 group-hover:translate-x-4 text-brand-accent" style={{ WebkitTextStroke: '0px' }}>
-                  →
-                </span>
-              </div>
-            </div>
-
-            {/* Interactive Mouse Tracking Spotlight Reveal Layer */}
-            <div 
-              className="font-bricolage font-black text-[2.2rem] sm:text-6xl md:text-[5.5rem] leading-[0.95] tracking-tight uppercase absolute inset-0 pointer-events-none transition-opacity duration-200 py-8 px-4 flex flex-col items-center justify-center text-brand-primary"
-              style={{
-                opacity: isHovered ? 1 : 0,
-                color: 'var(--brand-primary)',
-                clipPath: `circle(150px at ${contactMousePos.x}px ${contactMousePos.y}px)`,
+              className="font-mihir font-black text-[2.2rem] sm:text-6xl md:text-[5.5rem] leading-[0.95] tracking-tight uppercase text-transparent transition-all duration-300 group-hover:scale-[1.01]"
+              style={{ 
+                WebkitTextStroke: '2px var(--brand-primary)',
+                color: isHovered ? 'var(--brand-primary)' : 'transparent',
+                fontStretch: '122%',
+                fontWeight: 850
               }}
             >
               <div>LET'S BUILD</div>
               <div className="flex items-center justify-center gap-3">
                 <span>SOMETHING REAL</span>
-                <span className="inline-block text-brand-accent">
+                <span className="inline-block transition-transform duration-300 group-hover:translate-x-4 text-brand-accent" style={{ WebkitTextStroke: '0px' }}>
                   →
                 </span>
               </div>

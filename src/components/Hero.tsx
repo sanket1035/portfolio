@@ -121,16 +121,7 @@ export const Hero: React.FC = () => {
     }
   };
 
-  const [heroMousePos, setHeroMousePos] = React.useState({ x: -500, y: -500 });
-  const [heroHovered, setHeroHovered] = React.useState(false);
 
-  const handleHeroMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    const rect = e.currentTarget.getBoundingClientRect();
-    setHeroMousePos({
-      x: e.clientX - rect.left,
-      y: e.clientY - rect.top,
-    });
-  };
 
   return (
     <section ref={heroRef} className="w-full min-h-screen flex items-center justify-center pt-28 pb-16 px-6 lg:px-8 bg-brand-bg">
@@ -152,41 +143,45 @@ export const Hero: React.FC = () => {
                 <span>Software & AI Engineering</span>
               </m.div>
 
-              {/* Dynamic Mouse Tracking Heading */}
-              <m.div variants={itemVariants}>
-                <div 
-                  className="relative inline-block py-1 cursor-pointer select-none group"
-                  onMouseMove={handleHeroMouseMove}
-                  onMouseEnter={() => setHeroHovered(true)}
-                  onMouseLeave={() => setHeroHovered(false)}
-                >
-                  {/* Base Outlined Layer */}
-                  <h1
-                    className="font-bricolage font-extrabold tracking-tight uppercase leading-[0.88] select-none text-transparent"
-                    style={{
-                      fontSize: 'clamp(2.6rem, 7.5vw, 5.2rem)',
-                      WebkitTextStroke: '2px var(--brand-primary)',
-                    }}
-                  >
-                    <span className="block">SANKET</span>
-                    <span className="block">CHAUDHARI</span>
-                  </h1>
-
-                  {/* Interactive Spotlight Dynamic Color Reveal Layer */}
-                  <h1
-                    className="font-bricolage font-extrabold tracking-tight uppercase leading-[0.88] select-none absolute inset-0 pointer-events-none transition-opacity duration-200"
-                    style={{
-                      fontSize: 'clamp(2.6rem, 7.5vw, 5.2rem)',
-                      opacity: heroHovered ? 1 : 0,
-                      color: 'var(--brand-primary)',
-                      clipPath: `circle(140px at ${heroMousePos.x}px ${heroMousePos.y}px)`,
-                    }}
-                  >
-                    <span className="block">SANKET</span>
-                    <span className="block">CHAUDHARI</span>
-                  </h1>
-                </div>
-              </m.div>
+              {/* Dynamic Kinetic Heading */}
+              <m.h1
+                variants={itemVariants}
+                className="font-mihir font-black tracking-tight uppercase leading-[0.88] select-none"
+                style={{
+                  fontStretch: '125%',
+                  fontWeight: 850,
+                  fontSize: 'clamp(2.4rem, 7.5vw, 5.2rem)'
+                }}
+              >
+                <span className="block overflow-hidden pb-1 -mb-1 whitespace-nowrap text-brand-primary">
+                  {"SANKET".split('').map((char, i) => (
+                    <span
+                      key={i}
+                      className="kinetic-char inline-block"
+                      style={{
+                        fontVariationSettings: "'wght' 850, 'wdth' 125",
+                        willChange: 'font-variation-settings'
+                      }}
+                    >
+                      {char}
+                    </span>
+                  ))}
+                </span>
+                <span className="block overflow-hidden pb-1 -mb-1 text-brand-accent whitespace-nowrap">
+                  {"CHAUDHARI".split('').map((char, i) => (
+                    <span
+                      key={i}
+                      className="kinetic-char inline-block"
+                      style={{
+                        fontVariationSettings: "'wght' 850, 'wdth' 125",
+                        willChange: 'font-variation-settings'
+                      }}
+                    >
+                      {char}
+                    </span>
+                  ))}
+                </span>
+              </m.h1>
 
               {/* Bio */}
               <m.p
@@ -232,7 +227,7 @@ export const Hero: React.FC = () => {
                       CGPA
                     </td>
                     <td className="py-3 text-brand-primary font-medium font-mono">
-                      {portfolioData.education[0].gpa} / 10
+                      8.5 / 10
                     </td>
                   </tr>
 
@@ -259,7 +254,7 @@ export const Hero: React.FC = () => {
                       Open Source
                     </td>
                     <td className="py-3 text-brand-primary font-medium">
-                      Connect Global '26 · ELUSOC Summer of Code '26
+                      Connect Global '26 · ELUSoC Summer of Code '26 · ECSoC
                     </td>
                   </tr>
 
@@ -268,8 +263,8 @@ export const Hero: React.FC = () => {
                     <td className="py-3 font-mono text-[10px] tracking-wider text-gray-600 dark:text-gray-400 uppercase">
                       Languages
                     </td>
-                    <td className="py-3 text-brand-primary font-medium font-mono text-xs text-indigo-400">
-                      {portfolioData.skills.languages.slice(0, 5).join(' · ')}
+                    <td className="py-3 text-brand-primary font-medium font-mono text-xs text-brand-accent">
+                      TypeScript · JavaScript · Python · C++
                     </td>
                   </tr>
 
@@ -293,44 +288,44 @@ export const Hero: React.FC = () => {
             >
               {/* Projects Shipped */}
               <div className="flex-1 flex flex-col gap-1">
-                <div className="text-2xl md:text-3xl font-bold text-purple-500 dark:text-purple-400 font-mono leading-none">
-                  <CountUpNumber value={4} suffix="+" />
+                <div className="text-2xl md:text-3xl font-bold text-brand-accent font-mono leading-none">
+                  <CountUpNumber value={10} suffix="+" />
                 </div>
                 <div className="text-[10px] tracking-widest text-brand-text-muted mt-1 uppercase font-mono leading-tight">
                   PROJECTS<br />SHIPPED
                 </div>
               </div>
 
-              <div className="w-px h-8 bg-white/10 dark:bg-white/10 shrink-0" />
+              <div className="w-px h-8 bg-brand-border shrink-0" />
 
               {/* GitHub Commits */}
               <div className="flex-1 flex flex-col gap-1">
-                <div className="text-2xl md:text-3xl font-bold text-purple-500 dark:text-purple-400 font-mono leading-none">
-                  <CountUpNumber value={500} suffix="+" />
+                <div className="text-2xl md:text-3xl font-bold text-brand-accent font-mono leading-none">
+                  <CountUpNumber value={2000} suffix="+" />
                 </div>
                 <div className="text-[10px] tracking-widest text-brand-text-muted mt-1 uppercase font-mono leading-tight">
                   GITHUB<br />COMMITS
                 </div>
               </div>
 
-              <div className="w-px h-8 bg-white/10 dark:bg-white/10 shrink-0" />
+              <div className="w-px h-8 bg-brand-border shrink-0" />
 
               {/* OSS Contributions */}
               <div className="flex-1 flex flex-col gap-1">
-                <div className="text-2xl md:text-3xl font-bold text-purple-500 dark:text-purple-400 font-mono leading-none">
-                  <CountUpNumber value={2} />
+                <div className="text-2xl md:text-3xl font-bold text-brand-accent font-mono leading-none">
+                  <CountUpNumber value={200} suffix="+" />
                 </div>
                 <div className="text-[10px] tracking-widest text-brand-text-muted mt-1 uppercase font-mono leading-tight">
                   OSS<br />CONTRIBUTIONS
                 </div>
               </div>
 
-              <div className="w-px h-8 bg-white/10 dark:bg-white/10 shrink-0" />
+              <div className="w-px h-8 bg-brand-border shrink-0" />
 
               {/* CGPA */}
               <div className="flex-1 flex flex-col gap-1">
-                <div className="text-2xl md:text-3xl font-bold text-purple-500 dark:text-purple-400 font-mono leading-none">
-                  <CountUpNumber value={8.66} decimals={2} />
+                <div className="text-2xl md:text-3xl font-bold text-brand-accent font-mono leading-none">
+                  <CountUpNumber value={8.5} decimals={1} />
                 </div>
                 <div className="text-[10px] tracking-widest text-brand-text-muted mt-1 uppercase font-mono leading-tight">
                   CGPA / 10

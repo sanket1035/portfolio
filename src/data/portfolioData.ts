@@ -125,7 +125,7 @@ export const portfolioData: PortfolioData = {
       degree: "B.Tech",
       specialization: "Artificial Intelligence & Data Science",
       duration: "2023 - 2027",
-      gpa: "8.66",
+      gpa: "8.5",
     }
   ],
   skills: {
@@ -386,7 +386,7 @@ notebooks/  # Exploratory data analysis & threshold tuning`,
     {
       title: "StudyBuddy KKW",
       issuer: "K. K. Wagh Institute",
-      date: "Academic Year 2021 – Present",
+      date: "2023 – Present",
       description: "Built in first year with zero backend experience using AI tools. Now serves 1,500+ students with notes, PYQs, and exam resources across 10+ subjects. 400+ active users annually — completely self-maintained with zero downtime."
     },
     {
@@ -400,28 +400,28 @@ notebooks/  # Exploratory data analysis & threshold tuning`,
     {
       role: "Core Committee Member",
       organization: "CSI KKWIEER Students' Chapter",
-      duration: "2025 - 2026",
+      duration: "2025 - Present",
       description: "Organize major technical events, coding contests, and technology workshops for engineering students.",
       image: "/placeholders/csi.jpg"
     },
     {
       role: "Logistics & EPM Team Member",
       organization: "Innov-ERA National Hackathon",
-      duration: "March 2025",
+      duration: "Jan 2025 - March 2025",
       description: "Managed on-ground operations, developer assistance, and participant support for a 24-hour national hackathon.",
       image: "/placeholders/innov_era.jpg"
     },
     {
       role: "Creative Team Member",
       organization: "Phoenix Club, Department of AI & DS",
-      duration: "2024 - Present",
+      duration: "2024 - 2025",
       description: "Design UI layouts, promotional graphics, and coordinate social media content for club events.",
       image: "/placeholders/phoenix.jpg"
     },
     {
       role: "Organizing Committee Member (Season 14)",
       organization: "Swapnapurti Foundation NGO",
-      duration: "Jan 2024",
+      duration: "Sep 2023 - Jan 2024",
       description: "Coordinated volunteer efforts, planned welfare activities, and drove social impact events.",
       image: "/placeholders/swapnapurti.jpg"
     }
