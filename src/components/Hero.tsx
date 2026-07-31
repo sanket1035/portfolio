@@ -286,37 +286,37 @@ export const Hero: React.FC = () => {
               variants={itemVariants}
               className="flex flex-row items-center justify-between gap-3 md:gap-6 py-5 border-y border-brand-border/40 my-6 w-full"
             >
-              {/* Projects Shipped */}
+              {/* Projects Built */}
               <div className="flex-1 flex flex-col gap-1">
                 <div className="text-2xl md:text-3xl font-bold text-brand-accent font-mono leading-none">
                   <CountUpNumber value={10} suffix="+" />
                 </div>
                 <div className="text-[10px] tracking-widest text-brand-text-muted mt-1 uppercase font-mono leading-tight">
-                  PROJECTS<br />SHIPPED
+                  PROJECTS<br />BUILT
                 </div>
               </div>
 
               <div className="w-px h-8 bg-brand-border shrink-0" />
 
-              {/* GitHub Commits */}
+              {/* Git Commits */}
               <div className="flex-1 flex flex-col gap-1">
                 <div className="text-2xl md:text-3xl font-bold text-brand-accent font-mono leading-none">
-                  <CountUpNumber value={500} suffix="+" />
+                  <CountUpNumber value={650} suffix="+" />
                 </div>
                 <div className="text-[10px] tracking-widest text-brand-text-muted mt-1 uppercase font-mono leading-tight">
-                  GITHUB<br />COMMITS
+                  GIT<br />COMMITS
                 </div>
               </div>
 
               <div className="w-px h-8 bg-brand-border shrink-0" />
 
-              {/* OSS Contributions */}
+              {/* Pull Requests */}
               <div className="flex-1 flex flex-col gap-1">
                 <div className="text-2xl md:text-3xl font-bold text-brand-accent font-mono leading-none">
-                  <CountUpNumber value={200} suffix="+" />
+                  <CountUpNumber value={225} suffix="+" />
                 </div>
                 <div className="text-[10px] tracking-widest text-brand-text-muted mt-1 uppercase font-mono leading-tight">
-                  OSS<br />CONTRIBUTIONS
+                  PULL<br />REQUESTS
                 </div>
               </div>
 
@@ -328,7 +328,7 @@ export const Hero: React.FC = () => {
                   <CountUpNumber value={8.5} decimals={1} />
                 </div>
                 <div className="text-[10px] tracking-widest text-brand-text-muted mt-1 uppercase font-mono leading-tight">
-                  CGPA / 10
+                  CGPA
                 </div>
               </div>
             </m.div>

@@ -95,6 +95,15 @@ export const OpenSource: React.FC = () => {
     { text: 'Participate in Hacktoberfest', done: false }
   ];
 
+  // GitHub & Development Section Metrics
+  const devMetrics = [
+    { label: 'Repositories', value: '30+' },
+    { label: 'Git Commits (2026)', value: '650+' },
+    { label: 'Pull Requests', value: '225+' },
+    { label: 'Contributions', value: '1,100+' },
+    { label: 'Contributed To', value: '18 Repos' },
+  ];
+
   return (
     <section id="opensource" className="w-full py-24 px-6 lg:px-8 border-t border-brand-border/40 bg-brand-bg relative overflow-hidden">
       <div className="max-w-7xl w-full mx-auto relative z-10 space-y-12">
@@ -112,6 +121,20 @@ export const OpenSource: React.FC = () => {
             A snapshot of my current engineering focus, technologies, and software development workflow.
           </p>
           <div className="h-1 w-16 bg-brand-accent mx-auto mt-4 rounded-full"></div>
+        </div>
+
+        {/* GitHub & Development Key Metrics Strip */}
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
+          {devMetrics.map((metric) => (
+            <div key={metric.label} className="p-4 rounded-xl bg-brand-card border border-brand-border shadow-sm flex flex-col justify-center space-y-1">
+              <p className="text-[10px] font-mono font-semibold text-brand-text-muted uppercase tracking-wider">
+                {metric.label}
+              </p>
+              <h3 className="font-heading font-extrabold text-xl md:text-2xl text-brand-accent tracking-tight">
+                {metric.value}
+              </h3>
+            </div>
+          ))}
         </div>
 
         {/* Unified Dashboard Grid */}
