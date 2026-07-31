@@ -26,7 +26,7 @@ export const OpenSource: React.FC = () => {
       desc: 'Predictive carbon footprint estimator & industrial emissions optimization platform.',
       tech: 'Python | FastAPI | PyTorch | Next.js',
       status: 'Predictive Modeling',
-      statusColor: 'bg-purple-500/10 text-purple-400 border-purple-500/20',
+      statusColor: 'bg-brand-accent/10 text-brand-accent border-brand-accent/20',
       url: 'https://github.com/sanket1035/Carbonomics-AI'
     },
     {

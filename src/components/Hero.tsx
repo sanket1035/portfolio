@@ -240,7 +240,7 @@ export const Hero: React.FC = () => {
                       <div className="flex flex-wrap gap-2 mt-1">
                         {portfolioData.projects.slice(0, 4).map(p => p.title).map(title => (
                           <a href="#projects" key={title}
-                            className="px-2.5 py-0.5 rounded-md text-xs font-medium bg-purple-500/10 text-purple-400 border border-purple-500/20 hover:bg-purple-500/20 hover:border-purple-500/40 transition-all cursor-pointer">
+                            className="px-2.5 py-0.5 rounded-md text-xs font-medium bg-brand-accent/10 text-brand-accent border border-brand-accent/20 hover:bg-brand-accent/20 hover:border-brand-accent/40 transition-all cursor-pointer">
                             {title}
                           </a>
                         ))}
@@ -337,7 +337,7 @@ export const Hero: React.FC = () => {
             <m.div variants={itemVariants} className="flex flex-col sm:flex-row items-center gap-4 pt-2">
               <button
                 onClick={handleScrollToProjects}
-                className="w-full sm:w-auto px-6 py-3 rounded-lg bg-brand-primary text-brand-bg font-bold text-xs hover:opacity-90 transition-all flex items-center justify-center gap-2 cursor-pointer shadow-md dark:bg-purple-600 dark:hover:bg-purple-500 dark:text-white dark:border-transparent"
+                className="w-full sm:w-auto px-6 py-3 rounded-lg bg-brand-primary text-brand-bg font-bold text-xs hover:opacity-90 transition-all flex items-center justify-center gap-2 cursor-pointer shadow-md"
               >
                 View My Work
                 <ArrowRight size={14} />
@@ -502,18 +502,18 @@ export const Hero: React.FC = () => {
               variants={itemVariants}
               className="relative w-full flex items-end justify-center h-[400px] md:h-[560px] overflow-visible"
             >
-              {/* Dot texture */}
+              {/* Ambient backdrop texture */}
               <div
-                className="absolute w-80 h-80 top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none"
+                className="absolute w-80 h-80 top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none opacity-40"
                 style={{
-                  backgroundImage: 'radial-gradient(circle, rgba(124,58,237,0.15) 1px, transparent 1px)',
+                  backgroundImage: 'radial-gradient(circle, var(--color-brand-accent, rgba(234,88,12,0.15)) 1px, transparent 1px)',
                   backgroundSize: '20px 20px'
                 }}
               />
-              {/* Glow blob */}
-              <div className="absolute w-72 h-72 top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full bg-purple-400/20 dark:bg-purple-600/35 blur-[60px] dark:blur-[80px] pointer-events-none" />
-              {/* Ring border */}
-              <div className="absolute w-80 h-80 top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 border border-purple-400/15 dark:border-purple-500/20 rounded-full pointer-events-none" />
+              {/* Soft ambient glow blob */}
+              <div className="absolute w-72 h-72 top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full bg-brand-accent/15 blur-[70px] pointer-events-none" />
+              {/* Subtle ring border */}
+              <div className="absolute w-80 h-80 top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 border border-brand-border/40 rounded-full pointer-events-none" />
               {/* Photo */}
               <img
                 src="/placeholders/hero.png"

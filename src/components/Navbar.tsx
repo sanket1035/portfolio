@@ -83,7 +83,7 @@ export const Navbar: React.FC = () => {
       }`}
     >
       <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
-        {/* Left Side: Monogram Logo & Name */}
+        {/* Left Side: Logo & Name */}
         <Link
           to="/"
           onClick={() => {
@@ -92,9 +92,11 @@ export const Navbar: React.FC = () => {
           }}
           className="flex items-center gap-3 select-none group"
         >
-          <div className="font-heading font-extrabold text-lg bg-gradient-to-br from-indigo-400 to-brand-accent text-brand-bg px-2.5 py-1 rounded transition-transform group-hover:scale-105">
-            SC
-          </div>
+          <img
+            src="/Sanket_Chaudhari_logo.png"
+            alt="Sanket Chaudhari Logo"
+            className="h-8 w-auto object-contain transition-transform group-hover:scale-105 rounded"
+          />
           <span className="font-mono text-xs md:text-sm tracking-[0.25em] text-brand-primary font-bold transition-colors group-hover:text-brand-accent">
             SANKET.CHAUDHARI
           </span>
