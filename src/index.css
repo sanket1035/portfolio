@@ -1,11 +1,12 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800;900&family=Fira+Code:wght@400;500&family=Archivo:ital,wdth,wght@0,62..125,100..900;1,62..125,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..900&family=Inter:wght@300;400;500;600;700;800;900&family=Fira+Code:wght@400;500&family=Archivo:ital,wdth,wght@0,62..125,100..900;1,62..125,100..900&display=swap');
 @import "tailwindcss";
 
 @theme {
   --font-sans: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  --font-heading: 'Outfit', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-heading: 'Bricolage Grotesque', 'Outfit', system-ui, sans-serif;
   --font-mono: 'Fira Code', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-  --font-mihir: 'Archivo', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-mihir: 'Bricolage Grotesque', 'Archivo', system-ui, sans-serif;
+  --font-bricolage: 'Bricolage Grotesque', system-ui, sans-serif;
 
   /* Premium curated palette variables that adjust smoothly with state */
   --color-brand-primary: var(--brand-primary);
@@ -20,27 +21,27 @@
 
 :root {
   /* Default: Dark Theme */
-  --brand-primary: #f3f4f6;
+  --brand-primary: #FCFBF9;
   --brand-bg: #0b0c10;
   --brand-card: #12131c;
   --brand-border: #1a1c24;
-  --brand-text: #f3f4f6;
-  --brand-text-muted: #9ca3af;
+  --brand-text: #FCFBF9;
+  --brand-text-muted: #A39E93;
   --brand-accent: #c084fc; /* soft premium purple */
   --brand-accent-glow: rgba(192, 132, 252, 0.15);
   color-scheme: dark;
 }
 
 :root.light {
-  /* Light Theme */
-  --brand-primary: #111827;
-  --brand-bg: #f8fafc;
-  --brand-card: #ffffff;
-  --brand-border: #e2e8f0;
-  --brand-text: #0f172a;
-  --brand-text-muted: #64748b;
-  --brand-accent: #8b5cf6; /* medium violet */
-  --brand-accent-glow: rgba(139, 92, 246, 0.1);
+  /* Light Theme — getvik.com warm espresso palette */
+  --brand-primary: #2B281F;
+  --brand-bg: #ffffff;
+  --brand-card: #FCFCFA;
+  --brand-border: #E7E3DB;
+  --brand-text: #2B281F;
+  --brand-text-muted: #8E887D;
+  --brand-accent: #a86579; /* getvik warm rose accent */
+  --brand-accent-glow: rgba(212, 160, 176, 0.25);
   color-scheme: light;
 }
 

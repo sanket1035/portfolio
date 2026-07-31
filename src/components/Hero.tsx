@@ -121,6 +121,17 @@ export const Hero: React.FC = () => {
     }
   };
 
+  const [heroMousePos, setHeroMousePos] = React.useState({ x: -500, y: -500 });
+  const [heroHovered, setHeroHovered] = React.useState(false);
+
+  const handleHeroMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    setHeroMousePos({
+      x: e.clientX - rect.left,
+      y: e.clientY - rect.top,
+    });
+  };
+
   return (
     <section ref={heroRef} className="w-full min-h-screen flex items-center justify-center pt-28 pb-16 px-6 lg:px-8 bg-brand-bg">
       <div className="max-w-7xl w-full mx-auto">
@@ -141,45 +152,43 @@ export const Hero: React.FC = () => {
                 <span>Software & AI Engineering</span>
               </m.div>
 
-              {/* Unique Heading */}
-              <m.h1
-                variants={itemVariants}
-                className="font-mihir font-black tracking-tight text-brand-primary uppercase leading-[0.9] select-none"
-                style={{
-                  fontStretch: '125%',
-                  fontWeight: 850,
-                  fontSize: 'clamp(2rem, 7.5vw, 4.8rem)'
-                }}
-              >
-                <span className="block overflow-hidden pb-1 -mb-1 whitespace-nowrap">
-                  {"SANKET".split('').map((char, i) => (
-                    <span
-                      key={i}
-                      className="kinetic-char inline-block"
-                      style={{
-                        fontVariationSettings: "'wght' 850, 'wdth' 125",
-                        willChange: 'font-variation-settings'
-                      }}
-                    >
-                      {char}
-                    </span>
-                  ))}
-                </span>
-                <span className="block overflow-hidden pb-1 -mb-1 text-transparent bg-clip-text bg-gradient-to-r from-brand-accent via-indigo-400 to-violet-500 whitespace-nowrap">
-                  {"CHAUDHARI".split('').map((char, i) => (
-                    <span
-                      key={i}
-                      className="kinetic-char inline-block"
-                      style={{
-                        fontVariationSettings: "'wght' 850, 'wdth' 125",
-                        willChange: 'font-variation-settings'
-                      }}
-                    >
-                      {char}
-                    </span>
-                  ))}
-                </span>
-              </m.h1>
+              {/* Dynamic Mouse Tracking Heading */}
+              <m.div variants={itemVariants}>
+                <div 
+                  className="relative inline-block py-1 cursor-pointer select-none group"
+                  onMouseMove={handleHeroMouseMove}
+                  onMouseEnter={() => setHeroHovered(true)}
+                  onMouseLeave={() => setHeroHovered(false)}
+                >
+                  {/* Base Outlined Layer */}
+                  <h1
+                    className="font-bricolage font-extrabold tracking-tight uppercase leading-[0.88] select-none text-transparent"
+                    style={{
+                      fontSize: 'clamp(2.6rem, 7.5vw, 5.2rem)',
+                      WebkitTextStroke: '2px var(--brand-primary)',
+                    }}
+                  >
+                    <span className="block">SANKET</span>
+                    <span className="block">CHAUDHARI</span>
+                  </h1>
+
+                  {/* Interactive Spotlight Dynamic Color Reveal Layer */}
+                  <h1
+                    className="font-bricolage font-extrabold tracking-tight uppercase leading-[0.88] select-none absolute inset-0 pointer-events-none transition-opacity duration-200"
+                    style={{
+                      fontSize: 'clamp(2.6rem, 7.5vw, 5.2rem)',
+                      opacity: heroHovered ? 1 : 0,
+                      background: 'linear-gradient(135deg, var(--brand-accent) 0%, #c084fc 50%, var(--brand-primary) 100%)',
+                      WebkitBackgroundClip: 'text',
+                      WebkitTextFillColor: 'transparent',
+                      clipPath: `circle(140px at ${heroMousePos.x}px ${heroMousePos.y}px)`,
+                    }}
+                  >
+                    <span className="block">SANKET</span>
+                    <span className="block">CHAUDHARI</span>
+                  </h1>
+                </div>
+              </m.div>
 
               {/* Bio */}
               <m.p
