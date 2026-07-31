@@ -245,6 +245,27 @@ export const CaseStudy: React.FC = () => {
           </section>
         )}
 
+        {/* Gallery Section */}
+        <section className="space-y-4">
+          <h2 className="font-heading font-bold text-lg md:text-xl text-brand-primary flex items-center gap-2.5 uppercase tracking-wide">
+            <Layers className="text-brand-accent" size={18} />
+            Gallery
+          </h2>
+          <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
+            <div className="aspect-video rounded-lg border border-brand-border bg-brand-card flex flex-col items-center justify-center p-4 text-center">
+              <span className="text-[10px] font-mono text-brand-text-muted uppercase tracking-wider">[ Screenshot 01 ]</span>
+              <span className="text-[9px] text-brand-text-muted/60 mt-1">Main Interface Mockup</span>
+            </div>
+            <div className="aspect-video rounded-lg border border-brand-border bg-brand-card flex flex-col items-center justify-center p-4 text-center">
+              <span className="text-[10px] font-mono text-brand-text-muted uppercase tracking-wider">[ Screenshot 02 ]</span>
+              <span className="text-[9px] text-brand-text-muted/60 mt-1">Data Display Log</span>
+            </div>
+            <div className="aspect-video rounded-lg border border-brand-border bg-brand-card flex flex-col items-center justify-center p-4 text-center">
+              <span className="text-[10px] font-mono text-brand-text-muted uppercase tracking-wider">[ Screenshot 03 ]</span>
+              <span className="text-[9px] text-brand-text-muted/60 mt-1">Mobile Viewport Layout</span>
+            </div>
+          </div>
+        </section>
       </div>
     </article>
   );

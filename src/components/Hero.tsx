@@ -301,7 +301,7 @@ export const Hero: React.FC = () => {
               {/* GitHub Commits */}
               <div className="flex-1 flex flex-col gap-1">
                 <div className="text-2xl md:text-3xl font-bold text-brand-accent font-mono leading-none">
-                  <CountUpNumber value={500} suffix="+" />
+                  <CountUpNumber value={2000} suffix="+" />
                 </div>
                 <div className="text-[10px] tracking-widest text-brand-text-muted mt-1 uppercase font-mono leading-tight">
                   GITHUB<br />COMMITS
