@@ -106,7 +106,7 @@ export const portfolioData: PortfolioData = {
   subtitle: "Artificial Intelligence & Data Science Undergraduate",
   bio: "Building practical software, AI-powered solutions, and active open-source contributions. Focused on writing clean, scalable code and training efficient models.",
   resumeUrl: "/Sanket_Chaudhari_Resume.pdf", // Placed in public folder
-  lastUpdatedResume: "June 2026",
+  lastUpdatedResume: "November 2026",
   location: "Nashik, Maharashtra, India",
   socials: {
     github: "https://github.com/sanket1035",

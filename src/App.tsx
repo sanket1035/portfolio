@@ -1,5 +1,5 @@
 import React, { useState, useEffect, Suspense } from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import { LazyMotion, domAnimation } from 'framer-motion';
 import { ThemeProvider } from './context/ThemeContext';
 import Navbar from './components/Navbar';
@@ -17,6 +17,26 @@ const MatrixOverlay = React.lazy(() => import('./components/MatrixOverlay'));
 const FloatingChatbot = React.lazy(() => import('./components/FloatingChatbot'));
 const CommandPalette = React.lazy(() => import('./components/CommandPalette'));
 const Game2048Page = React.lazy(() => import('./pages/Game2048Page'));
+
+// The front page has its own chrome: no header on screen one, links live in the closing section.
+function Chrome({ children, where }: { children: React.ReactNode; where: string }) {
+  const { pathname } = useLocation();
+  return pathname === '/' && where === 'inner' ? null : <>{children}</>;
+}
+
+// Floating chatbot is a button, so it only appears once the opener has scrolled away on the front page.
+function LateChatbot() {
+  const { pathname } = useLocation();
+  const [past, setPast] = useState(false);
+  useEffect(() => {
+    const on = () => setPast(window.scrollY > window.innerHeight * 1.2);
+    on();
+    window.addEventListener('scroll', on, { passive: true });
+    return () => window.removeEventListener('scroll', on);
+  }, [pathname]);
+  if (pathname === '/' && !past) return null;
+  return <FloatingChatbot />;
+}
 
 function App() {
   const [isTerminalOpen, setIsTerminalOpen] = useState(false);
@@ -117,7 +137,7 @@ function App() {
       <Router>
         <div className="min-h-screen flex flex-col bg-brand-bg text-brand-text transition-colors duration-300">
           {/* Top navigation bar */}
-          <Navbar />
+          <Chrome where="inner"><Navbar /></Chrome>
 
           {/* Recruiter Mode Banner indicator */}
           {isRecruiterMode && (
@@ -160,12 +180,12 @@ function App() {
           </main>
 
           {/* Footer content */}
-          <Footer />
+          <Chrome where="inner"><Footer /></Chrome>
 
           {/* Lazy loaded interactive components */}
           <Suspense fallback={null}>
             {/* Interactive Floating Chatbot */}
-            <FloatingChatbot />
+            <LateChatbot />
 
             {/* Terminal Mock Command Line Overlay */}
             <TerminalOverlay
