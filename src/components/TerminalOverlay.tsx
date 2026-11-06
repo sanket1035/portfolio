@@ -13,13 +13,26 @@ interface CommandLog {
   text: string | React.ReactNode;
 }
 
+const HelpList = () => (
+  <div className="space-y-1 whitespace-pre-wrap">
+    <p>Available commands:</p>
+    <p>  <span className="text-brand-accent">about</span>    - Brief biography and stats</p>
+    <p>  <span className="text-brand-accent">projects</span> - Showcase featured systems built</p>
+    <p>  <span className="text-brand-accent">resume</span>   - Open resume in a new tab</p>
+    <p>  <span className="text-brand-accent">linkedin</span> - Visit LinkedIn profile</p>
+    <p>  <span className="text-brand-accent">github</span>   - Visit GitHub profile</p>
+    <p>  <span className="text-brand-accent">clear</span>    - Clear the terminal console screen</p>
+    <p>  <span className="text-brand-accent">exit</span>     - Close the terminal overlay</p>
+  </div>
+);
+
 export const TerminalOverlay: React.FC<TerminalOverlayProps> = ({ isOpen, onClose }) => {
   const [input, setInput] = useState('');
   const [history, setHistory] = useState<string[]>([]);
   const [historyIndex, setHistoryIndex] = useState(-1);
   const [logs, setLogs] = useState<CommandLog[]>([
     { type: 'output', text: 'Welcome to Sanket\'s Interactive Portfolio Shell!' },
-    { type: 'output', text: 'Type "help" to see all available commands.' },
+    { type: 'output', text: <HelpList /> },
     { type: 'output', text: '' }
   ]);
 
@@ -54,18 +67,7 @@ export const TerminalOverlay: React.FC<TerminalOverlayProps> = ({ isOpen, onClos
     let response: string | React.ReactNode = '';
     switch (cmd) {
       case 'help':
-        response = (
-          <div className="space-y-1">
-            <p>Available commands:</p>
-            <p>  <span className="text-brand-accent">about</span>    - Brief biography and stats</p>
-            <p>  <span className="text-brand-accent">projects</span> - Showcase featured systems built</p>
-            <p>  <span className="text-brand-accent">resume</span>   - Open resume in a new tab</p>
-            <p>  <span className="text-brand-accent">linkedin</span> - Visit LinkedIn profile</p>
-            <p>  <span className="text-brand-accent">github</span>   - Visit GitHub profile</p>
-            <p>  <span className="text-brand-accent">clear</span>    - Clear the terminal console screen</p>
-            <p>  <span className="text-brand-accent">exit</span>     - Close the terminal overlay</p>
-          </div>
-        );
+        response = <HelpList />;
         break;
       case 'about':
         response = (
@@ -155,7 +157,7 @@ export const TerminalOverlay: React.FC<TerminalOverlayProps> = ({ isOpen, onClos
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          className="fixed inset-0 z-50 bg-black/90 backdrop-blur-md flex items-center justify-center p-4 sm:p-6 font-mono text-xs md:text-sm text-green-400"
+          className="fixed inset-0 z-[9000] bg-black/90 backdrop-blur-md flex items-center justify-center p-4 sm:p-6 font-mono text-xs md:text-sm text-green-400"
           onClick={onClose}
         >
           <m.div
