@@ -39,12 +39,6 @@ export const OpenSource = () => {
   ];
 
   // Currently Building
-  const currentlyBuilding = [
-    { name: 'Carbonomics AI', detail: 'Building predictive ML pipelines' },
-    { name: 'Atlas AI', detail: 'Concept graph generation' },
-    { name: 'Predictive Maintenance ML', detail: 'Detects vibration & ML model training' }
-  ];
-
   // Currently Learning
   const currentlyLearning = [
     'System Design',
@@ -168,15 +162,6 @@ export const OpenSource = () => {
           <section className="box" data-row>
             <h4>Current Focus</h4>
             <Pills items={currentFocus} />
-          </section>
-
-          <section className="box" data-row>
-            <h4>Currently Building</h4>
-            <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'grid', gap: '.9rem' }}>
-              {currentlyBuilding.map((b) => (
-                <li key={b.name}><strong>{b.name}</strong><br /><span className="muted">{b.detail}</span></li>
-              ))}
-            </ul>
           </section>
 
           <section className="box" data-row>
