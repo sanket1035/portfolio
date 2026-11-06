@@ -30,13 +30,13 @@ export const FloatingChatbot: React.FC = () => {
               <strong>PlaceTrack AI:</strong> Tamper-proof geofenced attendance tracker.
             </li>
             <li>
-              <strong>Algonix:</strong> Step-by-step sorting/pathfinding algorithm visualizer.
+              <strong>Algonix:</strong> Inter-college coding platform with Docker-sandboxed execution and AST plagiarism detection.
             </li>
             <li>
               <strong>Carbonomics AI:</strong> ML regressor estimating industrial carbon emissions.
             </li>
             <li>
-              <strong>GST Billing App:</strong> POS Android app for retail invoicing.
+              <strong>GST Billing Pro:</strong> Kotlin MVVM Android app for GST-compliant PDF invoices.
             </li>
           </ul>
           <p className="text-[11px] text-indigo-400">

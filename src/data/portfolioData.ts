@@ -172,13 +172,14 @@ export const portfolioData: PortfolioData = {
       folderStructure: "",
       features: [
         "Student and coordinator portals on a 13-model schema with 23 REST API endpoints.",
-        "6-stage hiring pipeline.",
+        "6-stage hiring pipeline with readiness scoring and an eligibility engine.",
         "Gemini API resume analysis and AI interview feedback with a rule-based fallback.",
         "Server-graded timed aptitude tests.",
+        "Real-time updates with Socket.io.",
         "Secured with JWT, Zod validation and rate limiting.",
         "Deployed on Vercel and Render with Neon PostgreSQL."
       ],
-      techStack: ["Next.js", "TypeScript", "Express", "Prisma", "PostgreSQL", "Gemini API", "Docker", "Vitest"],
+      techStack: ["Next.js", "TypeScript", "Express", "Prisma", "PostgreSQL", "Gemini API", "Socket.io", "Docker", "Vitest"],
       futureImprovements: [],
       githubUrl: "https://github.com/sanket1035/placetrack-ai",
       liveUrl: "https://frontend-umber-one-zuhj8ueccq.vercel.app/",
@@ -285,30 +286,26 @@ models/    # Gemma LLM prompt templates & graph generators`,
       techStack: ["PyTorch", "CSRNet", "OpenCV", "ONNX", "Streamlit", "Docker", "GitHub Actions"],
       futureImprovements: [],
       githubUrl: "https://github.com/sanket1035/simhastha-suraksha",
+      liveUrl: "https://simhastha-suraksha.streamlit.app/",
       image: "/placeholders/simhastha.webp",
       category: "ai"
     },
     {
       id: "algonix",
       title: "Algonix",
-      tagline: "Interactive Algorithm Visualizer & Learning Sandbox",
-      description: "An educational web platform designed to help students and developers visualize complex computer science algorithms in real-time. Supports sorting, searching, pathfinding, and tree traversals.",
-      problem: "Data structures and algorithms are highly abstract, making them difficult to conceptualize. Dynamic step-by-step visual feedback helps learners understand time/space complexity intuitively.",
-      motivation: "Computer Science algorithms are highly conceptual. Static textbook images fall short. Algonix was built to bridge this learning gap by providing real-time, interactive visual sandboxes where learners can toggle custom arrays and trace execution paths step by step.",
-      challenges: "Representing step-by-step sorting iterations in React without blocking the main event loops or dropping frames during heavy SVG operations.",
-      learnings: "Acquired a deep understanding of asynchronous frame delaying, state snapshots mapping, and responsive canvas element drawing.",
-      folderStructure: `src/
-├── algorithms/   # Sorting & pathfinding scripts
-├── components/   # Speed sliders, trace panels, array bars
-└── App.tsx       # Main visual board setup`,
+      tagline: "Inter-College Coding Platform with Sandboxed Execution",
+      description: "An inter-college coding platform that runs submitted code in sandboxed Docker containers, detects plagiarism with AST-based comparison and protects the API with rate limiting.",
+      problem: "Running coding contests across colleges needs safe execution of untrusted code and a fair way to catch copied solutions.",
+      motivation: "Built in June 2026 as a full-stack platform for inter-college coding contests, covering secure code execution, fairness checks and abuse protection.",
+      challenges: "Executing untrusted submissions safely inside Docker containers, and comparing solutions structurally with ASTs so renamed variables do not hide plagiarism.",
+      learnings: "Container sandboxing, AST-based similarity detection, API rate limiting, and building a MongoDB-backed contest flow end to end.",
+      folderStructure: "",
       features: [
-        "Visualizations for Bubble/Quick/Merge Sort, Dijkstra/A* pathfinding, and Binary Search.",
-        "Interactive speed controls, step-by-step code trace panel, and customized input generator.",
-        "Responsive and accessible playground displaying performance comparisons (operations count, memory estimate)."
+        "Sandboxed code execution in Docker containers.", "AST-based plagiarism detection.", "Rate limiting on the API.", "Inter-college contest platform with a React and TypeScript frontend and a Node.js and MongoDB backend."
       ],
-      techStack: ["React", "TypeScript", "Tailwind CSS", "Framer Motion", "Vite"],
-      architecture: "Client-side rendering. Algorithms are written in JavaScript with async/await delays mapped to Framer Motion layouts for smooth transitions.",
-      githubUrl: "https://github.com/sanket1035/Algonix",
+      techStack: ["React", "TypeScript", "Node.js", "MongoDB", "Docker"],
+      architecture: "A React and TypeScript client talks to a Node.js API backed by MongoDB. Submissions run in isolated Docker containers, and an AST comparison step flags similar solutions.",
+      githubUrl: "https://github.com/sanket1035/algonix",
       liveUrl: "https://algonix-frontend.onrender.com/",
       image: "/placeholders/algonix.jpg",
       category: "web"
@@ -341,25 +338,19 @@ models/    # Gemma LLM prompt templates & graph generators`,
     },
     {
       id: "gst-billing-app",
-      title: "GST Billing App",
-      tagline: "Mobile POS Billing and Inventory Management System",
-      description: "A fast, offline-first Android application designed for small and medium businesses to generate GST-compliant invoices, track inventory, and calculate monthly tax summaries.",
-      problem: "Small businesses lack access to complex ERP systems and need an easy, mobile-first solution to generate immediate receipts, record transactions, and check inventory without constant internet access.",
-      motivation: "Small retail shops in regional areas need a mobile-first tool to write and manage GST bills without relying on internet connectivity. The motivation was to build a secure, lightweight billing app that works entirely offline.",
-      challenges: "Structuring SQLite relational databases on Android to handle complex products, customers, and invoice linkages while keeping transactions atomic.",
-      learnings: "Learned mobile-first database persistence models, PDF canvas generation from XML layouts, and MVVM app structures.",
-      folderStructure: `app/
-└── src/
-    ├── main/java/  # Invoicing controllers & DB schemas
-    └── res/layout/ # POS interfaces & receipt templates`,
+      title: "GST Billing Pro",
+      tagline: "Android Billing App with GST-Compliant PDF Invoices",
+      description: "An Android billing app built with Kotlin and MVVM that generates GST-compliant PDF invoices, with unit tests covering the core logic.",
+      problem: "Small businesses need quick, GST-compliant invoices from a phone without a heavy ERP system.",
+      motivation: "A mobile-first tool for writing and sharing GST bills, built with a clean MVVM structure.",
+      challenges: "Keeping invoice and tax calculations correct and separated from the UI, which MVVM and unit tests made manageable.",
+      learnings: "Kotlin, MVVM on Android, PDF invoice generation and unit testing business logic.",
+      folderStructure: "",
       features: [
-        "Offline database synchronization with localized data storage.",
-        "PDF receipt generation and instant sharing via WhatsApp/Email.",
-        "Barcode scanner integration using camera for quick product checkout.",
-        "Daily, weekly, and monthly sales graphs and tax computation spreadsheets."
+        "GST-compliant PDF invoice generation.", "MVVM architecture in Kotlin.", "Unit tests for the billing logic."
       ],
-      techStack: ["Java", "Android SDK", "SQLite", "XML Layouts", "PDF Document Generator"],
-      architecture: "MVVM (Model-View-ViewModel) design pattern using SQLite for persistence and LiveData for updating the UI during state changes.",
+      techStack: ["Kotlin", "Android", "MVVM"],
+      architecture: "MVVM (Model-View-ViewModel) on Android: Kotlin ViewModels hold the billing logic and the UI observes their state.",
       githubUrl: "https://github.com/sanket1035/GSTbillingApp",
       image: "/placeholders/gst.jpg",
       category: "mobile"
