@@ -1,10 +1,11 @@
 import React, { createContext, useContext, useEffect, useState } from 'react';
+import { flushSync } from 'react-dom';
 
 type Theme = 'dark' | 'light';
 
 interface ThemeContextType {
   theme: Theme;
-  toggleTheme: () => void;
+  toggleTheme: (e?: React.MouseEvent) => void;
 }
 
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
@@ -29,8 +30,22 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ childre
     localStorage.setItem('sanket-theme', theme);
   }, [theme]);
 
-  const toggleTheme = () => {
-    setTheme((prev) => (prev === 'dark' ? 'light' : 'dark'));
+  const toggleTheme = (e?: React.MouseEvent) => {
+    const root = document.documentElement;
+    const flip = () => setTheme((prev) => (prev === 'dark' ? 'light' : 'dark'));
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    type VT = Document & { startViewTransition?: (cb: () => void) => unknown };
+    const doc = document as VT;
+    if (!reduce && doc.startViewTransition && e) {
+      // circular reveal from the toggle button
+      root.style.setProperty('--tx', `${e.clientX}px`);
+      root.style.setProperty('--ty', `${e.clientY}px`);
+      doc.startViewTransition(() => { flushSync(flip); });
+    } else {
+      root.classList.add('theme-anim');
+      flip();
+      window.setTimeout(() => root.classList.remove('theme-anim'), 600);
+    }
   };
 
   return (

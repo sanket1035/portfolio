@@ -137,7 +137,7 @@ function App() {
       <Router>
         <div className="min-h-screen flex flex-col bg-brand-bg text-brand-text transition-colors duration-300">
           {/* Top navigation bar */}
-          <Chrome where="inner"><Navbar /></Chrome>
+          <Navbar />
 
           {/* Recruiter Mode Banner indicator */}
           {isRecruiterMode && (

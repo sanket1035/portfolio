@@ -5,6 +5,7 @@ import Hero from '../components/Hero';
 import About from '../components/About';
 import Projects from '../components/Projects';
 import Skills from '../components/Skills';
+import Notes from '../components/Notes';
 import Achievements from '../components/Achievements';
 import OpenSource from '../components/OpenSource';
 import ResumeView from '../components/ResumeView';
@@ -21,6 +22,7 @@ export const Home = () => {
         <About />
         <Projects />
         <Skills />
+        <Notes />
         <Achievements />
         <OpenSource />
         <ResumeView />

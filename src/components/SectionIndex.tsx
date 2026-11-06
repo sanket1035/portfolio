@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 
 export const SECTIONS = [
-  ['about', 'Overview'], ['projects', 'Projects'], ['skills', 'Skills'], ['achievements', 'Milestones'],
+  ['about', 'Overview'], ['projects', 'Projects'], ['skills', 'Skills'], ['words', 'In my words'], ['achievements', 'Milestones'],
   ['opensource', 'Dev Activity'], ['resume', 'Resume'], ['contact', 'Contact'],
 ] as const;
 
