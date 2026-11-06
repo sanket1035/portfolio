@@ -20,7 +20,7 @@ export const Hero = () => (
           <div className="rv-card" data-rv-card>
             <span className="rv-name rv-l" data-rv-nl aria-hidden="true">{first}</span>
             <span className="rv-name rv-r" data-rv-nr aria-hidden="true">{rest.join(' ')}</span>
-            <img className="rv-photo" src="/placeholders/hero.png" alt="Sanket Chaudhari" fetchPriority="high" width={1755} height={2194} />
+            <img className="rv-photo" src="/placeholders/hero.webp" alt="Sanket Chaudhari" fetchPriority="high" width={1400} height={1750} />
             <p className="rv-meta mono-label" data-rv-meta>{d.title} · {d.location}<br />Scroll ↓</p>
           </div>
         </div>
