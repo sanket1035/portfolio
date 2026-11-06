@@ -87,11 +87,30 @@ export function useMotion(root: React.RefObject<HTMLElement | null>) {
           });
         });
 
-        // 2. Pinned opener (one pinned element only, desktop + mobile ok, 1.2x viewport)
-        gsap.to('[data-opener-inner]', {
-          scale: 0.92, opacity: 0, ease: 'none',
-          scrollTrigger: { trigger: '[data-opener]', start: 'top top', end: '+=120%', scrub: true, pin: true, pinSpacing: false },
-        });
+        // 2. Opening scene: big photo panel shrinks into a centred card, name halves part, text appears each side
+        const rv = root.current!.querySelector<HTMLElement>('[data-rv]');
+        if (rv) {
+          const q = <T extends HTMLElement>(sel: string) => rv.querySelector<T>(sel)!;
+          const card = q('[data-rv-card]'), cell = q('[data-rv-cell]');
+          const stage = () => rv.getBoundingClientRect();
+          const tlm = gsap.timeline({
+            defaults: { ease: 'none' },
+            scrollTrigger: { trigger: '[data-opener]', start: 'top top', end: '+=170%', scrub: true, pin: true, anticipatePin: 1, invalidateOnRefresh: true },
+          });
+          const top = () => (window.innerWidth >= 900 ? 88 : 80);
+          const w0 = () => stage().width - (window.innerWidth >= 900 ? 80 : 32);
+          tlm.fromTo(card, {
+            width: w0,
+            height: () => stage().height - top() - 16,
+            x: () => { const s = stage(), c = cell.getBoundingClientRect(); return s.left + (s.width - w0()) / 2 - c.left; },
+            y: () => { const s = stage(), c = cell.getBoundingClientRect(); return s.top + top() - c.top; },
+          }, { width: () => cell.getBoundingClientRect().width, height: () => cell.getBoundingClientRect().height, x: 0, y: 0 }, 0);
+          tlm.fromTo(q('[data-rv-nl]'), { xPercent: 0, opacity: 1 }, { xPercent: -130, opacity: 0 }, 0.05);
+          tlm.fromTo(q('[data-rv-nr]'), { xPercent: 0, opacity: 1 }, { xPercent: 130, opacity: 0 }, 0.05);
+          tlm.fromTo(q('[data-rv-meta]'), { opacity: 1 }, { opacity: 0, duration: 0.25 }, 0);
+          tlm.fromTo(q('[data-rv-left]'), { opacity: 0, x: -70 }, { opacity: 1, x: 0, duration: 0.5 }, 0.5);
+          tlm.fromTo(q('[data-rv-right]'), { opacity: 0, x: 70 }, { opacity: 1, x: 0, duration: 0.5 }, 0.5);
+        }
 
         // 3a. Title -> colour circle grows from the corner and floods the screen into chapter one (desktop)
         const blob = root.current!.querySelector<HTMLElement>('[data-circle-blob]');

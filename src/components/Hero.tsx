@@ -1,31 +1,38 @@
 import { portfolioData as d } from '../data/portfolioData';
 
 const go = (hash: string) => document.querySelector(hash)?.scrollIntoView({ behavior: 'smooth' });
+const [first, ...rest] = d.name.split(' ');
 
-/** Giant name behind the cutout photo, bio and actions bottom-left. */
+/**
+ * Opening scene: a big photo panel with the name split across it. On scroll the panel shrinks into a
+ * centred card, the two name halves slide apart, and a line of text appears on each side.
+ */
 export const Hero = () => (
   <section className="opener" data-opener aria-label="Introduction">
-    <div data-opener-inner style={{ position: 'absolute', inset: 0 }}>
-      <h1 className="hero-name" data-load aria-label={d.name}>
-        {d.name.split(' ').map((w, i) => (
-          <span className="line" key={i} aria-hidden="true"><span className="mask"><span className="w">{w}</span></span></span>
-        ))}
-      </h1>
+    <h1 className="sr-only">{d.name}</h1>
+    <div className="rv" data-rv>
+      <div className="rv-stage">
+        <div className="rv-side rv-left" data-rv-left>
+          <p className="rv-big">Practical software, built end to end.</p>
+        </div>
 
-      <img className="hero-photo" src="/placeholders/hero.png" alt="Sanket Chaudhari Profile" fetchPriority="high" width={1755} height={2194} />
+        <div className="rv-cell" data-rv-cell>
+          <div className="rv-card" data-rv-card>
+            <span className="rv-name rv-l" data-rv-nl aria-hidden="true">{first}</span>
+            <span className="rv-name rv-r" data-rv-nr aria-hidden="true">{rest.join(' ')}</span>
+            <img className="rv-photo" src="/placeholders/hero.png" alt="Sanket Chaudhari" fetchPriority="high" width={1755} height={2194} />
+            <p className="rv-meta mono-label" data-rv-meta>{d.title} · {d.location}<br />Scroll ↓</p>
+          </div>
+        </div>
 
-      <div className="hero-copy" data-load-fade>
-        <p className="mono-label muted">{d.title} · {d.location}</p>
-        <p style={{ fontSize: '1.15rem', lineHeight: 1.4, fontWeight: 500 }}>{d.bio}</p>
-        <p className="mono-label" style={{ color: 'var(--primary)' }}>Open to Opportunities · 2027</p>
-        <p style={{ display: 'flex', gap: '.75rem', flexWrap: 'wrap' }}>
-          <button type="button" className="pill solid" onClick={() => go('#projects')}><span>View My Work ↓</span></button>
-          <button type="button" className="pill" onClick={() => go('#resume')}><span>Preview Resume ↗</span></button>
-        </p>
-      </div>
-
-      <div className="hero-side" data-load-fade>
-        <p className="mono-label muted">{d.subtitle}</p>
+        <div className="rv-side rv-right" data-rv-right>
+          <p className="rv-big" style={{ color: 'var(--primary)' }}>Plus AI that actually learns.</p>
+          <p className="rv-para">{d.bio}</p>
+          <p className="rv-links">
+            <button type="button" className="ulink" onClick={() => go('#projects')}>View my work ↓</button>
+            <button type="button" className="ulink" onClick={() => go('#resume')}>Preview resume ↗</button>
+          </p>
+        </div>
       </div>
     </div>
   </section>
