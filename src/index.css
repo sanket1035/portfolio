@@ -387,7 +387,7 @@ html.theme-anim, html.theme-anim *, html.theme-anim *::before, html.theme-anim *
 .cur-ring { width: 36px; height: 36px; margin: -18px 0 0 -18px; }
 .cur-ring > i { position: absolute; inset: 0; border-radius: 50%; padding: 2px; background: conic-gradient(#f0587a, #d0e266, #2d5bcc, #f0587a); -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite: xor; mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0); animation: spin 5s linear infinite; transition: scale .35s var(--ease-out-expo); }
 .cur-hover .cur-ring > i { scale: 1.7; }
-.cur-bot { width: 48px; height: 48px; margin: -24px 0 0 -24px; transition: opacity .3s; }
+.cur-bot { width: 30px; height: 45px; margin: -22px 0 0 -15px; transition: opacity .3s; }
 .cur-bot svg { width: 100%; height: 100%; display: block; overflow: visible; }
 .cur-bot .eye { animation: eyeblink 4s infinite; transform-origin: center; transform-box: fill-box; }
 @keyframes eyeblink { 0%, 94%, 100% { transform: scaleY(1); } 97% { transform: scaleY(.1); } }
@@ -471,3 +471,6 @@ html.cur-active input, html.cur-active textarea { cursor: text !important; }
 /* ---- Featured Systems intro: big title, single accent dot ---- */
 .circle-intro .mega { font-size: clamp(4rem, 19vw, 7rem); }
 @media (min-width: 768px) { .circle-intro .mega { font-size: clamp(8rem, 17vw, 19rem); } }
+
+.cur-bot .flame { transform-origin: 20px 44px; animation: flick .14s ease-in-out infinite alternate; }
+@keyframes flick { from { transform: scaleY(.8) scaleX(1); } to { transform: scaleY(1.15) scaleX(.85); } }

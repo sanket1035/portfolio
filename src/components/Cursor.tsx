@@ -3,16 +3,14 @@ import { useEffect, useRef } from 'react';
 /** Colourful ring + dot that follow the pointer, and a tiny robot that trails behind it. Fine pointers only. */
 export default function Cursor() {
   const ring = useRef<HTMLDivElement>(null);
-  const dot = useRef<HTMLDivElement>(null);
   const bot = useRef<HTMLDivElement>(null);
-  const pupils = useRef<SVGGElement>(null);
 
   useEffect(() => {
     const fine = window.matchMedia('(pointer: fine)').matches;
     const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     if (!fine || reduce) return;
     const root = document.documentElement;
-    let mx = -100, my = -100, rx = -100, ry = -100, bx = -100, by = -100, rot = 0, raf = 0;
+    let mx = -100, my = -100, rx = -100, ry = -100, bx = -100, by = -100, ang = 0, raf = 0;
 
     const move = (e: PointerEvent) => {
       mx = e.clientX; my = e.clientY;
@@ -23,16 +21,16 @@ export default function Cursor() {
 
     const tick = () => {
       rx += (mx - rx) * 0.22; ry += (my - ry) * 0.22;
-      const px = bx;
-      bx += (rx + 30 - bx) * 0.12; by += (ry + 30 - by) * 0.12;
-      rot += (Math.max(-25, Math.min(25, (bx - px) * 2.2)) - rot) * 0.15;
-      if (dot.current) dot.current.style.transform = `translate(${mx}px, ${my}px)`;
-      if (ring.current) ring.current.style.transform = `translate(${rx}px, ${ry}px)`;
-      if (pupils.current) {
-        const dx = mx - bx, dy = my - by, d = Math.hypot(dx, dy) || 1, k = Math.min(1, d / 60) * 1.8;
-        pupils.current.style.transform = `translate(${(dx / d) * k}px, ${(dy / d) * k}px)`;
+      const px = bx, py = by;
+      bx += (rx + 34 - bx) * 0.1; by += (ry + 34 - by) * 0.1;
+      const vx = bx - px, vy = by - py;
+      if (Math.hypot(vx, vy) > 0.35) {
+        const target = (Math.atan2(vy, vx) * 180) / Math.PI + 90;
+        let d = target - ang; d = ((d + 540) % 360) - 180;
+        ang += d * 0.12;
       }
-      if (bot.current) bot.current.style.transform = `translate(${bx - 3}px, ${by - 3 + Math.sin(performance.now() / 300) * 3}px) rotate(${rot}deg)`;
+      if (ring.current) ring.current.style.transform = `translate(${rx}px, ${ry}px)`;
+      if (bot.current) bot.current.style.transform = `translate(${bx - 3}px, ${by - 3}px) rotate(${ang}deg)`;
       raf = requestAnimationFrame(tick);
     };
     raf = requestAnimationFrame(tick);
@@ -49,22 +47,20 @@ export default function Cursor() {
   return (
     <div aria-hidden="true">
       <div className="cur-ring" ref={ring}><i /></div>
-      <div className="cur-dot" ref={dot} />
       <div className="cur-bot" ref={bot}>
-        <svg viewBox="0 0 40 40">
-          <g className="prop"><rect x="9" y="3" width="22" height="3" rx="1.5" fill="#d0e266" /></g>
-          <rect x="19" y="5" width="2" height="5" fill="#f0587a" />
-          <path d="M20 9c-9 0-14 6-14 13 0 8 6 13 14 13s14-5 14-13c0-7-5-13-14-13z" fill="#f0587a" />
-          <ellipse cx="14.5" cy="20" rx="5" ry="5.6" fill="#fff" className="eye" />
-          <ellipse cx="25.5" cy="20" rx="5" ry="5.6" fill="#fff" className="eye" />
-          <g ref={pupils} style={{ transition: 'transform .08s' }}>
-            <circle cx="14.5" cy="20.5" r="2.4" fill="#141414" />
-            <circle cx="25.5" cy="20.5" r="2.4" fill="#141414" />
-          </g>
-          <path d="M13 28q7 5 14 0" fill="#7a1230" stroke="#7a1230" strokeWidth="1.5" strokeLinecap="round" />
-          <path className="tongue" d="M22 29.6q0 5 3 5t3-5z" fill="#ff9db3" />
-          <circle cx="8" cy="26" r="2" fill="#ff9db3" opacity=".7" />
-          <circle cx="32" cy="26" r="2" fill="#ff9db3" opacity=".7" />
+        <svg viewBox="0 0 40 60">
+          <defs>
+            <linearGradient id="rk-body" x1="0" x2="1"><stop offset="0" stopColor="#b9bfc9" /><stop offset=".45" stopColor="#ffffff" /><stop offset="1" stopColor="#9aa2ae" /></linearGradient>
+            <linearGradient id="rk-fl" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stopColor="#fff6c2" /><stop offset=".45" stopColor="#ffb23e" /><stop offset="1" stopColor="#f0587a" stopOpacity="0" /></linearGradient>
+          </defs>
+          <g className="flame"><path d="M15 44q5 20 10 0z" fill="url(#rk-fl)" /></g>
+          <path d="M12 34L4 46l8-2zM28 34l8 12-8-2z" fill="#c23a58" />
+          <path d="M20 2C12 10 11 24 12 44h16c1-20 0-34-8-42z" fill="url(#rk-body)" stroke="#7d8591" strokeWidth=".8" />
+          <path d="M20 2c-4 4-6.500 9-7.500 15h15C26.500 11 24 6 20 2z" fill="#d6405f" />
+          <rect x="11.500" y="40" width="17" height="4" rx="1" fill="#6d7480" />
+          <circle cx="20" cy="26" r="4.600" fill="#2d3f66" stroke="#6d7480" strokeWidth="1.500" />
+          <circle cx="18.500" cy="24.500" r="1.400" fill="#9db7ff" opacity=".8" />
+          <rect x="12" y="32" width="16" height="1.200" fill="#c23a58" />
         </svg>
       </div>
     </div>
