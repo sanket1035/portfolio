@@ -114,6 +114,15 @@ export function useMotion(root: React.RefObject<HTMLElement | null>) {
           });
         });
 
+        // 6. Notes rise with a slight random rotation that settles to 0
+        gsap.utils.toArray<HTMLElement>('[data-note]').forEach((n, i) => {
+          const rot = Number(n.dataset.rot ?? 0);
+          gsap.fromTo(n, { y: 70, opacity: 0, rotate: rot * 3 }, {
+            y: 0, opacity: 1, rotate: rot, duration: 1.1, ease, delay: (i % 3) * 0.06,
+            scrollTrigger: { trigger: n, start: 'top 90%', once: true },
+          });
+        });
+
         // 4. Count-up
         gsap.utils.toArray<HTMLElement>('[data-count]').forEach((el) => {
           const target = Number(el.dataset.count);
