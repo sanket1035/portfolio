@@ -31,7 +31,7 @@ export const About = () => (
       <Title text="About Me" />
       <Split
         as="p" split="lit" className="statement"
-        text="I am an undergraduate student in Artificial Intelligence & Data Science at K. K. Wagh Institute of Engineering Education & Research (KKWIEER). My passion lies at the intersection of building robust full-stack software and deploying practical, intelligent machine learning {chip} solutions."
+        text="I am an undergraduate student in Artificial Intelligence & Data Science at K. K. Wagh Institute of Engineering Education & Research (KKWIEER). My passion lies at the intersection of building robust full-stack software and deploying practical, intelligent machine learning solutions."
       />
       <div style={{ display: 'grid', gap: '1.25rem', maxWidth: '46rem', marginTop: '4rem' }} className="muted">
         <p>I don't just write code; I design systems. Whether it is engineering high-performance APIs in Node.js, styling polished interfaces with React and Tailwind, or analyzing model training pipelines in PyTorch, I approach development with a focus on performance, scalability, and user experience.</p>
