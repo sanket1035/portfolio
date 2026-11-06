@@ -1,332 +1,43 @@
-import React, { useState, useRef } from 'react';
-import { Mail, MapPin, ExternalLink } from 'lucide-react';
-import { GithubIcon as Github, LinkedinIcon as Linkedin, TwitterIcon as Twitter, YoutubeIcon as Youtube, LeetcodeIcon as Leetcode, DevtoIcon as Devto, MediumIcon as Medium, RedditIcon as Reddit } from './BrandIcons';
-import { portfolioData } from '../data/portfolioData';
+import { portfolioData as d } from '../data/portfolioData';
 
-export const Contact: React.FC = () => {
-  const [isHovered, setIsHovered] = useState(false);
-  const tooltipRef = useRef<HTMLSpanElement>(null);
+const ring = (r: number, text: string) => (
+  <div className="ring" style={{ width: r * 2, height: r * 2 }} aria-hidden="true">
+    <svg viewBox={`0 0 ${r * 2} ${r * 2}`}>
+      <defs><path id={`ring${r}`} d={`M ${r},${r} m -${r - 14},0 a ${r - 14},${r - 14} 0 1,1 ${(r - 14) * 2},0 a ${r - 14},${r - 14} 0 1,1 -${(r - 14) * 2},0`} /></defs>
+      <text><textPath href={`#ring${r}`}>{text}</textPath></text>
+    </svg>
+  </div>
+);
 
-  const handlePointerMove = (e: React.PointerEvent<HTMLAnchorElement>) => {
-    if (tooltipRef.current) {
-      tooltipRef.current.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`;
-    }
-  };
-
+export const Contact = () => {
+  const s = d.socials;
+  const links: [string, string | undefined][] = [
+    ['LinkedIn', s.linkedin], ['GitHub', s.github], ['Twitter / X', s.twitter], ['LeetCode', s.leetcode],
+    ['YouTube', s.youtube], ['Dev.to', s.devto], ['Medium', s.medium], ['Reddit', s.reddit],
+  ];
+  const t = `${d.name} · ${d.title} · ${d.location} · `;
   return (
-    <section id="contact" className="w-full py-20 px-6 lg:px-8 border-t border-brand-border/40 bg-brand-bg relative overflow-hidden">
-      <div className="max-w-6xl mx-auto relative z-10">
-        {/* Title */}
-        <div className="text-center mb-10">
-          <p className="font-mono text-[10px] tracking-widest text-brand-accent uppercase font-bold">
-            LET'S CONNECT
-          </p>
-          <h2 className="font-heading font-extrabold text-3xl md:text-5xl text-brand-primary tracking-tight mt-2">
-            Get In Touch
-          </h2>
-          <div className="h-1 w-16 bg-brand-accent mx-auto mt-4 rounded-full"></div>
-        </div>
-
-        {/* Big "Let's build something real" Interactive Banner */}
-        <div className="mb-16 text-center relative flex justify-center">
-          <a
-            href="mailto:sanketchaudhari1035@gmail.com"
-            className="group relative inline-block text-decoration-none cursor-pointer py-8 px-4 select-none w-full max-w-4xl"
-            onPointerMove={handlePointerMove}
-            onPointerEnter={() => setIsHovered(true)}
-            onPointerLeave={() => setIsHovered(false)}
-          >
-            {/* Base Outlined Stenciled Banner */}
-            <div 
-              className="font-mihir font-black text-[2.2rem] sm:text-6xl md:text-[5.5rem] leading-[0.95] tracking-tight uppercase text-transparent transition-all duration-300 group-hover:scale-[1.01]"
-              style={{ 
-                WebkitTextStroke: '2px var(--brand-primary)',
-                color: isHovered ? 'var(--brand-primary)' : 'transparent',
-                fontStretch: '122%',
-                fontWeight: 850
-              }}
-            >
-              <div>LET'S BUILD</div>
-              <div className="flex items-center justify-center gap-3">
-                <span>SOMETHING REAL</span>
-                <span className="inline-block transition-transform duration-300 group-hover:translate-x-4 text-brand-accent" style={{ WebkitTextStroke: '0px' }}>
-                  →
-                </span>
-              </div>
-            </div>
-          </a>
-        </div>
-
-        {/* Floating Tooltip Pill */}
-        <span
-          ref={tooltipRef}
-          className="fixed top-0 left-0 z-50 pointer-events-none -translate-x-1/2 -translate-y-12"
-        >
-          <span
-            className={`inline-block px-3.5 py-1.5 rounded-full bg-brand-primary text-brand-bg text-[11px] font-mono font-bold tracking-widest uppercase shadow-2xl transition-all duration-200 ${
-              isHovered ? 'opacity-100 scale-100' : 'opacity-0 scale-75'
-            }`}
-          >
-            ✉ Email Me
-          </span>
-        </span>
-
-        {/* Contact Info Cards Grid */}
-        <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6">
-          {/* Email Card - Spans 2 columns on medium screens for prominence */}
-          <div className="sm:col-span-2 md:col-span-3 p-6 rounded-2xl bg-brand-card/80 border border-brand-border hover:border-brand-accent/40 shadow-xl transition-all duration-300 group flex flex-col md:flex-row justify-between items-center gap-6">
-            <div className="flex items-center gap-4 text-center md:text-left flex-col md:flex-row">
-              <div className="p-4 rounded-xl bg-brand-accent-glow text-brand-accent border border-brand-accent/20 group-hover:scale-105 transition-transform duration-300">
-                <Mail size={24} />
-              </div>
-              <div>
-                <p className="text-xs font-mono font-semibold uppercase text-brand-accent tracking-wider">Email Address</p>
-                <h4 className="font-heading font-bold text-lg md:text-xl text-brand-primary mt-1 select-all">
-                  {portfolioData.socials.email}
-                </h4>
-              </div>
-            </div>
-            <a
-              href={`mailto:${portfolioData.socials.email}`}
-              className="w-full md:w-auto px-6 py-3 rounded-xl bg-brand-primary text-brand-bg font-bold text-xs hover:opacity-90 transition-all flex items-center justify-center gap-2 cursor-pointer shadow-md shrink-0"
-            >
-              Email Me Directly
-              <ExternalLink size={13} />
-            </a>
-          </div>
-
-          {/* LinkedIn Card */}
-          <div className="p-6 rounded-2xl bg-brand-card/85 border border-brand-border hover:border-brand-accent/40 shadow-lg transition-all duration-300 group flex flex-col justify-between h-48">
-            <div className="flex justify-between items-start">
-              <div className="p-3 rounded-xl bg-blue-500/10 text-blue-400 border border-blue-500/20 group-hover:scale-105 transition-transform duration-300">
-                <Linkedin size={20} />
-              </div>
-              <span className="text-[10px] font-mono text-brand-text-muted uppercase tracking-wider">Professional</span>
-            </div>
-            <div>
-              <p className="text-xs font-mono font-semibold uppercase text-brand-text-muted mt-4">LinkedIn</p>
-              <h4 className="font-heading font-bold text-base text-brand-primary mt-1 truncate">
-                Sanket Chaudhari
-              </h4>
-            </div>
-            <a
-              href={portfolioData.socials.linkedin}
-              target="_blank"
-              rel="noreferrer"
-              className="mt-4 px-4 py-2 rounded-lg border border-brand-border bg-brand-bg hover:bg-brand-card text-brand-text hover:text-brand-accent font-bold text-[11px] flex items-center justify-center gap-1.5 transition-all cursor-pointer"
-            >
-              Connect On LinkedIn
-              <ExternalLink size={11} />
-            </a>
-          </div>
-
-          {/* GitHub Card */}
-          <div className="p-6 rounded-2xl bg-brand-card/85 border border-brand-border hover:border-brand-accent/40 shadow-lg transition-all duration-300 group flex flex-col justify-between h-48">
-            <div className="flex justify-between items-start">
-              <div className="p-3 rounded-xl bg-zinc-800 text-white border border-zinc-700 group-hover:scale-105 transition-transform duration-300">
-                <Github size={20} />
-              </div>
-              <span className="text-[10px] font-mono text-brand-text-muted uppercase tracking-wider">Codebase</span>
-            </div>
-            <div>
-              <p className="text-xs font-mono font-semibold uppercase text-brand-text-muted mt-4">GitHub</p>
-              <h4 className="font-heading font-bold text-base text-brand-primary mt-1 truncate">
-                @sanket1035
-              </h4>
-            </div>
-            <a
-              href={portfolioData.socials.github}
-              target="_blank"
-              rel="noreferrer"
-              className="mt-4 px-4 py-2 rounded-lg border border-brand-border bg-brand-bg hover:bg-brand-card text-brand-text hover:text-brand-accent font-bold text-[11px] flex items-center justify-center gap-1.5 transition-all cursor-pointer"
-            >
-              Explore Repos
-              <ExternalLink size={11} />
-            </a>
-          </div>
-
-          {/* Twitter / X Card */}
-          <div className="p-6 rounded-2xl bg-brand-card/85 border border-brand-border hover:border-brand-accent/40 shadow-lg transition-all duration-300 group flex flex-col justify-between h-48">
-            <div className="flex justify-between items-start">
-              <div className="p-3 rounded-xl bg-zinc-800 text-white border border-zinc-700 group-hover:scale-105 transition-transform duration-300">
-                <Twitter size={20} />
-              </div>
-              <span className="text-[10px] font-mono text-brand-text-muted uppercase tracking-wider">Social</span>
-            </div>
-            <div>
-              <p className="text-xs font-mono font-semibold uppercase text-brand-text-muted mt-4">Twitter / X</p>
-              <h4 className="font-heading font-bold text-base text-brand-primary mt-1 truncate">
-                @sanket_codes
-              </h4>
-            </div>
-            <a
-              href={portfolioData.socials.twitter}
-              target="_blank"
-              rel="noreferrer"
-              className="mt-4 px-4 py-2 rounded-lg border border-brand-border bg-brand-bg hover:bg-brand-card text-brand-text hover:text-brand-accent font-bold text-[11px] flex items-center justify-center gap-1.5 transition-all cursor-pointer"
-            >
-              Follow On X
-              <ExternalLink size={11} />
-            </a>
-          </div>
-
-          {/* LeetCode Card */}
-          {portfolioData.socials.leetcode && (
-            <div className="p-6 rounded-2xl bg-brand-card/85 border border-brand-border hover:border-brand-accent/40 shadow-lg transition-all duration-300 group flex flex-col justify-between h-48">
-              <div className="flex justify-between items-start">
-                <div className="p-3 rounded-xl bg-yellow-500/10 text-yellow-500 border border-yellow-500/20 group-hover:scale-105 transition-transform duration-300">
-                  <Leetcode size={20} />
-                </div>
-                <span className="text-[10px] font-mono text-brand-text-muted uppercase tracking-wider">Problem Solving</span>
-              </div>
-              <div>
-                <p className="text-xs font-mono font-semibold uppercase text-brand-text-muted mt-4">LeetCode</p>
-                <h4 className="font-heading font-bold text-base text-brand-primary mt-1 truncate">
-                  @sanket1035
-                </h4>
-              </div>
-              <a
-                href={portfolioData.socials.leetcode}
-                target="_blank"
-                rel="noreferrer"
-                className="mt-4 px-4 py-2 rounded-lg border border-brand-border bg-brand-bg hover:bg-brand-card text-brand-text hover:text-brand-accent font-bold text-[11px] flex items-center justify-center gap-1.5 transition-all cursor-pointer"
-              >
-                View Solved Problems
-                <ExternalLink size={11} />
-              </a>
-            </div>
-          )}
-
-          {/* YouTube Card */}
-          {portfolioData.socials.youtube && (
-            <div className="p-6 rounded-2xl bg-brand-card/85 border border-brand-border hover:border-brand-accent/40 shadow-lg transition-all duration-300 group flex flex-col justify-between h-48">
-              <div className="flex justify-between items-start">
-                <div className="p-3 rounded-xl bg-red-500/10 text-red-500 border border-red-500/20 group-hover:scale-105 transition-transform duration-300">
-                  <Youtube size={20} />
-                </div>
-                <span className="text-[10px] font-mono text-brand-text-muted uppercase tracking-wider">Vlogs & Tutorials</span>
-              </div>
-              <div>
-                <p className="text-xs font-mono font-semibold uppercase text-brand-text-muted mt-4">YouTube</p>
-                <h4 className="font-heading font-bold text-base text-brand-primary mt-1 truncate">
-                  Sanket Chaudhari
-                </h4>
-              </div>
-              <a
-                href={portfolioData.socials.youtube}
-                target="_blank"
-                rel="noreferrer"
-                className="mt-4 px-4 py-2 rounded-lg border border-brand-border bg-brand-bg hover:bg-brand-card text-brand-text hover:text-brand-accent font-bold text-[11px] flex items-center justify-center gap-1.5 transition-all cursor-pointer"
-              >
-                Watch Videos
-                <ExternalLink size={11} />
-              </a>
-            </div>
-          )}
-
-          {/* Dev.to Card */}
-          {portfolioData.socials.devto && (
-            <div className="p-6 rounded-2xl bg-brand-card/85 border border-brand-border hover:border-brand-accent/40 shadow-lg transition-all duration-300 group flex flex-col justify-between h-48">
-              <div className="flex justify-between items-start">
-                <div className="p-3 rounded-xl bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 group-hover:scale-105 transition-transform duration-300">
-                  <Devto size={20} />
-                </div>
-                <span className="text-[10px] font-mono text-brand-text-muted uppercase tracking-wider">Technical Blogs</span>
-              </div>
-              <div>
-                <p className="text-xs font-mono font-semibold uppercase text-brand-text-muted mt-4">Dev.to</p>
-                <h4 className="font-heading font-bold text-base text-brand-primary mt-1 truncate">
-                  @sanket1035
-                </h4>
-              </div>
-              <a
-                href={portfolioData.socials.devto}
-                target="_blank"
-                rel="noreferrer"
-                className="mt-4 px-4 py-2 rounded-lg border border-brand-border bg-brand-bg hover:bg-brand-card text-brand-text hover:text-brand-accent font-bold text-[11px] flex items-center justify-center gap-1.5 transition-all cursor-pointer"
-              >
-                Read Articles
-                <ExternalLink size={11} />
-              </a>
-            </div>
-          )}
-
-          {/* Medium Card */}
-          {portfolioData.socials.medium && (
-            <div className="p-6 rounded-2xl bg-brand-card/85 border border-brand-border hover:border-brand-accent/40 shadow-lg transition-all duration-300 group flex flex-col justify-between h-48">
-              <div className="flex justify-between items-start">
-                <div className="p-3 rounded-xl bg-purple-500/10 text-purple-400 border border-purple-500/20 group-hover:scale-105 transition-transform duration-300">
-                  <Medium size={20} />
-                </div>
-                <span className="text-[10px] font-mono text-brand-text-muted uppercase tracking-wider">Publications</span>
-              </div>
-              <div>
-                <p className="text-xs font-mono font-semibold uppercase text-brand-text-muted mt-4">Medium</p>
-                <h4 className="font-heading font-bold text-base text-brand-primary mt-1 truncate">
-                  @sanketchaudhari1035
-                </h4>
-              </div>
-              <a
-                href={portfolioData.socials.medium}
-                target="_blank"
-                rel="noreferrer"
-                className="mt-4 px-4 py-2 rounded-lg border border-brand-border bg-brand-bg hover:bg-brand-card text-brand-text hover:text-brand-accent font-bold text-[11px] flex items-center justify-center gap-1.5 transition-all cursor-pointer"
-              >
-                Read Stories
-                <ExternalLink size={11} />
-              </a>
-            </div>
-          )}
-
-          {/* Reddit Card */}
-          {portfolioData.socials.reddit && (
-            <div className="p-6 rounded-2xl bg-brand-card/85 border border-brand-border hover:border-brand-accent/40 shadow-lg transition-all duration-300 group flex flex-col justify-between h-48">
-              <div className="flex justify-between items-start">
-                <div className="p-3 rounded-xl bg-orange-500/10 text-orange-500 border border-orange-500/20 group-hover:scale-105 transition-transform duration-300">
-                  <Reddit size={20} />
-                </div>
-                <span className="text-[10px] font-mono text-brand-text-muted uppercase tracking-wider">Social</span>
-              </div>
-              <div>
-                <p className="text-xs font-mono font-semibold uppercase text-brand-text-muted mt-4">Reddit</p>
-                <h4 className="font-heading font-bold text-base text-brand-primary mt-1 truncate">
-                  @sanketchaudhari
-                </h4>
-              </div>
-              <a
-                href={portfolioData.socials.reddit}
-                target="_blank"
-                rel="noreferrer"
-                className="mt-4 px-4 py-2 rounded-lg border border-brand-border bg-brand-bg hover:bg-brand-card text-brand-text hover:text-brand-accent font-bold text-[11px] flex items-center justify-center gap-1.5 transition-all cursor-pointer"
-              >
-                View Reddit Profile
-                <ExternalLink size={11} />
-              </a>
-            </div>
-          )}
-        </div>
-
-        {/* Location & Status Summary */}
-        <div className="mt-12 p-5 rounded-2xl bg-brand-card/40 border border-brand-border/60 flex flex-col sm:flex-row justify-between items-center gap-4 text-center sm:text-left">
-          <div className="flex items-center gap-2.5">
-            <MapPin className="text-brand-accent shrink-0" size={18} />
-            <p className="text-xs md:text-sm text-brand-text-muted">
-              Based in <span className="text-brand-primary font-semibold">{portfolioData.location}</span>
-            </p>
-          </div>
-          <div className="flex items-center gap-2">
-            <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
-            </span>
-            <p className="text-xs text-brand-text-muted">
-              Actively open to software & ML engineering opportunities
-            </p>
-          </div>
-        </div>
+    <section id="contact" className="section" style={{ minHeight: '100svh', display: 'grid', alignContent: 'center', overflow: 'hidden' }}>
+      <div className="orbit-wrap">{ring(260, t.repeat(2))}{ring(380, t.repeat(3))}{ring(500, t.repeat(4))}</div>
+      <div className="wrap" style={{ position: 'relative', textAlign: 'center', display: 'grid', gap: '2.5rem', justifyItems: 'center' }}>
+        <p className="mono-label muted">Let's connect</p>
+        <h2 className="mega" data-split aria-label="Let's build something real">
+          {"Let's build something real".split(' ').map((w, i) => (
+            <span className="mask" key={i} aria-hidden="true"><span className="w">{w}</span></span>
+          ))}
+          <span className="dot" aria-hidden="true">.</span>
+        </h2>
+        <a href={`mailto:${s.email}`} className="cta-circle" data-magnet>Email Address</a>
+        <p className="muted">{s.email}</p>
+        <ul style={{ display: 'flex', gap: '.75rem 1.75rem', flexWrap: 'wrap', justifyContent: 'center', listStyle: 'none', padding: 0, maxWidth: '40rem' }}>
+          {links.filter(([, h]) => h).map(([l, h]) => (
+            <li key={l}><a className="ulink" href={h} target="_blank" rel="noreferrer">{l} ↗</a></li>
+          ))}
+        </ul>
+        <p className="muted">Based in <span style={{ color: 'var(--foreground)', fontWeight: 600 }}>{d.location}</span></p>
+        <p className="mono-label muted">© 2026 {d.name}</p>
       </div>
     </section>
   );
 };
-
 export default Contact;

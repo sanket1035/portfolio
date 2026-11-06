@@ -1,122 +1,81 @@
-import React from 'react';
-import { BookOpen, Award, Compass, Star } from 'lucide-react';
-import { portfolioData } from '../data/portfolioData';
+import Title from './Title';
+import { Split } from '../lib/motion';
+import { portfolioData as d } from '../data/portfolioData';
 
-export const About: React.FC = () => {
-  return (
-    <section id="about" className="w-full py-20 px-6 lg:px-8 border-t border-brand-border/40 bg-brand-card/20">
-      <div className="max-w-7xl mx-auto">
-        {/* Title */}
-        <div className="text-center mb-12">
-          <h2 className="font-heading font-bold text-3xl md:text-5xl text-brand-primary tracking-tight">
-            About Me
-          </h2>
-          <div className="h-1 w-12 bg-brand-accent mx-auto mt-4 rounded-full"></div>
-        </div>
+const stats = [
+  { v: 10, s: '+', l: 'Projects Built' },
+  { v: 650, s: '+', l: 'Git Commits' },
+  { v: 225, s: '+', l: 'Pull Requests' },
+  { v: 8.5, s: '', l: 'CGPA', dec: 1 },
+];
 
-        <div className="grid md:grid-cols-3 gap-10 items-start">
-          {/* Main Story Column */}
-          <div className="md:col-span-2 space-y-6">
-            <h3 className="font-heading font-semibold text-xl md:text-2xl text-brand-primary flex items-center gap-2">
-              <Compass className="text-brand-accent" size={20} />
-              My Journey
-            </h3>
-            <p className="font-sans text-brand-text-muted leading-relaxed">
-              I am an undergraduate student in Artificial Intelligence & Data Science at K. K. Wagh Institute of Engineering Education & Research (KKWIEER).
-              My passion lies at the intersection of building robust full-stack software and deploying practical, intelligent machine learning solutions.
-            </p>
-            <p className="font-sans text-brand-text-muted leading-relaxed">
-              I don't just write code; I design systems. Whether it is engineering high-performance APIs in Node.js, styling polished interfaces with React and Tailwind, or analyzing model training pipelines in PyTorch, I approach development with a focus on performance, scalability, and user experience.
-            </p>
-            <p className="font-sans text-brand-text-muted leading-relaxed">
-              In addition to my coursework and projects, I'm an active open-source contributor. I believe in giving back to the community and collaborating on codebases that make developer lives easier.
-            </p>
+const spec: [string, React.ReactNode][] = [
+  ['Education', <>{d.education[0].degree} in Artificial Intelligence & Data Science<br /><span className="muted">{d.education[0].institution}</span></>],
+  ['CGPA', '8.5 / 10'],
+  ['Featured Projects', d.projects.slice(0, 4).map((p) => p.title).join(' · ')],
+  ['Open Source', "Connect Global '26 · ELUSoC Summer of Code '26 · ECSoC"],
+  ['Languages', 'TypeScript · JavaScript · Python · C++'],
+  ['Location', d.location],
+];
 
-            {/* Interactive Terminal Launcher Mock Card */}
-            <div className="mt-8 p-5 rounded-2xl bg-zinc-950 border border-zinc-900 shadow-xl font-mono text-xs text-green-400 space-y-3 relative overflow-hidden">
-              <div className="flex items-center justify-between text-zinc-500 border-b border-zinc-900 pb-2 select-none">
-                <span className="text-[10px] uppercase font-bold tracking-wide flex items-center gap-1.5">
-                  <span className="w-2.5 h-2.5 rounded-full bg-red-500"></span>
-                  <span className="w-2.5 h-2.5 rounded-full bg-yellow-500"></span>
-                  <span className="w-2.5 h-2.5 rounded-full bg-green-500"></span>
-                  &nbsp;Sanket's Bash Terminal
-                </span>
-                <span className="text-[9px] text-zinc-600">v1.0.0</span>
-              </div>
-              <div className="space-y-1 text-zinc-300">
-                <p className="text-green-500 font-bold">&gt; Welcome to the interactive portfolio CLI shell!</p>
-                <p className="text-zinc-500">You can trigger this terminal session at any time from the navbar icon or by pressing the ESC button.</p>
-              </div>
-              <div className="pt-2 flex flex-col sm:flex-row items-center justify-between gap-4">
-                <div className="flex items-center gap-1.5 text-zinc-500 text-[10px]">
-                  <span>visitor@sanket:~$</span>
-                  <span className="bg-green-500 w-1.5 h-3.5 animate-pulse"></span>
-                </div>
-                <button
-                  onClick={() => window.dispatchEvent(new CustomEvent('toggle-terminal'))}
-                  className="w-full sm:w-auto px-4 py-2 rounded-lg bg-green-500 hover:bg-green-400 text-black font-bold text-[11px] uppercase tracking-wide cursor-pointer transition-all flex items-center justify-center gap-1.5 shadow-[0_0_15px_rgba(34,197,94,0.2)]"
-                >
-                  <span>Launch Terminal CLI</span>
-                </button>
-              </div>
-            </div>
-          </div>
+const focus = [
+  'Full-Stack Web Development (MERN, FastAPI)',
+  'AI Applications & LLM Integration',
+  'Mobile Applications (Android/Compose)',
+  'Open Source Software Contributions',
+];
 
-          {/* Education & Info Column */}
-          <div className="space-y-8">
-            {/* Education Card */}
-            <div className="p-6 rounded-2xl bg-brand-card border border-brand-border/60 shadow-lg">
-              <h3 className="font-heading font-semibold text-lg text-brand-primary mb-4 flex items-center gap-2">
-                <BookOpen className="text-brand-accent" size={18} />
-                Education
-              </h3>
-              {portfolioData.education.map((edu, idx) => (
-                <div key={idx} className="space-y-2">
-                  <h4 className="font-heading font-bold text-sm md:text-base text-brand-text">
-                    {edu.institution}
-                  </h4>
-                  <p className="text-xs text-brand-accent font-semibold uppercase tracking-wider">
-                    {edu.degree} — {edu.specialization}
-                  </p>
-                  <div className="flex justify-between items-center text-xs text-brand-text-muted pt-1">
-                    <span>{edu.duration}</span>
-                    <span className="bg-brand-border/60 px-2 py-0.5 rounded font-mono font-medium">
-                      GPA: {edu.gpa}
-                    </span>
-                  </div>
-                </div>
-              ))}
-            </div>
-
-            {/* Focus Card */}
-            <div className="p-6 rounded-2xl bg-brand-card border border-brand-border/60 shadow-lg">
-              <h3 className="font-heading font-semibold text-lg text-brand-primary mb-4 flex items-center gap-2">
-                <Award className="text-brand-accent" size={18} />
-                Focus Areas
-              </h3>
-              <ul className="space-y-3.5 text-sm text-brand-text-muted">
-                <li className="flex items-start gap-2.5">
-                  <Star size={16} className="text-brand-accent mt-0.5 shrink-0" />
-                  <span>Full-Stack Web Development (MERN, FastAPI)</span>
-                </li>
-                <li className="flex items-start gap-2.5">
-                  <Star size={16} className="text-brand-accent mt-0.5 shrink-0" />
-                  <span>AI Applications & LLM Integration</span>
-                </li>
-                <li className="flex items-start gap-2.5">
-                  <Star size={16} className="text-brand-accent mt-0.5 shrink-0" />
-                  <span>Mobile Applications (Android/Compose)</span>
-                </li>
-                <li className="flex items-start gap-2.5">
-                  <Star size={16} className="text-brand-accent mt-0.5 shrink-0" />
-                  <span>Open Source Software Contributions</span>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
+export const About = () => (
+  <section id="about" className="section" style={{ borderRadius: '28px 28px 0 0' }}>
+    <div className="wrap">
+      <Title text="About Me" />
+      <Split
+        as="p" split="lit" className="statement"
+        text="I am an undergraduate student in Artificial Intelligence & Data Science at K. K. Wagh Institute of Engineering Education & Research (KKWIEER). My passion lies at the intersection of building robust full-stack software and deploying practical, intelligent machine learning solutions."
+      />
+      <div style={{ display: 'grid', gap: '1.25rem', maxWidth: '46rem', marginTop: '4rem' }} className="muted">
+        <p>I don't just write code; I design systems. Whether it is engineering high-performance APIs in Node.js, styling polished interfaces with React and Tailwind, or analyzing model training pipelines in PyTorch, I approach development with a focus on performance, scalability, and user experience.</p>
+        <p>In addition to my coursework and projects, I'm an active open-source contributor. I believe in giving back to the community and collaborating on codebases that make developer lives easier.</p>
       </div>
-    </section>
-  );
-};
+
+      <dl style={{ display: 'flex', flexWrap: 'wrap', gap: '2.5rem 5rem', margin: '6rem 0' }}>
+        {stats.map((s) => (
+          <div key={s.l}>
+            <dt className="tnum" style={{ fontSize: 'clamp(3rem, 7vw, 5.5rem)', fontWeight: 800, letterSpacing: '-.04em', lineHeight: 1 }}>
+              <span data-count={s.v} data-suffix={s.s} data-decimals={s.dec}>{s.v}{s.s}</span>
+            </dt>
+            <dd className="mono-label muted" style={{ margin: '.6rem 0 0' }}>{s.l}</dd>
+          </div>
+        ))}
+      </dl>
+
+      <dl data-rows style={{ margin: 0 }}>
+        {spec.map(([k, v]) => (
+          <div className="row" data-row key={k}>
+            <dt className="mono-label muted">{k}</dt>
+            <dd style={{ margin: 0, fontWeight: 600 }}>{v}</dd>
+          </div>
+        ))}
+        {d.education.map((e) => (
+          <div className="row" data-row key={e.institution}>
+            <dt className="mono-label muted">Duration</dt>
+            <dd style={{ margin: 0 }}>{e.degree} — {e.specialization}, {e.duration} <span className="muted">(GPA: {e.gpa})</span></dd>
+          </div>
+        ))}
+        <div className="row" data-row>
+          <dt className="mono-label muted">Focus Areas</dt>
+          <dd style={{ margin: 0 }}><ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'grid', gap: '.5rem' }}>
+            {focus.map((f) => <li key={f}><span className="dot">/</span> {f}</li>)}
+          </ul></dd>
+        </div>
+      </dl>
+
+      <p style={{ marginTop: '4rem' }} className="muted">
+        Sanket's Bash Terminal v1.0.0: you can trigger this terminal session at any time by pressing the ESC button.{' '}
+        <button className="ulink" type="button" style={{ background: 'none', border: 0, color: 'inherit', cursor: 'pointer', font: 'inherit' }}
+          onClick={() => window.dispatchEvent(new CustomEvent('toggle-terminal'))}>Launch Terminal CLI ↗</button>
+      </p>
+    </div>
+  </section>
+);
 export default About;

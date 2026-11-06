@@ -1,8 +1,8 @@
-import React from 'react';
-import { Award, Globe, ExternalLink, Cpu, Laptop, ListChecks, CheckCircle2, GitBranch, Terminal, Check, Square, Code2 } from 'lucide-react';
 import { portfolioData } from '../data/portfolioData';
+import Title from './Title';
 
-export const OpenSource: React.FC = () => {
+
+export const OpenSource = () => {
   // Featured Engineering Repositories
   const featuredRepos = [
     {
@@ -104,300 +104,90 @@ export const OpenSource: React.FC = () => {
     { label: 'Contributed To', value: '18 Repos' },
   ];
 
-  return (
-    <section id="opensource" className="w-full py-24 px-6 lg:px-8 border-t border-brand-border/40 bg-brand-bg relative overflow-hidden">
-      <div className="max-w-7xl w-full mx-auto relative z-10 space-y-12">
-        
-        {/* Section Header */}
-        <div className="text-center">
-          <p className="font-mono text-[10px] tracking-widest text-brand-accent uppercase font-bold flex items-center justify-center gap-1.5">
-            <Terminal size={12} />
-            DEVELOPER PROFILE
-          </p>
-          <h2 className="font-heading font-extrabold text-3xl md:text-5xl text-brand-primary tracking-tight mt-3 uppercase">
-            GitHub &amp; Development
-          </h2>
-          <p className="font-sans text-xs md:text-sm text-brand-text-muted max-w-2xl mx-auto mt-2 leading-relaxed">
-            A snapshot of my current engineering focus, technologies, and software development workflow.
-          </p>
-          <div className="h-1 w-16 bg-brand-accent mx-auto mt-4 rounded-full"></div>
-        </div>
 
-        {/* GitHub & Development Key Metrics Strip */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
-          {devMetrics.map((metric) => (
-            <div key={metric.label} className="p-4 rounded-xl bg-brand-card border border-brand-border shadow-sm flex flex-col justify-center space-y-1">
-              <p className="text-[10px] font-mono font-semibold text-brand-text-muted uppercase tracking-wider">
-                {metric.label}
-              </p>
-              <h3 className="font-heading font-extrabold text-xl md:text-2xl text-brand-accent tracking-tight">
-                {metric.value}
-              </h3>
+  const metricNum = (v: string) => parseFloat(v.replace(/[^0-9.]/g, ''));
+  const metricSuffix = (v: string) => v.replace(/[0-9.,]/g, '');
+  const List = ({ title, items }: { title: string; items: string[] }) => (
+    <div className="row" data-row>
+      <h4 className="mono-label muted">{title}</h4>
+      <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexWrap: 'wrap', gap: '.4rem 1.25rem' }}>
+        {items.map((i) => <li key={i}><span className="dot">/</span> {i}</li>)}
+      </ul>
+    </div>
+  );
+
+  return (
+    <section id="opensource" className="section">
+      <div className="wrap">
+        <Title text="Developer Profile" kicker="Dev activity" />
+        <p className="statement muted" style={{ maxWidth: '40ch', marginBottom: '5rem' }}>
+          A snapshot of my current engineering focus, technologies, and software development workflow.
+        </p>
+
+        <dl style={{ display: 'flex', flexWrap: 'wrap', gap: '2.5rem 5rem', margin: '0 0 6rem' }}>
+          {devMetrics.map((m) => (
+            <div key={m.label}>
+              <dt className="tnum" style={{ fontSize: 'clamp(2.75rem, 6vw, 5rem)', fontWeight: 800, letterSpacing: '-.04em', lineHeight: 1 }}>
+                {/^[0-9]/.test(m.value) ? (
+                  <span data-count={metricNum(m.value)} data-suffix={metricSuffix(m.value)}>{m.value}</span>
+                ) : m.value}
+              </dt>
+              <dd className="mono-label muted" style={{ margin: '.6rem 0 0' }}>{m.label}</dd>
             </div>
+          ))}
+        </dl>
+
+        <h3 className="mono-label muted" style={{ marginBottom: '1.5rem' }}>Open Source Programs</h3>
+        <div data-rows style={{ marginBottom: '6rem' }}>
+          {portfolioData.openSource.programs.map((p) => (
+            <article className="row" data-row key={p.programName}>
+              <div style={{ display: 'grid', gap: '.5rem' }}>
+                <h4 className="title" style={{ fontWeight: 700, fontSize: '1.5rem' }}><i className="pip" style={{ background: 'var(--primary)' }} />{p.programName}</h4>
+                <p className="mono-label muted">{p.role} · {p.year}</p>
+                <p className="muted" style={{ maxWidth: '44rem' }}>{p.description}</p>
+              </div>
+              {p.image && (
+                <button type="button" onClick={() => window.dispatchEvent(new CustomEvent('open-lightbox', { detail: { src: p.image } }))}
+                  title="Click to view full credential" style={{ background: 'none', border: 0, padding: 0, cursor: 'pointer', justifySelf: 'start' }}>
+                  <img src={p.image} alt={p.programName} loading="lazy" style={{ width: '100%', maxWidth: '16rem', aspectRatio: '1', objectFit: 'cover', borderRadius: 'var(--radius)' }} />
+                </button>
+              )}
+            </article>
           ))}
         </div>
 
-        {/* Unified Dashboard Grid */}
-        <div className="grid lg:grid-cols-12 gap-8 items-stretch">
-          
-          {/* LEFT PANEL (Col Span 5): Tech Ecosystem & Current Focus */}
-          <div className="lg:col-span-5 space-y-6 flex flex-col justify-between">
-            
-            {/* Tech Ecosystem Card */}
-            <div className="p-6 rounded-xl bg-brand-card border border-brand-border shadow-md space-y-4">
-              <h3 className="font-heading font-bold text-sm md:text-base text-brand-primary flex items-center gap-2 uppercase tracking-wide border-b border-brand-border/40 pb-3">
-                <Cpu size={16} className="text-brand-accent" />
-                Tech Ecosystem
-              </h3>
-              <div className="space-y-4">
-                {techEcosystem.map((group) => (
-                  <div key={group.category} className="space-y-1.5">
-                    <p className="text-[10px] font-mono font-semibold text-brand-text-muted uppercase tracking-wider">
-                      {group.category}
-                    </p>
-                    <div className="flex flex-wrap gap-1.5">
-                      {group.items.map((item) => (
-                        <span key={item} className="px-2.5 py-1 rounded-md text-xs font-sans font-medium bg-brand-bg border border-brand-border text-brand-primary">
-                          {item}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                ))}
+        <h3 className="mono-label muted" style={{ marginBottom: '1.5rem' }}>Featured Engineering Repositories</h3>
+        <div data-rows style={{ marginBottom: '6rem' }}>
+          {featuredRepos.map((r) => (
+            <article className="row" data-row key={r.name}>
+              <div style={{ display: 'grid', gap: '.5rem' }}>
+                <h4 className="title" style={{ fontWeight: 700, fontSize: '1.5rem' }}><i className="pip" style={{ background: 'var(--primary)' }} />{r.name}</h4>
+                <p className="muted">{r.desc}</p>
+                <p className="mono-label muted">{r.tech}</p>
+                <a className="ulink" href={r.url} target="_blank" rel="noreferrer" style={{ justifySelf: 'start' }}>GitHub ↗</a>
               </div>
-            </div>
-
-            {/* Current Focus Card */}
-            <div className="p-6 rounded-xl bg-brand-card border border-brand-border shadow-md space-y-4">
-              <h3 className="font-heading font-bold text-sm md:text-base text-brand-primary flex items-center gap-2 uppercase tracking-wide border-b border-brand-border/40 pb-3">
-                <ListChecks size={16} className="text-brand-accent" />
-                Current Focus
-              </h3>
-              <div className="grid grid-cols-2 gap-3">
-                {currentFocus.map((item) => (
-                  <div key={item} className="flex items-center gap-2 text-xs font-sans font-medium text-brand-primary">
-                    <Check size={14} className="text-green-500 shrink-0" />
-                    <span>{item}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Development Environment Tools */}
-            <div className="p-6 rounded-xl bg-brand-card border border-brand-border shadow-md space-y-4">
-              <h3 className="font-heading font-bold text-sm md:text-base text-brand-primary flex items-center gap-2 uppercase tracking-wide border-b border-brand-border/40 pb-3">
-                <Laptop size={16} className="text-brand-accent" />
-                Development Environment
-              </h3>
-              <div className="flex flex-wrap gap-2">
-                {envTools.map((tool) => (
-                  <span
-                    key={tool}
-                    className="px-3 py-1.5 rounded-lg text-xs font-mono font-medium bg-brand-bg border border-brand-border text-brand-primary flex items-center gap-1.5"
-                  >
-                    <span className="w-1.5 h-1.5 rounded-full bg-brand-accent"></span>
-                    {tool}
-                  </span>
-                ))}
-              </div>
-            </div>
-
-          </div>
-
-          {/* RIGHT PANEL (Col Span 7): Featured Repositories, Currently Building/Learning */}
-          <div className="lg:col-span-7 space-y-6 flex flex-col justify-between">
-            
-            {/* Featured Engineering Repositories */}
-            <div className="p-6 rounded-xl bg-brand-card border border-brand-border shadow-md space-y-4">
-              <h3 className="font-heading font-bold text-sm md:text-base text-brand-primary flex items-center gap-2 uppercase tracking-wide border-b border-brand-border/40 pb-3">
-                <Code2 size={16} className="text-brand-accent" />
-                Featured Engineering Repositories
-              </h3>
-              <div className="grid sm:grid-cols-2 gap-4">
-                {featuredRepos.map((repo) => (
-                  <a
-                    key={repo.name}
-                    href={repo.url}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="p-4 rounded-lg bg-brand-bg/50 border border-brand-border/60 space-y-2 hover:border-brand-accent/40 hover:bg-brand-card/25 transition-all duration-300 block group cursor-pointer"
-                  >
-                    <div className="flex items-center justify-between">
-                      <h4 className="font-heading font-bold text-xs md:text-sm text-brand-primary group-hover:text-brand-accent transition-colors flex items-center gap-1">
-                        {repo.name}
-                        <ExternalLink size={10} className="opacity-0 group-hover:opacity-100 transition-opacity text-brand-accent" />
-                      </h4>
-                      <span className={`text-[8px] font-mono font-semibold border px-2 py-0.5 rounded ${repo.statusColor}`}>
-                        {repo.status}
-                      </span>
-                    </div>
-                    <p className="text-[11px] text-brand-text-muted leading-relaxed font-sans">
-                      {repo.desc}
-                    </p>
-                    <p className="text-[9px] font-mono text-brand-accent">{repo.tech}</p>
-                  </a>
-                ))}
-              </div>
-            </div>
-
-            {/* Currently Building & Currently Learning Side-by-Side */}
-            <div className="grid sm:grid-cols-2 gap-6">
-              
-              {/* Currently Building */}
-              <div className="p-5 rounded-xl bg-brand-card border border-brand-border shadow-md space-y-3">
-                <h4 className="font-heading font-bold text-xs text-brand-primary uppercase tracking-wider flex items-center gap-1.5">
-                  <span className="w-1.5 h-1.5 rounded-full bg-brand-accent"></span>
-                  Currently Building
-                </h4>
-                <div className="space-y-2.5 font-sans text-xs">
-                  {currentlyBuilding.map((item) => (
-                    <div key={item.name} className="p-2.5 rounded bg-brand-bg/50 border border-brand-border/40 space-y-0.5">
-                      <p className="font-bold text-brand-primary">{item.name}</p>
-                      <p className="text-[11px] text-brand-text-muted">{item.detail}</p>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              {/* Currently Learning */}
-              <div className="p-5 rounded-xl bg-brand-card border border-brand-border shadow-md space-y-3">
-                <h4 className="font-heading font-bold text-xs text-brand-primary uppercase tracking-wider flex items-center gap-1.5">
-                  <span className="w-1.5 h-1.5 rounded-full bg-indigo-500"></span>
-                  Currently Learning
-                </h4>
-                <ul className="space-y-2 font-sans text-xs text-brand-text-muted pt-1">
-                  {currentlyLearning.map((item) => (
-                    <li key={item} className="flex items-center gap-2 p-1.5 rounded bg-brand-bg/40 border border-brand-border/30">
-                      <span className="text-indigo-400 font-mono font-bold">-</span>
-                      <span className="text-brand-primary">{item}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
-            </div>
-
-          </div>
-
+              <p className="mono-label">{r.status}</p>
+            </article>
+          ))}
         </div>
 
-        {/* BOTTOM PANEL: Side-by-Side Git Workflow & 2026 Goals */}
-        <div className="grid md:grid-cols-2 gap-8">
-          
-          {/* Git Workflow & Architecture */}
-          <div className="p-6 rounded-xl bg-brand-card border border-brand-border shadow-md space-y-4">
-            <h4 className="font-heading font-bold text-xs md:text-sm text-brand-primary uppercase tracking-wide flex items-center gap-1.5 border-b border-brand-border/40 pb-2">
-              <GitBranch size={14} className="text-brand-accent" />
-              Git Workflow &amp; Architecture
-            </h4>
-            <div className="grid grid-cols-2 gap-4 text-xs font-mono">
-              <div>
-                <span className="text-brand-text-muted block text-[10px] uppercase tracking-wider">Branch Strategy</span>
-                <span className="text-brand-primary">main &amp; feature/*</span>
-              </div>
-              <div>
-                <span className="text-brand-text-muted block text-[10px] uppercase tracking-wider font-mono">Version Control</span>
-                <span className="text-brand-primary">Git + GitHub</span>
-              </div>
-            </div>
-            <div className="pt-2 space-y-2">
-              <span className="text-brand-text-muted block text-[10px] uppercase tracking-wider font-mono">Practices</span>
-              <div className="flex flex-wrap gap-2">
-                {gitPractices.map((practice) => (
-                  <span key={practice} className="inline-flex items-center gap-1 px-2.5 py-1 rounded text-xs font-mono bg-brand-bg border border-brand-border/60 text-brand-primary">
-                    <Check size={12} className="text-green-500" />
-                    {practice}
-                  </span>
-                ))}
-              </div>
-            </div>
-          </div>
-
-          {/* 2026 Goals */}
-          <div className="p-6 rounded-xl bg-brand-card border border-brand-border shadow-md space-y-4">
-            <h4 className="font-heading font-bold text-xs md:text-sm text-brand-primary uppercase tracking-wide flex items-center gap-1.5 border-b border-brand-border/40 pb-2">
-              <CheckCircle2 size={14} className="text-brand-accent" />
-              2026 Goals
-            </h4>
-            <div className="grid sm:grid-cols-2 gap-3 text-xs font-sans">
-              {goals2026.map((goal, idx) => (
-                <div key={idx} className="flex items-center gap-2 p-2.5 rounded bg-brand-bg/50 border border-brand-border/50 text-brand-primary">
-                  {goal.done ? (
-                    <CheckCircle2 size={14} className="text-green-400 shrink-0 font-bold" />
-                  ) : (
-                    <Square size={14} className="text-brand-text-muted/60 shrink-0" />
-                  )}
-                  <span className={goal.done ? 'font-semibold text-green-400' : ''}>{goal.text}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-
+        <div data-rows>
+          {techEcosystem.map((t) => <List key={t.category} title={`Tech Ecosystem — ${t.category}`} items={t.items} />)}
+          <List title="Current Focus" items={currentFocus} />
+          <List title="Currently Building" items={currentlyBuilding.map((b) => `${b.name}: ${b.detail}`)} />
+          <List title="Currently Learning" items={currentlyLearning} />
+          <List title="Development Environment" items={envTools} />
+          <List title="Branch Strategy" items={['main & feature/*']} />
+          <List title="Version Control" items={['Git + GitHub']} />
+          <List title="Practices" items={gitPractices} />
+          <List title="2026 Goals" items={goals2026.map((g) => `${g.done ? '✓ ' : ''}${g.text}`)} />
         </div>
 
-        {/* Open Source Programs Section */}
-        <div className="p-6 rounded-xl bg-brand-card border border-brand-border shadow-md space-y-5">
-          <h3 className="font-heading font-bold text-xs md:text-sm text-brand-primary flex items-center gap-2 uppercase tracking-wide border-b border-brand-border/40 pb-2">
-            <Award className="text-brand-accent" size={16} />
-            Open Source Programs
-          </h3>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {portfolioData.openSource.programs.map((program, idx) => (
-              <div
-                key={idx}
-                className="p-4 rounded-xl bg-brand-bg/50 border border-brand-border/60 flex items-start gap-4 hover:border-brand-accent/30 hover:bg-brand-card/30 transition-all duration-300"
-              >
-                {program.image ? (
-                  <button
-                    type="button"
-                    onClick={() => window.dispatchEvent(new CustomEvent('open-lightbox', { detail: { src: program.image } }))}
-                    className="block shrink-0 mt-0.5 cursor-pointer hover:opacity-80 transition-opacity focus:outline-none font-mono"
-                    title="Click to view full credential"
-                  >
-                    <img
-                      src={program.image}
-                      alt={program.programName}
-                      className="w-20 h-20 md:w-24 md:h-24 rounded-lg object-cover border border-brand-border/60 shadow"
-                    />
-                  </button>
-                ) : (
-                  <div className="p-3.5 rounded-lg bg-brand-border/50 text-brand-accent shrink-0 mt-0.5">
-                    <Globe size={24} />
-                  </div>
-                )}
-                <div className="space-y-1">
-                  <h4 className="font-heading font-bold text-xs md:text-sm text-brand-primary flex items-center gap-2 flex-wrap font-mono">
-                    {program.programName}
-                    <span className="text-[9px] font-mono font-medium bg-brand-border px-2 py-0.5 rounded text-brand-text-muted">
-                      {program.year}
-                    </span>
-                  </h4>
-                  <p className="text-[10px] font-mono font-semibold text-brand-accent uppercase tracking-wider font-mono">{program.role}</p>
-                  <p className="text-[11px] text-brand-text-muted leading-relaxed font-sans">
-                    {program.description}
-                  </p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Action Button */}
-        <div className="pt-4 flex justify-center">
-          <a
-            href={portfolioData.socials.github}
-            target="_blank"
-            rel="noreferrer"
-            className="inline-flex items-center gap-1.5 px-5 py-2.5 rounded-xl border border-brand-border bg-brand-card/40 hover:bg-brand-card hover:border-brand-accent/50 text-xs font-semibold text-brand-text transition-all cursor-pointer font-mono tracking-widest uppercase font-mono"
-          >
-            Explore Complete Profile
-            <ExternalLink size={12} />
-          </a>
-        </div>
-
+        <p style={{ marginTop: '4rem' }}>
+          <a className="ulink" href={portfolioData.socials.github} target="_blank" rel="noreferrer">Explore Complete Profile ↗</a>
+        </p>
       </div>
     </section>
   );
 };
-
 export default OpenSource;
