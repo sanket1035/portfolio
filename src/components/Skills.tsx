@@ -80,7 +80,7 @@ export const Skills = () => {
         <Title text="Skills" kicker="Tech stack" />
         <dl data-rows style={{ margin: '0 0 6rem' }}>
           {groups.map(([k, v]) => (
-            <div className="row" data-row key={k}>
+            <div className="row kv" data-row key={k}>
               <dt className="title" style={{ fontWeight: 700, fontSize: '1.25rem' }}>{k}</dt>
               <dd className="muted" style={{ margin: 0 }}>{v.join(', ')}</dd>
             </div>

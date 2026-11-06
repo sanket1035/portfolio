@@ -352,3 +352,8 @@ html.theme-anim, html.theme-anim *, html.theme-anim *::before, html.theme-anim *
 @media (min-width: 900px) { .hero-photo { height: min(62svh, 640px); } }
 .opener::after { content: ''; position: absolute; left: 0; right: 0; bottom: 0; height: 62%; z-index: 2; background: linear-gradient(to top, var(--background) 8%, color-mix(in srgb, var(--background) 70%, transparent) 55%, transparent); pointer-events: none; }
 @media (min-width: 768px) { .opener::after { display: none; } }
+
+/* label / value rows: keep the value next to its label instead of pushing it to the far edge */
+.row.kv { grid-template-columns: 1fr; gap: .4rem 2rem; padding-block: 1.25rem; }
+@media (min-width: 768px) { .row.kv { grid-template-columns: 13rem minmax(0, 46rem); } }
+.row.kv > dt, .row.kv > h4 { padding-top: .2rem; }

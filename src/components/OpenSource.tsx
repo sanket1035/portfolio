@@ -108,7 +108,7 @@ export const OpenSource = () => {
   const metricNum = (v: string) => parseFloat(v.replace(/[^0-9.]/g, ''));
   const metricSuffix = (v: string) => v.replace(/[0-9.,]/g, '');
   const List = ({ title, items }: { title: string; items: string[] }) => (
-    <div className="row" data-row>
+    <div className="row kv" data-row>
       <h4 className="mono-label muted">{title}</h4>
       <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexWrap: 'wrap', gap: '.4rem 1.25rem' }}>
         {items.map((i) => <li key={i}><span className="dot">/</span> {i}</li>)}

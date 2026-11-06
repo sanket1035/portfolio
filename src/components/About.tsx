@@ -51,18 +51,18 @@ export const About = () => (
 
       <dl data-rows style={{ margin: 0 }}>
         {spec.map(([k, v]) => (
-          <div className="row" data-row key={k}>
+          <div className="row kv" data-row key={k}>
             <dt className="mono-label muted">{k}</dt>
             <dd style={{ margin: 0, fontWeight: 600 }}>{v}</dd>
           </div>
         ))}
         {d.education.map((e) => (
-          <div className="row" data-row key={e.institution}>
+          <div className="row kv" data-row key={e.institution}>
             <dt className="mono-label muted">Duration</dt>
             <dd style={{ margin: 0 }}>{e.degree} — {e.specialization}, {e.duration} <span className="muted">(GPA: {e.gpa})</span></dd>
           </div>
         ))}
-        <div className="row" data-row>
+        <div className="row kv" data-row>
           <dt className="mono-label muted">Focus Areas</dt>
           <dd style={{ margin: 0 }}><ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'grid', gap: '.5rem' }}>
             {focus.map((f) => <li key={f}><span className="dot">/</span> {f}</li>)}
