@@ -26,7 +26,7 @@ const focus = [
 ];
 
 export const About = () => (
-  <section id="about" className="section" style={{ borderRadius: '28px 28px 0 0' }}>
+  <section id="about" className="section" style={{ borderRadius: "28px 28px 0 0", paddingBottom: "clamp(2rem, 6vh, 4rem)" }}>
     <div className="wrap">
       <Title text="About Me" />
       <Split

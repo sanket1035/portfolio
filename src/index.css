@@ -353,7 +353,7 @@ html.theme-anim, html.theme-anim *, html.theme-anim *::before, html.theme-anim *
 .cta-circle:hover { scale: 1.08; }
 @media (min-width: 900px) { .hero-photo { height: min(62svh, 640px); } }
 .opener::after { content: ''; position: absolute; left: 0; right: 0; bottom: 0; height: 62%; z-index: 2; background: linear-gradient(to top, var(--background) 8%, color-mix(in srgb, var(--background) 70%, transparent) 55%, transparent); pointer-events: none; }
-@media (min-width: 768px) { .opener::after { display: none; } }
+.opener::after { display: none; }
 
 /* label / value rows: keep the value next to its label instead of pushing it to the far edge */
 .row.kv { grid-template-columns: 1fr; gap: .4rem 2rem; padding-block: 1.25rem; }
@@ -448,3 +448,17 @@ html.cur-active input, html.cur-active textarea { cursor: text !important; }
 @media (min-width: 1100px) { .box.wide > .subgrid { grid-template-columns: repeat(4, 1fr); } }
 .subgrid .subgroup { margin-bottom: 0; }
 .kpis { display: grid; gap: 1.25rem; grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr)); }
+
+/* ---- trim dead space around the terminal / intro (desktop) ---- */
+.circle-intro { min-height: 78svh; }
+.mac-term { margin-bottom: 0; }
+
+/* ---- mobile hero: stack name, photo, copy so nothing overlaps ---- */
+@media (max-width: 767px) {
+  .circle-intro { min-height: 0; padding-block: 3rem 2.5rem; }
+  [data-opener-inner] { display: flex; flex-direction: column; padding-top: 5rem; box-sizing: border-box; }
+  .hero-name { position: relative; top: auto; flex: none; }
+  .hero-photo { position: relative; left: auto; bottom: auto; transform: none; height: 0; flex: 1 1 0; min-height: 0; width: 100%; max-width: 100%; object-fit: contain; object-position: center bottom; margin-top: -.25rem; }
+  .hero-copy { position: relative; left: auto; right: auto; bottom: auto; flex: none; padding: .25rem 1.25rem 1.25rem; gap: .65rem; }
+  .hero-copy p:nth-child(2) { font-size: 1rem !important; }
+}
