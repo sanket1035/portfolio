@@ -15,7 +15,7 @@ const notes = {
     more: 'Whether it is engineering high-performance APIs in Node.js, styling polished interfaces with React and Tailwind, or analyzing model training pipelines in PyTorch, I approach development with a focus on performance, scalability, and user experience.',
   },
   side: [
-    { tag: 'StudyBuddy KKW', quote: 'Built in first year with zero backend experience using AI tools. Now serves 1,500+ students with notes, PYQs, and exam resources across 10+ subjects.', key: 'serves 1,500+ students', rot: -1.1 },
+    { tag: 'StudyBuddy KKW', quote: 'Built in first year with zero backend experience using AI tools. Now covers 9 first-year subjects with notes, PYQs, and exam resources, and is the top Google result for "study buddy kkw".', key: 'top Google result', rot: -1.1 },
     { tag: 'Open source', quote: 'I believe in giving back to the community and collaborating on codebases that make developer lives easier.', key: 'giving back to the community', rot: 0.9 },
   ],
   trio: [

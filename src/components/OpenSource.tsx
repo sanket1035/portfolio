@@ -7,7 +7,7 @@ export const OpenSource = () => {
   const featuredRepos = [
     { name: 'Carbonomics AI', desc: 'GHG Protocol carbon-accounting engine with leakage-free forecasting. Final year project and research manuscript.', tech: 'Python | FastAPI | PostgreSQL | React', status: 'Research', url: 'https://github.com/sanket1035/carbonomics-ai' },
     { name: 'PlaceTrack AI', desc: 'Full-stack placement platform with a 6-stage hiring pipeline and Gemini interview feedback.', tech: 'Next.js | TypeScript | Express | Prisma | PostgreSQL', status: 'Completed', url: 'https://github.com/sanket1035/placetrack-ai' },
-    { name: 'Simhastha Suraksha', desc: 'Crowd monitoring for Kumbh Mela with CSRNet, density heatmaps and risk alerts. Team of 4, lead developer.', tech: 'PyTorch | OpenCV | ONNX | Streamlit | Docker', status: 'Team Project', url: 'https://github.com/sanket1035/simhastha-suraksha' },
+    { name: 'Prodexa AI', desc: 'AI product operating system: blueprint, six-module launch audit and AI Co-Founder with isolated per-project context. InnovaHack Chapter 1 finalist.', tech: 'Next.js | TypeScript | Firebase | Groq | Gemini', status: 'Live', url: 'https://github.com/sanket1035/Prodexa' },
     { name: 'Pramana AI', desc: 'Multi-agent LLM platform that researches and verifies claims with citation-backed reports.', tech: 'Next.js | TypeScript | Firebase | Gemini API', status: 'Live', url: 'https://github.com/sanket1035/pramana-ai' },
   ];
 

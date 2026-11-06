@@ -127,7 +127,7 @@ export const portfolioData: PortfolioData = {
     "Frontend": ["React", "Next.js", "Tailwind CSS", "Zustand", "Recharts", "Framer Motion", "Responsive Design"],
     "Backend & APIs": ["Node.js", "Express.js", "FastAPI", "REST APIs", "Prisma ORM", "JWT Authentication", "Zod", "Rate Limiting"],
     "AI / ML": ["PyTorch", "Scikit-learn", "XGBoost", "Deep Learning", "Computer Vision", "CNN", "OpenCV", "ONNX", "Time Series Forecasting", "Model Evaluation"],
-    "GenAI": ["Generative AI", "LLM APIs (Gemini)", "Multi-Agent Systems", "AI Workflows", "Hallucination Reduction"],
+    "GenAI": ["Generative AI", "LLM APIs (Gemini, Groq, OpenAI)", "Context Engineering", "Multi-Agent Systems", "AI Workflows", "Hallucination Reduction"],
     "Data & Analytics": ["Power BI", "DAX", "Power Query", "Excel", "Pandas", "NumPy", "Data Visualization", "Data Cleaning"],
     "Databases": ["PostgreSQL", "MySQL", "SQLite", "Firebase"],
     "DevOps & Testing": ["Git", "GitHub Actions (CI/CD)", "Docker", "Vercel", "Render", "Postman", "pytest", "Jest", "Vitest"],
@@ -186,30 +186,6 @@ export const portfolioData: PortfolioData = {
       category: "web"
     },
     {
-      id: "simhastha-suraksha",
-      title: "Simhastha Suraksha",
-      tagline: "AI Crowd Monitoring for Kumbh Mela (Team of 4, Lead Developer)",
-      description: "End-to-end crowd monitoring for Kumbh Mela: per-frame head counting, density heatmaps, people per square metre and Low to Critical risk alerts, with staff and public dashboards in English, Hindi and Marathi.",
-      problem: "Large religious gatherings need live crowd density and risk levels, not just a head count, so staff can react before an area becomes critical.",
-      motivation: "Led a team of four to build a complete monitoring pipeline, from model benchmarking to deployed dashboards.",
-      challenges: "Choosing a model that holds up on dense crowds: an MLP, a custom CNN and CSRNet were benchmarked on ShanghaiTech Part A, and the winner was exported to ONNX for serving.",
-      learnings: "Benchmarking crowd-counting models, exporting to ONNX, and packaging a vision system with Docker and GitHub Actions CI.",
-      folderStructure: "",
-      features: [
-        "Per-frame head count, density heatmap and people/m2 metric.",
-        "Low to Critical risk alerts.",
-        "MLP, custom CNN and CSRNet benchmarked on ShanghaiTech Part A: CSRNet cut MAE from 259.4 to 66.7 (74% lower).",
-        "Model exported to ONNX.",
-        "Staff and public dashboards in English, Hindi and Marathi, fed from RTSP streams.",
-        "Containerized with Docker, CI on GitHub Actions."
-      ],
-      techStack: ["PyTorch", "CSRNet", "OpenCV", "ONNX", "Streamlit", "Docker", "GitHub Actions"],
-      futureImprovements: [],
-      githubUrl: "https://github.com/sanket1035/simhastha-suraksha",
-      image: "/placeholders/simhastha.png",
-      category: "ai"
-    },
-    {
       id: "pramana-ai",
       title: "Pramana AI",
       tagline: "Multi-Agent AI Platform for Research & Claim Verification",
@@ -258,6 +234,58 @@ models/    # Gemma LLM prompt templates & graph generators`,
       githubUrl: "https://github.com/Hills081199/AMD-HACKATHON-II",
       liveUrl: "https://lablab.ai/ai-hackathons/amd-developer-hackathon-act-ii/thirstyseek/atlas-ai-powered-learning-path-generator",
       image: "/placeholders/atlas.png",
+      category: "ai"
+    },
+    {
+      id: "prodexa-ai",
+      title: "Prodexa AI",
+      tagline: "AI Product Operating System (InnovaHack Chapter 1 Finalist)",
+      description: "A product-readiness platform that connects planning and launch validation in one project-scoped workflow: an AI blueprint, a six-module launch audit, an AI Co-Founder chat and exportable reports, with every project keeping its own isolated context.",
+      problem: "AI has made building software faster, but founders still use separate tools for planning, technical validation, UX and performance checks, business review and launch decisions, so the bottleneck is knowing what to fix before launch.",
+      motivation: "Built for the InnovaHack Chapter 1 hackathon (finalist): one workflow that takes an idea to a blueprint, audits the product and turns the findings into a prioritized action plan.",
+      challenges: "Keeping AI output dependable and honest: a multi-provider pipeline with failover to a deterministic offline engine, and fixes for fake audits on invalid websites, hardcoded scores, context contamination across projects and projects disappearing after refresh.",
+      learnings: "Designing a layered architecture (presentation, application, business logic, AI pipeline, data), context engineering with isolated per-project memory, provider failover with timeouts and a JSON guard, and regression-testing an AI product.",
+      folderStructure: "",
+      features: [
+        "Blueprint Engine: turns an idea into a structured product blueprint that can be accepted as a project.",
+        "Launch Audit Engine with six modules: Product Understanding, Engineering Analysis, UX Review, Performance Snapshot, Business Review and Launch Planner.",
+        "AI Co-Founder chat with mentor personas, grounded in the project's own context.",
+        "Report Engine with PDF and JSON export of scores, findings and a prioritized roadmap.",
+        "Explainable readiness: an overall score with a six-module breakdown, each backed by reasoning and evidence, plus critical gaps and concrete recommendations.",
+        "Context Engineering: project-specific memory, compression and dynamic injection, with no cross-project contamination.",
+        "Multi-provider AI pipeline (Groq, then Gemini, then OpenAI, then a deterministic offline engine) with 8s timeouts, failover, a JSON guard and telemetry.",
+        "Phases 1 and 2 complete: 17/17 regression tests passing, 0 TypeScript errors, live on Vercel at prodexa-ai.app."
+      ],
+      techStack: ["Next.js 14", "TypeScript", "Tailwind CSS", "Firebase", "Firestore", "Groq", "Gemini API", "OpenAI API", "Vercel"],
+      architecture: "Prodexa treats a product as a connected flow: founder input becomes an AI blueprint, the blueprint becomes a project with its own context, the six audit modules produce evidence and findings, and those become a prioritized decision that the AI Co-Founder can discuss without leaving that project. AI is used for reasoning, while deterministic and empirical checks cover measurable signals. Five layers: a Next.js 14 App Router frontend, an application layer of API routes, server actions and middleware, a business-logic layer of the Blueprint, Launch Audit, AI Co-Founder, Report and Context engines, a multi-provider AI pipeline, and a Firestore data layer.",
+      futureImprovements: [],
+      githubUrl: "https://github.com/sanket1035/Prodexa",
+      liveUrl: "https://prodexa-ai.app/",
+      image: "/placeholders/prodexa.webp",
+      category: "ai"
+    },
+    {
+      id: "simhastha-suraksha",
+      title: "Simhastha Suraksha",
+      tagline: "AI Crowd Monitoring for Kumbh Mela (Team of 4, Lead Developer)",
+      description: "End-to-end crowd monitoring for Kumbh Mela: per-frame head counting, density heatmaps, people per square metre and Low to Critical risk alerts, with staff and public dashboards in English, Hindi and Marathi.",
+      problem: "Large religious gatherings need live crowd density and risk levels, not just a head count, so staff can react before an area becomes critical.",
+      motivation: "Led a team of four to build a complete monitoring pipeline, from model benchmarking to deployed dashboards.",
+      challenges: "Choosing a model that holds up on dense crowds: an MLP, a custom CNN and CSRNet were benchmarked on ShanghaiTech Part A, and the winner was exported to ONNX for serving.",
+      learnings: "Benchmarking crowd-counting models, exporting to ONNX, and packaging a vision system with Docker and GitHub Actions CI.",
+      folderStructure: "",
+      features: [
+        "Per-frame head count, density heatmap and people/m2 metric.",
+        "Low to Critical risk alerts.",
+        "MLP, custom CNN and CSRNet benchmarked on ShanghaiTech Part A: CSRNet cut MAE from 259.4 to 66.7 (74% lower).",
+        "Model exported to ONNX.",
+        "Staff and public dashboards in English, Hindi and Marathi, fed from RTSP streams.",
+        "Containerized with Docker, CI on GitHub Actions."
+      ],
+      techStack: ["PyTorch", "CSRNet", "OpenCV", "ONNX", "Streamlit", "Docker", "GitHub Actions"],
+      futureImprovements: [],
+      githubUrl: "https://github.com/sanket1035/simhastha-suraksha",
+      image: "/placeholders/simhastha.webp",
       category: "ai"
     },
     {
@@ -310,8 +338,7 @@ models/    # Gemma LLM prompt templates & graph generators`,
       liveUrl: "https://yukti-nexus.vercel.app/",
       image: "/placeholders/sherise.png",
       category: "ai"
-    }
-,
+    },
     {
       id: "gst-billing-app",
       title: "GST Billing App",
@@ -381,7 +408,7 @@ notebooks/  # Exploratory data analysis & threshold tuning`,
       techStack: ["Power BI", "DAX", "Power Query", "Excel"],
       futureImprovements: [],
       githubUrl: "https://github.com/sanket1035/interactive-sales-analytics-dashboard",
-      image: "/placeholders/sales_dashboard.png",
+      image: "/placeholders/sales_dashboard.webp",
       category: "data"
     },
   ],
@@ -445,7 +472,7 @@ notebooks/  # Exploratory data analysis & threshold tuning`,
       title: "StudyBuddy KKW",
       issuer: "K. K. Wagh Institute",
       date: "2023 – Present",
-      description: "Built in first year with zero backend experience using AI tools. Now serves 1,500+ students with notes, PYQs, and exam resources across 10+ subjects. 400+ active users annually — completely self-maintained with zero downtime."
+      description: "Built in first year with zero backend experience using AI tools. Now covers 9 first-year subjects with notes, PYQs, and exam resources, drew 350+ visits through QR codes, and is the top Google result for \"study buddy kkw\". Completely self-maintained."
     },
     {
       title: "Gold Medalist — National Football Championship",
