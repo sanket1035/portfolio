@@ -134,10 +134,9 @@ export function useMotion(root: React.RefObject<HTMLElement | null>) {
           chapters.forEach((ch, i) => {
             const next = chapters[i + 1];
             if (!next) return;
-            gsap.to(ch, {
-              scale: 0.94, filter: 'brightness(0.6)', ease: 'none',
-              scrollTrigger: { trigger: next, start: 'top bottom', end: 'top top', scrub: true },
-            });
+            const trig = { trigger: next, start: 'top bottom', end: 'top top', scrub: true };
+            gsap.fromTo(ch, { scale: 1 }, { scale: 0.985, ease: 'none', scrollTrigger: trig });
+            gsap.fromTo(ch.querySelector('.chapter-dim'), { opacity: 0 }, { opacity: 0.4, ease: 'none', scrollTrigger: trig });
           });
         } else {
           chapters.forEach((ch) =>

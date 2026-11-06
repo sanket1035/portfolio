@@ -49,6 +49,7 @@ export const Projects = () => {
           const c = CHAPTERS[i % CHAPTERS.length];
           return (
             <article key={p.id} className="chapter" style={{ background: c.bg, color: c.ink, ['--ink' as string]: c.ink, ['--bgc' as string]: c.bg }}>
+              <span className="chapter-dim" aria-hidden="true" />
               <div className="chapter-grid">
                 <div style={{ display: 'grid', gap: '1.5rem', alignContent: 'center' }}>
                   <p className="mono-label" style={{ opacity: .85 }}>{String(i + 1).padStart(2, '0')} / {String(all.length).padStart(2, '0')} · {p.category}</p>

@@ -526,3 +526,5 @@ html.cur-active input, html.cur-active textarea { cursor: text !important; }
 .cstats dd { margin: .35rem 0 0; font-size: .8rem; opacity: .8; max-width: 9rem; }
 .chapter-media { transform: rotate(0deg); }
 .chapter-media img { object-position: center top; }
+
+.chapter-dim { position: absolute; inset: 0; background: #000; opacity: 0; pointer-events: none; z-index: 5; border-radius: inherit; }
