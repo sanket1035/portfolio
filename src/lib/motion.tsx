@@ -112,14 +112,20 @@ export function useMotion(root: React.RefObject<HTMLElement | null>) {
           tlm.fromTo(q('[data-rv-right]'), { opacity: 0, x: 70 }, { opacity: 1, x: 0, duration: 0.5 }, 0.5);
         }
 
-        // 3a. Title -> colour circle grows from the corner and floods the screen into chapter one (desktop)
+        // 3a. The dot after the title becomes a colour circle that floods the screen into chapter one (desktop)
         const blob = root.current!.querySelector<HTMLElement>('[data-circle-blob]');
-        if (desktop && blob) {
+        const spot = root.current!.querySelector<HTMLElement>('[data-circle-dot]');
+        const intro = root.current!.querySelector<HTMLElement>('[data-circle-intro]');
+        if (desktop && blob && spot && intro) {
           gsap.set(blob, { display: 'block' });
-          gsap.fromTo(blob, { clipPath: 'circle(60px at 85% 80%)' }, {
-            clipPath: 'circle(150vmax at 85% 80%)', ease: 'power2.in',
-            scrollTrigger: { trigger: '[data-circle-intro]', start: 'top top', end: '+=110%', scrub: true, pin: true },
-          });
+          const at = () => {
+            const d = spot.getBoundingClientRect(), s = intro.getBoundingClientRect();
+            return { x: d.left - s.left + d.width / 2, y: d.top - s.top + d.height / 2, r: d.width / 2 };
+          };
+          gsap.fromTo(blob,
+            { clipPath: () => { const a = at(); return `circle(${a.r}px at ${a.x}px ${a.y}px)`; } },
+            { clipPath: () => { const a = at(); return `circle(150vmax at ${a.x}px ${a.y}px)`; }, ease: 'power2.in',
+              scrollTrigger: { trigger: intro, start: 'top top', end: '+=90%', scrub: true, pin: true, invalidateOnRefresh: true } });
         }
 
         // 3. Stacked chapters (desktop only; mobile stacks normally with fade)
