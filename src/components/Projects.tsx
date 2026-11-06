@@ -28,8 +28,11 @@ export const Projects = () => {
   const rest = d.projects.slice(3);
   return (
     <section id="projects" style={{ background: 'var(--background)' }}>
-      <div className="wrap" style={{ paddingTop: 'clamp(6rem, 16vh, 11rem)' }}>
-        <Title text="Featured Systems" kicker="Showcase" />
+      <div className="circle-intro" data-circle-intro>
+        <div className="wrap" style={{ width: '100%', paddingBlock: 'clamp(6rem, 12vh, 9rem) 0' }}>
+          <Title text="Featured Systems" kicker="Showcase" />
+        </div>
+        <span className="circle-blob" data-circle-blob aria-hidden="true" style={{ background: CHAPTERS[0].bg }} />
       </div>
 
       <div className="chapter-stack">

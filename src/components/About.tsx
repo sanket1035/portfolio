@@ -31,7 +31,7 @@ export const About = () => (
       <Title text="About Me" />
       <Split
         as="p" split="lit" className="statement"
-        text="I am an undergraduate student in Artificial Intelligence & Data Science at K. K. Wagh Institute of Engineering Education & Research (KKWIEER). My passion lies at the intersection of building robust full-stack software and deploying practical, intelligent machine learning solutions."
+        text="I am an undergraduate student in Artificial Intelligence & Data Science at K. K. Wagh Institute of Engineering Education & Research (KKWIEER). My passion lies at the intersection of building robust full-stack software and deploying practical, intelligent machine learning {chip} solutions."
       />
       <div style={{ display: 'grid', gap: '1.25rem', maxWidth: '46rem', marginTop: '4rem' }} className="muted">
         <p>I don't just write code; I design systems. Whether it is engineering high-performance APIs in Node.js, styling polished interfaces with React and Tailwind, or analyzing model training pipelines in PyTorch, I approach development with a focus on performance, scalability, and user experience.</p>
@@ -70,11 +70,21 @@ export const About = () => (
         </div>
       </dl>
 
-      <p style={{ marginTop: '4rem' }} className="muted">
-        Sanket's Bash Terminal v1.0.0: you can trigger this terminal session at any time by pressing the ESC button.{' '}
-        <button className="ulink" type="button" style={{ background: 'none', border: 0, color: 'inherit', cursor: 'pointer', font: 'inherit' }}
-          onClick={() => window.dispatchEvent(new CustomEvent('toggle-terminal'))}>Launch Terminal CLI ↗</button>
-      </p>
+      <button
+        type="button" className="mac-term" aria-label="Launch Terminal CLI"
+        onClick={() => window.dispatchEvent(new CustomEvent('toggle-terminal'))}
+      >
+        <span className="mac-bar" aria-hidden="true">
+          <i style={{ background: '#ff5f57' }} /><i style={{ background: '#febc2e' }} /><i style={{ background: '#28c840' }} />
+          <span className="mac-title">Sanket's Bash Terminal · v1.0.0</span>
+        </span>
+        <span className="mac-body">
+          <span style={{ color: '#28c840', fontWeight: 700 }}>&gt; Welcome to the interactive portfolio CLI shell!</span>
+          <span className="mac-dim">You can trigger this terminal session at any time by pressing the ESC button.</span>
+          <span className="mac-prompt">visitor@sanket:~$ <b className="mac-caret" /></span>
+          <span className="mac-launch">Launch Terminal CLI ↗</span>
+        </span>
+      </button>
     </div>
   </section>
 );

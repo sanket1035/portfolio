@@ -4,6 +4,7 @@ import { LazyMotion, domAnimation } from 'framer-motion';
 import { ThemeProvider } from './context/ThemeContext';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
+import Cursor from './components/Cursor';
 import Home from './pages/Home';
 import Privacy from './pages/Privacy';
 import NotFound from './pages/NotFound';
@@ -239,6 +240,7 @@ function App() {
               </div>
             </div>
           )}
+          <Cursor />
           <Analytics />
           <SpeedInsights />
         </div>

@@ -15,12 +15,15 @@ export const lenisRef: { current: Lenis | null } = { current: null };
 export function Words({ text }: { text: string }) {
   return (
     <>
-      {text.split(' ').map((w, i) => (
-        <span className="mask" key={i} aria-hidden="true">
-          <span className="w">{w}</span>
-          {' '}
-        </span>
-      ))}
+      {text.split(' ').map((w, i) =>
+        w === '{chip}' ? (
+          <span className="w chip" key={i} aria-hidden="true" />
+        ) : (
+          <span className="mask" key={i} aria-hidden="true">
+            <span className="w">{w}</span>
+          </span>
+        ),
+      )}
     </>
   );
 }
@@ -30,7 +33,7 @@ export function Split({ as = 'h2', text, className, split = 'reveal' }: {
 }) {
   return createElement(
     as,
-    { className: `${className ?? ''} ${split === 'lit' ? 'lit' : ''}`, 'aria-label': text, [split === 'lit' ? 'data-lit' : 'data-split']: '' },
+    { className: `${className ?? ''} ${split === 'lit' ? 'lit' : ''}`, 'aria-label': text.replace('{chip} ', ''), [split === 'lit' ? 'data-lit' : 'data-split']: '' },
     <Words text={text} />,
   );
 }
@@ -89,6 +92,16 @@ export function useMotion(root: React.RefObject<HTMLElement | null>) {
           scale: 0.92, opacity: 0, ease: 'none',
           scrollTrigger: { trigger: '[data-opener]', start: 'top top', end: '+=120%', scrub: true, pin: true, pinSpacing: false },
         });
+
+        // 3a. Title -> colour circle grows from the corner and floods the screen into chapter one (desktop)
+        const blob = root.current!.querySelector<HTMLElement>('[data-circle-blob]');
+        if (desktop && blob) {
+          gsap.set(blob, { display: 'block' });
+          gsap.fromTo(blob, { clipPath: 'circle(60px at 85% 80%)' }, {
+            clipPath: 'circle(150vmax at 85% 80%)', ease: 'power2.in',
+            scrollTrigger: { trigger: '[data-circle-intro]', start: 'top top', end: '+=110%', scrub: true, pin: true },
+          });
+        }
 
         // 3. Stacked chapters (desktop only; mobile stacks normally with fade)
         const chapters = gsap.utils.toArray<HTMLElement>('.chapter');

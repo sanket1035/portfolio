@@ -357,3 +357,51 @@ html.theme-anim, html.theme-anim *, html.theme-anim *::before, html.theme-anim *
 .row.kv { grid-template-columns: 1fr; gap: .4rem 2rem; padding-block: 1.25rem; }
 @media (min-width: 768px) { .row.kv { grid-template-columns: 13rem minmax(0, 46rem); } }
 .row.kv > dt, .row.kv > h4 { padding-top: .2rem; }
+
+/* ---- circle flood intro before the chapters ---- */
+.circle-intro { position: relative; min-height: 100svh; display: grid; align-content: center; overflow: hidden; background: var(--background); }
+.circle-blob { display: none; position: absolute; inset: 0; z-index: 3; will-change: clip-path; clip-path: circle(60px at 85% 80%); }
+
+/* ---- inline photo chip inside the statement ---- */
+.chip { display: inline-block; width: 1.7em; height: .86em; border-radius: 9999px; vertical-align: -.1em; margin: 0 .2em; background: var(--secondary) url('/placeholders/hero.png') no-repeat; background-size: 150% auto; background-position: 56% 7%; }
+
+/* ---- mac style terminal card ---- */
+.mac-term { display: block; width: 100%; max-width: 40rem; margin: 5rem auto 0; text-align: left; padding: 0; border: 1px solid var(--border); border-radius: 14px; overflow: hidden; background: #0f1012; color: #d7d9dc; cursor: pointer; font-family: var(--font-mono); box-shadow: 0 30px 80px -24px rgba(0,0,0,.55); transition: transform .5s var(--ease-out-expo), box-shadow .5s var(--ease-out-expo); }
+.mac-term:hover { transform: translateY(-4px); box-shadow: 0 40px 90px -24px rgba(0,0,0,.65); }
+.mac-bar { display: flex; align-items: center; gap: .5rem; padding: .7rem .9rem; background: #1b1c1f; border-bottom: 1px solid #2a2b2f; }
+.mac-bar i { width: 12px; height: 12px; border-radius: 50%; display: inline-block; }
+.mac-title { margin-left: .6rem; font-size: .72rem; color: #8b8e94; letter-spacing: .04em; }
+.mac-body { display: grid; gap: .55rem; padding: 1.1rem 1.1rem 1.25rem; font-size: .82rem; line-height: 1.5; }
+.mac-dim { color: #8b8e94; }
+.mac-prompt { color: #a9acb2; }
+.mac-caret { display: inline-block; width: .55em; height: 1em; background: #28c840; vertical-align: -.15em; animation: blink 1s steps(1) infinite; }
+.mac-launch { color: var(--primary); margin-top: .35rem; font-weight: 600; }
+@keyframes blink { 50% { opacity: 0; } }
+
+/* ---- cursor companions ---- */
+.cur-ring, .cur-dot, .cur-bot { position: fixed; left: 0; top: 0; pointer-events: none; z-index: 9999; opacity: 0; will-change: transform; }
+.cur-on .cur-ring, .cur-on .cur-dot, .cur-on .cur-bot { opacity: 1; }
+.cur-dot { width: 8px; height: 8px; margin: -4px 0 0 -4px; border-radius: 50%; background: var(--primary); }
+.cur-ring { width: 36px; height: 36px; margin: -18px 0 0 -18px; }
+.cur-ring > i { position: absolute; inset: 0; border-radius: 50%; padding: 2px; background: conic-gradient(#f0587a, #d0e266, #2d5bcc, #f0587a); -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite: xor; mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0); animation: spin 5s linear infinite; transition: scale .35s var(--ease-out-expo); }
+.cur-hover .cur-ring > i { scale: 1.7; }
+.cur-bot { width: 30px; height: 30px; margin: -15px 0 0 -15px; transition: opacity .3s; }
+.cur-bot svg { width: 100%; height: 100%; display: block; overflow: visible; }
+.cur-bot .eye { animation: eyeblink 4s infinite; transform-origin: center; transform-box: fill-box; }
+@keyframes eyeblink { 0%, 94%, 100% { transform: scaleY(1); } 97% { transform: scaleY(.1); } }
+@media (pointer: coarse), (hover: none) { .cur-ring, .cur-dot, .cur-bot { display: none; } }
+.lit .mask { margin-right: .2em; }
+
+/* ---- small screens: nothing may overflow ---- */
+.row > *, .kv > *, .chapter-grid > * { min-width: 0; }
+.row, .note, .chapter { overflow-wrap: anywhere; }
+@media (max-width: 767px) {
+  .mega { font-size: clamp(2.3rem, 11.2vw, 6rem); }
+  .chapter .mega { font-size: clamp(2.3rem, 12vw, 6rem); }
+  .contact-h { font-size: clamp(2.3rem, 11vw, 4rem); }
+  .h2 { font-size: clamp(1.6rem, 7.5vw, 2.4rem); }
+  .statement { font-size: clamp(1.45rem, 6.6vw, 2.2rem); }
+  .mac-term { margin-top: 3.5rem; }
+  .mac-body { font-size: .75rem; }
+}
+#contact .wrap > * { max-width: 100%; min-width: 0; }
