@@ -19,10 +19,7 @@ const go = (hash: string) => document.querySelector(hash)?.scrollIntoView({ beha
 /** Closing section: oversized text rings behind a big headline, circle CTA, links, footer bar. */
 export const Contact = () => {
   const s = d.socials;
-  const links: [string, string | undefined][] = [
-    ['LinkedIn', s.linkedin], ['GitHub', s.github], ['Twitter / X', s.twitter], ['LeetCode', s.leetcode],
-    ['YouTube', s.youtube], ['Dev.to', s.devto], ['Medium', s.medium], ['Reddit', s.reddit],
-  ];
+  const links: [string, string | undefined][] = [['LinkedIn', s.linkedin], ['GitHub', s.github]];
   const t = `${d.name} / ${d.title} / ${d.location} / `;
   const phrase = "Let's build something real";
   return (
