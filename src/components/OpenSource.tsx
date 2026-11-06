@@ -43,7 +43,7 @@ export const OpenSource = () => {
   const currentlyLearning = [
     'System Design',
     'Docker',
-    'CI/CD',
+    'CI/CD & GitHub Actions Pipelines',
     'RAG',
     'Agentic AI',
     'Generative AI & Prompt Engineering'
@@ -67,7 +67,8 @@ export const OpenSource = () => {
     { text: 'Learn RAG & Agentic AI', done: false },
     { text: 'Contribute to production-grade open source', done: true },
     { text: 'Master System Design', done: false },
-    { text: 'Participate in Hacktoberfest (online)', done: true }
+    { text: 'Participate in Hacktoberfest (online)', done: true },
+    { text: 'Get an internship', done: false }
   ];
 
   // GitHub & Development Section Metrics
