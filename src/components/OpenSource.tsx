@@ -122,7 +122,7 @@ export const OpenSource = () => {
         <dl className="kpis" style={{ margin: '0 0 5rem' }}>
           {devMetrics.map((m) => (
             <div className="box" key={m.label}>
-              <dt className="tnum" style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', fontWeight: 800, letterSpacing: '-.04em', lineHeight: 1 }}>
+              <dt className="tnum" style={{ fontSize: 'clamp(2.2rem, 3.6vw, 3.2rem)', whiteSpace: 'nowrap', fontWeight: 800, letterSpacing: '-.04em', lineHeight: 1 }}>
                 {/^[0-9]/.test(m.value) ? (
                   <span data-count={metricNum(m.value)} data-suffix={metricSuffix(m.value)}>{m.value}</span>
                 ) : m.value}

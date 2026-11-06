@@ -47,20 +47,22 @@
 :root.light {
   --background: #eef0f2;
   --foreground: #111315;
-  --card: #f6f7f8;
+  --card: #ffffff;
   --secondary: #e3e6e9;
   --muted-foreground: #565a60;
-  --border: #1113151f;
-  --input: #11131533;
+  --border: #11131540;
+  --input: #11131559;
   --primary: #b3244a;
   --primary-foreground: #fff5f7;
   --ring: #b3244a;
-  --brand-border: #d3d6da;
+  --brand-border: #b9bec4;
   --brand-accent-glow: rgba(179, 36, 74, 0.1);
   color-scheme: light;
 }
 
 html { background: var(--background); }
+:root.light .box, :root.light .note, :root.light .drawer-btn { box-shadow: 0 1px 2px rgba(17,19,21,.06), 0 6px 18px -8px rgba(17,19,21,.14); }
+:root.light .tagpills li { background: #fff; border-color: #1113154d; }
 html.lenis, html.lenis body { height: auto; }
 .lenis.lenis-smooth { scroll-behavior: auto !important; }
 .lenis.lenis-stopped { overflow: hidden; }
@@ -125,7 +127,8 @@ a { color: inherit; }
 @media (min-width: 768px) { .chapter { padding-inline: 2.5rem; } }
 .chapter-grid { display: grid; gap: 2.5rem; width: 100%; max-width: 100rem; margin-inline: auto; }
 @media (min-width: 1024px) { .chapter-grid { grid-template-columns: 1.1fr 1fr; gap: 5rem; align-items: end; } }
-.chapter .mega { font-size: clamp(3rem, 11vw, 8.5rem); }
+.chapter .mega { font-size: clamp(3rem, 11vw, 8.5rem); overflow-wrap: normal; word-break: normal; }
+@media (min-width: 1024px) { .chapter .mega { font-size: clamp(3.5rem, 6.4vw, 7rem); } }
 .chapter .rule-c { border-top: 1px solid currentColor; opacity: .9; }
 .chapter ul li { padding-block: 1rem; border-top: 1px solid color-mix(in srgb, currentColor 30%, transparent); }
 @media (max-width: 767px) { .chapter { position: relative; border-radius: 28px; margin-bottom: .75rem; } }
