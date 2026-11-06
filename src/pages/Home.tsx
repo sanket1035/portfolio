@@ -2,6 +2,7 @@ import { useRef } from 'react';
 import { useMotion } from '../lib/motion';
 import SectionIndex from '../components/SectionIndex';
 import Hero from '../components/Hero';
+import Statement from '../components/Statement';
 import About from '../components/About';
 import Projects from '../components/Projects';
 import Skills from '../components/Skills';
@@ -19,6 +20,7 @@ export const Home = () => {
       <SectionIndex />
       <Hero />
       <div className="rises">
+        <Statement />
         <About />
         <Projects />
         <Skills />

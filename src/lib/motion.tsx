@@ -81,7 +81,7 @@ export function useMotion(root: React.RefObject<HTMLElement | null>) {
 
         // 1b. Statement words lit up on scroll
         gsap.utils.toArray<HTMLElement>('[data-lit]').forEach((el) => {
-          gsap.fromTo(el.querySelectorAll('.w'), { opacity: 0.15 }, {
+          gsap.fromTo(el.querySelectorAll('.w'), { opacity: 0.08 }, {
             opacity: 1, ease: 'none', stagger: 0.1,
             scrollTrigger: { trigger: el, start: 'top 80%', end: 'bottom 45%', scrub: true },
           });
@@ -95,7 +95,7 @@ export function useMotion(root: React.RefObject<HTMLElement | null>) {
           const stage = () => rv.getBoundingClientRect();
           const tlm = gsap.timeline({
             defaults: { ease: 'none' },
-            scrollTrigger: { trigger: '[data-opener]', start: 'top top', end: '+=170%', scrub: true, pin: true, anticipatePin: 1, invalidateOnRefresh: true },
+            scrollTrigger: { trigger: '[data-opener]', start: 'top top', end: '+=170%', scrub: true, pin: true, anticipatePin: 1, invalidateOnRefresh: true, refreshPriority: 10 },
           });
           const top = () => (window.innerWidth >= 900 ? 88 : 80);
           const w0 = () => stage().width - (window.innerWidth >= 900 ? 80 : 32);

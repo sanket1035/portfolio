@@ -496,3 +496,14 @@ html.cur-active input, html.cur-active textarea { cursor: text !important; }
   .rv-para { font-size: 1rem; max-width: 26rem; }
   .rv-name { font-size: clamp(5rem, 13vw, 14rem); }
 }
+
+/* ---- Second scene: big lit statement + three columns ---- */
+.statement-scene { position: relative; background: var(--background); padding-block: clamp(5rem, 14vh, 9rem) clamp(4rem, 10vh, 7rem); }
+.big-statement { margin: 0; max-width: 72rem; font-weight: 700; letter-spacing: -.035em; line-height: 1.08; font-size: clamp(1.9rem, 5.6vw, 4.8rem); }
+.big-statement .mask { margin-right: .22em; }
+.triple { display: grid; gap: 2.5rem; margin-top: clamp(4rem, 10vh, 7rem); grid-template-columns: 1fr; }
+@media (min-width: 900px) { .triple { grid-template-columns: repeat(3, 1fr); gap: 3rem; } }
+.triple-col { border-top: 1px solid var(--foreground); padding-top: 1.25rem; display: grid; gap: 1rem; align-content: start; min-width: 0; }
+.triple-col h3 { margin: 0; font-size: clamp(1.6rem, 2.4vw, 2.2rem); font-weight: 800; letter-spacing: -.03em; }
+.triple-col p { margin: 0; line-height: 1.5; }
+.triple-col .ulink { justify-self: start; background: none; border: 0; color: inherit; font: inherit; cursor: pointer; padding: 0; }
