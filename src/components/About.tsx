@@ -49,7 +49,7 @@ export const About = () => (
         ))}
       </dl>
 
-      <dl data-rows style={{ margin: 0 }}>
+      <dl className="box" data-rows style={{ margin: '0 auto', maxWidth: '58rem', padding: '.25rem clamp(1.1rem, 2.4vw, 2rem)' }}>
         {spec.map(([k, v]) => (
           <div className="row kv" data-row key={k}>
             <dt className="mono-label muted">{k}</dt>

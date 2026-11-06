@@ -137,6 +137,34 @@ export const portfolioData: PortfolioData = {
   },
   projects: [
     {
+      id: "carbonomics-ai",
+      title: "Carbonomics AI",
+      tagline: "Predictive Carbon Footprint Estimator & Optimization Platform (Research)",
+      description: "An AI-powered application model layout that estimates industrial carbon emissions and suggests actionable recommendations to achieve net-zero goals. Features predictive modeling based on energy source and consumption data.",
+      problem: "Organizations struggle to calculate scope 1, 2, and 3 emissions accurately and lack predictive forecasts to evaluate the environmental impact of changes in their supply chain.",
+      motivation: "With industries shifting towards carbon neutrality, measuring scope-based emissions remains highly complex. Carbonomics AI was designed as a research platform to predict industrial CO2 emissions based on fuel, logistics, and resource data points using ML regression models.",
+      challenges: "Handling missing/null values and scaling input parameters across varying industrial contexts while training the regressor for robust out-of-distribution performance.",
+      learnings: "Deepened my skills in model validation, tuning hyperparameters, and deploying Python web inference routes via FastAPI.",
+      folderStructure: `model/  # PyTorch/Scikit-learn model files & data preprocessors
+server/ # FastAPI inference route handlers
+client/ # Dashboard analytics widgets`,
+      features: [
+        "Machine Learning model estimating CO2 output based on energy, logistics, and resource data.",
+        "Optimization engine proposing green energy alternatives and cost-benefit analysis.",
+        "API integration with public climate registries for local emission factors.",
+        "Published research summary outlining the ML methodology and data pipeline."
+      ],
+      techStack: ["Python", "FastAPI", "React", "Tailwind CSS", "Scikit-Learn", "Pandas"],
+      architecture: "FastAPI server wraps a trained Random Forest regressor. The React client queries the API to run real-time inference and render charts via Chart.js/Recharts.",
+      futureImprovements: [
+        "Add automated bill scanning (OCR) to parse electricity and logistics invoices.",
+        "Integrate real-time IoT energy meters compatibility."
+      ],
+      githubUrl: "https://github.com/sanket1035/carbonomics-ai",
+      image: "/placeholders/carbonomics.jpg",
+      category: "ai"
+    },
+    {
       id: "placetrack-ai",
       title: "PlaceTrack AI",
       tagline: "AI-Powered Smart Attendance & Location Tracking System",
@@ -190,34 +218,6 @@ export const portfolioData: PortfolioData = {
       githubUrl: "https://github.com/sanket1035/pramana-ai",
       liveUrl: "https://pramana-ai-orcin.vercel.app/",
       image: "/placeholders/pramana.png",
-      category: "ai"
-    },
-    {
-      id: "carbonomics-ai",
-      title: "Carbonomics AI",
-      tagline: "Predictive Carbon Footprint Estimator & Optimization Platform (Research)",
-      description: "An AI-powered application model layout that estimates industrial carbon emissions and suggests actionable recommendations to achieve net-zero goals. Features predictive modeling based on energy source and consumption data.",
-      problem: "Organizations struggle to calculate scope 1, 2, and 3 emissions accurately and lack predictive forecasts to evaluate the environmental impact of changes in their supply chain.",
-      motivation: "With industries shifting towards carbon neutrality, measuring scope-based emissions remains highly complex. Carbonomics AI was designed as a research platform to predict industrial CO2 emissions based on fuel, logistics, and resource data points using ML regression models.",
-      challenges: "Handling missing/null values and scaling input parameters across varying industrial contexts while training the regressor for robust out-of-distribution performance.",
-      learnings: "Deepened my skills in model validation, tuning hyperparameters, and deploying Python web inference routes via FastAPI.",
-      folderStructure: `model/  # PyTorch/Scikit-learn model files & data preprocessors
-server/ # FastAPI inference route handlers
-client/ # Dashboard analytics widgets`,
-      features: [
-        "Machine Learning model estimating CO2 output based on energy, logistics, and resource data.",
-        "Optimization engine proposing green energy alternatives and cost-benefit analysis.",
-        "API integration with public climate registries for local emission factors.",
-        "Published research summary outlining the ML methodology and data pipeline."
-      ],
-      techStack: ["Python", "FastAPI", "React", "Tailwind CSS", "Scikit-Learn", "Pandas"],
-      architecture: "FastAPI server wraps a trained Random Forest regressor. The React client queries the API to run real-time inference and render charts via Chart.js/Recharts.",
-      futureImprovements: [
-        "Add automated bill scanning (OCR) to parse electricity and logistics invoices.",
-        "Integrate real-time IoT energy meters compatibility."
-      ],
-      githubUrl: "https://github.com/sanket1035/carbonomics-ai",
-      image: "/placeholders/carbonomics.jpg",
       category: "ai"
     },
     {

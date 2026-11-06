@@ -30,7 +30,7 @@ export const Projects = () => {
     <section id="projects" style={{ background: 'var(--background)' }}>
       <div className="circle-intro" data-circle-intro>
         <div className="wrap" style={{ width: '100%', paddingBlock: 'clamp(6rem, 12vh, 9rem) 0' }}>
-          <Title text="Featured Systems" kicker="Showcase" />
+          <Title text="Featured Systems" kicker="Showcase" stack />
         </div>
         <span className="circle-blob" data-circle-blob aria-hidden="true" style={{ background: CHAPTERS[0].bg }} />
       </div>

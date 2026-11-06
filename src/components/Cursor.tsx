@@ -15,10 +15,10 @@ export default function Cursor() {
 
     const move = (e: PointerEvent) => {
       mx = e.clientX; my = e.clientY;
-      root.classList.add('cur-on');
+      root.classList.add('cur-on', 'cur-active');
       root.classList.toggle('cur-hover', !!(e.target as Element | null)?.closest?.('a, button, [role="button"], input, textarea, summary'));
     };
-    const leave = () => root.classList.remove('cur-on');
+    const leave = () => root.classList.remove('cur-on', 'cur-active');
 
     const tick = () => {
       rx += (mx - rx) * 0.22; ry += (my - ry) * 0.22;
@@ -37,7 +37,7 @@ export default function Cursor() {
       cancelAnimationFrame(raf);
       window.removeEventListener('pointermove', move);
       document.removeEventListener('pointerleave', leave);
-      root.classList.remove('cur-on', 'cur-hover');
+      root.classList.remove('cur-on', 'cur-hover', 'cur-active');
     };
   }, []);
 

@@ -107,27 +107,22 @@ export const OpenSource = () => {
 
   const metricNum = (v: string) => parseFloat(v.replace(/[^0-9.]/g, ''));
   const metricSuffix = (v: string) => v.replace(/[0-9.,]/g, '');
-  const List = ({ title, items }: { title: string; items: string[] }) => (
-    <div className="row kv" data-row>
-      <h4 className="mono-label muted">{title}</h4>
-      <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexWrap: 'wrap', gap: '.4rem 1.25rem' }}>
-        {items.map((i) => <li key={i}><span className="dot">/</span> {i}</li>)}
-      </ul>
-    </div>
+  const Pills = ({ items, done }: { items: string[]; done?: boolean[] }) => (
+    <ul className="tagpills">{items.map((i, n) => <li key={i} className={done?.[n] ? 'done' : ''}>{done?.[n] ? '✓ ' : ''}{i}</li>)}</ul>
   );
 
   return (
     <section id="opensource" className="section">
       <div className="wrap">
-        <Title text="Developer Profile" kicker="Dev activity" />
-        <p className="statement muted" style={{ maxWidth: '40ch', marginBottom: '5rem' }}>
+        <Title text="Developer Profile" kicker="Dev activity" stack />
+        <p className="statement muted" style={{ maxWidth: '40ch', marginBottom: '4rem' }}>
           A snapshot of my current engineering focus, technologies, and software development workflow.
         </p>
 
-        <dl style={{ display: 'flex', flexWrap: 'wrap', gap: '2.5rem 5rem', margin: '0 0 6rem' }}>
+        <dl className="kpis" style={{ margin: '0 0 5rem' }}>
           {devMetrics.map((m) => (
-            <div key={m.label}>
-              <dt className="tnum" style={{ fontSize: 'clamp(2.75rem, 6vw, 5rem)', fontWeight: 800, letterSpacing: '-.04em', lineHeight: 1 }}>
+            <div className="box" key={m.label}>
+              <dt className="tnum" style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', fontWeight: 800, letterSpacing: '-.04em', lineHeight: 1 }}>
                 {/^[0-9]/.test(m.value) ? (
                   <span data-count={metricNum(m.value)} data-suffix={metricSuffix(m.value)}>{m.value}</span>
                 ) : m.value}
@@ -137,50 +132,79 @@ export const OpenSource = () => {
           ))}
         </dl>
 
-        <h3 className="mono-label muted" style={{ marginBottom: '1.5rem' }}>Open Source Programs</h3>
-        <div data-rows style={{ marginBottom: '6rem' }}>
+        <h3 className="mono-label muted" style={{ marginBottom: '1.25rem' }}>Open Source Programs</h3>
+        <div className="bento" data-rows style={{ marginBottom: '5rem' }}>
           {portfolioData.openSource.programs.map((p) => (
-            <article className="row" data-row key={p.programName}>
-              <div style={{ display: 'grid', gap: '.5rem' }}>
-                <h4 className="title" style={{ fontWeight: 700, fontSize: '1.5rem' }}><i className="pip" style={{ background: 'var(--primary)' }} />{p.programName}</h4>
-                <p className="mono-label muted">{p.role} · {p.year}</p>
-                <p className="muted" style={{ maxWidth: '44rem' }}>{p.description}</p>
-              </div>
+            <article className="box" data-row key={p.programName} style={{ display: 'grid', gap: '.75rem', alignContent: 'start' }}>
               {p.image && (
                 <button type="button" onClick={() => window.dispatchEvent(new CustomEvent('open-lightbox', { detail: { src: p.image } }))}
                   title="Click to view full credential" style={{ background: 'none', border: 0, padding: 0, cursor: 'pointer', justifySelf: 'start' }}>
-                  <img src={p.image} alt={p.programName} loading="lazy" style={{ width: '100%', maxWidth: '16rem', aspectRatio: '1', objectFit: 'cover', borderRadius: 'var(--radius)' }} />
+                  <img src={p.image} alt={p.programName} loading="lazy" style={{ width: '5.5rem', aspectRatio: '1', objectFit: 'cover', borderRadius: 'calc(var(--radius) - 6px)' }} />
                 </button>
               )}
+              <p className="mono-label muted">{p.role} · {p.year}</p>
+              <h4 style={{ fontSize: '1.3rem', letterSpacing: '-.01em', textTransform: 'none', fontFamily: 'inherit', color: 'var(--foreground)', margin: 0, fontWeight: 700 }}>{p.programName}</h4>
+              <p className="muted" style={{ margin: 0 }}>{p.description}</p>
             </article>
           ))}
         </div>
 
-        <h3 className="mono-label muted" style={{ marginBottom: '1.5rem' }}>Featured Engineering Repositories</h3>
-        <div data-rows style={{ marginBottom: '6rem' }}>
+        <h3 className="mono-label muted" style={{ marginBottom: '1.25rem' }}>Featured Engineering Repositories</h3>
+        <div className="bento" data-rows style={{ marginBottom: '5rem' }}>
           {featuredRepos.map((r) => (
-            <article className="row" data-row key={r.name}>
-              <div style={{ display: 'grid', gap: '.5rem' }}>
-                <h4 className="title" style={{ fontWeight: 700, fontSize: '1.5rem' }}><i className="pip" style={{ background: 'var(--primary)' }} />{r.name}</h4>
-                <p className="muted">{r.desc}</p>
-                <p className="mono-label muted">{r.tech}</p>
-                <a className="ulink" href={r.url} target="_blank" rel="noreferrer" style={{ justifySelf: 'start' }}>GitHub ↗</a>
-              </div>
-              <p className="mono-label">{r.status}</p>
+            <article className="box" data-row key={r.name} style={{ display: 'grid', gap: '.75rem', alignContent: 'start' }}>
+              <span className="status" style={{ justifySelf: 'start' }}>{r.status}</span>
+              <h4 style={{ fontSize: '1.3rem', letterSpacing: '-.01em', textTransform: 'none', fontFamily: 'inherit', color: 'var(--foreground)', margin: 0, fontWeight: 700 }}>{r.name}</h4>
+              <p className="muted" style={{ margin: 0 }}>{r.desc}</p>
+              <p className="mono-label muted" style={{ margin: 0 }}>{r.tech}</p>
+              <a className="ulink" href={r.url} target="_blank" rel="noreferrer" style={{ justifySelf: 'start' }}>GitHub ↗</a>
             </article>
           ))}
         </div>
 
-        <div data-rows>
-          {techEcosystem.map((t) => <List key={t.category} title={`Tech Ecosystem — ${t.category}`} items={t.items} />)}
-          <List title="Current Focus" items={currentFocus} />
-          <List title="Currently Building" items={currentlyBuilding.map((b) => `${b.name}: ${b.detail}`)} />
-          <List title="Currently Learning" items={currentlyLearning} />
-          <List title="Development Environment" items={envTools} />
-          <List title="Branch Strategy" items={['main & feature/*']} />
-          <List title="Version Control" items={['Git + GitHub']} />
-          <List title="Practices" items={gitPractices} />
-          <List title="2026 Goals" items={goals2026.map((g) => `${g.done ? '✓ ' : ''}${g.text}`)} />
+        <div className="bento" data-rows>
+          <section className="box wide" data-row>
+            <h4>Tech Ecosystem</h4>
+            <div className="subgrid">
+              {techEcosystem.map((t) => (
+                <div className="subgroup" key={t.category}><span>{t.category}</span><Pills items={t.items} /></div>
+              ))}
+            </div>
+          </section>
+
+          <section className="box" data-row>
+            <h4>Current Focus</h4>
+            <Pills items={currentFocus} />
+          </section>
+
+          <section className="box" data-row>
+            <h4>Currently Building</h4>
+            <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'grid', gap: '.9rem' }}>
+              {currentlyBuilding.map((b) => (
+                <li key={b.name}><strong>{b.name}</strong><br /><span className="muted">{b.detail}</span></li>
+              ))}
+            </ul>
+          </section>
+
+          <section className="box" data-row>
+            <h4>Currently Learning</h4>
+            <Pills items={currentlyLearning} />
+          </section>
+
+          <section className="box" data-row>
+            <h4>2026 Goals</h4>
+            <Pills items={goals2026.map((g) => g.text)} done={goals2026.map((g) => g.done)} />
+          </section>
+
+          <section className="box span2" data-row>
+            <h4>Development Environment</h4>
+            <div className="subgroup"><span>Tools</span><Pills items={envTools} /></div>
+            <div className="subgrid">
+              <div className="subgroup"><span>Branch Strategy</span><Pills items={['main & feature/*']} /></div>
+              <div className="subgroup"><span>Version Control</span><Pills items={['Git + GitHub']} /></div>
+            </div>
+            <div className="subgroup"><span>Practices</span><Pills items={gitPractices} /></div>
+          </section>
         </div>
 
         <p style={{ marginTop: '4rem' }}>
