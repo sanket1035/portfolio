@@ -5,6 +5,7 @@ export default function Cursor() {
   const ring = useRef<HTMLDivElement>(null);
   const dot = useRef<HTMLDivElement>(null);
   const bot = useRef<HTMLDivElement>(null);
+  const pupils = useRef<SVGGElement>(null);
 
   useEffect(() => {
     const fine = window.matchMedia('(pointer: fine)').matches;
@@ -23,11 +24,15 @@ export default function Cursor() {
     const tick = () => {
       rx += (mx - rx) * 0.22; ry += (my - ry) * 0.22;
       const px = bx;
-      bx += (mx + 26 - bx) * 0.09; by += (my + 26 - by) * 0.09;
+      bx += (rx + 30 - bx) * 0.12; by += (ry + 30 - by) * 0.12;
       rot += (Math.max(-25, Math.min(25, (bx - px) * 2.2)) - rot) * 0.15;
       if (dot.current) dot.current.style.transform = `translate(${mx}px, ${my}px)`;
       if (ring.current) ring.current.style.transform = `translate(${rx}px, ${ry}px)`;
-      if (bot.current) bot.current.style.transform = `translate(${bx}px, ${by + Math.sin(performance.now() / 300) * 3}px) rotate(${rot}deg)`;
+      if (pupils.current) {
+        const dx = mx - bx, dy = my - by, d = Math.hypot(dx, dy) || 1, k = Math.min(1, d / 60) * 1.8;
+        pupils.current.style.transform = `translate(${(dx / d) * k}px, ${(dy / d) * k}px)`;
+      }
+      if (bot.current) bot.current.style.transform = `translate(${bx - 3}px, ${by - 3 + Math.sin(performance.now() / 300) * 3}px) rotate(${rot}deg)`;
       raf = requestAnimationFrame(tick);
     };
     raf = requestAnimationFrame(tick);
@@ -46,15 +51,20 @@ export default function Cursor() {
       <div className="cur-ring" ref={ring}><i /></div>
       <div className="cur-dot" ref={dot} />
       <div className="cur-bot" ref={bot}>
-        <svg viewBox="0 0 32 32">
-          <line x1="16" y1="3" x2="16" y2="8" stroke="#f0587a" strokeWidth="2" strokeLinecap="round" />
-          <circle cx="16" cy="3" r="2" fill="#d0e266" />
-          <rect x="5" y="8" width="22" height="17" rx="6" fill="#2d5bcc" />
-          <rect x="2" y="14" width="3" height="6" rx="1.5" fill="#f0587a" />
-          <rect x="27" y="14" width="3" height="6" rx="1.5" fill="#f0587a" />
-          <circle className="eye" cx="11.5" cy="15.5" r="2.4" fill="#fff" />
-          <circle className="eye" cx="20.5" cy="15.5" r="2.4" fill="#fff" />
-          <rect x="11" y="20" width="10" height="2" rx="1" fill="#d0e266" />
+        <svg viewBox="0 0 40 40">
+          <g className="prop"><rect x="9" y="3" width="22" height="3" rx="1.5" fill="#d0e266" /></g>
+          <rect x="19" y="5" width="2" height="5" fill="#f0587a" />
+          <path d="M20 9c-9 0-14 6-14 13 0 8 6 13 14 13s14-5 14-13c0-7-5-13-14-13z" fill="#f0587a" />
+          <ellipse cx="14.5" cy="20" rx="5" ry="5.6" fill="#fff" className="eye" />
+          <ellipse cx="25.5" cy="20" rx="5" ry="5.6" fill="#fff" className="eye" />
+          <g ref={pupils} style={{ transition: 'transform .08s' }}>
+            <circle cx="14.5" cy="20.5" r="2.4" fill="#141414" />
+            <circle cx="25.5" cy="20.5" r="2.4" fill="#141414" />
+          </g>
+          <path d="M13 28q7 5 14 0" fill="#7a1230" stroke="#7a1230" strokeWidth="1.5" strokeLinecap="round" />
+          <path className="tongue" d="M22 29.6q0 5 3 5t3-5z" fill="#ff9db3" />
+          <circle cx="8" cy="26" r="2" fill="#ff9db3" opacity=".7" />
+          <circle cx="32" cy="26" r="2" fill="#ff9db3" opacity=".7" />
         </svg>
       </div>
     </div>
