@@ -105,6 +105,7 @@ export function useMotion(root: React.RefObject<HTMLElement | null>) {
             x: () => { const s = stage(), c = cell.getBoundingClientRect(); return s.left + (s.width - w0()) / 2 - c.left; },
             y: () => { const s = stage(), c = cell.getBoundingClientRect(); return s.top + top() - c.top; },
           }, { width: () => cell.getBoundingClientRect().width, height: () => cell.getBoundingClientRect().height, x: 0, y: 0 }, 0);
+          if (window.innerWidth < 900) tlm.fromTo(q('.rv-photo'), { height: '64%' }, { height: '92%' }, 0);
           tlm.fromTo(q('[data-rv-nl]'), { xPercent: 0, opacity: 1 }, { xPercent: -130, opacity: 0 }, 0.05);
           tlm.fromTo(q('[data-rv-nr]'), { xPercent: 0, opacity: 1 }, { xPercent: 130, opacity: 0 }, 0.05);
           tlm.fromTo(q('[data-rv-meta]'), { opacity: 1 }, { opacity: 0, duration: 0.25 }, 0);

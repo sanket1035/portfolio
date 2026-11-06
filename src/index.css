@@ -474,9 +474,9 @@ html.cur-active input, html.cur-active textarea { cursor: text !important; }
 .rv-card { position: absolute; left: 0; top: 0; width: 100%; height: 100%; border-radius: 28px; overflow: hidden; z-index: 1;
   background: radial-gradient(90% 70% at 50% 85%, color-mix(in srgb, var(--primary) 80%, #000), #1b0b12 80%); }
 .rv-photo { position: absolute; left: 0; right: 0; margin-inline: auto; bottom: 0; height: 92%; width: auto; max-width: none; z-index: 2; pointer-events: none; user-select: none; }
-.rv-name { opacity: 0; position: absolute; z-index: 1; font-weight: 820; text-transform: uppercase; letter-spacing: -.045em; line-height: .84; font-size: clamp(2.6rem, 13.6vw, 4.5rem); color: rgba(255,255,255,.92); white-space: nowrap; will-change: transform; }
-.rv-l { left: 5%; top: 9%; }
-.rv-r { right: 5%; top: 30%; }
+.rv-name { opacity: 0; position: absolute; z-index: 1; font-weight: 820; text-transform: uppercase; letter-spacing: -.045em; line-height: .84; font-size: clamp(2.4rem, 12.4vw, 4.5rem); color: rgba(255,255,255,.92); white-space: nowrap; will-change: transform; }
+.rv-l { left: 6%; top: 5%; }
+.rv-r { left: 6%; top: 14.5%; }
 .rv-meta { position: absolute; z-index: 3; left: 1.25rem; bottom: 1.1rem; margin: 0; color: rgba(255,255,255,.85); opacity: 0; line-height: 1.7; }
 .rv-side { max-width: 36rem; }
 .rv-big { margin: 0; font-weight: 800; letter-spacing: -.035em; line-height: 1; font-size: clamp(1.5rem, 6.4vw, 2.6rem); }
@@ -495,6 +495,8 @@ html.cur-active input, html.cur-active textarea { cursor: text !important; }
   .rv-big { font-size: clamp(2rem, 3.6vw, 3.6rem); }
   .rv-para { font-size: 1rem; max-width: 26rem; }
   .rv-name { font-size: clamp(5rem, 13vw, 14rem); }
+  .rv-l { left: 5%; right: auto; top: 9%; }
+  .rv-r { left: auto; right: 5%; top: 30%; }
 }
 
 /* ---- Second scene: big lit statement + three columns ---- */
