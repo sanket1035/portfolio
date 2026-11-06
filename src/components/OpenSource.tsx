@@ -68,12 +68,12 @@ export const OpenSource = () => {
 
   // 2026 Goals
   const goals2026 = [
-    { text: 'Launch Carbonomics AI', done: false },
-    { text: 'Build end-to-end AI products', done: false },
+    { text: 'Launch Carbonomics AI', done: true },
+    { text: 'Build end-to-end AI products', done: true },
     { text: 'Learn RAG & Agentic AI', done: false },
     { text: 'Contribute to production-grade open source', done: true },
     { text: 'Master System Design', done: false },
-    { text: 'Participate in Hacktoberfest', done: false }
+    { text: 'Participate in Hacktoberfest (online)', done: true }
   ];
 
   // GitHub & Development Section Metrics
