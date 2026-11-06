@@ -52,7 +52,7 @@ export const OpenSource = () => {
     'CI/CD',
     'RAG',
     'Agentic AI',
-    'Redis'
+    'Generative AI & Prompt Engineering'
   ];
 
   // Development Environment Tools
