@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { portfolioData as d } from '../data/portfolioData';
 import type { Project } from '../data/portfolioData';
@@ -12,6 +13,8 @@ const CHAPTERS = [
   { bg: '#0f8a78', ink: '#f5f5f3' },
 ];
 
+const DOTS = ['#f0587a', '#d0e266', '#6f94ff', '#eeeeec'];
+
 function Links({ p, onCase }: { p: Project; onCase: () => void }) {
   return (
     <p className="chapter-actions">
@@ -25,7 +28,10 @@ function Links({ p, onCase }: { p: Project; onCase: () => void }) {
 export const Projects = () => {
   const nav = useNavigate();
   const go = (id: string) => { nav(`/projects/${id}`); window.scrollTo({ top: 0, behavior: 'instant' as ScrollBehavior }); };
-  const all = d.projects;
+  const FEATURED = 5;
+  const all = d.projects.slice(0, FEATURED);
+  const other = d.projects.slice(FEATURED);
+  const [openOther, setOpenOther] = useState(false);
   return (
     <section id="projects" style={{ background: 'var(--background)' }}>
       <div className="circle-intro" data-circle-intro>
@@ -38,7 +44,7 @@ export const Projects = () => {
             <span className="dot-spot" data-circle-dot aria-hidden="true" style={{ background: CHAPTERS[0].bg }} />
           </h2>
           <p className="muted" style={{ maxWidth: '30rem', margin: '2rem auto 0' }}>
-            {all.length} projects across AI, full-stack and mobile, from research platforms to production-style apps.
+            {all.length} featured projects across AI, full-stack and data, plus {other.length} more in Other Works.
           </p>
         </div>
         <span className="circle-blob" data-circle-blob aria-hidden="true" style={{ background: CHAPTERS[0].bg }} />
@@ -70,6 +76,38 @@ export const Projects = () => {
             </article>
           );
         })}
+      </div>
+
+      <div className="wrap section" style={{ paddingBlock: 'clamp(3rem, 8vh, 5rem)' }}>
+        <button type="button" className="box drawer-btn" aria-expanded={openOther} aria-controls="drawer-other" onClick={() => setOpenOther((o) => !o)}>
+          <span>
+            <span className="mono-label muted" style={{ display: 'block' }}>{other.length} more projects</span>
+            <span style={{ fontSize: 'clamp(1.3rem, 2.4vw, 1.8rem)', fontWeight: 740, letterSpacing: '-.02em' }}>Other Works</span>
+          </span>
+          <span className="plus" aria-hidden="true">+</span>
+        </button>
+
+        <div id="drawer-other" className={`drawer ${openOther ? 'open' : ''}`} aria-hidden={!openOther}>
+          <div>
+            <div style={{ paddingTop: '1.5rem' }}>
+              {other.map((p, i) => (
+                <article className="row row-head" key={p.id}>
+                  <div style={{ display: 'grid', gap: '.75rem' }}>
+                    <h3 className="title h2"><i className="pip" style={{ background: DOTS[i % DOTS.length] }} />{p.title}</h3>
+                    <p style={{ fontWeight: 600 }}>{p.tagline}</p>
+                    <p className="muted" style={{ maxWidth: '44rem' }}>{p.description}</p>
+                    <p className="mono-label muted">{p.techStack.join(' · ')}</p>
+                    <Links p={p} onCase={() => go(p.id)} />
+                  </div>
+                  <div>
+                    <p className="mono-label muted">{p.category}</p>
+                    <img src={p.image} alt={`${p.title} Cover Thumbnail`} loading="lazy" style={{ width: '100%', aspectRatio: '16/10', objectFit: 'cover', borderRadius: 'var(--radius)', marginTop: '.75rem' }} />
+                  </div>
+                </article>
+              ))}
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   );

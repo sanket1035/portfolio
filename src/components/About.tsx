@@ -3,18 +3,19 @@ import { Split } from '../lib/motion';
 import { portfolioData as d } from '../data/portfolioData';
 
 const stats = [
-  { v: 10, s: '+', l: 'Projects Built' },
-  { v: 650, s: '+', l: 'Git Commits' },
-  { v: 225, s: '+', l: 'Pull Requests' },
-  { v: 8.5, s: '', l: 'CGPA', dec: 1 },
+  { v: 10, s: '', l: 'Projects Built' },
+  { v: 902, s: '', l: 'Git Commits' },
+  { v: 320, s: '', l: 'PRs Merged' },
+  { v: 8.52, s: '', l: 'CGPA', dec: 2 },
 ];
 
 const spec: [string, React.ReactNode][] = [
   ['Education', <>{d.education[0].degree} in Artificial Intelligence & Data Science<br /><span className="muted">{d.education[0].institution}</span></>],
-  ['CGPA', '8.5 / 10'],
-  ['Featured Projects', d.projects.slice(0, 4).map((p) => p.title).join(' · ')],
-  ['Open Source', "Connect Global '26 · ELUSoC Summer of Code '26 · ECSoC"],
-  ['Languages', 'TypeScript · JavaScript · Python · C++'],
+  ['CGPA', '8.52 / 10'],
+  ['Availability', 'From Dec 2026 (remote) · Jan 2027 (on-site)'],
+  ['Featured Projects', d.projects.slice(0, 5).map((p) => p.title).join(' · ')],
+  ['Open Source', "ELUSoC '26 (Rank 6 globally) · Open Source Connect Global '26 · ECSoC '26"],
+  ['Languages', 'Python · TypeScript · JavaScript · SQL · Java'],
   ['Location', d.location],
 ];
 

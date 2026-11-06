@@ -77,7 +77,7 @@ export const Achievements = () => {
                   <h4 style={{ fontSize: '1.2rem', letterSpacing: '-.01em', textTransform: 'none', fontFamily: 'inherit', color: 'var(--foreground)', margin: 0, fontWeight: 700 }}>{c.title}</h4>
                   {c.summary && <p className="muted" style={{ margin: 0, fontSize: '.95rem' }}>{c.summary}</p>}
                   <ul className="tagpills">{c.skills.map((sk) => <li key={sk}>{sk}</li>)}</ul>
-                  <p className="muted" style={{ fontSize: '.85rem', margin: 0 }}>Credential ID: {c.credentialId}</p>
+                  {c.credentialId !== '-' && <p className="muted" style={{ fontSize: '.85rem', margin: 0 }}>Credential ID: {c.credentialId}</p>}
                   {c.verifyUrl !== '#' && <a className="ulink" href={c.verifyUrl} target="_blank" rel="noreferrer" style={{ justifySelf: 'start' }}>Verify ↗</a>}
                 </article>
               ))}

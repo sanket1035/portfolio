@@ -5,46 +5,27 @@ import Title from './Title';
 export const OpenSource = () => {
   // Featured Engineering Repositories
   const featuredRepos = [
-    {
-      name: 'Atlas AI',
-      desc: 'AI-powered learning path generator & skill graph builder.',
-      tech: 'TypeScript | React | Python | Gemini API',
-      status: 'Active',
-      statusColor: 'bg-emerald-500/10 text-emerald-400 border-emerald-500/20',
-      url: 'https://github.com/Hills081199/AMD-HACKATHON-II'
-    },
-    {
-      name: 'PlaceTrack AI',
-      desc: 'AI-powered location verification & geofenced check-in system for small teams.',
-      tech: 'TypeScript | React | Node.js | PostgreSQL',
-      status: 'Completed',
-      statusColor: 'bg-indigo-500/10 text-indigo-400 border-indigo-500/20',
-      url: 'https://github.com/sanket1035/placetrack-ai'
-    },
-    {
-      name: 'Carbonomics AI',
-      desc: 'Predictive carbon footprint estimator & industrial emissions optimization platform.',
-      tech: 'Python | FastAPI | PyTorch | Next.js',
-      status: 'Predictive Modeling',
-      statusColor: 'bg-brand-accent/10 text-brand-accent border-brand-accent/20',
-      url: 'https://github.com/sanket1035/Carbonomics-AI'
-    },
-    {
-      name: 'Predictive Maintenance ML',
-      desc: 'Detects equipment vibration anomalies & trains ML predictive maintenance models.',
-      tech: 'Python | Scikit-learn | Pandas | NumPy',
-      status: 'In Progress',
-      statusColor: 'bg-amber-500/10 text-amber-400 border-amber-500/20',
-      url: 'https://github.com/sanket1035/Predictive-Maintenance-ML'
-    }
+    { name: 'Carbonomics AI', desc: 'GHG Protocol carbon-accounting engine with leakage-free forecasting. Final year project and research manuscript.', tech: 'Python | FastAPI | PostgreSQL | React', status: 'Research', url: 'https://github.com/sanket1035/carbonomics-ai' },
+    { name: 'PlaceTrack AI', desc: 'Full-stack placement platform with a 6-stage hiring pipeline and Gemini interview feedback.', tech: 'Next.js | TypeScript | Express | Prisma | PostgreSQL', status: 'Completed', url: 'https://github.com/sanket1035/placetrack-ai' },
+    { name: 'Simhastha Suraksha', desc: 'Crowd monitoring for Kumbh Mela with CSRNet, density heatmaps and risk alerts. Team of 4, lead developer.', tech: 'PyTorch | OpenCV | ONNX | Streamlit | Docker', status: 'Team Project', url: 'https://github.com/sanket1035/simhastha-suraksha' },
+    { name: 'Pramana AI', desc: 'Multi-agent LLM platform that researches and verifies claims with citation-backed reports.', tech: 'Next.js | TypeScript | Firebase | Gemini API', status: 'Live', url: 'https://github.com/sanket1035/pramana-ai' },
+  ];
+
+  // ELUSOC 2026 merged-PR breakdown
+  const elusoc = [
+    { repo: 'Interview-Intelligence', prs: 46, detail: 'Docker code sandbox, Zustand session store, role-based access control' },
+    { repo: 'Foodie', prs: 26, detail: 'Jest unit tests, i18n, theme persistence, reusable search component' },
+    { repo: 'Aarini', prs: 8, detail: 'Custom error hierarchy, rate limiting, cycle-prediction endpoint' },
   ];
 
   // Tech Ecosystem Card
   const techEcosystem = [
-    { category: 'Frontend', items: ['React', 'TypeScript', 'Tailwind', 'Framer Motion'] },
-    { category: 'Backend', items: ['Node.js', 'Express', 'FastAPI'] },
-    { category: 'AI/ML', items: ['Python', 'Scikit-learn', 'Pandas', 'Gemini API'] },
-    { category: 'Database', items: ['PostgreSQL', 'Firebase'] }
+    { category: 'Frontend', items: ['React', 'Next.js', 'TypeScript', 'Tailwind CSS', 'Zustand', 'Recharts'] },
+    { category: 'Backend', items: ['Node.js', 'Express', 'FastAPI', 'Prisma', 'REST APIs'] },
+    { category: 'AI/ML', items: ['PyTorch', 'Scikit-learn', 'XGBoost', 'OpenCV', 'ONNX', 'Gemini API'] },
+    { category: 'Data', items: ['Power BI', 'DAX', 'Power Query', 'Pandas', 'SQL'] },
+    { category: 'Database', items: ['PostgreSQL', 'MySQL', 'SQLite', 'Firebase'] },
+    { category: 'DevOps & Testing', items: ['Docker', 'GitHub Actions', 'pytest', 'Jest', 'Vitest'] },
   ];
 
   // Current Focus Checklist
@@ -97,11 +78,11 @@ export const OpenSource = () => {
 
   // GitHub & Development Section Metrics
   const devMetrics = [
-    { label: 'Repositories', value: '30+' },
-    { label: 'Git Commits (2026)', value: '650+' },
-    { label: 'Pull Requests', value: '225+' },
-    { label: 'Contributions', value: '1,100+' },
-    { label: 'Contributed To', value: '18 Repos' },
+    { label: 'Total Commits', value: '902' },
+    { label: 'PRs Merged', value: '320' },
+    { label: 'Issues Closed', value: '196' },
+    { label: 'Longest Streak', value: '31 days' },
+    { label: 'Repos Contributed To', value: '18+' },
   ];
 
 
@@ -145,6 +126,18 @@ export const OpenSource = () => {
               <p className="mono-label muted">{p.role} · {p.year}</p>
               <h4 style={{ fontSize: '1.3rem', letterSpacing: '-.01em', textTransform: 'none', fontFamily: 'inherit', color: 'var(--foreground)', margin: 0, fontWeight: 700 }}>{p.programName}</h4>
               <p className="muted" style={{ margin: 0 }}>{p.description}</p>
+            </article>
+          ))}
+        </div>
+
+        <h3 className="mono-label muted" style={{ marginBottom: '1.25rem' }}>ELUSOC 2026 · Ranked 6th globally · 300+ merged PRs</h3>
+        <div className="bento" data-rows style={{ marginBottom: '3rem' }}>
+          {elusoc.map((e) => (
+            <article className="box" data-row key={e.repo} style={{ display: 'grid', gap: '.6rem', alignContent: 'start' }}>
+              <p className="tnum" style={{ fontSize: 'clamp(2.2rem, 3.6vw, 3.2rem)', fontWeight: 800, letterSpacing: '-.04em', lineHeight: 1, margin: 0 }}>{e.prs}</p>
+              <p className="mono-label muted" style={{ margin: 0 }}>Merged PRs</p>
+              <h4 style={{ fontSize: '1.3rem', letterSpacing: '-.01em', textTransform: 'none', fontFamily: 'inherit', color: 'var(--foreground)', margin: 0, fontWeight: 700 }}>{e.repo}</h4>
+              <p className="muted" style={{ margin: 0 }}>{e.detail}</p>
             </article>
           ))}
         </div>

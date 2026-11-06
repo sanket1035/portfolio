@@ -9,70 +9,30 @@ interface Skill {
 }
 
 export const Skills = () => {
+  const S = (name: string, slug: string, color: string): Skill => ({ name, slug, color });
   const track1: Skill[] = [
-    { name: "C", slug: "c", color: "A8B9CC" },
-    { name: "C++", slug: "cplusplus", color: "00599C" },
-    { name: "CSS3", slug: "css", color: "1572B6" },
-    { name: "HTML5", slug: "html5", color: "E34F26" },
-    { name: "Java", slug: "openjdk", color: "ED8B00" },
-    { name: "JavaScript", slug: "javascript", color: "F7DF1E" },
-    { name: "Kotlin", slug: "kotlin", color: "7F52FF" },
-    { name: "Python", slug: "python", color: "3776AB" },
-    { name: "AWS", slug: "aws", color: "FF9900" },
-    { name: "Netlify", slug: "netlify", color: "00AD9F" },
-    { name: "Google Cloud", slug: "googlecloud", color: "4285F4" }
+    S('Python', 'python', '3776AB'), S('TypeScript', 'typescript', '3178C6'), S('JavaScript', 'javascript', 'F7DF1E'),
+    S('SQL', 'mysql', '4479A1'), S('Java', 'openjdk', 'ED8B00'), S('HTML5', 'html5', 'E34F26'), S('CSS3', 'css', '1572B6'),
+    S('React', 'react', '61DAFB'), S('Next.js', 'nextdotjs', 'FFFFFF'), S('Tailwind CSS', 'tailwindcss', '06B6D4'),
   ];
-
   const track2: Skill[] = [
-    { name: "Angular.js", slug: "angular", color: "DD0031" },
-    { name: "Chart.js", slug: "chartdotjs", color: "FF6384" },
-    { name: "FastAPI", slug: "fastapi", color: "05998B" },
-    { name: "Express.js", slug: "express", color: "818181" },
-    { name: "Flask", slug: "flask", color: "FFFFFF" },
-    { name: "Next.js", slug: "nextdotjs", color: "FFFFFF" },
-    { name: "Node.js", slug: "nodedotjs", color: "339933" },
-    { name: "React", slug: "react", color: "61DAFB" },
-    { name: "React Native", slug: "react", color: "61DAFB" },
-    { name: "Streamlit", slug: "streamlit", color: "FF4B4B" },
-    { name: "Tailwind CSS", slug: "tailwindcss", color: "06B6D4" }
+    S('Node.js', 'nodedotjs', '339933'), S('Express.js', 'express', '818181'), S('FastAPI', 'fastapi', '05998B'),
+    S('Prisma', 'prisma', 'FFFFFF'), S('REST APIs', 'fastapi', '05998B'), S('Streamlit', 'streamlit', 'FF4B4B'),
+    S('PostgreSQL', 'postgresql', '4169E1'), S('MySQL', 'mysql', '4479A1'), S('SQLite', 'sqlite', '003B57'), S('Firebase', 'firebase', 'FFCA28'),
   ];
-
   const track3: Skill[] = [
-    { name: "Amazon DynamoDB", slug: "amazondynamodb", color: "4053D6" },
-    { name: "SQLite", slug: "sqlite", color: "003B57" },
-    { name: "Supabase", slug: "supabase", color: "3ECF8E" },
-    { name: "MySQL", slug: "mysql", color: "4479A1" },
-    { name: "MongoDB", slug: "mongodb", color: "47A248" },
-    { name: "Canva", slug: "canva", color: "00C4CC" },
-    { name: "Figma", slug: "figma", color: "F24E1E" },
-    { name: "Keras", slug: "keras", color: "D00000" },
-    { name: "Matplotlib", slug: "matplotlib", color: "11557C" },
-    { name: "MLflow", slug: "mlflow", color: "0194E2" },
-    { name: "NumPy", slug: "numpy", color: "013243" }
+    S('PyTorch', 'pytorch', 'EE4C2C'), S('Scikit-learn', 'scikitlearn', 'F7931E'), S('XGBoost', 'xgboost', '337AB7'),
+    S('OpenCV', 'opencv', '5C3EE8'), S('ONNX', 'onnx', '005CED'), S('Pandas', 'pandas', '150458'), S('NumPy', 'numpy', '013243'),
+    S('Gemini API', 'googlegemini', '8E75B2'), S('Generative AI', 'googlegemini', '8E75B2'), S('Multi-Agent Systems', 'googlegemini', '8E75B2'),
   ];
-
   const track4: Skill[] = [
-    { name: "Pandas", slug: "pandas", color: "150458" },
-    { name: "Plotly", slug: "plotly", color: "3F4F75" },
-    { name: "PyTorch", slug: "pytorch", color: "EE4C2C" },
-    { name: "Scikit-learn", slug: "scikitlearn", color: "F7931E" },
-    { name: "SciPy", slug: "scipy", color: "8CAAE6" },
-    { name: "TensorFlow", slug: "tensorflow", color: "FF6F00" },
-    { name: "Git", slug: "git", color: "F05033" },
-    { name: "GitHub", slug: "github", color: "FFFFFF" },
-    { name: "Notion", slug: "notion", color: "FFFFFF" },
-    { name: "Power BI", slug: "powerbi", color: "F2C811" }
+    S('Power BI', 'powerbi', 'F2C811'), S('DAX', 'powerbi', 'F2C811'), S('Power Query', 'powerbi', 'F2C811'), S('Excel', 'microsoftexcel', '217346'),
+    S('Docker', 'docker', '2496ED'), S('GitHub Actions', 'githubactions', '2088FF'), S('Git', 'git', 'F05033'), S('GitHub', 'github', 'FFFFFF'),
+    S('Vercel', 'vercel', 'FFFFFF'), S('pytest', 'pytest', '0A9EDC'), S('Jest', 'jest', 'C21325'), S('Postman', 'postman', 'FF6C37'),
   ];
-
 
   const names = (t: Skill[]) => t.map((s) => s.name);
-  const groups: [string, string[]][] = [
-    ['Languages', portfolioData.skills.languages],
-    ['Frameworks', portfolioData.skills.frameworks],
-    ['Databases', portfolioData.skills.databases],
-    ['Tools', portfolioData.skills.tools],
-    ['AI / ML', portfolioData.skills.aiMl],
-  ];
+  const groups: [string, string[]][] = Object.entries(portfolioData.skills);
 
   return (
     <section id="skills" className="section">

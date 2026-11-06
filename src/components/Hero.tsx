@@ -28,6 +28,7 @@ export const Hero = () => (
         <div className="rv-side rv-right" data-rv-right>
           <p className="rv-big" style={{ color: 'var(--primary)' }}>Plus AI that actually learns.</p>
           <p className="rv-para">{d.bio}</p>
+          <p className="mono-label" style={{ margin: '.75rem 0 0', color: 'var(--primary)' }}>Available from Dec 2026 (remote) · Jan 2027 (on-site)</p>
           <p className="rv-links">
             <button type="button" className="ulink" onClick={() => go('#projects')}>View my work ↓</button>
             <button type="button" className="ulink" onClick={() => go('#resume')}>Preview resume ↗</button>

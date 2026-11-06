@@ -15,7 +15,7 @@ export interface Project {
   githubUrl: string;
   liveUrl?: string;
   image: string;
-  category: 'web' | 'mobile' | 'ai';
+  category: 'web' | 'mobile' | 'ai' | 'data';
 }
 
 export interface Contribution {
@@ -51,7 +51,7 @@ export interface Certificate {
   skills: string[];
   verifyUrl: string;
   certificateUrl?: string;
-  image: string;
+  image?: string;
   summary?: string;
 }
 
@@ -81,13 +81,7 @@ export interface PortfolioData {
     duration: string;
     gpa?: string;
   }[];
-  skills: {
-    languages: string[];
-    frameworks: string[];
-    databases: string[];
-    tools: string[];
-    aiMl: string[];
-  };
+  skills: Record<string, string[]>;
   projects: Project[];
   openSource: {
     programs: Contribution[];
@@ -125,74 +119,95 @@ export const portfolioData: PortfolioData = {
       degree: "B.Tech",
       specialization: "Artificial Intelligence & Data Science",
       duration: "2023 - 2027",
-      gpa: "8.5",
+      gpa: "8.52",
     }
   ],
   skills: {
-    languages: ["TypeScript", "JavaScript", "Python", "Java", "C++", "HTML/CSS"],
-    frameworks: ["React", "Node.js", "Express", "FastAPI", "Tailwind CSS", "Flask", "Jetpack Compose"],
-    databases: ["PostgreSQL", "MongoDB", "Firebase", "Redis"],
-    tools: ["Docker", "Git", "GitHub Actions", "Vite", "Linux", "Postman", "Vercel"],
-    aiMl: ["PyTorch", "TensorFlow", "Scikit-Learn", "OpenCV", "NLP", "LLM Integration"]
+    "Languages": ["Python", "TypeScript", "JavaScript", "SQL", "Java", "HTML", "CSS"],
+    "Frontend": ["React", "Next.js", "Tailwind CSS", "Zustand", "Recharts", "Framer Motion", "Responsive Design"],
+    "Backend & APIs": ["Node.js", "Express.js", "FastAPI", "REST APIs", "Prisma ORM", "JWT Authentication", "Zod", "Rate Limiting"],
+    "AI / ML": ["PyTorch", "Scikit-learn", "XGBoost", "Deep Learning", "Computer Vision", "CNN", "OpenCV", "ONNX", "Time Series Forecasting", "Model Evaluation"],
+    "GenAI": ["Generative AI", "LLM APIs (Gemini)", "Multi-Agent Systems", "AI Workflows", "Hallucination Reduction"],
+    "Data & Analytics": ["Power BI", "DAX", "Power Query", "Excel", "Pandas", "NumPy", "Data Visualization", "Data Cleaning"],
+    "Databases": ["PostgreSQL", "MySQL", "SQLite", "Firebase"],
+    "DevOps & Testing": ["Git", "GitHub Actions (CI/CD)", "Docker", "Vercel", "Render", "Postman", "pytest", "Jest", "Vitest"],
   },
   projects: [
     {
       id: "carbonomics-ai",
       title: "Carbonomics AI",
-      tagline: "Predictive Carbon Footprint Estimator & Optimization Platform (Research)",
-      description: "An AI-powered application model layout that estimates industrial carbon emissions and suggests actionable recommendations to achieve net-zero goals. Features predictive modeling based on energy source and consumption data.",
-      problem: "Organizations struggle to calculate scope 1, 2, and 3 emissions accurately and lack predictive forecasts to evaluate the environmental impact of changes in their supply chain.",
-      motivation: "With industries shifting towards carbon neutrality, measuring scope-based emissions remains highly complex. Carbonomics AI was designed as a research platform to predict industrial CO2 emissions based on fuel, logistics, and resource data points using ML regression models.",
-      challenges: "Handling missing/null values and scaling input parameters across varying industrial contexts while training the regressor for robust out-of-distribution performance.",
-      learnings: "Deepened my skills in model validation, tuning hyperparameters, and deploying Python web inference routes via FastAPI.",
-      folderStructure: `model/  # PyTorch/Scikit-learn model files & data preprocessors
-server/ # FastAPI inference route handlers
-client/ # Dashboard analytics widgets`,
+      tagline: "Carbon-Accounting Engine & Leakage-Free Forecasting (Final Year Project & Research)",
+      description: "A GHG Protocol carbon-accounting engine built on real 2025 campus data (1,059,147 kWh). It computes 763.84 tCO2e of Scope 1 and 2 emissions traceable to versioned emission factors, forecasts energy use honestly, and lets users simulate what-if scenarios on a React dashboard.",
+      problem: "Emission numbers are only useful when every figure traces back to data and a versioned emission factor, and ML forecasts of emissions are easy to get wrong: predicting emissions from activity data scores R2 = 1.000 because the model simply recovers the formula.",
+      motivation: "Built as a final year project and research manuscript: an accountable emissions pipeline for a real campus, with forecasting that is evaluated honestly.",
+      challenges: "Avoiding target leakage (R2 = 1.000 for a model that recovers the formula vs 0.339 for an honest forecast) and judging models fairly with 24-origin rolling evaluation, under a rule that a model must beat a naive baseline by 5%.",
+      learnings: "Leakage-free evaluation, versioned emission factors and factor-effect attribution, and shipping an ML-backed FastAPI and PostgreSQL service with 40 pytest tests.",
+      folderStructure: "",
       features: [
-        "Machine Learning model estimating CO2 output based on energy, logistics, and resource data.",
-        "Optimization engine proposing green energy alternatives and cost-benefit analysis.",
-        "API integration with public climate registries for local emission factors.",
-        "Published research summary outlining the ML methodology and data pipeline."
+        "GHG Protocol engine: 763.84 tCO2e of Scope 1 and 2 emissions from 1,059,147 kWh of real 2025 campus data, traceable to versioned emission factors.",
+        "Weekly energy forecasting with Ridge, Random Forest and XGBoost under 24-origin rolling evaluation, with a rule that a model must beat a naive baseline by 5%.",
+        "Target-leakage analysis: R2 = 1.000 when predicting emissions from activity vs 0.339 for an honest forecast.",
+        "Factor-effect attribution: the grid-factor version alone moved Scope 2 by 55.1 tCO2e (7.3%).",
+        "6-page React dashboard with what-if simulation (a 15% electricity cut saves 112.80 tCO2e).",
+        "FastAPI and PostgreSQL backend covered by 40 pytest tests.",
+        "Co-authored research manuscript on leakage-free ML forecasting."
       ],
-      techStack: ["Python", "FastAPI", "React", "Tailwind CSS", "Scikit-Learn", "Pandas"],
-      architecture: "FastAPI server wraps a trained Random Forest regressor. The React client queries the API to run real-time inference and render charts via Chart.js/Recharts.",
-      futureImprovements: [
-        "Add automated bill scanning (OCR) to parse electricity and logistics invoices.",
-        "Integrate real-time IoT energy meters compatibility."
-      ],
+      techStack: ["Python", "Scikit-learn", "XGBoost", "FastAPI", "PostgreSQL", "React", "Recharts", "pytest"],
+      architecture: "A FastAPI and PostgreSQL backend serves the accounting engine and forecasts to a 6-page React dashboard built with Recharts.",
+      futureImprovements: [],
       githubUrl: "https://github.com/sanket1035/carbonomics-ai",
+      liveUrl: "https://carbonomics.app",
       image: "/placeholders/carbonomics.jpg",
       category: "ai"
     },
     {
       id: "placetrack-ai",
       title: "PlaceTrack AI",
-      tagline: "AI-Powered Smart Attendance & Location Tracking System",
-      description: "A comprehensive geolocation-based tracking and automated attendance platform. It uses Wi-Fi SSID identification and geo-fencing algorithms to verify presence, eliminating time theft and proxy entries.",
-      problem: "Traditional attendance systems are prone to proxies, and manual verification is slow. Companies and institutions need a tamper-proof, location-verified, and automated way to track attendance and active hours.",
-      motivation: "Tracking physical presence and verifying attendance accurately has always been a major operations bottleneck. This project was motivated by the need for a non-intrusive, automated, and tamper-proof verification system using nearby Wi-Fi network hardware configurations and geofences.",
-      challenges: "Faced difficulties in achieving reliable device background geofencing without causing massive battery drains, as well as handling inconsistent hardware MAC address hashing on client devices.",
-      learnings: "Mastered PostgreSQL geofence queries (using spatial indices) and dynamic client-server background tracking synchronization.",
-      folderStructure: `src/
-├── components/   # User check-in widgets & dashboard stats
-├── context/      # Auth and geolocation tracker contexts
-└── pages/        # Live attendance records & admin console`,
+      tagline: "Full-Stack Placement Platform with AI Interview Feedback",
+      description: "Student and coordinator portals for running campus placements: a 13-model schema, 23 REST API endpoints and a 6-stage hiring pipeline, with Gemini-powered resume analysis and interview feedback and server-graded timed aptitude tests.",
+      problem: "Placement coordinators and students need one place to run the hiring pipeline: applications moving through stages, aptitude tests, and interview practice.",
+      motivation: "A production-style full-stack project covering the whole placement flow, from the student portal to the coordinator tools and AI assistance.",
+      challenges: "Keeping the AI features dependable: Gemini resume analysis and interview feedback ship with a rule-based fallback, and aptitude tests are graded on the server rather than trusted from the client.",
+      learnings: "Designing a 13-model relational schema with Prisma, securing a REST API with JWT, Zod validation and rate limiting, and deploying across Vercel, Render and Neon PostgreSQL.",
+      folderStructure: "",
       features: [
-        "Geofencing & Wi-Fi BSSID verification for high-precision indoor tracking.",
-        "AI anomaly detection to identify proxy attempts or mock GPS locations.",
-        "Interactive dashboard displaying real-time analytics, user heatmaps, and exportable reports.",
-        "Automated notifications and scheduling rules for late arrivals and absences."
+        "Student and coordinator portals on a 13-model schema with 23 REST API endpoints.",
+        "6-stage hiring pipeline.",
+        "Gemini API resume analysis and AI interview feedback with a rule-based fallback.",
+        "Server-graded timed aptitude tests.",
+        "Secured with JWT, Zod validation and rate limiting.",
+        "Deployed on Vercel and Render with Neon PostgreSQL."
       ],
-      techStack: ["React", "Node.js", "Express", "Firebase Auth", "PostgreSQL", "Tailwind CSS", "Framer Motion"],
-      architecture: "Client-Server architecture with a REST API backend and real-time synchronization through web sockets and Firebase triggers. Geofence boundaries are validated server-side using geographic coordinates calculations.",
-      futureImprovements: [
-        "Incorporate Bluetooth Low Energy (BLE) beacons for precise room-level tracking.",
-        "Integrate facial recognition verification as an added layer of authentication."
-      ],
+      techStack: ["Next.js", "TypeScript", "Express", "Prisma", "PostgreSQL", "Gemini API", "Docker", "Vitest"],
+      futureImprovements: [],
       githubUrl: "https://github.com/sanket1035/placetrack-ai",
       liveUrl: "https://frontend-umber-one-zuhj8ueccq.vercel.app/",
       image: "/placeholders/placetrack.jpg",
       category: "web"
+    },
+    {
+      id: "simhastha-suraksha",
+      title: "Simhastha Suraksha",
+      tagline: "AI Crowd Monitoring for Kumbh Mela (Team of 4, Lead Developer)",
+      description: "End-to-end crowd monitoring for Kumbh Mela: per-frame head counting, density heatmaps, people per square metre and Low to Critical risk alerts, with staff and public dashboards in English, Hindi and Marathi.",
+      problem: "Large religious gatherings need live crowd density and risk levels, not just a head count, so staff can react before an area becomes critical.",
+      motivation: "Led a team of four to build a complete monitoring pipeline, from model benchmarking to deployed dashboards.",
+      challenges: "Choosing a model that holds up on dense crowds: an MLP, a custom CNN and CSRNet were benchmarked on ShanghaiTech Part A, and the winner was exported to ONNX for serving.",
+      learnings: "Benchmarking crowd-counting models, exporting to ONNX, and packaging a vision system with Docker and GitHub Actions CI.",
+      folderStructure: "",
+      features: [
+        "Per-frame head count, density heatmap and people/m2 metric.",
+        "Low to Critical risk alerts.",
+        "MLP, custom CNN and CSRNet benchmarked on ShanghaiTech Part A: CSRNet cut MAE from 259.4 to 66.7 (74% lower).",
+        "Model exported to ONNX.",
+        "Staff and public dashboards in English, Hindi and Marathi, fed from RTSP streams.",
+        "Containerized with Docker, CI on GitHub Actions."
+      ],
+      techStack: ["PyTorch", "CSRNet", "OpenCV", "ONNX", "Streamlit", "Docker", "GitHub Actions"],
+      futureImprovements: [],
+      githubUrl: "https://github.com/sanket1035/simhastha-suraksha",
+      image: "/placeholders/simhastha.png",
+      category: "ai"
     },
     {
       id: "pramana-ai",
@@ -271,6 +286,33 @@ models/    # Gemma LLM prompt templates & graph generators`,
       category: "web"
     },
     {
+      id: "sherise-ai",
+      title: "SheRise AI",
+      tagline: "AI-Powered Career Empowerment & Mentorship Platform",
+      description: "An AI-driven career empowerment platform designed to support women in technology through automated resume analysis, skill gap assessment, personalized career roadmaps, and mentorship matching.",
+      problem: "Women in STEM often face challenges finding tailored mentorship, identifying targeted skill upgrades, and navigating career growth paths effectively.",
+      motivation: "Built to provide accessible, AI-powered career coaching, automated resume feedback, and skill development guidance tailored for women engineering students and professionals.",
+      challenges: "Designing intuitive career roadmap visualizations and implementing natural-language resume parsing without losing contextual feedback quality.",
+      learnings: "Enhanced skills in building inclusive UX design systems, prompt engineering for career evaluation models, and seamless API integrations.",
+      folderStructure: `src/
+├── components/   # Resume evaluator, career tree, & mentor matching
+├── api/          # LLM guidance handlers & prompt templates
+└── pages/        # Dashboard & resource hub`,
+      features: [
+        "AI automated resume evaluator providing instant actionable feedback.",
+        "Personalized career roadmaps and skill gap diagnostic tools.",
+        "Mentorship recommendation engine matching learners with tech guides.",
+        "Interactive resource hub and AI interview preparation simulator."
+      ],
+      techStack: ["React", "TypeScript", "Python", "FastAPI", "Tailwind CSS"],
+      architecture: "React SPA connected to FastAPI backend utilizing tailored LLM models for resume analysis, skill extraction, and career roadmap generation.",
+      githubUrl: "https://github.com/sanket1035/YuktiNexus-v2v",
+      liveUrl: "https://yukti-nexus.vercel.app/",
+      image: "/placeholders/sherise.png",
+      category: "ai"
+    }
+,
+    {
       id: "gst-billing-app",
       title: "GST Billing App",
       tagline: "Mobile POS Billing and Inventory Management System",
@@ -320,39 +362,36 @@ notebooks/  # Exploratory data analysis & threshold tuning`,
       category: "ai"
     },
     {
-      id: "sherise-ai",
-      title: "SheRise AI",
-      tagline: "AI-Powered Career Empowerment & Mentorship Platform",
-      description: "An AI-driven career empowerment platform designed to support women in technology through automated resume analysis, skill gap assessment, personalized career roadmaps, and mentorship matching.",
-      problem: "Women in STEM often face challenges finding tailored mentorship, identifying targeted skill upgrades, and navigating career growth paths effectively.",
-      motivation: "Built to provide accessible, AI-powered career coaching, automated resume feedback, and skill development guidance tailored for women engineering students and professionals.",
-      challenges: "Designing intuitive career roadmap visualizations and implementing natural-language resume parsing without losing contextual feedback quality.",
-      learnings: "Enhanced skills in building inclusive UX design systems, prompt engineering for career evaluation models, and seamless API integrations.",
-      folderStructure: `src/
-├── components/   # Resume evaluator, career tree, & mentor matching
-├── api/          # LLM guidance handlers & prompt templates
-└── pages/        # Dashboard & resource hub`,
+      id: "sales-analytics-dashboard",
+      title: "Sales Analytics Dashboard",
+      tagline: "Interactive Power BI Dashboard for Sales Performance",
+      description: "A Power BI report built on a 200-record sales dataset modelled in Power Query, with DAX measures for Sales, Profit, Profit % and Transactions KPI cards, plus drill-down analysis through slicers and cross-filtering.",
+      problem: "Sales data in a flat sheet hides which managers, products, countries and months drive profit.",
+      motivation: "A hands-on analytics project to practise data modelling, DAX and dashboard design end to end.",
+      challenges: "Modelling the dataset in Power Query and writing DAX measures that stay correct under cross-filtering and slicers.",
+      learnings: "Power Query transformations, DAX measures, KPI card design and documenting the build in a PDF guide.",
+      folderStructure: "",
       features: [
-        "AI automated resume evaluator providing instant actionable feedback.",
-        "Personalized career roadmaps and skill gap diagnostic tools.",
-        "Mentorship recommendation engine matching learners with tech guides.",
-        "Interactive resource hub and AI interview preparation simulator."
+        "200-record sales dataset modelled in Power Query.",
+        "DAX measures for Sales, Profit, Profit % and Transactions KPI cards.",
+        "Views for sales-manager performance, product-wise profit, country-level sales (map) and monthly trends.",
+        "Cross-filtering and slicers for product, manager, date, month and year.",
+        "Build steps documented in a PDF guide."
       ],
-      techStack: ["React", "TypeScript", "Python", "FastAPI", "Tailwind CSS"],
-      architecture: "React SPA connected to FastAPI backend utilizing tailored LLM models for resume analysis, skill extraction, and career roadmap generation.",
-      githubUrl: "https://github.com/sanket1035/YuktiNexus-v2v",
-      liveUrl: "https://yukti-nexus.vercel.app/",
-      image: "/placeholders/sherise.png",
-      category: "ai"
-    }
+      techStack: ["Power BI", "DAX", "Power Query", "Excel"],
+      futureImprovements: [],
+      githubUrl: "https://github.com/sanket1035/interactive-sales-analytics-dashboard",
+      image: "/placeholders/sales_dashboard.png",
+      category: "data"
+    },
   ],
   openSource: {
     programs: [
       {
         programName: "ELUSOC Summer of Code 2026",
-        role: "Open Source Scholar",
-        year: "2026",
-        description: "Developed and optimized key modules in an open-source data visualization toolkit, adding accessibility support (aria-attributes) and enhancing rendering performance.",
+        role: "Open Source Contributor, Rank 6 Globally",
+        year: "Jun - Aug 2026",
+        description: "Merged 300+ pull requests across 18+ open-source repositories, ranking 6th globally among ~600 active contributors. Collaborated with maintainers and revised work through code reviews.",
         image: "/placeholders/elusoc.png"
       },
       {
@@ -370,19 +409,38 @@ notebooks/  # Exploratory data analysis & threshold tuning`,
         image: "/placeholders/essoc.png"
       }
     ],
-    mergedPRsCount: 14,
+    mergedPRsCount: 320,
     prLinks: [
       "https://github.com/example-org/repo/pulls/123",
       "https://github.com/example-org/repo/pulls/456",
       "https://github.com/another-org/repo/pulls/78"
     ],
     contributionsTimeline: [
-      "February 2026: Approved PR in UI toolkit fixing flexbox layout rendering.",
-      "April 2026: Contributed performance enhancements to a popular markdown parser.",
-      "May 2026: Integrated internationalization (i18n) modules in developer docs."
+      "Jun - Aug 2026: ELUSOC Summer of Code, 300+ merged PRs across 18+ repos, ranked 6th globally.",
+      "46 PRs in Interview-Intelligence: Docker code sandbox, Zustand session store, role-based access control.",
+      "26 PRs in Foodie: Jest unit tests, i18n, theme persistence, reusable search component.",
+      "8 PRs in Aarini: custom error hierarchy, rate limiting, cycle-prediction endpoint."
     ]
   },
   achievements: [
+    {
+      title: "Ranked 6th Globally in ELUSOC 2026",
+      issuer: "ELUSOC Summer of Code",
+      date: "Jun - Aug 2026",
+      description: "Merged 300+ pull requests across 18+ repositories and ranked 6th among ~600 active contributors, including 46 PRs in Interview-Intelligence, 26 in Foodie and 8 in Aarini."
+    },
+    {
+      title: "Research Manuscript: Leakage-Free ML Forecasting",
+      issuer: "Carbonomics AI (Final Year Project)",
+      date: "2026",
+      description: "Co-authored a research manuscript on leakage-free machine learning forecasting, built on real 2025 campus energy data."
+    },
+    {
+      title: "AMD Developer Hackathon (lablab.ai)",
+      issuer: "lablab.ai",
+      date: "Jul 2026",
+      description: "Built Atlas AI, a learning-path generator, with an international team and owned the frontend and deployment."
+    },
     {
       title: "StudyBuddy KKW",
       issuer: "K. K. Wagh Institute",
@@ -401,14 +459,14 @@ notebooks/  # Exploratory data analysis & threshold tuning`,
       role: "Core Committee Member",
       organization: "CSI KKWIEER Students' Chapter",
       duration: "2025 - Present",
-      description: "Organize major technical events, coding contests, and technology workshops for engineering students.",
+      description: "Ran technical workshops and hackathons for 200+ students.",
       image: "/placeholders/csi.jpg"
     },
     {
-      role: "Logistics & EPM Team Member",
+      role: "Logistics Coordinator",
       organization: "Innov-ERA National Hackathon",
       duration: "Jan 2025 - March 2025",
-      description: "Managed on-ground operations, developer assistance, and participant support for a 24-hour national hackathon.",
+      description: "Ran on-site operations for 100+ participants at a national hackathon.",
       image: "/placeholders/innov_era.jpg"
     },
     {
@@ -419,14 +477,22 @@ notebooks/  # Exploratory data analysis & threshold tuning`,
       image: "/placeholders/phoenix.jpg"
     },
     {
-      role: "Organizing Committee Member (Season 14)",
+      role: "Organizing Committee Head",
       organization: "Swapnapurti Foundation NGO",
       duration: "Sep 2023 - Jan 2024",
-      description: "Coordinated volunteer efforts, planned welfare activities, and drove social impact events.",
+      description: "Led Ganesh Murti Sankalan (9000+ idols) and food donation drives.",
       image: "/placeholders/swapnapurti.jpg"
     }
   ],
   certificates: [
+    {
+      title: "German Language A2",
+      issuer: "HCLA i-Pro Edu",
+      date: "May 2026",
+      credentialId: "-",
+      skills: ["German", "A2 Level"],
+      verifyUrl: "#"
+    },
     {
       title: "Prepare Data for Analysis with Power BI",
       issuer: "Microsoft Learn",

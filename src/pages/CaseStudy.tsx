@@ -143,7 +143,7 @@ export const CaseStudy: React.FC = () => {
 
         {/* Folder Structure and Architecture */}
         <div className="grid md:grid-cols-2 gap-8">
-          {/* Folder Structure */}
+          {project.folderStructure && (
           <section className="space-y-4">
             <h2 className="font-heading font-bold text-lg md:text-xl text-brand-primary flex items-center gap-2.5 uppercase tracking-wide">
               <FolderTree className="text-brand-accent" size={18} />
@@ -153,6 +153,8 @@ export const CaseStudy: React.FC = () => {
               <code>{project.folderStructure}</code>
             </pre>
           </section>
+
+          )}
 
           {/* Architecture */}
           {project.architecture && (
