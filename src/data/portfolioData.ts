@@ -243,7 +243,7 @@ models/    # Gemma LLM prompt templates & graph generators`,
       tagline: "AI Product Operating System (InnovaHack Chapter 1 Finalist)",
       description: "A product-readiness platform that connects planning and launch validation in one project-scoped workflow: an AI blueprint, a six-module launch audit, an AI Co-Founder chat and exportable reports, with every project keeping its own isolated context.",
       problem: "AI has made building software faster, but founders still use separate tools for planning, technical validation, UX and performance checks, business review and launch decisions, so the bottleneck is knowing what to fix before launch.",
-      motivation: "Built for the InnovaHack Chapter 1 hackathon (finalist): one workflow that takes an idea to a blueprint, audits the product and turns the findings into a prioritized action plan.",
+      motivation: "Built for InnovaHack Chapter 1, a national-level hackathon in Mumbai where it reached the finals, under time pressure with technical trade-offs to defend: one workflow that takes an idea to a blueprint, audits the product and turns the findings into a prioritized action plan.",
       challenges: "Keeping AI output dependable and honest: a multi-provider pipeline with failover to a deterministic offline engine, and fixes for fake audits on invalid websites, hardcoded scores, context contamination across projects and projects disappearing after refresh.",
       learnings: "Designing a layered architecture (presentation, application, business logic, AI pipeline, data), context engineering with isolated per-project memory, provider failover with timeouts and a JSON guard, and regression-testing an AI product.",
       folderStructure: "",
@@ -446,6 +446,13 @@ notebooks/  # Exploratory data analysis & threshold tuning`,
       issuer: "ELUSOC Summer of Code",
       date: "Jun - Aug 2026",
       description: "Merged 300+ pull requests across 18+ repositories and ranked 6th among ~600 active contributors, including 46 PRs in Interview-Intelligence, 26 in Foodie and 8 in Aarini."
+    },
+    {
+      title: "Finalist, InnovaHack Chapter 1",
+      issuer: "InnovaHack (national-level hackathon, Mumbai)",
+      date: "Aug 2026",
+      description: "Reached the finals with Prodexa, an AI Product Operating System that takes founders from idea to blueprint, launch audit and an actionable roadmap. Built under time pressure and defended in front of the judges.",
+      detailsUrl: "https://prodexa-ai.app/"
     },
     {
       title: "Research Manuscript: Leakage-Free ML Forecasting",
