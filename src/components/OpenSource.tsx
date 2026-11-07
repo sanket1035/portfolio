@@ -73,9 +73,9 @@ export const OpenSource = () => {
 
   // GitHub & Development Section Metrics
   const devMetrics = [
-    { label: 'Total Commits', value: '902' },
-    { label: 'PRs Merged', value: '320' },
-    { label: 'Issues Closed', value: '196' },
+    { label: 'Total Commits', value: '906' },
+    { label: 'PRs Merged', value: '365' },
+    { label: 'Issues Closed', value: '234' },
     { label: 'Longest Streak', value: '31 days' },
     { label: 'Repos Contributed To', value: '18+' },
   ];

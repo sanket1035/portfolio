@@ -4,8 +4,8 @@ import { portfolioData as d } from '../data/portfolioData';
 
 const stats = [
   { v: 10, s: '', l: 'Projects Built' },
-  { v: 902, s: '', l: 'Git Commits' },
-  { v: 320, s: '', l: 'PRs Merged' },
+  { v: 906, s: '', l: 'Git Commits' },
+  { v: 365, s: '', l: 'PRs Merged' },
   { v: 8.52, s: '', l: 'CGPA', dec: 2 },
 ];
 

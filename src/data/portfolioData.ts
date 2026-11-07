@@ -152,7 +152,7 @@ export const portfolioData: PortfolioData = {
         "Factor-effect attribution: the grid-factor version alone moved Scope 2 by 55.1 tCO2e (7.3%).",
         "6-page React dashboard with what-if simulation (a 15% electricity cut saves 112.80 tCO2e).",
         "FastAPI and PostgreSQL backend covered by 40 pytest tests.",
-        "Co-authored research manuscript on leakage-free ML forecasting."
+        "Research manuscript on leakage-free ML forecasting."
       ],
       techStack: ["Python", "Scikit-learn", "XGBoost", "FastAPI", "PostgreSQL", "React", "Recharts", "pytest"],
       architecture: "A FastAPI and PostgreSQL backend serves the accounting engine and forecasts to a 6-page React dashboard built with Recharts.",
@@ -436,7 +436,7 @@ notebooks/  # Exploratory data analysis & threshold tuning`,
         image: "/placeholders/essoc.png"
       }
     ],
-    mergedPRsCount: 320,
+    mergedPRsCount: 365,
     prLinks: [
       "https://github.com/example-org/repo/pulls/123",
       "https://github.com/example-org/repo/pulls/456",
@@ -454,7 +454,8 @@ notebooks/  # Exploratory data analysis & threshold tuning`,
       title: "Ranked 6th Globally in ELUSOC 2026",
       issuer: "ELUSOC Summer of Code",
       date: "Jun - Aug 2026",
-      description: "Merged 300+ pull requests across 18+ repositories and ranked 6th among ~600 active contributors, including 46 PRs in Interview-Intelligence, 26 in Foodie and 8 in Aarini."
+      description: "Merged 300+ pull requests across 18+ repositories and ranked 6th among ~600 active contributors, including 46 PRs in Interview-Intelligence, 26 in Foodie and 8 in Aarini.",
+      images: ["/placeholders/elusoc-champions.webp", "/placeholders/elusoc-card.webp", "/placeholders/elusoc-questlog.webp", "/placeholders/elusoc-prs.webp", "/placeholders/elusoc-heatmap.webp"]
     },
     {
       title: "Finalist, InnovaHack Chapter 1",
@@ -467,13 +468,14 @@ notebooks/  # Exploratory data analysis & threshold tuning`,
       title: "Research Manuscript: Leakage-Free ML Forecasting",
       issuer: "Carbonomics AI (Final Year Project)",
       date: "2026",
-      description: "Co-authored a research manuscript on leakage-free machine learning forecasting, built on real 2025 campus energy data."
+      description: "Authored a research manuscript on leakage-free machine learning forecasting, built on real 2025 campus energy data."
     },
     {
       title: "AMD Developer Hackathon (lablab.ai)",
       issuer: "lablab.ai",
       date: "Jul 2026",
-      description: "Built Atlas AI, a learning-path generator, with an international team and owned the frontend and deployment."
+      description: "Built Atlas AI, a learning-path generator, with an international team and owned the frontend and deployment. Ranked 13th of 481 projects on the AMD automated scoring leaderboard in the Unicorn (open innovation) track.",
+      images: ["/placeholders/amd-leaderboard.webp", "/placeholders/atlas-lablab.webp"]
     },
     {
       title: "StudyBuddy KKW",
