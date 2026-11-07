@@ -152,7 +152,7 @@ export const portfolioData: PortfolioData = {
         "Factor-effect attribution: the grid-factor version alone moved Scope 2 by 55.1 tCO2e (7.3%).",
         "6-page React dashboard with what-if simulation (a 15% electricity cut saves 112.80 tCO2e).",
         "FastAPI and PostgreSQL backend covered by 40 pytest tests.",
-        "Research manuscript on leakage-free ML forecasting."
+        "First-author research manuscript on leakage-free ML forecasting."
       ],
       techStack: ["Python", "Scikit-learn", "XGBoost", "FastAPI", "PostgreSQL", "React", "Recharts", "pytest"],
       architecture: "A FastAPI and PostgreSQL backend serves the accounting engine and forecasts to a 6-page React dashboard built with Recharts.",
@@ -468,7 +468,7 @@ notebooks/  # Exploratory data analysis & threshold tuning`,
       title: "Research Manuscript: Leakage-Free ML Forecasting",
       issuer: "Carbonomics AI (Final Year Project)",
       date: "2026",
-      description: "Authored a research manuscript on leakage-free machine learning forecasting, built on a 52-week series derived from 12 months of real 2025 campus energy data."
+      description: "First author of a research manuscript on leakage-free machine learning forecasting, written with four co-authors including the faculty guide, built on a 52-week series derived from 12 months of real 2025 campus energy data."
     },
     {
       title: "AMD Developer Hackathon (lablab.ai)",
