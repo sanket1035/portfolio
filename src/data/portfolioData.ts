@@ -15,6 +15,7 @@ export interface Project {
   githubUrl: string;
   liveUrl?: string;
   image: string;
+  gallery?: { src: string; caption: string }[];
   category: 'web' | 'mobile' | 'ai' | 'data';
 }
 
@@ -32,6 +33,7 @@ export interface Achievement {
   date: string;
   description: string;
   image?: string;
+  images?: string[];
   detailsUrl?: string;
 }
 
@@ -263,6 +265,13 @@ models/    # Gemma LLM prompt templates & graph generators`,
       githubUrl: "https://github.com/sanket1035/Prodexa",
       liveUrl: "https://prodexa-ai.app/",
       image: "/placeholders/prodexa.webp",
+      gallery: [
+        { src: "/placeholders/innovahack.webp", caption: "InnovaHack Chapter 1 finalist certificate" },
+        { src: "/placeholders/innovahack-team.webp", caption: "Team outside Atlas SkillTech University, Mumbai" },
+        { src: "/placeholders/innovahack-team2.webp", caption: "On stage at InnovaHack Chapter 1" },
+        { src: "/placeholders/innovahack-build.webp", caption: "Building Prodexa during the hackathon" },
+        { src: "/placeholders/innovahack-desk.webp", caption: "The hackathon workspace" }
+      ],
       category: "ai"
     },
     {
@@ -452,7 +461,7 @@ notebooks/  # Exploratory data analysis & threshold tuning`,
       issuer: "InnovaHack, Elite Forums (Atlas SkillTech University, Mumbai)",
       date: "Jul 2026",
       description: "Reached the finals with Prodexa, an AI Product Operating System that takes founders from idea to blueprint, launch audit and an actionable roadmap. Built under time pressure and defended in front of the judges.",
-      image: "/placeholders/innovahack.webp"
+      images: ["/placeholders/innovahack.webp", "/placeholders/innovahack-team.webp", "/placeholders/innovahack-team2.webp", "/placeholders/innovahack-build.webp", "/placeholders/innovahack-desk.webp"]
     },
     {
       title: "Research Manuscript: Leakage-Free ML Forecasting",

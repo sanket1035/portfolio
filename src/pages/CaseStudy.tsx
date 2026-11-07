@@ -64,6 +64,22 @@ export const CaseStudy: React.FC = () => {
         />
       </div>
 
+      {project.gallery && (
+        <div className="flex flex-wrap gap-3 mb-10">
+          {project.gallery.map((g) => (
+            <button
+              key={g.src}
+              type="button"
+              title={g.caption}
+              onClick={() => window.dispatchEvent(new CustomEvent('open-lightbox', { detail: { src: g.src } }))}
+              className="rounded-lg overflow-hidden border border-brand-border cursor-pointer"
+            >
+              <img src={g.src} alt={g.caption} loading="lazy" className="h-36 w-auto block" />
+            </button>
+          ))}
+        </div>
+      )}
+
       {/* Action Buttons Row */}
       <div className="flex flex-wrap items-center gap-4 py-6 border-y border-brand-border/40 mb-10">
         <a

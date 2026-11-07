@@ -29,6 +29,15 @@ export const Achievements = () => {
               <p className="mono-label muted">{a.issuer} · {a.date}</p>
               <h3 style={{ fontSize: 'clamp(1.4rem, 2.6vw, 2rem)', fontWeight: 740, letterSpacing: '-.02em', lineHeight: 1.1, margin: 0 }}>{a.title}</h3>
               <p className="muted" style={{ maxWidth: '60rem', margin: 0 }}>{a.description}</p>
+              {a.images && (
+                <div style={{ display: 'flex', gap: '.75rem', flexWrap: 'wrap', marginTop: '.5rem' }}>
+                  {a.images.map((src, i) => (
+                    <button key={src} type="button" onClick={() => light(src)} title="Click to view full image" style={{ background: 'none', border: 0, padding: 0, cursor: 'pointer' }}>
+                      <img src={src} alt={`${a.title} ${i + 1}`} loading="lazy" style={{ height: '8.5rem', width: 'auto', borderRadius: 'calc(var(--radius) - 6px)', display: 'block', border: '1px solid var(--border)' }} />
+                    </button>
+                  ))}
+                </div>
+              )}
             </article>
           ))}
         </div>
