@@ -451,6 +451,12 @@ notebooks/  # Exploratory data analysis & threshold tuning`,
   },
   achievements: [
     {
+      title: "Research Manuscript: Leakage-Free ML Forecasting",
+      issuer: "Carbonomics AI (Final Year Project)",
+      date: "2026",
+      description: "First author of a research manuscript on leakage-free machine learning forecasting, written with four co-authors including the faculty guide, built on a 52-week series derived from 12 months of real 2025 campus energy data."
+    },
+    {
       title: "Ranked 6th Globally in ELUSOC 2026",
       issuer: "ELUSOC Summer of Code",
       date: "Jun - Aug 2026",
@@ -463,12 +469,6 @@ notebooks/  # Exploratory data analysis & threshold tuning`,
       date: "Jul 2026",
       description: "Reached the finals with Prodexa, an AI Product Operating System that takes founders from idea to blueprint, launch audit and an actionable roadmap. Built under time pressure and defended in front of the judges.",
       images: ["/placeholders/innovahack.webp", "/placeholders/innovahack-team.webp", "/placeholders/innovahack-team2.webp", "/placeholders/innovahack-build.webp", "/placeholders/innovahack-desk.webp"]
-    },
-    {
-      title: "Research Manuscript: Leakage-Free ML Forecasting",
-      issuer: "Carbonomics AI (Final Year Project)",
-      date: "2026",
-      description: "First author of a research manuscript on leakage-free machine learning forecasting, written with four co-authors including the faculty guide, built on a 52-week series derived from 12 months of real 2025 campus energy data."
     },
     {
       title: "AMD Developer Hackathon (lablab.ai)",
