@@ -71,7 +71,7 @@ export const Achievements = () => {
           <div>
             <div className="bento" style={{ paddingTop: '.25rem' }}>
               {d.certificates.map((c) => (
-                <article className="box" key={c.title} style={{ display: 'grid', gap: '.7rem', alignContent: 'start' }}>
+                <article className="box" key={c.title} style={{ display: 'grid', gap: '.7rem', alignContent: 'start', alignSelf: c.image ? 'stretch' : 'start' }}>
                   <Thumb src={c.image} alt={`${c.title} Cover`} />
                   <p className="mono-label muted">{c.issuer} · {c.date}</p>
                   <h4 style={{ fontSize: '1.2rem', letterSpacing: '-.01em', textTransform: 'none', fontFamily: 'inherit', color: 'var(--foreground)', margin: 0, fontWeight: 700 }}>{c.title}</h4>
