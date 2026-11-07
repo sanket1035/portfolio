@@ -449,10 +449,10 @@ notebooks/  # Exploratory data analysis & threshold tuning`,
     },
     {
       title: "Finalist, InnovaHack Chapter 1",
-      issuer: "InnovaHack (national-level hackathon, Mumbai)",
-      date: "Aug 2026",
+      issuer: "InnovaHack, Elite Forums (Atlas SkillTech University, Mumbai)",
+      date: "Jul 2026",
       description: "Reached the finals with Prodexa, an AI Product Operating System that takes founders from idea to blueprint, launch audit and an actionable roadmap. Built under time pressure and defended in front of the judges.",
-      detailsUrl: "https://prodexa-ai.app/"
+      image: "/placeholders/innovahack.webp"
     },
     {
       title: "Research Manuscript: Leakage-Free ML Forecasting",
