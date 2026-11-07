@@ -147,7 +147,7 @@ export const portfolioData: PortfolioData = {
       folderStructure: "",
       features: [
         "GHG Protocol engine: 763.84 tCO2e of Scope 1 and 2 emissions from 1,059,147 kWh of real 2025 campus data, traceable to versioned emission factors.",
-        "Weekly energy forecasting with Ridge, Random Forest and XGBoost under 24-origin rolling evaluation, with a rule that a model must beat a naive baseline by 5%.",
+        "Weekly energy forecasting with Ridge, Random Forest and XGBoost under 24-origin rolling evaluation, with a rule that a model must beat a naive baseline by 5%. The 52-week series is derived from 12 months of real campus data, so forecast scores are a methodology benchmark, not a production claim.",
         "Target-leakage analysis: R2 = 1.000 when predicting emissions from activity vs 0.339 for an honest forecast.",
         "Factor-effect attribution: the grid-factor version alone moved Scope 2 by 55.1 tCO2e (7.3%).",
         "6-page React dashboard with what-if simulation (a 15% electricity cut saves 112.80 tCO2e).",
@@ -468,7 +468,7 @@ notebooks/  # Exploratory data analysis & threshold tuning`,
       title: "Research Manuscript: Leakage-Free ML Forecasting",
       issuer: "Carbonomics AI (Final Year Project)",
       date: "2026",
-      description: "Authored a research manuscript on leakage-free machine learning forecasting, built on real 2025 campus energy data."
+      description: "Authored a research manuscript on leakage-free machine learning forecasting, built on a 52-week series derived from 12 months of real 2025 campus energy data."
     },
     {
       title: "AMD Developer Hackathon (lablab.ai)",
