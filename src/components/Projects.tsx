@@ -63,8 +63,14 @@ export const Projects = () => {
                   <p style={{ fontSize: '1.25rem', fontWeight: 600, maxWidth: '34rem' }}>{p.tagline}</p>
                   <p style={{ maxWidth: '34rem', opacity: .85 }}>{p.description}</p>
                   <dl className="cstats">
-                    <div><dt>{p.features.length}</dt><dd>Features built</dd></div>
-                    <div><dt>{p.techStack.length}</dt><dd>Technologies used</dd></div>
+                    {p.metrics ? p.metrics.slice(0, 3).map((m) => (
+                      <div key={m.label}><dt>{m.value}</dt><dd>{m.label}</dd></div>
+                    )) : (
+                      <>
+                        <div><dt>{p.features.length}</dt><dd>Features built</dd></div>
+                        <div><dt>{p.techStack.length}</dt><dd>Technologies used</dd></div>
+                      </>
+                    )}
                   </dl>
                   <p className="mono-label" style={{ opacity: .8 }}>{p.techStack.join(' · ')}</p>
                   <Links p={p} onCase={() => go(p.id)} />

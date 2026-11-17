@@ -16,6 +16,7 @@ export interface Project {
   liveUrl?: string;
   image: string;
   gallery?: { src: string; caption: string }[];
+  metrics?: { value: string; label: string }[];
   category: 'web' | 'mobile' | 'ai' | 'data';
 }
 
@@ -159,21 +160,65 @@ export const portfolioData: PortfolioData = {
       futureImprovements: [],
       githubUrl: "https://github.com/sanket1035/carbonomics-ai",
       liveUrl: "https://carbonomics.app",
-      image: "/placeholders/carbonomics.jpg",
+      image: "/placeholders/carbonomics-overview.webp",
+      metrics: [
+        {
+          "value": "1,059,147 kWh",
+          "label": "grid electricity analysed, 2025"
+        },
+        {
+          "value": "763.84 tCO2e",
+          "label": "Scope 1 + 2 emissions computed"
+        },
+        {
+          "value": "0.339",
+          "label": "honest forecast R2 vs 1.000 with leakage"
+        },
+        {
+          "value": "112.80 tCO2e",
+          "label": "saved by a 15% electricity cut"
+        },
+        {
+          "value": "40",
+          "label": "pytest tests on the API"
+        },
+        {
+          "value": "6",
+          "label": "dashboard pages"
+        }
+      ],
+      gallery: [
+        {
+          "src": "/placeholders/carbonomics-overview.webp",
+          "caption": "Overview: emissions by scope and month (demo with sample data)"
+        },
+        {
+          "src": "/placeholders/carbonomics-forecast.webp",
+          "caption": "Forecast: models against a naive baseline (demo with sample data)"
+        },
+        {
+          "src": "/placeholders/carbonomics-simulation.webp",
+          "caption": "What-if simulation on electricity and diesel (demo with sample data)"
+        },
+        {
+          "src": "/placeholders/carbonomics-optimization.webp",
+          "caption": "Optimization: best mix of measures within a budget (demo with sample data)"
+        }
+      ],
       category: "ai"
     },
     {
       id: "placetrack-ai",
       title: "PlaceTrack AI",
       tagline: "Full-Stack Placement Platform with AI Interview Feedback",
-      description: "Student and coordinator portals for running campus placements: a 13-model schema, 23 REST API endpoints and a 6-stage hiring pipeline, with Gemini-powered resume analysis and interview feedback and server-graded timed aptitude tests.",
+      description: "Student and coordinator portals for running campus placements: a 16-model schema, a role-based REST API and a 6-stage hiring pipeline, with Gemini-powered resume analysis and interview feedback and server-graded timed aptitude tests.",
       problem: "Placement coordinators and students need one place to run the hiring pipeline: applications moving through stages, aptitude tests, and interview practice.",
       motivation: "A production-style full-stack project covering the whole placement flow, from the student portal to the coordinator tools and AI assistance.",
       challenges: "Keeping the AI features dependable: Gemini resume analysis and interview feedback ship with a rule-based fallback, and aptitude tests are graded on the server rather than trusted from the client.",
-      learnings: "Designing a 13-model relational schema with Prisma, securing a REST API with JWT, Zod validation and rate limiting, and deploying across Vercel, Render and Neon PostgreSQL.",
+      learnings: "Designing a 16-model relational schema with Prisma, securing a REST API with JWT, Zod validation and rate limiting, and deploying across Vercel, Render and Neon PostgreSQL.",
       folderStructure: "",
       features: [
-        "Student and coordinator portals on a 13-model schema with 23 REST API endpoints.",
+        "Student and coordinator portals on a 16-model schema with a role-based REST API.",
         "6-stage hiring pipeline with readiness scoring and an eligibility engine.",
         "Gemini API resume analysis and AI interview feedback with a rule-based fallback.",
         "Server-graded timed aptitude tests.",
@@ -185,7 +230,63 @@ export const portfolioData: PortfolioData = {
       futureImprovements: [],
       githubUrl: "https://github.com/sanket1035/placetrack-ai",
       liveUrl: "https://frontend-umber-one-zuhj8ueccq.vercel.app/",
-      image: "/placeholders/placetrack.jpg",
+      image: "/placeholders/placetrack-home.webp",
+      metrics: [
+        {
+          "value": "3",
+          "label": "roles: student, coordinator, admin"
+        },
+        {
+          "value": "16",
+          "label": "Prisma models"
+        },
+        {
+          "value": "12",
+          "label": "departments supported"
+        },
+        {
+          "value": "4",
+          "label": "automatic eligibility checks"
+        },
+        {
+          "value": "0-100",
+          "label": "readiness and resume scores"
+        },
+        {
+          "value": "6",
+          "label": "hiring pipeline stages"
+        }
+      ],
+      gallery: [
+        {
+          "src": "/placeholders/placetrack-home.webp",
+          "caption": "Student home with readiness score"
+        },
+        {
+          "src": "/placeholders/placetrack-opportunities.webp",
+          "caption": "Opportunities: only drives the student is eligible for"
+        },
+        {
+          "src": "/placeholders/placetrack-applications.webp",
+          "caption": "Application timeline"
+        },
+        {
+          "src": "/placeholders/placetrack-interview.webp",
+          "caption": "Interview practice with feedback"
+        },
+        {
+          "src": "/placeholders/placetrack-drive.webp",
+          "caption": "Drive creator for coordinators"
+        },
+        {
+          "src": "/placeholders/placetrack-analytics.webp",
+          "caption": "Placement analytics for coordinators"
+        },
+        {
+          "src": "/placeholders/placetrack-offcampus.webp",
+          "caption": "Private off-campus tracker"
+        }
+      ],
       category: "web"
     },
     {
@@ -212,6 +313,16 @@ export const portfolioData: PortfolioData = {
       githubUrl: "https://github.com/sanket1035/pramana-ai",
       liveUrl: "https://pramana-ai-orcin.vercel.app/",
       image: "/placeholders/pramana.png",
+      metrics: [
+        {
+          "value": "3",
+          "label": "specialised agents: research, fact-check, citation"
+        },
+        {
+          "value": "PDF",
+          "label": "citation-backed report export"
+        }
+      ],
       category: "ai"
     },
     {
@@ -237,6 +348,30 @@ models/    # Gemma LLM prompt templates & graph generators`,
       githubUrl: "https://github.com/Hills081199/AMD-HACKATHON-II",
       liveUrl: "https://lablab.ai/ai-hackathons/amd-developer-hackathon-act-ii/thirstyseek/atlas-ai-powered-learning-path-generator",
       image: "/placeholders/atlas.png",
+      metrics: [
+        {
+          "value": "13th",
+          "label": "of 481 on the AMD Unicorn-track leaderboard"
+        },
+        {
+          "value": "6",
+          "label": "people in the international team"
+        },
+        {
+          "value": "6",
+          "label": "stages from document to skill tree"
+        }
+      ],
+      gallery: [
+        {
+          "src": "/placeholders/amd-leaderboard.webp",
+          "caption": "AMD automated scoring leaderboard, Unicorn track"
+        },
+        {
+          "src": "/placeholders/atlas-lablab.webp",
+          "caption": "Atlas project page on lablab.ai"
+        }
+      ],
       category: "ai"
     },
     {
@@ -265,6 +400,28 @@ models/    # Gemma LLM prompt templates & graph generators`,
       githubUrl: "https://github.com/sanket1035/Prodexa",
       liveUrl: "https://prodexa-ai.app/",
       image: "/placeholders/prodexa.webp",
+      metrics: [
+        {
+          "value": "6",
+          "label": "launch-audit modules"
+        },
+        {
+          "value": "4",
+          "label": "AI providers in the failover chain"
+        },
+        {
+          "value": "5",
+          "label": "architecture layers"
+        },
+        {
+          "value": "9",
+          "label": "Firestore collections"
+        },
+        {
+          "value": "17/17",
+          "label": "regression tests passing"
+        }
+      ],
       gallery: [
         { src: "/placeholders/innovahack.webp", caption: "InnovaHack Chapter 1 finalist certificate" },
         { src: "/placeholders/innovahack-team.webp", caption: "Team outside Atlas SkillTech University, Mumbai" },
@@ -273,6 +430,44 @@ models/    # Gemma LLM prompt templates & graph generators`,
         { src: "/placeholders/innovahack-desk.webp", caption: "The hackathon workspace" }
       ],
       category: "ai"
+    },
+    {
+      id: "studybuddy-kkw",
+      title: "StudyBuddy KKW",
+      tagline: "Free Study Hub for KKWIEER Students",
+      description: "A free study hub for K.K. Wagh students, built and maintained since first year: subject-wise notes, a grade-card accurate SGPA and CGPA calculator, instant search and a student contributor system with admin review.",
+      problem: "Notes get lost in WhatsApp groups, Drive links die, and nobody remembers how the grade card turns grades into an SGPA.",
+      motivation: "Started in first year with no backend experience, using AI tools, and kept running as a self-maintained service for juniors ever since.",
+      challenges: "Keeping a site free, fast and trustworthy: Google sign-in limited to KKWagh emails with row-level security, admin-reviewed contributions, an installable offline-capable PWA, and an end-to-end test suite in CI.",
+      learnings: "Next.js static export on Cloudflare, Supabase auth with Row Level Security, content validated against a JSON schema, and running Cypress and Jest in CI.",
+      folderStructure: "",
+      metrics: [
+        { value: "9", label: "first-year subjects covered" },
+        { value: "350+", label: "visits through QR codes" },
+        { value: "#1", label: "Google result for \"study buddy kkw\"" },
+        { value: "2023", label: "live and maintained since" }
+      ],
+      features: [
+        "Notes by year, subject and unit, with progress kept on the student's own device.",
+        "SGPA and CGPA calculator that follows the K.K. Wagh grade card, including audit and non-countable courses.",
+        "Instant subject search with Ctrl + K.",
+        "Contributor system: KKWagh Google sign-in, admin review, leaderboard for approved resources.",
+        "Installable PWA with light and dark themes, working offline for recently opened pages.",
+        "Privacy by design: no tracking cookies and calculator data stays on the device unless the student signs in."
+      ],
+      techStack: ["Next.js 14", "TypeScript", "Tailwind CSS", "Supabase", "Cloudflare", "Jest", "Cypress"],
+      architecture: "A static Next.js export served from Cloudflare, with notes stored as JSON validated against a schema. Supabase handles Google sign-in restricted to the college domain and the contributor data under Row Level Security.",
+      futureImprovements: [],
+      githubUrl: "https://github.com/Sanket-103-pvt/StudyBuddy-KKW",
+      liveUrl: "https://www.studybuddykkw.dev",
+      image: "/placeholders/studybuddy-home.webp",
+      gallery: [
+        { "src": "/placeholders/studybuddy-first-year.webp", "caption": "Subjects by year" },
+        { "src": "/placeholders/studybuddy-subject.webp", "caption": "Units and notes" },
+        { "src": "/placeholders/studybuddy-calculator.webp", "caption": "SGPA and CGPA calculator (sample data)" },
+        { "src": "/placeholders/studybuddy-login.webp", "caption": "KKWagh email login" }
+      ],
+      category: "web"
     },
     {
       id: "simhastha-suraksha",
@@ -297,6 +492,42 @@ models/    # Gemma LLM prompt templates & graph generators`,
       githubUrl: "https://github.com/sanket1035/simhastha-suraksha",
       liveUrl: "https://simhastha-suraksha.streamlit.app/",
       image: "/placeholders/simhastha.webp",
+      metrics: [
+        {
+          "value": "74%",
+          "label": "lower MAE: CSRNet 66.7 vs 259.4"
+        },
+        {
+          "value": "3",
+          "label": "models benchmarked on ShanghaiTech A"
+        },
+        {
+          "value": "3",
+          "label": "dashboard languages: EN, HI, MR"
+        },
+        {
+          "value": "4",
+          "label": "people in the team, lead developer"
+        }
+      ],
+      gallery: [
+        {
+          "src": "/placeholders/simhastha.webp",
+          "caption": "Zone risk, density heatmap and alert log"
+        },
+        {
+          "src": "/placeholders/simhastha-ramkund.webp",
+          "caption": "Ramkund zone on the map with camera angles"
+        },
+        {
+          "src": "/placeholders/simhastha-map.webp",
+          "caption": "Zone map: Nashik ghats and Trimbakeshwar"
+        },
+        {
+          "src": "/placeholders/simhastha-overview.webp",
+          "caption": "Overview: people in view, zones reporting, highest risk"
+        }
+      ],
       category: "ai"
     },
     {
@@ -316,7 +547,43 @@ models/    # Gemma LLM prompt templates & graph generators`,
       architecture: "A React and TypeScript client talks to a Node.js API backed by MongoDB. Submissions run in isolated Docker containers, and an AST comparison step flags similar solutions.",
       githubUrl: "https://github.com/sanket1035/algonix",
       liveUrl: "https://algonix-frontend.onrender.com/",
-      image: "/placeholders/algonix.jpg",
+      image: "/placeholders/algonix-dashboard.webp",
+      metrics: [
+        {
+          "value": "4",
+          "label": "languages: JS, Python, Java, C++"
+        },
+        {
+          "value": "4",
+          "label": "difficulty levels, Beginner to Expert"
+        },
+        {
+          "value": "1 / 5s",
+          "label": "submission rate limit per user"
+        },
+        {
+          "value": "0",
+          "label": "external judge APIs used"
+        }
+      ],
+      gallery: [
+        {
+          "src": "/placeholders/algonix-dashboard.webp",
+          "caption": "Dashboard: XP, level progress and quick actions"
+        },
+        {
+          "src": "/placeholders/algonix-leaderboard.webp",
+          "caption": "Weekly and all-time leaderboard"
+        },
+        {
+          "src": "/placeholders/algonix-profile.webp",
+          "caption": "Profile and badges"
+        },
+        {
+          "src": "/placeholders/algonix-certificate.webp",
+          "caption": "Auto-issued certificate of achievement"
+        }
+      ],
       category: "web"
     },
     {
@@ -361,7 +628,47 @@ models/    # Gemma LLM prompt templates & graph generators`,
       techStack: ["Kotlin", "Android", "MVVM"],
       architecture: "MVVM (Model-View-ViewModel) on Android: Kotlin ViewModels hold the billing logic and the UI observes their state.",
       githubUrl: "https://github.com/sanket1035/GSTbillingApp",
-      image: "/placeholders/gst.jpg",
+      image: "/placeholders/gst-cover.webp",
+      metrics: [
+        {
+          "value": "Kotlin",
+          "label": "with MVVM architecture"
+        },
+        {
+          "value": "PDF",
+          "label": "GST-compliant invoices"
+        },
+        {
+          "value": "8",
+          "label": "app screens documented"
+        }
+      ],
+      gallery: [
+        {
+          "src": "/placeholders/gst-login.webp",
+          "caption": "Login"
+        },
+        {
+          "src": "/placeholders/gst-dashboard1.webp",
+          "caption": "Business dashboard"
+        },
+        {
+          "src": "/placeholders/gst-create-invoice.webp",
+          "caption": "Create a GST invoice"
+        },
+        {
+          "src": "/placeholders/gst-pdf-preview.webp",
+          "caption": "PDF invoice preview"
+        },
+        {
+          "src": "/placeholders/gst-invoice-history.webp",
+          "caption": "Invoice history"
+        },
+        {
+          "src": "/placeholders/gst-invoice-details.webp",
+          "caption": "Invoice details"
+        }
+      ],
       category: "mobile"
     },
     {
@@ -386,6 +693,12 @@ notebooks/  # Exploratory data analysis & threshold tuning`,
       architecture: "Signal processing pipeline converting raw sensor time-series into frequency domain features, fed into optimized Scikit-Learn classifiers for fault probability prediction.",
       githubUrl: "https://github.com/sanket1035/Predictive-Maintenance-ML",
       image: "/placeholders/predictive_maintenance.png",
+      metrics: [
+        {
+          "value": "83%",
+          "label": "fault catch rate on bearing vibration data"
+        }
+      ],
       category: "ai"
     },
     {
@@ -409,6 +722,34 @@ notebooks/  # Exploratory data analysis & threshold tuning`,
       futureImprovements: [],
       githubUrl: "https://github.com/sanket1035/interactive-sales-analytics-dashboard",
       image: "/placeholders/sales_dashboard.webp",
+      metrics: [
+        {
+          "value": "200",
+          "label": "sales records modelled"
+        },
+        {
+          "value": "691K",
+          "label": "total sales"
+        },
+        {
+          "value": "171K",
+          "label": "total profit"
+        },
+        {
+          "value": "24.81%",
+          "label": "profit margin"
+        }
+      ],
+      gallery: [
+        {
+          "src": "/placeholders/sales_dashboard.webp",
+          "caption": "Dashboard overview"
+        },
+        {
+          "src": "/placeholders/sales-kpis.webp",
+          "caption": "KPI cards: sales, profit, profit % and transactions"
+        }
+      ],
       category: "data"
     },
   ],

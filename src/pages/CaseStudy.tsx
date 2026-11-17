@@ -60,9 +60,20 @@ export const CaseStudy: React.FC = () => {
         <img
           src={project.image}
           alt={`${project.title} Banner`}
-          className="w-full h-full object-cover brightness-95"
+          className="w-full h-full object-cover object-top brightness-95"
         />
       </div>
+
+      {project.metrics && (
+        <dl className="grid grid-cols-2 md:grid-cols-3 gap-px rounded-xl overflow-hidden border border-brand-border bg-brand-border mb-10">
+          {project.metrics.map((m) => (
+            <div key={m.label} className="bg-brand-card p-5">
+              <dt className="font-heading font-extrabold text-2xl md:text-3xl text-brand-primary tracking-tight">{m.value}</dt>
+              <dd className="mt-1.5 text-xs text-brand-text-muted leading-snug">{m.label}</dd>
+            </div>
+          ))}
+        </dl>
+      )}
 
       {project.gallery && (
         <div className="flex flex-wrap gap-3 mb-10">
@@ -96,7 +107,7 @@ export const CaseStudy: React.FC = () => {
             href={project.liveUrl}
             target="_blank"
             rel="noreferrer"
-            className="px-5 py-2.5 rounded-lg bg-brand-primary text-brand-bg font-bold text-xs transition-opacity hover:opacity-90 flex items-center gap-2 cursor-pointer font-mono"
+            className="px-5 py-2.5 rounded-lg bg-[var(--foreground)] text-[var(--background)] font-bold text-xs transition-opacity hover:opacity-90 flex items-center gap-2 cursor-pointer font-mono"
           >
             <ExternalLink size={15} />
             LIVE DEMO
