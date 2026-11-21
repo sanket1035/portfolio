@@ -285,8 +285,8 @@ a { color: inherit; }
   transition: none !important;
 }
 
-.chapter-media { border-radius: var(--radius); overflow: hidden; box-shadow: 0 30px 80px -20px rgba(0,0,0,.5); aspect-ratio: 4/3; }
-.chapter-media img { width: 100%; height: 116%; object-fit: cover; display: block; will-change: transform; }
+.chapter-media { border-radius: var(--radius); overflow: hidden; box-shadow: 0 30px 80px -20px rgba(0,0,0,.5); aspect-ratio: 16/10; background: #0c0c0d; }
+.chapter-media img { width: 100%; height: 100%; object-fit: contain; display: block; }
 @media (min-width: 1024px) { .resume-grid { grid-template-columns: 2fr 3fr; } }
 .mask + .dot { margin-left: -.26em; }
 
@@ -527,6 +527,6 @@ html.cur-active input, html.cur-active textarea { cursor: text !important; }
 .cstats dt { font-size: clamp(1.3rem, 2vw, 1.85rem); font-weight: 800; letter-spacing: -.03em; line-height: 1; }
 .cstats dd { margin: .35rem 0 0; font-size: .8rem; opacity: .8; max-width: 9rem; }
 .chapter-media { transform: rotate(0deg); }
-.chapter-media img { object-position: left top; }
+.chapter-media img { object-position: center; }
 
 .chapter-dim { position: absolute; inset: 0; background: #000; opacity: 0; pointer-events: none; z-index: 5; border-radius: inherit; }

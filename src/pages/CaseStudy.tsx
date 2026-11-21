@@ -60,7 +60,7 @@ export const CaseStudy: React.FC = () => {
         <img
           src={project.image}
           alt={`${project.title} Banner`}
-          className="w-full h-full object-cover object-top brightness-95"
+          className="w-full h-full object-contain bg-[#0c0c0d]"
         />
       </div>
 

@@ -76,7 +76,7 @@ export const Projects = () => {
                   <Links p={p} onCase={() => go(p.id)} />
                 </div>
                 <div className="chapter-media">
-                  <img src={p.image} alt={`${p.title} Cover Thumbnail`} loading="lazy" data-parallax />
+                  <img src={p.image} alt={`${p.title} Cover Thumbnail`} loading="lazy" />
                 </div>
               </div>
             </article>
@@ -107,7 +107,7 @@ export const Projects = () => {
                   </div>
                   <div>
                     <p className="mono-label muted">{p.category}</p>
-                    <img src={p.image} alt={`${p.title} Cover Thumbnail`} loading="lazy" style={{ width: '100%', aspectRatio: '16/10', objectFit: 'cover', borderRadius: 'var(--radius)', marginTop: '.75rem' }} />
+                    <img src={p.image} alt={`${p.title} Cover Thumbnail`} loading="lazy" style={{ width: '100%', aspectRatio: '16/10', objectFit: 'contain', background: '#0c0c0d', borderRadius: 'var(--radius)', marginTop: '.75rem' }} />
                   </div>
                 </article>
               ))}
